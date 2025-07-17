@@ -169,6 +169,46 @@
       margin-top: 15px;
     }
     
+    /* Estilo para o select de cor com pré-visualização */
+    .cor-select-container {
+      position: relative;
+      width: 100%;
+    }
+    
+    #cor {
+      padding-left: 50px;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    
+    .cor-preview {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    
+    .cor-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Estilo para as opções com imagens */
+    .option-with-image {
+      padding-left: 40px;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      background-size: 20px 20px;
+    }
+    
     /* Carrinho */
     .carrinho {
       max-width: 800px;
@@ -274,7 +314,7 @@
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo Loja do Operador" style="height: 180px; max-width: 100%;">
+    <img src="imagens\logo.png" alt="Logo Loja do Operador" style="height: 180px; max-width: 100%;">
     <h1 class="titulo-principal">INTERNAS PERSONALIZADAS ENVIO PARA TODO BRASIL</h1>
     
     <p class="subtitulo">✧ Seu patrimônio protegido ✧ Sua equipe motivada ✧ Seu negócio mais forte ✧</p>
@@ -317,9 +357,14 @@
     </select>
 
     <label>Cor:</label>
-    <select id="cor">
-      <option value="">Selecione uma cor</option>
-    </select>
+    <div class="cor-select-container">
+      <select id="cor">
+        <option value="">Selecione uma cor</option>
+      </select>
+      <div class="cor-preview">
+        <img id="cor-preview-img" src="imagens/cores/placeholder.jpg" alt="Pré-visualização da cor">
+      </div>
+    </div>
 
     <button onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
   </div>
@@ -404,7 +449,8 @@
       }
     };
 
-    const cores = ["Preto", "Cinza", "Bege", "Marrom", "Azul", "Verde", "Vermelho", "Amarelo", "Branco", "Grafite", "Laranja", "Rosa"];
+    // Cores numeradas de 1 a 30
+    const cores = Array.from({length: 30}, (_, i) => `Cor ${i+1}`);
 
     // Variáveis globais
     let linhaSelecionada = '';
@@ -417,6 +463,7 @@
     const modeloSelect = document.getElementById('modelo');
     const anoSelect = document.getElementById('ano');
     const corSelect = document.getElementById('cor');
+    const corPreviewImg = document.getElementById('cor-preview-img');
 
     // Inicialização
     document.addEventListener('DOMContentLoaded', () => {
@@ -506,14 +553,34 @@
       });
     });
 
-    // Popular cores
+    // Popular cores com imagens numeradas
     function popularCores() {
       corSelect.innerHTML = '<option value="">Selecione...</option>';
-      cores.forEach(cor => {
+      
+      // Crie as opções para cada cor (1 a 30)
+      cores.forEach((cor, index) => {
         const option = document.createElement('option');
         option.value = cor;
         option.textContent = cor;
+        option.dataset.imagem = `imagens/cores/cor${index+1}.jpg`;
+        option.style.backgroundImage = `url('imagens/cores/cor${index+1}.jpg')`;
+        option.style.backgroundRepeat = 'no-repeat';
+        option.style.backgroundPosition = '10px center';
+        option.style.backgroundSize = '20px 20px';
+        option.style.paddingLeft = '35px';
         corSelect.appendChild(option);
+      });
+
+      // Atualize a pré-visualização quando a cor mudar
+      corSelect.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        if (selectedOption.value && selectedOption.dataset.imagem) {
+          corPreviewImg.src = selectedOption.dataset.imagem;
+          corPreviewImg.alt = `Pré-visualização ${selectedOption.value}`;
+        } else {
+          corPreviewImg.src = 'imagens/cores/placeholder.jpg';
+          corPreviewImg.alt = 'Selecione uma cor';
+        }
       });
     }
 
