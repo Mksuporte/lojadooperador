@@ -17,9 +17,13 @@
       --transition: all 0.3s ease;
       --primary-color: #ffcc00;
       --secondary-color: #08d118;
+      --card-bg: #444;
+      --text-primary: #fff;
+      --text-secondary: #ccc;
+    }
     
-      
-      
+    html {
+      scroll-behavior: smooth;
     }
     
     body {
@@ -30,9 +34,6 @@
       line-height: 1.6;
     }
      
-    
-   
-    
     header {
       background-color: var(--cor-primaria);
       color: var(--cor-secundaria);
@@ -41,21 +42,28 @@
       border-radius: 10px;
       margin-bottom: 30px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    
     }
     
     header img {
-      height: 200px;
+      height: 180px;
       max-width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
-    h1 {
+    .titulo-principal {
+      font-size: 1.5rem;
       color: var(--primary-color);
       margin-bottom: 10px;
+      font-weight: bold;
     }
     
-    /* NOVO ESTILO DOS BOTÕES NO FORMATO QUADRADO */
+    .subtitulo {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 5px 0;
+    }
+    
+    /* ESTILO DOS BOTÕES */
     .linha-botoes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -66,7 +74,7 @@
     .botao-linha {
       background-color: var(--card-bg);
       border-radius: 10px;
-      padding: 30px;
+      padding: 25px;
       text-align: center;
       transition: var(--transition);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -105,14 +113,14 @@
     }
     
     .linha-titulo {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: var(--primary-color);
     }
     
     .linha-descricao {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-secondary);
     }
     
@@ -130,14 +138,14 @@
       max-width: 600px;
       margin: 0 auto 40px;
       background-color: var(--card-bg);
-      padding: 30px;
+      padding: 25px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
     
     /* Estilos para selects */
     select, button {
-      margin: 15px 0;
+      margin: 12px 0;
       padding: 12px;
       width: 100%;
       border: 1px solid #555;
@@ -158,7 +166,7 @@
       color: #000;
       font-weight: bold;
       border: none;
-      margin-top: 20px;
+      margin-top: 15px;
     }
     
     /* Carrinho */
@@ -166,7 +174,7 @@
       max-width: 800px;
       margin: 0 auto;
       background-color: var(--card-bg);
-      padding: 30px;
+      padding: 25px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
@@ -175,6 +183,7 @@
       color: var(--primary-color);
       border-bottom: 2px solid var(--primary-color);
       padding-bottom: 10px;
+      font-size: 1.3rem;
     }
     
     #listaCarrinho {
@@ -183,32 +192,33 @@
     }
     
     #listaCarrinho li {
-      padding: 15px;
-      margin: 10px 0;
+      padding: 12px;
+      margin: 8px 0;
       background-color: #555;
       border-radius: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 0.9rem;
     }
     
     .btn-finalizar {
       background-color: var(--secondary-color);
       color: #000;
       font-weight: bold;
-      padding: 15px;
+      padding: 12px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: var(--transition);
       display: block;
       width: 100%;
-      margin-top: 20px;
-      font-size: 1.1rem;
+      margin-top: 15px;
+      font-size: 1rem;
     }
     
     .btn-finalizar:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(8, 209, 24, 0.3);
     }
     
@@ -217,18 +227,61 @@
       .linha-botoes {
         grid-template-columns: 1fr;
       }
+      
+      header img {
+        height: 150px;
+      }
+      
+      .titulo-principal {
+        font-size: 1.3rem;
+      }
+      
+      .subtitulo {
+        font-size: 0.8rem;
+      }
+      
+      .botao-linha {
+        padding: 20px;
+      }
+      
+      .linha-titulo {
+        font-size: 1.1rem;
+      }
+      
+      .linha-descricao {
+        font-size: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 15px;
+      }
+      
+      header {
+        padding: 15px;
+      }
+      
+      .titulo-principal {
+        font-size: 1.2rem;
+      }
+      
+      .subtitulo {
+        font-size: 0.75rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo Loja do Operador" style="height: 250px; max-width: 100%;">
-    <h1>INTERNAS PERSONALISADAS ENVIO PARA TODO BRASIL </h1>
-    <p> ✧ Seu patrimônio protegido ✧ Sua equipe motivada ✧ Seu negócio mais forte ✧</p>
-    <p> ✧ Cuidando das Suas Máquinas e Dos Seus Operadores ✧ </p>
+    <img src="logo.png" alt="Logo Loja do Operador" style="height: 180px; max-width: 100%;">
+    <h1 class="titulo-principal">INTERNAS PERSONALIZADAS</h1>
+    <p class="subtitulo">ENVIO PARA TODO BRASIL</p>
+    <p class="subtitulo">✧ Seu patrimônio protegido ✧ Sua equipe motivada ✧ Seu negócio mais forte ✧</p>
+    <p class="subtitulo">✧ Cuidando das Suas Máquinas e Seus Operadores  ✧</p>
   </header>
 
-  <!-- BOTÕES DE LINHA NO FORMATO QUADRADO -->
+  <!-- BOTÕES DE LINHA -->
   <div class="linha-botoes">
     <button class="botao-linha linha-amarela" data-linha="Linha Amarela">
       <div class="linha-titulo">Linha Amarela</div>
@@ -246,13 +299,8 @@
     </button>
   </div>
 
-  <!-- CONTAINER DOS SELECTS -->
+  <!-- FORMULÁRIO NA NOVA ORDEM (Marca → Modelo → Ano) -->
   <div id="selecao-container" class="selecao-container">
-    <label>Categoria da Máquina:</label>
-    <select id="categoria">
-      <option value="">Selecione uma categoria</option>
-    </select>
-
     <label>Marca:</label>
     <select id="marca">
       <option value="">Selecione uma marca</option>
@@ -261,6 +309,11 @@
     <label>Modelo:</label>
     <select id="modelo">
       <option value="">Selecione um modelo</option>
+    </select>
+
+    <label>Ano:</label>
+    <select id="ano">
+      <option value="">Selecione o ano</option>
     </select>
 
     <label>Cor:</label>
@@ -279,32 +332,74 @@
   </div>
 
   <script>
-    // [O resto do JavaScript permanece EXATAMENTE IGUAL à versão anterior]
-    // Dados dos produtos
+    // Dados dos produtos atualizados
     const dados = {
       "Linha Amarela": {
-        "Escavadeira": {
-          "Caterpillar": ["320D", "336D"],
-          "Komatsu": ["PC200", "PC300"]
+        "Zoomlion": {
+          "ZE205E": { anos: ["2018", "2019", "2020"] },
+          "ZE360E": { anos: ["2019", "2020", "2021"] }
         },
-        "Retroescavadeira": {
-          "JCB": ["3CX", "4CX"],
-          "Case": ["580N", "695ST"]
+        "Komatsu": {
+          "PC200": { anos: ["2015", "2016", "2017"] },
+          "PC300": { anos: ["2019", "2020", "2021"] },
+          "PC450": { anos: ["2018", "2019", "2020"] }
+        },
+        "Hyundai": {
+          "R220LC-9S": { anos: ["2017", "2018", "2019"] },
+          "R300LC-9S": { anos: ["2019", "2020", "2021"] }
+        },
+        "John Deere": {
+          "200G": { anos: ["2016", "2017", "2018"] },
+          "350G": { anos: ["2019", "2020", "2021"] }
+        },
+        "New Holland": {
+          "C232": { anos: ["2015", "2016", "2017"] },
+          "C238": { anos: ["2018", "2019", "2020"] }
+        },
+        "Volvo": {
+          "EC200E": { anos: ["2017", "2018", "2019"] },
+          "EC300E": { anos: ["2019", "2020", "2021"] }
+        },
+        "CAT": {
+          "320D": { anos: ["2015", "2016", "2017"] },
+          "336D": { anos: ["2018", "2019", "2020"] },
+          "349D": { anos: ["2019", "2020", "2021"] }
+        },
+        "SDLG": {
+          "E6135F": { anos: ["2018", "2019", "2020"] },
+          "E6225F": { anos: ["2019", "2020", "2021"] }
+        },
+        "Case": {
+          "CX210C": { anos: ["2017", "2018", "2019"] },
+          "CX350C": { anos: ["2019", "2020", "2021"] }
+        },
+        "Link Belt": {
+          "X3 2050": { anos: ["2016", "2017", "2018"] },
+          "X3 3050": { anos: ["2019", "2020", "2021"] }
         }
       },
       "Linha Verde": {
-        "Moto Niveladora": {
-          "John Deere": ["620G", "670G"],
-          "Caterpillar": ["120K", "140K"]
+        "John Deere": {
+          "620G": { anos: ["2017", "2018", "2019"] },
+          "670G": { anos: ["2019", "2020", "2021"] }
         },
-        "Escavadeira": {
-          "Komatsu": ["PC130", "PC210"]
+        "Caterpillar": {
+          "120K": { anos: ["2016", "2017", "2018"] },
+          "140K": { anos: ["2019", "2020", "2021"] }
+        },
+        "Komatsu": {
+          "PC130": { anos: ["2015", "2016", "2017"] },
+          "PC210": { anos: ["2018", "2019", "2020"] }
         }
       },
       "Linha Mini": {
-        "Miniescavadeira": {
-          "Bobcat": ["E20", "E35"],
-          "Takeuchi": ["TB216", "TB230"]
+        "Bobcat": {
+          "E20": { anos: ["2018", "2019", "2020"] },
+          "E35": { anos: ["2019", "2020", "2021"] }
+        },
+        "Takeuchi": {
+          "TB216": { anos: ["2017", "2018", "2019"] },
+          "TB230": { anos: ["2019", "2020", "2021"] }
         }
       }
     };
@@ -318,15 +413,97 @@
     // Elementos DOM
     const botoesLinha = document.querySelectorAll('.botao-linha');
     const selecaoContainer = document.getElementById('selecao-container');
-    const categoriaSelect = document.getElementById('categoria');
     const marcaSelect = document.getElementById('marca');
     const modeloSelect = document.getElementById('modelo');
+    const anoSelect = document.getElementById('ano');
     const corSelect = document.getElementById('cor');
 
     // Inicialização
     document.addEventListener('DOMContentLoaded', () => {
       popularCores();
       atualizarCarrinho();
+      
+      // Adiciona eventos aos botões
+      botoesLinha.forEach(botao => {
+        botao.addEventListener('click', function() {
+          selecionarLinha(this);
+        });
+      });
+    });
+
+    // Função para selecionar linha
+    function selecionarLinha(botao) {
+      // Remover classe 'ativo' de todos os botões
+      botoesLinha.forEach(btn => btn.classList.remove('ativo'));
+      
+      // Adicionar classe 'ativo' ao botão clicado
+      botao.classList.add('ativo');
+      
+      // Mostrar container de seleção
+      selecaoContainer.style.display = 'block';
+      
+      // Definir linha selecionada
+      linhaSelecionada = botao.dataset.linha;
+      
+      // Popular marcas
+      popularMarcas();
+      
+      // Rolagem suave para o formulário
+      setTimeout(() => {
+        selecaoContainer.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+
+    // Popular marcas
+    function popularMarcas() {
+      marcaSelect.innerHTML = '<option value="">Selecione...</option>';
+      modeloSelect.innerHTML = '<option value="">Selecione uma marca primeiro</option>';
+      anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
+      
+      // Obter todas as marcas disponíveis para a linha selecionada
+      const marcas = Object.keys(dados[linhaSelecionada]);
+      
+      marcas.forEach(marca => {
+        const option = document.createElement('option');
+        option.value = marca;
+        option.textContent = marca;
+        marcaSelect.appendChild(option);
+      });
+    }
+
+    // Evento para marca
+    marcaSelect.addEventListener('change', function() {
+      modeloSelect.innerHTML = '<option value="">Selecione...</option>';
+      anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
+      
+      if (!this.value) return;
+      
+      // Obter todos os modelos da marca selecionada
+      const modelos = Object.keys(dados[linhaSelecionada][this.value]);
+      
+      modelos.forEach(modelo => {
+        const option = document.createElement('option');
+        option.value = modelo;
+        option.textContent = modelo;
+        modeloSelect.appendChild(option);
+      });
+    });
+
+    // Evento para modelo
+    modeloSelect.addEventListener('change', function() {
+      anoSelect.innerHTML = '<option value="">Selecione...</option>';
+      
+      if (!this.value || !marcaSelect.value) return;
+      
+      // Obter anos para o modelo selecionado
+      const anosDisponiveis = dados[linhaSelecionada][marcaSelect.value][this.value].anos;
+      
+      anosDisponiveis.forEach(ano => {
+        const option = document.createElement('option');
+        option.value = ano;
+        option.textContent = ano;
+        anoSelect.appendChild(option);
+      });
     });
 
     // Popular cores
@@ -340,103 +517,53 @@
       });
     }
 
-    // Evento para os botões de linha
-    botoesLinha.forEach(botao => {
-      botao.addEventListener('click', function() {
-        // Remover classe 'ativo' de todos os botões
-        botoesLinha.forEach(btn => btn.classList.remove('ativo'));
-        
-        // Adicionar classe 'ativo' ao botão clicado
-        this.classList.add('ativo');
-        
-        // Mostrar container de seleção com animação
-        selecaoContainer.style.display = 'block';
-        
-        // Definir linha selecionada
-        linhaSelecionada = this.dataset.linha;
-        
-        // Popular categorias
-        popularCategorias();
-      });
-    });
-
-    function popularCategorias() {
-      categoriaSelect.innerHTML = '<option value="">Selecione...</option>';
-      marcaSelect.innerHTML = '<option value="">Selecione uma categoria primeiro</option>';
-      modeloSelect.innerHTML = '<option value="">Selecione uma marca primeiro</option>';
-      
-      const categorias = dados[linhaSelecionada];
-      for (let categoria in categorias) {
-        const option = document.createElement('option');
-        option.value = categoria;
-        option.textContent = categoria;
-        categoriaSelect.appendChild(option);
-      }
-    }
-
-    // Evento para categoria
-    categoriaSelect.addEventListener('change', function() {
-      marcaSelect.innerHTML = '<option value="">Selecione...</option>';
-      modeloSelect.innerHTML = '<option value="">Selecione uma marca primeiro</option>';
-      
-      const marcas = dados[linhaSelecionada][this.value];
-      for (let marca in marcas) {
-        const option = document.createElement('option');
-        option.value = marca;
-        option.textContent = marca;
-        marcaSelect.appendChild(option);
-      }
-    });
-
-    // Evento para marca
-    marcaSelect.addEventListener('change', function() {
-      modeloSelect.innerHTML = '<option value="">Selecione...</option>';
-      
-      const modelos = dados[linhaSelecionada][categoriaSelect.value][this.value];
-      modelos.forEach(modelo => {
-        const option = document.createElement('option');
-        option.value = modelo;
-        option.textContent = modelo;
-        modeloSelect.appendChild(option);
-      });
-    });
-
     // Adicionar ao carrinho
     function adicionarAoCarrinho() {
       const item = {
         linha: linhaSelecionada,
-        categoria: categoriaSelect.value,
         marca: marcaSelect.value,
         modelo: modeloSelect.value,
+        ano: anoSelect.value,
         cor: corSelect.value,
         id: Date.now()
       };
       
       if (!linhaSelecionada || Object.values(item).includes("")) {
-        alert("Preencha todas as opções antes de adicionar.");
+        mostrarFeedback('Preencha todas as opções antes de adicionar.', 'erro');
         return;
       }
       
       carrinho.push(item);
       salvarCarrinho();
       atualizarCarrinho();
+      mostrarFeedback('Item adicionado ao carrinho!');
       
-      // Feedback visual
+      // Rolagem suave para o carrinho
+      setTimeout(() => {
+        document.querySelector('.carrinho').scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+
+    // Mostrar feedback visual
+    function mostrarFeedback(mensagem, tipo = 'sucesso') {
       const feedback = document.createElement('div');
-      feedback.textContent = 'Item adicionado ao carrinho!';
+      feedback.textContent = mensagem;
       feedback.style.position = 'fixed';
       feedback.style.bottom = '20px';
       feedback.style.left = '50%';
       feedback.style.transform = 'translateX(-50%)';
-      feedback.style.backgroundColor = '#08d118';
+      feedback.style.backgroundColor = tipo === 'erro' ? '#f44336' : '#4CAF50';
       feedback.style.color = 'white';
       feedback.style.padding = '10px 20px';
       feedback.style.borderRadius = '5px';
       feedback.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
+      feedback.style.zIndex = '1000';
       document.body.appendChild(feedback);
       
       setTimeout(() => {
-        feedback.remove();
+        feedback.style.opacity = '0';
+        feedback.style.transition = 'opacity 0.5s';
+        setTimeout(() => feedback.remove(), 500);
       }, 2000);
     }
 
@@ -460,7 +587,7 @@
         li.innerHTML = `
           <div>
             <strong>${item.linha}</strong><br>
-            ${item.categoria} - ${item.marca} ${item.modelo}<br>
+            ${item.marca} ${item.modelo} (${item.ano})<br>
             Cor: ${item.cor}
           </div>
           <button onclick="removerItem(${item.id})" style="
@@ -470,6 +597,7 @@
             border-radius: 5px;
             padding: 5px 10px;
             cursor: pointer;
+            font-size: 0.8rem;
           ">Remover</button>
         `;
         lista.appendChild(li);
@@ -483,13 +611,14 @@
         carrinho.splice(index, 1);
         salvarCarrinho();
         atualizarCarrinho();
+        mostrarFeedback('Item removido do carrinho');
       }
     }
 
     // Finalizar pedido
     function finalizarPedido() {
       if (carrinho.length === 0) {
-        alert("Carrinho vazio!");
+        mostrarFeedback('Carrinho vazio!', 'erro');
         return;
       }
       
@@ -497,8 +626,7 @@
       mensagem += "*Itens do Pedido:*\n\n";
       
       carrinho.forEach((item, i) => {
-        mensagem += `➤ ${item.linha} - ${item.marca} ${item.modelo}\n`;
-        mensagem += `   Categoria: ${item.categoria}\n`;
+        mensagem += `➤ ${item.linha} - ${item.marca} ${item.modelo} (${item.ano})\n`;
         mensagem += `   Cor: ${item.cor}\n\n`;
       });
       
