@@ -47,13 +47,16 @@
     header img {
       height: 180px;
       max-width: 100%;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
+      display: block; /* Garante que a logo será exibida */
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .titulo-principal {
       font-size: 1.5rem;
       color: var(--primary-color);
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       font-weight: bold;
     }
     
@@ -201,14 +204,6 @@
       object-fit: cover;
     }
     
-    /* Estilo para as opções com imagens */
-    .option-with-image {
-      padding-left: 40px;
-      background-repeat: no-repeat;
-      background-position: 10px center;
-      background-size: 20px 20px;
-    }
-    
     /* Carrinho */
     .carrinho {
       max-width: 800px;
@@ -314,7 +309,7 @@
 </head>
 <body>
   <header>
-    <img src="imagens\logo.png" alt="Logo Loja do Operador" style="height: 180px; max-width: 100%;">
+    <img src="logo.png" alt="Logo Loja do Operador" style="height: 180px; max-width: 100%;">
     <h1 class="titulo-principal">INTERNAS PERSONALIZADAS ENVIO PARA TODO BRASIL</h1>
     
     <p class="subtitulo">✧ Seu patrimônio protegido ✧ Sua equipe motivada ✧ Seu negócio mais forte ✧</p>
@@ -330,7 +325,7 @@
     
     <button class="botao-linha linha-verde" data-linha="Linha Verde">
       <div class="linha-titulo">Linha Verde</div>
-      <div class="linha-descricao">Máquinas Agrícolas</div>
+      <div class="linha-descricao">Tratores, Colheitadeiras, Plantadeiras e Pulverizadores</div>
     </button>
     
     <button class="botao-linha linha-mini" data-linha="Linha Mini">
@@ -425,16 +420,44 @@
       },
       "Linha Verde": {
         "John Deere": {
-          "620G": { anos: ["2017", "2018", "2019"] },
-          "670G": { anos: ["2019", "2020", "2021"] }
+          "Trator 5075E": { anos: ["2018", "2019", "2020"] },
+          "Trator 6110J": { anos: ["2019", "2020", "2021"] },
+          "Colheitadeira S550": { anos: ["2017", "2018", "2019"] },
+          "Colheitadeira S770": { anos: ["2019", "2020", "2021"] },
+          "Plantadeira 2512H": { anos: ["2016", "2017", "2018"] },
+          "Pulverizador 4730": { anos: ["2018", "2019", "2020"] }
         },
-        "Caterpillar": {
-          "120K": { anos: ["2016", "2017", "2018"] },
-          "140K": { anos: ["2019", "2020", "2021"] }
+        "Case IH": {
+          "Trator Magnum 340": { anos: ["2017", "2018", "2019"] },
+          "Trator Puma 220": { anos: ["2019", "2020", "2021"] },
+          "Colheitadeira Axial Flow 240": { anos: ["2015", "2016", "2017"] },
+          "Colheitadeira Axial Flow 7150": { anos: ["2019", "2020", "2021"] },
+          "Plantadeira Exact Emerge 1200": { anos: ["2018", "2019", "2020"] },
+          "Pulverizador Patriot 2250": { anos: ["2017", "2018", "2019"] }
         },
-        "Komatsu": {
-          "PC130": { anos: ["2015", "2016", "2017"] },
-          "PC210": { anos: ["2018", "2019", "2020"] }
+        "New Holland": {
+          "Trator T7.210": { anos: ["2016", "2017", "2018"] },
+          "Trator T8.390": { anos: ["2019", "2020", "2021"] },
+          "Colheitadeira CR6.80": { anos: ["2018", "2019", "2020"] },
+          "Colheitadeira TC5.90": { anos: ["2019", "2020", "2021"] },
+          "Plantadeira PL5000": { anos: ["2017", "2018", "2019"] },
+          "Pulverizador PL6020": { anos: ["2019", "2020", "2021"] }
+        },
+        "Massey Ferguson": {
+          "Trator MF 6713": { anos: ["2015", "2016", "2017"] },
+          "Trator MF 7714": { anos: ["2018", "2019", "2020"] },
+          "Colheitadeira MF 9250": { anos: ["2017", "2018", "2019"] },
+          "Colheitadeira MF 9795": { anos: ["2019", "2020", "2021"] },
+          "Plantadeira MF 9800": { anos: ["2016", "2017", "2018"] },
+          "Pulverizador MF 3200": { anos: ["2018", "2019", "2020"] }
+        },
+        "Valtra": {
+          "Trator A114": { anos: ["2017", "2018", "2019"] },
+          "Trator N134": { anos: ["2019", "2020", "2021"] },
+          "Colheitadeira BH 2080": { anos: ["2016", "2017", "2018"] },
+          "Colheitadeira BH 3080": { anos: ["2018", "2019", "2020"] },
+          "Plantadeira VP 1250": { anos: ["2015", "2016", "2017"] },
+          "Pulverizador VP 3000": { anos: ["2019", "2020", "2021"] }
         }
       },
       "Linha Mini": {
@@ -563,11 +586,6 @@
         option.value = cor;
         option.textContent = cor;
         option.dataset.imagem = `imagens/cores/cor${index+1}.jpg`;
-        option.style.backgroundImage = `url('imagens/cores/cor${index+1}.jpg')`;
-        option.style.backgroundRepeat = 'no-repeat';
-        option.style.backgroundPosition = '10px center';
-        option.style.backgroundSize = '20px 20px';
-        option.style.paddingLeft = '35px';
         corSelect.appendChild(option);
       });
 
@@ -682,24 +700,67 @@
       }
     }
 
-    // Finalizar pedido
+    // Gerar protocolo aleatório
+    function generateProtocol() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      for (let i = 0; i < 10; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+
+    // Finalizar pedido - TOTALMENTE ATUALIZADA
     function finalizarPedido() {
       if (carrinho.length === 0) {
         mostrarFeedback('Carrinho vazio!', 'erro');
         return;
       }
       
-      let mensagem = "Olá! Gostaria de fazer um pedido:\n\n";
+      // Dados da loja
+      const numeroWhatsApp = "554399546879"; // Número com código do país (55) e DDD (43)
+      const numeroPedido = Math.floor(10000 + Math.random() * 90000);
+      const protocolo = generateProtocol();
+      const dataHora = new Date().toLocaleString('pt-BR');
+      const pixInfo = "000.000.000-00 (CNPJ)\nNome: HELTO MACHADO";
+      const celularCliente = "43999064226";
+      
+      // Montar cabeçalho
+      let mensagem = "*LOJA DO OPERADOR - CAPAS PERSONALIZADAS*\n";
+      mensagem += "Av. Exemplo, 123 - Centro, Cidade, PR, 12345-000\n";
+      mensagem += "43 9954-6879\n";
+      mensagem += "--------------------------------------------------\n";
+      mensagem += `*Pedido:* ${numeroPedido}\n`;
+      mensagem += `*Protocolo:* ${protocolo}\n`;
+      mensagem += `*Data/Hora:* ${dataHora}\n`;
+      mensagem += "--------------------------------------------------\n";
       mensagem += "*Itens do Pedido:*\n\n";
       
-      carrinho.forEach((item, i) => {
-        mensagem += `➤ ${item.linha} - ${item.marca} ${item.modelo} (${item.ano})\n`;
-        mensagem += `   Cor: ${item.cor}\n\n`;
+      // Adicionar itens
+      carrinho.forEach((item, index) => {
+        mensagem += `${index+1} ${item.linha} - ${item.marca} ${item.modelo} (${item.cor}) R$ 450,00\n`;
       });
       
-      mensagem += "Por favor, confirme os itens e informe as formas de pagamento e entrega.";
+      // Rodapé
+      mensagem += "--------------------------------------------------\n";
+      mensagem += "*Taxa de entrega:* A combinar\n";
+      mensagem += `*Total:* R$ ${(carrinho.length * 450).toFixed(2)}\n\n`;
+      mensagem += "*Forma de Pagamento:* A definir\n";
+      mensagem += `*Chave PIX:* ${pixInfo}\n`;
+      mensagem += "*Endereço:* A combinar\n";
+      mensagem += `*Celular:* ${celularCliente}\n`;
+      mensagem += "--------------------------------------------------\n";
+      mensagem += "*Observações:* \n";
+      mensagem += "--------------------------------------------------\n";
+      mensagem += "Agradecemos pela preferência! Confirmaremos seu pedido em breve.";
       
-      const url = `https://wa.me/SEUNUMERO?text=${encodeURIComponent(mensagem)}`;
+      // Codificar a mensagem para URL
+      const mensagemCodificada = encodeURIComponent(mensagem);
+      
+      // Criar o link do WhatsApp
+      const url = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+      
+      // Abrir em nova aba
       window.open(url, "_blank");
     }
   </script>
