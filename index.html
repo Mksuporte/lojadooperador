@@ -8,18 +8,18 @@
   <style>
     :root {
       --cor-primaria: #333;
-      --cor-secundaria: #ffa500;
-      --cor-terciaria: #ffcc00;
+      --cor-secundaria: #F9A01B;
+      --cor-terciaria: #F9A01B;
       --cor-fundo: #333;
       --cor-texto: #fff;
       --cor-destaque: #4CAF50;
       --cor-erro: #f44336;
       --transition: all 0.3s ease;
-      --primary-color: #ffcc00;
-      --secondary-color: #08d118;
+      --primary-color: #ccc;
+      --secondary-color: #ccc;
       --card-bg: #444;
-      --text-primary: #fff;
-      --text-secondary: #ccc;
+      --text-primary: #F9A01B;
+      --text-secondary: #F9A01B;
     }
     
     html {
@@ -48,7 +48,7 @@
       height: 180px;
       max-width: 100%;
       margin-bottom: 15px;
-      display: block; /* Garante que a logo será exibida */
+      display: block;
       margin-left: auto;
       margin-right: auto;
     }
@@ -66,7 +66,7 @@
       margin: 5px 0;
     }
     
-    /* ESTILO DOS BOTÕES */
+    /* BOTÕES PRINCIPAIS */
     .linha-botoes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -84,18 +84,21 @@
       cursor: pointer;
       border: none;
       color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     .botao-linha.linha-amarela {
-      border-top: 4px solid var(--primary-color);
+      border-top: 4px solid #F9A01B;
     }
     
     .botao-linha.linha-verde {
-      border-top: 4px solid var(--secondary-color);
+      border-top: 4px solid #08d118;
     }
     
     .botao-linha.linha-mini {
-      border-top: 4px solid #fff;
+      border-top: 4px solid #F9A01B;
     }
     
     .botao-linha:hover {
@@ -122,17 +125,62 @@
       color: var(--primary-color);
     }
     
-    .linha-descricao {
+    .linha-descricao  {
       font-size: 0.85rem;
-      color: var(--text-secondary);
+      color:#08d118;
+    }
+    .linha-descricao1 {
+      font-size: 0.85rem;
+      color:#F9A01B;
     }
     
-    .botao-linha.linha-verde .linha-titulo {
-      color: var(--secondary-color);
+    /* BOTÕES DE MÁQUINAS */
+    .maquinas-container {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
     }
     
-    .botao-linha.linha-mini .linha-titulo {
-      color: #fff;
+    .botao-maquina {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      border: none;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .botao-maquina.linha-amarela {
+      border-top: 4px solid #F9A01B;
+    }
+    
+    .botao-maquina.linha-verde {
+      border-top: 4px solid #08d118;
+    }
+    
+    .botao-maquina:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .icone-maquina {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+      object-fit: contain;
+    }
+    
+    .nome-maquina {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 5px;
     }
     
     /* Container de seleção */
@@ -190,8 +238,8 @@
       left: 10px;
       top: 50%;
       transform: translateY(-50%);
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       border: 1px solid #ddd;
       border-radius: 4px;
       overflow: hidden;
@@ -259,7 +307,7 @@
     
     /* Responsivo */
     @media (max-width: 768px) {
-      .linha-botoes {
+      .linha-botoes, .maquinas-container {
         grid-template-columns: 1fr;
       }
       
@@ -275,7 +323,7 @@
         font-size: 0.8rem;
       }
       
-      .botao-linha {
+      .botao-linha, .botao-maquina {
         padding: 20px;
       }
       
@@ -312,29 +360,85 @@
     <img src="logo.png" alt="Logo Loja do Operador" style="height: 180px; max-width: 100%;">
     <h1 class="titulo-principal">INTERNAS PERSONALIZADAS ENVIO PARA TODO BRASIL</h1>
     
-    <p class="subtitulo">✧ Seu patrimônio protegido ✧ Sua equipe motivada ✧ Seu negócio mais forte ✧</p>
-    <p class="subtitulo">✧ Cuidando das Suas Máquinas e Seus Operadores ✧</p>
+    <p class="subtitulo">✧ Sua equipe motivada ✧
+    <p class="subtitulo">✧ Seu patrimônio protegido, Seu negócio mais forte ✧</p>
+    <p class="subtitulo">✧ Cuidando das Suas Máquinas e de seus Operadores ✧</p>
   </header>
 
-  <!-- BOTÕES DE LINHA -->
+  <!-- BOTÕES DE LINHA PRINCIPAL -->
   <div class="linha-botoes">
     <button class="botao-linha linha-amarela" data-linha="Linha Amarela">
-      <div class="linha-titulo">Linha Amarela</div>
-      <div class="linha-descricao">Máquinas de Terraplenagem</div>
+      <div class="linha-titulo">Máquinas de Terraplenagem</div>
+      <div class="linha-descricao1">Linha Amarela</div>
     </button>
     
     <button class="botao-linha linha-verde" data-linha="Linha Verde">
-      <div class="linha-titulo">Linha Verde</div>
-      <div class="linha-descricao">Tratores, Colheitadeiras, Plantadeiras e Pulverizadores</div>
+      <div class="linha-titulo">Trator, Pulverizador, Colheitadeiras</div>
+      <div class="linha-descricao">Linha verde</div>
     </button>
     
     <button class="botao-linha linha-mini" data-linha="Linha Mini">
-      <div class="linha-titulo">Linha Mini</div>
-      <div class="linha-descricao">Máquinas Compactas</div>
+      <div class="linha-titulo">Categoria Mini</div>
+      <div class="linha-descricao1">Mini Escavadeira - Mini Carregadeira</div>
     </button>
   </div>
 
-  <!-- FORMULÁRIO NA NOVA ORDEM (Marca → Modelo → Ano) -->
+  <!-- CONTAINER PARA BOTÕES DE MÁQUINAS (aparece após selecionar linha) -->
+  <div id="maquinas-amarelas" class="maquinas-container">
+    <button class="botao-maquina linha-amarela" data-tipo="escavadeira-hidraulica">
+      <img src="imagens/icones/escavadeiraa.png" alt="Escavadeira Hidráulica" class="icone-maquina">
+      <span class="nome-maquina">Escavadeira Hidráulica</span>
+    </button>
+    
+    <button class="botao-maquina linha-amarela" data-tipo="retro-escavadeira">
+      <img src="imagens/icones/retro-escavadeira.png" alt="Retro Escavadeira" class="icone-maquina">
+      <span class="nome-maquina">Retro Escavadeira</span>
+    </button>
+    
+    <button class="botao-maquina linha-amarela" data-tipo="pa-carregadeira">
+      <img src="imagens/icones/pa-carregadeira.png" alt="Pá Carregadeira" class="icone-maquina">
+      <span class="nome-maquina">Pá Carregadeira</span>
+    </button>
+    
+    <button class="botao-maquina linha-amarela" data-tipo="moto-niveladora">
+      <img src="imagens/icones/moto-niveladora.png" alt="Moto Niveladora" class="icone-maquina">
+      <span class="nome-maquina">Moto Niveladora</span>
+    </button>
+    
+    <button class="botao-maquina linha-amarela" data-tipo="trator-esteira">
+      <img src="imagens/icones/trator-esteira.png" alt="Trator de Esteira" class="icone-maquina">
+      <span class="nome-maquina">Trator de Esteira</span>
+    </button>
+  </div>
+
+  <div id="maquinas-verdes" class="maquinas-container">
+    <button class="botao-maquina linha-verde" data-tipo="trator">
+      <img src="imagens/icones/trator.png" alt="Trator" class="icone-maquina">
+      <span class="nome-maquina">Trator</span>
+    </button>
+    
+    <button class="botao-maquina linha-verde" data-tipo="pulverizador">
+      <img src="imagens/icones/pulverizador.png" alt="Pulverizador" class="icone-maquina">
+      <span class="nome-maquina">Pulverizador</span>
+    </button>
+    
+    <button class="botao-maquina linha-verde" data-tipo="colheitadeira">
+      <img src="imagens/icones/colheitadeira.png" alt="Colheitadeira" class="icone-maquina">
+      <span class="nome-maquina">Colheitadeira</span>
+    </button>
+    
+    <button class="botao-maquina linha-verde" data-tipo="mini-escavadeira">
+      <img src="imagens/icones/mini-escavadeira.png" alt="Mini Escavadeira" class="icone-maquina">
+      <span class="nome-maquina">Mini Escavadeira</span>
+    </button>
+    
+    <button class="botao-maquina linha-verde" data-tipo="mini-carregadeira">
+      <img src="imagens/icones/mini-carregadeira.png" alt="Mini Carregadeira" class="icone-maquina">
+      <span class="nome-maquina">Mini Carregadeira</span>
+    </button>
+  </div>
+
+  <!-- FORMULÁRIO DE SELEÇÃO -->
   <div id="selecao-container" class="selecao-container">
     <label>Marca:</label>
     <select id="marca">
@@ -366,7 +470,7 @@
 
   <!-- CARRINHO -->
   <div class="carrinho">
-    <h3> Carrinho de Compras  🛒</h3>
+    <h3>🛒 Carrinho de Compras</h3>
     <ul id="listaCarrinho"></ul>
     <button class="btn-finalizar" onclick="finalizarPedido()">Finalizar Pedido no WhatsApp</button>
   </div>
@@ -477,6 +581,7 @@
 
     // Variáveis globais
     let linhaSelecionada = '';
+    let tipoMaquinaSelecionada = '';
     const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     
     // Elementos DOM
@@ -487,21 +592,31 @@
     const anoSelect = document.getElementById('ano');
     const corSelect = document.getElementById('cor');
     const corPreviewImg = document.getElementById('cor-preview-img');
+    const maquinasAmarelas = document.getElementById('maquinas-amarelas');
+    const maquinasVerdes = document.getElementById('maquinas-verdes');
+    const botoesMaquina = document.querySelectorAll('.botao-maquina');
 
     // Inicialização
     document.addEventListener('DOMContentLoaded', () => {
       popularCores();
       atualizarCarrinho();
       
-      // Adiciona eventos aos botões
+      // Adiciona eventos aos botões de linha principal
       botoesLinha.forEach(botao => {
         botao.addEventListener('click', function() {
           selecionarLinha(this);
         });
       });
+      
+      // Adiciona eventos aos botões de máquina
+      botoesMaquina.forEach(botao => {
+        botao.addEventListener('click', function() {
+          selecionarMaquina(this);
+        });
+      });
     });
 
-    // Função para selecionar linha
+    // Função para selecionar linha principal
     function selecionarLinha(botao) {
       // Remover classe 'ativo' de todos os botões
       botoesLinha.forEach(btn => btn.classList.remove('ativo'));
@@ -509,11 +624,44 @@
       // Adicionar classe 'ativo' ao botão clicado
       botao.classList.add('ativo');
       
-      // Mostrar container de seleção
-      selecaoContainer.style.display = 'block';
-      
       // Definir linha selecionada
       linhaSelecionada = botao.dataset.linha;
+      
+      // Mostrar botões de máquina apropriados
+      if (linhaSelecionada === "Linha Amarela") {
+        maquinasAmarelas.style.display = "grid";
+        maquinasVerdes.style.display = "none";
+      } else if (linhaSelecionada === "Linha Verde" || linhaSelecionada === "Linha Mini") {
+        maquinasAmarelas.style.display = "none";
+        maquinasVerdes.style.display = "grid";
+      }
+      
+      // Ocultar formulário de seleção até escolher a máquina
+      selecaoContainer.style.display = 'none';
+      
+      // Rolagem suave para os botões de máquina
+      setTimeout(() => {
+        if (linhaSelecionada === "Linha Amarela") {
+          maquinasAmarelas.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          maquinasVerdes.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+
+    // Função para selecionar máquina específica
+    function selecionarMaquina(botao) {
+      // Remover classe 'ativo' de todos os botões de máquina
+      botoesMaquina.forEach(btn => btn.classList.remove('ativo'));
+      
+      // Adicionar classe 'ativo' ao botão clicado
+      botao.classList.add('ativo');
+      
+      // Definir tipo de máquina selecionada
+      tipoMaquinaSelecionada = botao.dataset.tipo;
+      
+      // Mostrar container de seleção
+      selecaoContainer.style.display = 'block';
       
       // Popular marcas
       popularMarcas();
@@ -606,6 +754,7 @@
     function adicionarAoCarrinho() {
       const item = {
         linha: linhaSelecionada,
+        tipo: tipoMaquinaSelecionada,
         marca: marcaSelect.value,
         modelo: modeloSelect.value,
         ano: anoSelect.value,
@@ -613,7 +762,7 @@
         id: Date.now()
       };
       
-      if (!linhaSelecionada || Object.values(item).includes("")) {
+      if (!linhaSelecionada || !tipoMaquinaSelecionada || Object.values(item).includes("")) {
         mostrarFeedback('Preencha todas as opções antes de adicionar.', 'erro');
         return;
       }
@@ -671,7 +820,7 @@
         const li = document.createElement("li");
         li.innerHTML = `
           <div>
-            <strong>${item.linha}</strong><br>
+            <strong>${item.linha} - ${formatarTipoMaquina(item.tipo)}</strong><br>
             ${item.marca} ${item.modelo} (${item.ano})<br>
             Cor: ${item.cor}
           </div>
@@ -687,6 +836,23 @@
         `;
         lista.appendChild(li);
       });
+    }
+
+    // Formatar o tipo de máquina para exibição
+    function formatarTipoMaquina(tipo) {
+      const formatos = {
+        'escavadeira-hidraulica': 'Escavadeira Hidráulica',
+        'retro-escavadeira': 'Retro Escavadeira',
+        'pa-carregadeira': 'Pá Carregadeira',
+        'moto-niveladora': 'Moto Niveladora',
+        'trator-esteira': 'Trator de Esteira',
+        'trator': 'Trator',
+        'pulverizador': 'Pulverizador',
+        'colheitadeira': 'Colheitadeira',
+        'mini-escavadeira': 'Mini Escavadeira',
+        'mini-carregadeira': 'Mini Carregadeira'
+      };
+      return formatos[tipo] || tipo;
     }
 
     // Remover item do carrinho
@@ -710,7 +876,7 @@
       return result;
     }
 
-    // Finalizar pedido - TOTALMENTE ATUALIZADA
+    // Finalizar pedido
     function finalizarPedido() {
       if (carrinho.length === 0) {
         mostrarFeedback('Carrinho vazio!', 'erro');
@@ -718,7 +884,7 @@
       }
       
       // Dados da loja
-      const numeroWhatsApp = "554399546879"; // Número com código do país (55) e DDD (43)
+      const numeroWhatsApp = "554399546879";
       const numeroPedido = Math.floor(10000 + Math.random() * 90000);
       const protocolo = generateProtocol();
       const dataHora = new Date().toLocaleString('pt-BR');
@@ -738,7 +904,10 @@
       
       // Adicionar itens
       carrinho.forEach((item, index) => {
-        mensagem += `${index+1} ${item.linha} - ${item.marca} ${item.modelo} (${item.cor}) R$ 450,00\n`;
+        mensagem += `${index+1} ${item.linha} - ${formatarTipoMaquina(item.tipo)}\n`;
+        mensagem += `   ${item.marca} ${item.modelo} (${item.ano})\n`;
+        mensagem += `   Cor: ${item.cor}\n`;
+        mensagem += `   Valor: R$ 450,00\n\n`;
       });
       
       // Rodapé
@@ -764,5 +933,8 @@
       window.open(url, "_blank");
     }
   </script>
+  <div class="copyright">
+    <p>&copy; 2025 Loja do Operador - Todos os direitos reservados</p>
+  </div>
 </body>
 </html>
