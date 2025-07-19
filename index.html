@@ -34,6 +34,7 @@
       color: var(--cor-texto);
       line-height: 1.6;
       margin: 0;
+      background-image: linear-gradient(to bottom, #222, #444);
     }
      
     header {
@@ -43,7 +44,8 @@
       text-align: center;
       border-radius: 10px;
       margin-bottom: 30px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      border: 1px solid #444;
     }
     
     header img {
@@ -53,6 +55,7 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+      border-radius: 8px;
     }
     
     .titulo-principal {
@@ -60,6 +63,7 @@
       color: var(--primary-color);
       margin-bottom: 10px;
       font-weight: bold;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
     }
     
     .subtitulo {
@@ -82,13 +86,14 @@
       padding: 25px;
       text-align: center;
       transition: var(--transition);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       cursor: pointer;
       border: none;
       color: var(--text-primary);
       display: flex;
       flex-direction: column;
       align-items: center;
+      border: 1px solid #555;
     }
     
     .botao-linha.linha-amarela {
@@ -105,7 +110,7 @@
     
     .botao-linha:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(255, 215, 0, 0.1);
+      box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
     }
     
     .botao-linha.ativo {
@@ -153,13 +158,14 @@
       padding: 20px;
       text-align: center;
       transition: var(--transition);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       cursor: pointer;
       border: none;
       color: var(--text-primary);
       display: flex;
       flex-direction: column;
       align-items: center;
+      border: 1px solid #555;
     }
     
     .botao-maquina.linha-amarela {
@@ -176,7 +182,7 @@
     
     .botao-maquina:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
     
     .botao-maquina.ativo {
@@ -206,7 +212,8 @@
       background-color: var(--card-bg);
       padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid #555;
     }
     
     /* Estilos para selects */
@@ -233,6 +240,11 @@
       font-weight: bold;
       border: none;
       margin-top: 15px;
+      cursor: pointer;
+    }
+    
+    button[onclick="adicionarAoCarrinho()"]:hover {
+      background-color: #ddd;
     }
     
     /* Estilo para o select de cor com pré-visualização */
@@ -274,7 +286,8 @@
       background-color: var(--card-bg);
       padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid #555;
     }
     
     .carrinho h3 {
@@ -292,6 +305,7 @@
       list-style: none;
       max-height: 400px;
       overflow-y: auto;
+      margin: 20px 0;
     }
     
     #listaCarrinho li {
@@ -304,6 +318,7 @@
       align-items: center;
       font-size: 0.9rem;
       transition: var(--transition);
+      border: 1px solid #666;
     }
     
     #listaCarrinho li:hover {
@@ -314,7 +329,7 @@
       background-color: var(--secondary-color);
       color: #000;
       font-weight: bold;
-      padding: 12px;
+      padding: 15px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -322,16 +337,18 @@
       display: block;
       width: 100%;
       margin-top: 15px;
-      font-size: 1rem;
+      font-size: 1.1rem;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
     
     .btn-finalizar:hover {
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(8, 209, 24, 0.3);
+      box-shadow: 0 5px 15px rgba(8, 209, 24, 0.4);
+      background-color: #f0f0f0;
     }
     
     .btn-finalizar:disabled {
@@ -349,13 +366,14 @@
       color: white;
       padding: 12px 25px;
       border-radius: 50px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       z-index: 1000;
       display: flex;
       align-items: center;
       gap: 10px;
       opacity: 0;
       transition: opacity 0.3s ease;
+      font-weight: bold;
     }
     
     .feedback.erro {
@@ -431,13 +449,14 @@
       .feedback {
         width: 90%;
         text-align: center;
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://via.placeholder.com/300x150/333/ff9900?text=LOGO+LOJA" alt="Logo Loja do Operador" style="height: 180px; max-width: 100%;">
+    <img src="logo.png" alt="Logo Loja do Operador" style="height: 180px; max-width: 100%;">
     <h1 class="titulo-principal">INTERNAS PERSONALIZADAS ENVIO PARA TODO BRASIL</h1>
     
     <p class="subtitulo">✧ Sua equipe motivada ✧
@@ -466,44 +485,44 @@
   <!-- CONTAINER PARA BOTÕES DE MÁQUINAS (aparece após selecionar linha) -->
   <div id="maquinas-amarelas" class="maquinas-container">
     <button class="botao-maquina linha-amarela" data-tipo="escavadeira-hidraulica">
-      <img src="https://via.placeholder.com/80/333/ff9900?text=🚜" alt="Escavadeira Hidráulica" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/escavadeiraa.png" alt="Escavadeira Hidráulica" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Escavadeira Hidráulica</span>
     </button>
     
     <button class="botao-maquina linha-amarela" data-tipo="retro-escavadeira">
-      <img src="https://via.placeholder.com/80/333/ff9900?text=🚜" alt="Retro Escavadeira" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/retro-escavadeira.png" alt="Retro Escavadeira" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Retro Escavadeira</span>
     </button>
     
     <button class="botao-maquina linha-amarela" data-tipo="pa-carregadeira">
-      <img src="https://via.placeholder.com/80/333/ff9900?text=🚜" alt="Pá Carregadeira" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/pa-carregadeira.png" alt="Pá Carregadeira" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Pá Carregadeira</span>
     </button>
     
     <button class="botao-maquina linha-amarela" data-tipo="moto-niveladora">
-      <img src="https://via.placeholder.com/80/333/ff9900?text=🚜" alt="Moto Niveladora" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/moto-niveladora.png" alt="Moto Niveladora" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Moto Niveladora</span>
     </button>
     
     <button class="botao-maquina linha-amarela" data-tipo="trator-esteira">
-      <img src="https://via.placeholder.com/80/333/ff9900?text=🚜" alt="Trator de Esteira" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/trator-esteira.png" alt="Trator de Esteira" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Trator de Esteira</span>
     </button>
   </div>
 
   <div id="maquinas-verdes" class="maquinas-container">
     <button class="botao-maquina linha-verde" data-tipo="trator">
-      <img src="https://via.placeholder.com/80/333/08d118?text=🚜" alt="Trator" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/trator.png" alt="Trator" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Trator</span>
     </button>
     
     <button class="botao-maquina linha-verde" data-tipo="pulverizador">
-      <img src="https://via.placeholder.com/80/333/08d118?text=🚜" alt="Pulverizador" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/pulverizador.png" alt="Pulverizador" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Pulverizador</span>
     </button>
     
     <button class="botao-maquina linha-verde" data-tipo="colheitadeira">
-      <img src="https://via.placeholder.com/80/333/08d118?text=🚜" alt="Colheitadeira" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/colheitadeira.png" alt="Colheitadeira" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Colheitadeira</span>
     </button>
   </div>
@@ -511,12 +530,12 @@
   <!-- Container para Linha Mini -->
   <div id="maquinas-mini" class="maquinas-container">
     <button class="botao-maquina linha-mini" data-tipo="mini-escavadeira">
-      <img src="https://via.placeholder.com/80/333/ff9900?text=🚜" alt="Mini Escavadeira" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/mini-escavadeira.png" alt="Mini Escavadeira" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Mini Escavadeira</span>
     </button>
     
     <button class="botao-maquina linha-mini" data-tipo="mini-carregadeira">
-      <img src="https://via.placeholder.com/80/333/ff9900?text=🚜" alt="Mini Carregadeira" class="icone-maquina" loading="lazy">
+      <img src="imagens/icones/mini-carregadeira.png" alt="Mini Carregadeira" class="icone-maquina" loading="lazy">
       <span class="nome-maquina">Mini Carregadeira</span>
     </button>
   </div>
@@ -544,7 +563,7 @@
         <option value="">Selecione uma cor</option>
       </select>
       <div class="cor-preview">
-        <img id="cor-preview-img" src="https://via.placeholder.com/40/cccccc/333333?text=?" alt="Pré-visualização da cor">
+        <img id="cor-preview-img" src="imagens/cores/placeholder.jpg" alt="Pré-visualização da cor">
       </div>
     </div>
 
