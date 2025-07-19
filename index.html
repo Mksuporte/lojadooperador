@@ -121,6 +121,7 @@
     
     .botao-linha.linha-verde.ativo {
       background-color: rgba(8, 209, 24, 0.2);
+      box-shadow: 0 0 15px rgba(8, 209, 24, 0.5);
     }
     
     .botao-linha.linha-mini.ativo {
@@ -138,17 +139,15 @@
       font-size: 1rem;
       font-weight: bold;
       margin-top: 5px;
- /* font-size: 0.85rem;*/
-  color: #08d118; /* Verde para linha verde */
-}
+      color: #08d118; /* Verde para linha verde */
+    }
 
-.linha-descricao1 {
-  font-size: 1rem;
+    .linha-descricao1 {
+      font-size: 1rem;
       font-weight: bold;
       margin-top: 5px;
- /* font-size: 0.85rem;*/
-  color: #F9A01B; /* Amarelo para linha amarela e mini */
-}
+      color: #F9A01B; /* Amarelo para linha amarela e mini */
+    }
     
     /* BOTÕES DE MÁQUINAS */
     .maquinas-container {
@@ -191,10 +190,19 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
     
+    .botao-maquina.linha-verde:hover {
+      box-shadow: 0 10px 20px rgba(8, 209, 24, 0.3);
+    }
+    
     .botao-maquina.ativo {
       background-color: rgba(249, 160, 27, 0.2);
       transform: scale(1.05);
       box-shadow: 0 0 15px rgba(249, 160, 27, 0.5);
+    }
+    
+    .botao-maquina.linha-verde.ativo {
+      background-color: rgba(8, 209, 24, 0.2);
+      box-shadow: 0 0 15px rgba(8, 209, 24, 0.5);
     }
     
     .icone-maquina {
@@ -208,6 +216,10 @@
       font-size: 1rem;
       font-weight: bold;
       margin-top: 5px;
+    }
+    
+    .nome-maquina.linha-verde {
+      color: #08d118;
     }
     
     /* Container de seleção */
@@ -519,17 +531,17 @@
   <div id="maquinas-verdes" class="maquinas-container">
     <button class="botao-maquina linha-verde" data-tipo="trator">
       <img src="imagens/icones/trator.png" alt="Trator" class="icone-maquina" loading="lazy">
-      <span class="nome-maquina">Trator</span>
+      <span class="nome-maquina linha-verde">Trator</span>
     </button>
     
     <button class="botao-maquina linha-verde" data-tipo="pulverizador">
       <img src="imagens/icones/pulverizador.png" alt="Pulverizador" class="icone-maquina" loading="lazy">
-      <span class="nome-maquina">Pulverizador</span>
+      <span class="nome-maquina linha-verde">Pulverizador</span>
     </button>
     
     <button class="botao-maquina linha-verde" data-tipo="colheitadeira">
       <img src="imagens/icones/colheitadeira.png" alt="Colheitadeira" class="icone-maquina" loading="lazy">
-      <span class="nome-maquina">Colheitadeira</span>
+      <span class="nome-maquina linha-verde">Colheitadeira</span>
     </button>
   </div>
 
