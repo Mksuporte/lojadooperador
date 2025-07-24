@@ -419,6 +419,41 @@
       background-color: #07b716;
     }
     
+    /* Seção de Frete */
+    .frete-container {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #555;
+      border-radius: 8px;
+      border: 1px solid #666;
+    }
+    
+    .frete-container h4 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+    
+    .frete-info {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+    
+    .btn-calcular-frete {
+      background-color: #F9A01B;
+      color: #000;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    
+    .btn-calcular-frete:hover {
+      background-color: #e69519;
+    }
+    
     /* Feedback */
     .feedback {
       position: fixed;
@@ -637,6 +672,35 @@
   <div class="carrinho">
     <h3>🛒 Carrinho de Compras</h3>
     <ul id="listaCarrinho"></ul>
+    
+    <!-- Seção de Frete -->
+    <div class="frete-container">
+      <h4>Calcular Frete</h4>
+      <div class="frete-info">
+        <input type="text" id="cep-frete" placeholder="Digite seu CEP" style="flex-grow: 1; margin-right: 10px; padding: 8px;">
+        <button class="btn-calcular-frete" onclick="calcularFrete()">Calcular</button>
+      </div>
+      <div id="resultado-frete" style="display: none;">
+        <div class="frete-info">
+          <span>Frete:</span>
+          <span id="valor-frete">R$ 0,00</span>
+        </div>
+        <div class="frete-info">
+          <span>Prazo:</span>
+          <span id="prazo-frete">0 dias úteis</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="frete-info" style="margin-top: 15px;">
+      <span style="font-weight: bold;">Total dos Itens:</span>
+      <span id="total-itens" style="font-weight: bold;">R$ 0,00</span>
+    </div>
+    <div class="frete-info">
+      <span style="font-weight: bold;">Total com Frete:</span>
+      <span id="total-geral" style="font-weight: bold;">R$ 0,00</span>
+    </div>
+    
     <button class="btn-finalizar" onclick="mostrarFormularioCliente()">
       <span>Finalizar Pedido</span>
     </button>
@@ -644,7 +708,7 @@
 
   <!-- FORMULÁRIO DO CLIENTE -->
   <div id="form-cliente-container" class="form-cliente-container">
-    <h3>🔒 Prencha o Formulario </h3>
+    <h3>🔒 Preencha o Formulário</h3>
     <form id="formCliente">
       <input type="text" id="nome" placeholder="Nome completo" required>
       <input type="text" id="cpf_cnpj" placeholder="CPF ou CNPJ" required>
@@ -792,7 +856,11 @@
     const state = {
       linha: '',
       tipoMaquina: '',
-      carrinho: JSON.parse(localStorage.getItem('carrinho')) || []
+      carrinho: JSON.parse(localStorage.getItem('carrinho')) || [],
+      frete: {
+        valor: 0,
+        prazo: 0
+      }
     };
     
     // Elementos DOM
@@ -813,6 +881,12 @@
     const feedbackMessage = document.getElementById('feedback-message');
     const formClienteContainer = document.getElementById('form-cliente-container');
     const formCliente = document.getElementById('formCliente');
+    const cepFreteInput = document.getElementById('cep-frete');
+    const resultadoFrete = document.getElementById('resultado-frete');
+    const valorFreteSpan = document.getElementById('valor-frete');
+    const prazoFreteSpan = document.getElementById('prazo-frete');
+    const totalItensSpan = document.getElementById('total-itens');
+    const totalGeralSpan = document.getElementById('total-geral');
 
     // Inicialização
     document.addEventListener('DOMContentLoaded', () => {
@@ -1044,6 +1118,7 @@
     // Salvar carrinho no localStorage
     function salvarCarrinho() {
       localStorage.setItem('carrinho', JSON.stringify(state.carrinho));
+      atualizarTotais();
     }
 
     // Atualizar exibição do carrinho
@@ -1053,6 +1128,7 @@
       
       if (state.carrinho.length === 0) {
         lista.innerHTML = "<li style='text-align:center;'>Seu carrinho está vazio</li>";
+        atualizarTotais();
         return;
       }
       
@@ -1076,6 +1152,69 @@
         `;
         lista.appendChild(li);
       });
+      
+      atualizarTotais();
+    }
+
+    // Atualizar totais do carrinho
+    function atualizarTotais() {
+      const totalItens = state.carrinho.length * 450;
+      totalItensSpan.textContent = `R$ ${totalItens.toFixed(2)}`;
+      
+      const totalGeral = totalItens + state.frete.valor;
+      totalGeralSpan.textContent = `R$ ${totalGeral.toFixed(2)}`;
+    }
+
+    // Calcular frete
+    function calcularFrete() {
+      const cep = cepFreteInput.value.replace(/\D/g, '');
+      
+      if (!cep || cep.length !== 8) {
+        mostrarFeedback('Digite um CEP válido (8 dígitos)', 'erro');
+        return;
+      }
+      
+      // Simular cálculo de frete (em um sistema real, isso viria de uma API)
+      // Valores baseados no CEP e quantidade de itens
+      const regiao = parseInt(cep.charAt(0));
+      const qtdItens = state.carrinho.length;
+      
+      // Tabela de frete simulada
+      let valorFrete = 0;
+      let prazo = 0;
+      
+      if (regiao >= 1 && regiao <= 3) { // Região Sudeste
+        valorFrete = 50 + (qtdItens * 10);
+        prazo = 3;
+      } else if (regiao >= 4 && regiao <= 5) { // Região Nordeste
+        valorFrete = 80 + (qtdItens * 15);
+        prazo = 7;
+      } else if (regiao === 6) { // Região Centro-Oeste
+        valorFrete = 70 + (qtdItens * 12);
+        prazo = 5;
+      } else if (regiao >= 7 && regiao <= 9) { // Região Sul e Norte
+        valorFrete = 90 + (qtdItens * 18);
+        prazo = 8;
+      } else {
+        valorFrete = 100 + (qtdItens * 20);
+        prazo = 10;
+      }
+      
+      // Atualizar estado
+      state.frete = {
+        valor: valorFrete,
+        prazo: prazo
+      };
+      
+      // Atualizar UI
+      valorFreteSpan.textContent = `R$ ${valorFrete.toFixed(2)}`;
+      prazoFreteSpan.textContent = `${prazo} dias úteis`;
+      resultadoFrete.style.display = 'block';
+      
+      // Atualizar totais
+      atualizarTotais();
+      
+      mostrarFeedback('Frete calculado com sucesso!');
     }
 
     // Remover item do carrinho
@@ -1165,9 +1304,14 @@
       });
       
       // Rodapé
+      const totalItens = state.carrinho.length * 450;
+      const totalGeral = totalItens + state.frete.valor;
+      
       mensagem += "--------------------------------------------------\n";
-      mensagem += "*Taxa de entrega:* A combinar\n";
-      mensagem += `*Total:* R$ ${(state.carrinho.length * 450).toFixed(2)}\n\n`;
+      mensagem += `*Taxa de entrega:* R$ ${state.frete.valor.toFixed(2)}\n`;
+      mensagem += `*Prazo de entrega:* ${state.frete.prazo} dias úteis\n`;
+      mensagem += `*Total dos itens:* R$ ${totalItens.toFixed(2)}\n`;
+      mensagem += `*Total:* R$ ${totalGeral.toFixed(2)}\n\n`;
       mensagem += "*Forma de Pagamento:* A definir\n";
       mensagem += `*Chave PIX:* ${pixInfo}\n`;
       mensagem += "--------------------------------------------------\n";
