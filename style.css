@@ -113,12 +113,12 @@
     
     .botao-linha.linha-verde.ativo {
       background-color: rgba(8, 209, 24, 0.2);
-      /*box-shadow: 0 0 15px rgba(8, 209, 24, 0.5);*/
+      box-shadow: 0 0 15px rgba(8, 209, 24, 0.5);
     }
     
     .botao-linha.linha-mini.ativo {
-      background-color: rgba(255, 255, 255, 0.2);
-     /* box-shadow: 0 0 15px rgba(249, 160, 27, 0.5);*/
+      background-color: rgba(255, 204, 0, 0.2);
+      box-shadow: 0 0 15px rgba(249, 160, 27, 0.5);
     }
     
     .linha-titulo {
