@@ -1,0 +1,545 @@
+:root {
+  --cor-primaria: #333;
+  --cor-secundaria: #F9A01B;
+  --cor-terciaria: #F9A01B;
+  --cor-fundo: #333;
+  --cor-texto: #fff;
+  --cor-destaque: #4CAF50;
+  --cor-erro: #f44336;
+  --cor-sucesso: #4CAF50;
+  --transition: all 0.3s ease;
+  --primary-color: #ccc;
+  --secondary-color: #ccc;
+  --card-bg: #444;
+  --text-primary: #F9A01B;
+  --text-secondary: #F9A01B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  padding: 20px;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  margin: 0;
+  background-image: linear-gradient(to bottom, #222, #444);
+}
+ 
+header {
+  background-color: var(--cor-primaria);
+  color: var(--cor-secundaria);
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  border: 1px solid #444;
+}
+
+header img {
+  height: 180px;
+  max-width: 100%;
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+}
+
+.titulo-principal {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.subtitulo {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 5px 0;
+}
+
+/* BOTÕES PRINCIPAIS */
+.linha-botoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.botao-linha {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: none;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #555;
+}
+
+.botao-linha.linha-amarela {
+  border-top: 4px solid #F9A01B;
+}
+
+.botao-linha.linha-verde {
+  border-top: 4px solid #08d118;
+}
+
+.botao-linha.linha-mini {
+  border-top: 4px solid #F9A01B;
+}
+
+.botao-linha:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+}
+
+.botao-linha.ativo {
+  background-color: rgba(255, 204, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(249, 160, 27, 0.5);
+}
+
+.botao-linha.linha-verde.ativo {
+  background-color: rgba(8, 209, 24, 0.2);
+  box-shadow: 0 0 15px rgba(8, 209, 24, 0.5);
+}
+
+.botao-linha.linha-mini.ativo {
+  background-color: rgba(255, 204, 0, 0.2);
+  box-shadow: 0 0 15px rgba(249, 160, 27, 0.5);
+}
+
+.linha-titulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+}
+
+.linha-descricao {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #08d118;
+}
+
+.linha-descricao1 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #F9A01B;
+}
+
+/* BOTÕES DE MÁQUINAS */
+.maquinas-container {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.botao-maquina {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: none;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #555;
+}
+
+.botao-maquina.linha-amarela {
+  border-top: 4px solid #F9A01B;
+}
+
+.botao-maquina.linha-verde {
+  border-top: 4px solid #08d118;
+}
+
+.botao-maquina.linha-mini {
+  border-top: 4px solid #F9A01B;
+}
+
+.botao-maquina:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.botao-maquina.linha-verde:hover {
+  box-shadow: 0 10px 20px rgba(8, 209, 24, 0.3);
+}
+
+.botao-maquina.ativo {
+  background-color: rgba(249, 160, 27, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(249, 160, 27, 0.5);
+}
+
+.botao-maquina.linha-verde.ativo {
+  background-color: rgba(8, 209, 24, 0.2);
+  box-shadow: 0 0 15px rgba(8, 209, 24, 0.5);
+}
+
+.icone-maquina {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+.nome-maquina {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.nome-maquina.linha-verde {
+  color: #08d118;
+}
+
+/* Container de seleção */
+.selecao-container {
+  display: none;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid #555;
+}
+
+/* Estilos para selects */
+select, button {
+  margin: 12px 0;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+select:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+button[onclick="adicionarAoCarrinho()"] {
+  background-color: var(--primary-color);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+button[onclick="adicionarAoCarrinho()"]:hover {
+  background-color: #ddd;
+}
+
+/* Estilo para o select de cor com pré-visualização */
+.cor-select-container {
+  position: relative;
+  width: 100%;
+}
+
+#cor {
+  padding-left: 50px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.cor-preview {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cor-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Carrinho */
+.carrinho {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid #555;
+}
+
+.carrinho h3 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#listaCarrinho {
+  padding: 0;
+  list-style: none;
+  max-height: 400px;
+  overflow-y: auto;
+  margin: 20px 0;
+}
+
+#listaCarrinho li {
+  padding: 12px;
+  margin: 8px 0;
+  background-color: #555;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  border: 1px solid #666;
+}
+
+#listaCarrinho li:hover {
+  background-color: #666;
+}
+
+.btn-finalizar {
+  background-color:#08d118;
+  color: #000;
+  font-weight: bold;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.btn-finalizar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(8, 209, 24, 0.4);
+  background-color: #f0f0f0;
+}
+
+.btn-finalizar:disabled {
+  background-color: #08d118;
+  cursor: not-allowed;
+}
+
+/* Formulário do Cliente */
+.form-cliente-container {
+  display: none;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid #555;
+}
+
+.form-cliente-container h3 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-cliente-container input {
+  width: 100%;
+  padding: 5px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  color: #000;
+}
+
+.form-cliente-container button {
+  width: 100%;
+  padding: 15px;
+  background-color: #08d118;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
+.form-cliente-container button:hover {
+  background-color: #07b716;
+}
+
+/* Seção de Frete */
+.frete-container {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #555;
+  border-radius: 8px;
+  border: 1px solid #666;
+}
+
+.frete-container h4 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.frete-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.btn-calcular-frete {
+  background-color: #F9A01B;
+  color: #000;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.btn-calcular-frete:hover {
+  background-color: #e69519;
+}
+
+/* Feedback */
+.feedback {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--cor-sucesso);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: bold;
+}
+
+.feedback.erro {
+  background-color: var(--cor-erro);
+}
+
+.feedback.visible {
+  opacity: 1;
+}
+
+/* Copyright */
+.copyright {
+  text-align: center;
+  margin-top: 30px;
+  color: #aaa;
+  font-size: 0.9rem;
+  padding: 15px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .linha-botoes, .maquinas-container {
+    grid-template-columns: 1fr;
+  }
+  
+  header img {
+    height: 150px;
+  }
+  
+  .titulo-principal {
+    font-size: 1.3rem;
+  }
+  
+  .subtitulo {
+    font-size: 0.8rem;
+  }
+  
+  .botao-linha, .botao-maquina {
+    padding: 20px;
+  }
+  
+  .linha-titulo {
+    font-size: 1.1rem;
+  }
+  
+  .linha-descricao {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+  
+  header {
+    padding: 15px;
+  }
+  
+  .titulo-principal {
+    font-size: 1.2rem;
+  }
+  
+  .subtitulo {
+    font-size: 0.75rem;
+  }
+  
+  .icone-maquina {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .feedback {
+    width: 90%;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}
