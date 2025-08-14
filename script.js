@@ -1,5 +1,5 @@
-// Dados dos produtos atualizados
-const dados = {
+  // Dados dos produtos atualizados
+  const dados = {
     "Linha Amarela": {
       "Zoomlion": {
         "ZE205E": { anos: ["2018", "2019", "2020"] },
@@ -97,10 +97,41 @@ const dados = {
       }
     }
   };
-  
+
   // Cores numeradas de 1 a 30
-  const cores = Array.from({length: 30}, (_, i) => `Cor ${i+1}`);
-  
+  // Lista completa com nomes personalizados
+const cores = [
+"Vermelho Ferrari",
+"Azul Royal",
+"Preto Fosco",
+"Branco Gelo",
+"Verde Floresta",
+"Amarelo Ouro",
+"Cinza Chumbo",
+"Laranja Queimado",
+"Roxo Profundo",
+"Marrom Chocolate",
+"Azul Celeste",
+"Verde Limão",
+"Rosa Pink",
+"Bege Areia",
+"Grafite",
+"Vinho",
+"Turquesa",
+"Lilás",
+"Dourado",
+"Prata",
+"Cobre",
+"Verde Militar",
+"Azul Marinho",
+"Bordô",
+"Coral",
+"Mostarda",
+"Petróleo",
+"Lavanda",
+"Terracota",
+"Off-White"
+];
   // Mapeamento de tipos de máquina para exibição
   const tipoMaquinaMap = {
     'escavadeira-hidraulica': 'Escavadeira Hidráulica',
@@ -114,7 +145,7 @@ const dados = {
     'mini-escavadeira': 'Mini Escavadeira',
     'mini-carregadeira': 'Mini Carregadeira'
   };
-  
+
   // Variáveis globais
   const state = {
     linha: '',
@@ -122,16 +153,17 @@ const dados = {
     carrinho: JSON.parse(localStorage.getItem('carrinho')) || [],
     frete: {
       valor: 0,
-      prazo: 0
+      prazo: 0,
+      transportadora: 'Correios'
     }
   };
-  
+
   // Armazenamento da cor selecionada
   let corSelecionada = {
     nome: '',
     imagem: 'imagens/cores/placeholder.jpg'
   };
-  
+
   // Elementos DOM
   const botoesLinha = document.querySelectorAll('.botao-linha');
   const selecaoContainer = document.getElementById('selecao-container');
@@ -153,6 +185,7 @@ const dados = {
   const resultadoFrete = document.getElementById('resultado-frete');
   const valorFreteSpan = document.getElementById('valor-frete');
   const prazoFreteSpan = document.getElementById('prazo-frete');
+  const transportadoraFreteSpan = document.getElementById('transportadora-frete');
   const totalItensSpan = document.getElementById('total-itens');
   const totalGeralSpan = document.getElementById('total-geral');
   const modalCores = document.getElementById('modal-cores');
@@ -162,7 +195,7 @@ const dados = {
   const seletorCor = document.getElementById('seletor-cor');
   const textoCorSelecionada = document.getElementById('texto-cor-selecionada');
   let corSelecionadaModal = null;
-  
+
   // Inicialização
   document.addEventListener('DOMContentLoaded', () => {
     atualizarCarrinho();
@@ -181,10 +214,10 @@ const dados = {
         selecionarMaquina(this);
       });
     });
-  
+
     // Abrir modal de cores quando clicar no seletor
     seletorCor.addEventListener('click', abrirModalCores);
-  
+
     // Fechar modal
     fecharModal.addEventListener('click', fecharModalCores);
     modalCores.addEventListener('click', function(e) {
@@ -192,25 +225,147 @@ const dados = {
         fecharModalCores();
       }
     });
-  
+
     // Confirmar seleção de cor
     confirmarCorBtn.addEventListener('click', confirmarCorSelecionada);
-  
+
     // Fechar modal com ESC
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && modalCores.style.display === 'flex') {
         fecharModalCores();
       }
     });
+
+    // Auto-completar endereço via CEP
+    document.getElementById('cep').addEventListener('blur', buscarEnderecoViaCEP);
   });
-  
+
+  // Função para buscar endereço via CEP (ViaCEP)
+  async function buscarEnderecoViaCEP() {
+    const cep = document.getElementById('cep').value.replace(/\D/g, '');
+    
+    if (cep.length !== 8) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      const data = await response.json();
+
+      if (!data.erro) {
+        document.getElementById('estado').value = data.uf;
+        document.getElementById('cidade').value = data.localidade;
+        document.getElementById('bairro').value = data.bairro;
+        document.getElementById('rua').value = data.logradouro;
+      } else {
+        mostrarFeedback('CEP não encontrado', 'erro');
+      }
+    } catch (error) {
+      console.error('Erro ao buscar CEP:', error);
+      mostrarFeedback('Erro ao buscar CEP', 'erro');
+    }
+  }
+
+  // Função para calcular frete usando API pública (ViaCEP + lógica regional)
+  async function calcularFrete() {
+    const cep = cepFreteInput.value.replace(/\D/g, '');
+    
+    if (!cep || cep.length !== 8) {
+      mostrarFeedback('Digite um CEP válido (8 dígitos)', 'erro');
+      return;
+    }
+
+    // Mostrar loading
+    const btnFrete = document.querySelector('.btn-calcular-frete');
+    btnFrete.disabled = true;
+    btnFrete.textContent = 'Calculando...';
+
+    try {
+      // 1. Validar CEP usando ViaCEP
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      const cepData = await response.json();
+      
+      if (cepData.erro) {
+        throw new Error('CEP não encontrado');
+      }
+
+      // 2. Calcular frete baseado na região do CEP
+      const regiao = parseInt(cep.charAt(0));
+      let valorFrete = 0;
+      let prazoFrete = 0;
+      let transportadora = 'Correios';
+
+      // Tabela de frete baseada na região
+      switch(regiao) {
+        case 1: case 2: case 3: // Sudeste
+          valorFrete = 30 + (state.carrinho.length * 5);
+          prazoFrete = 3;
+          transportadora = 'Correios PAC';
+          break;
+        case 4: case 5: // Nordeste
+          valorFrete = 45 + (state.carrinho.length * 7);
+          prazoFrete = 7;
+          transportadora = 'Correios PAC';
+          break;
+        case 6: // Centro-Oeste
+          valorFrete = 40 + (state.carrinho.length * 6);
+          prazoFrete = 5;
+          transportadora = 'Correios SEDEX';
+          break;
+        case 7: case 8: case 9: // Sul e Norte
+          valorFrete = 50 + (state.carrinho.length * 8);
+          prazoFrete = 8;
+          transportadora = 'Correios PAC';
+          break;
+        default: // Outros
+          valorFrete = 60 + (state.carrinho.length * 10);
+          prazoFrete = 10;
+          transportadora = 'Transportadora Parceira';
+      }
+
+      // 3. Atualizar estado e UI
+      state.frete = {
+        valor: valorFrete,
+        prazo: prazoFrete,
+        transportadora: transportadora
+      };
+
+      valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
+      prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
+      transportadoraFreteSpan.textContent = state.frete.transportadora;
+      resultadoFrete.style.display = 'block';
+
+      atualizarTotais();
+      mostrarFeedback('Frete calculado com sucesso!');
+
+    } catch (error) {
+      console.error('Erro no cálculo de frete:', error);
+      mostrarFeedback(`Erro ao calcular frete: ${error.message}`, 'erro');
+      
+      // Usar valores padrão como fallback
+      state.frete = {
+        valor: 50 + (state.carrinho.length * 10),
+        prazo: 5,
+        transportadora: 'Transportadora padrão'
+      };
+      
+      valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
+      prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
+      transportadoraFreteSpan.textContent = state.frete.transportadora;
+      resultadoFrete.style.display = 'block';
+    } finally {
+      btnFrete.disabled = false;
+      btnFrete.textContent = 'Calcular';
+    }
+  }
+
   // Função para atualizar a pré-visualização da cor
   function atualizarPreviewCor() {
     corPreviewImg.src = corSelecionada.imagem;
     corPreviewImg.alt = `Pré-visualização ${corSelecionada.nome}`;
     textoCorSelecionada.textContent = corSelecionada.nome || 'Selecione uma cor';
   }
-  
+
   // Função para abrir o modal de cores
   function abrirModalCores() {
     // Limpar grid
@@ -251,13 +406,13 @@ const dados = {
     modalCores.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
-  
+
   // Função para fechar o modal de cores
   function fecharModalCores() {
     modalCores.style.display = 'none';
     document.body.style.overflow = 'auto';
   }
-  
+
   // Função para confirmar a cor selecionada
   function confirmarCorSelecionada() {
     if (corSelecionadaModal) {
@@ -281,7 +436,7 @@ const dados = {
       mostrarFeedback('Nenhuma cor selecionada', 'erro');
     }
   }
-  
+
   // Função para resetar a seleção
   function resetarSelecao() {
     // Resetar seleção de cor
@@ -299,19 +454,8 @@ const dados = {
     // Resetar máquina selecionada
     document.querySelectorAll('.botao-maquina.ativo').forEach(btn => btn.classList.remove('ativo'));
     state.tipoMaquina = '';
-    
-    // Manter a linha selecionada para facilitar a adição de vários itens
-    // Se quiser resetar completamente, descomente as linhas abaixo:
-    /*
-    state.linha = '';
-    document.querySelectorAll('.botao-linha.ativo').forEach(btn => btn.classList.remove('ativo'));
-    selecaoContainer.style.display = 'none';
-    maquinasAmarelas.style.display = 'none';
-    maquinasVerdes.style.display = 'none';
-    maquinasMini.style.display = 'none';
-    */
   }
-  
+
   // Função para mostrar formulário do cliente
   function mostrarFormularioCliente() {
     if (state.carrinho.length === 0) {
@@ -323,7 +467,7 @@ const dados = {
     formClienteContainer.style.display = 'block';
     formClienteContainer.scrollIntoView({ behavior: 'smooth' });
   }
-  
+
   // Função para selecionar linha principal
   function selecionarLinha(botao) {
     // Remover classe 'ativo' de todos os botões
@@ -364,7 +508,7 @@ const dados = {
       }
     }, 100);
   }
-  
+
   // Função para selecionar máquina específica
   function selecionarMaquina(botao) {
     // Remover classe 'ativo' de todos os botões de máquina
@@ -387,7 +531,7 @@ const dados = {
       selecaoContainer.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   }
-  
+
   // Popular marcas
   function popularMarcas() {
     marcaSelect.innerHTML = '<option value="">Selecione...</option>';
@@ -404,7 +548,7 @@ const dados = {
       marcaSelect.appendChild(option);
     });
   }
-  
+
   // Evento para marca
   marcaSelect.addEventListener('change', function() {
     modeloSelect.innerHTML = '<option value="">Selecione...</option>';
@@ -422,7 +566,7 @@ const dados = {
       modeloSelect.appendChild(option);
     });
   });
-  
+
   // Evento para modelo
   modeloSelect.addEventListener('change', function() {
     anoSelect.innerHTML = '<option value="">Selecione...</option>';
@@ -439,7 +583,7 @@ const dados = {
       anoSelect.appendChild(option);
     });
   });
-  
+
   // Adicionar ao carrinho
   function adicionarAoCarrinho() {
     const campos = [
@@ -447,13 +591,13 @@ const dados = {
       {id: 'modelo', nome: 'Modelo'},
       {id: 'ano', nome: 'Ano'}
     ];
-  
+
     // Verificar se uma cor foi selecionada
     if (!corSelecionada.nome) {
       mostrarFeedback('Selecione uma cor', 'erro');
       return;
     }
-  
+
     // Verificar outros campos vazios
     const faltando = campos.filter(campo => !document.getElementById(campo.id).value);
     
@@ -485,7 +629,7 @@ const dados = {
       document.querySelector('.carrinho').scrollIntoView({ behavior: 'smooth' });
     }, 300);
   }
-  
+
   // Mostrar feedback visual
   function mostrarFeedback(mensagem, tipo = 'sucesso') {
     feedbackIcon.textContent = tipo === 'sucesso' ? '✓' : '✗';
@@ -500,13 +644,13 @@ const dados = {
       feedback.classList.remove('visible');
     }, 3000);
   }
-  
+
   // Salvar carrinho no localStorage
   function salvarCarrinho() {
     localStorage.setItem('carrinho', JSON.stringify(state.carrinho));
     atualizarTotais();
   }
-  
+
   // Atualizar exibição do carrinho
   function atualizarCarrinho() {
     const lista = document.getElementById("listaCarrinho");
@@ -541,7 +685,7 @@ const dados = {
     
     atualizarTotais();
   }
-  
+
   // Atualizar totais do carrinho
   function atualizarTotais() {
     const totalItens = state.carrinho.length * 450;
@@ -550,59 +694,7 @@ const dados = {
     const totalGeral = totalItens + state.frete.valor;
     totalGeralSpan.textContent = `R$ ${totalGeral.toFixed(2)}`;
   }
-  
-  // Calcular frete
-  function calcularFrete() {
-    const cep = cepFreteInput.value.replace(/\D/g, '');
-    
-    if (!cep || cep.length !== 8) {
-      mostrarFeedback('Digite um CEP válido (8 dígitos)', 'erro');
-      return;
-    }
-    
-    // Simular cálculo de frete (em um sistema real, isso viria de uma API)
-    // Valores baseados no CEP e quantidade de itens
-    const regiao = parseInt(cep.charAt(0));
-    const qtdItens = state.carrinho.length;
-    
-    // Tabela de frete simulada
-    let valorFrete = 0;
-    let prazo = 0;
-    
-    if (regiao >= 1 && regiao <= 3) { // Região Sudeste
-      valorFrete = 50 + (qtdItens * 10);
-      prazo = 3;
-    } else if (regiao >= 4 && regiao <= 5) { // Região Nordeste
-      valorFrete = 80 + (qtdItens * 15);
-      prazo = 7;
-    } else if (regiao === 6) { // Região Centro-Oeste
-      valorFrete = 70 + (qtdItens * 12);
-      prazo = 5;
-    } else if (regiao >= 7 && regiao <= 9) { // Região Sul e Norte
-      valorFrete = 90 + (qtdItens * 18);
-      prazo = 8;
-    } else {
-      valorFrete = 100 + (qtdItens * 20);
-      prazo = 10;
-    }
-    
-    // Atualizar estado
-    state.frete = {
-      valor: valorFrete,
-      prazo: prazo
-    };
-    
-    // Atualizar UI
-    valorFreteSpan.textContent = `R$ ${valorFrete.toFixed(2)}`;
-    prazoFreteSpan.textContent = `${prazo} dias úteis`;
-    resultadoFrete.style.display = 'block';
-    
-    // Atualizar totais
-    atualizarTotais();
-    
-    mostrarFeedback('Frete calculado com sucesso!');
-  }
-  
+
   // Remover item do carrinho
   function removerItem(id) {
     const index = state.carrinho.findIndex(item => item.id === id);
@@ -613,14 +705,14 @@ const dados = {
       mostrarFeedback('Item removido do carrinho');
     }
   }
-  
+
   // Gerar protocolo aleatório
   function generateProtocol() {
     const datePart = new Date().toISOString().slice(2, 10).replace(/-/g, '');
     const randomPart = Math.floor(1000 + Math.random() * 9000);
     return `PED-${datePart}-${randomPart}`;
   }
-  
+
   // Finalizar pedido
   function finalizarPedido() {
     // Verificar dados do cliente
@@ -695,6 +787,7 @@ const dados = {
     
     mensagem += "--------------------------------------------------\n";
     mensagem += `*Taxa de entrega:* R$ ${state.frete.valor.toFixed(2)}\n`;
+    mensagem += `*Transportadora:* ${state.frete.transportadora}\n`;
     mensagem += `*Prazo de entrega:* ${state.frete.prazo} dias úteis\n`;
     mensagem += `*Total dos itens:* R$ ${totalItens.toFixed(2)}\n`;
     mensagem += `*Total:* R$ ${totalGeral.toFixed(2)}\n\n`;
