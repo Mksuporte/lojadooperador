@@ -1,5 +1,5 @@
-  // Dados dos produtos atualizados
-  const dados = {
+// Dados dos produtos atualizados
+const dados = {
     "Linha Amarela": {
       "Zoomlion": {
         "ZE205E": { anos: ["2018", "2019", "2020"] },
@@ -97,41 +97,107 @@
       }
     }
   };
-
-  // Cores numeradas de 1 a 30
-  // Lista completa com nomes personalizados
-const cores = [
-"Vermelho Ferrari",
-"Azul Royal",
-"Preto Fosco",
-"Branco Gelo",
-"Verde Floresta",
-"Amarelo Ouro",
-"Cinza Chumbo",
-"Laranja Queimado",
-"Roxo Profundo",
-"Marrom Chocolate",
-"Azul Celeste",
-"Verde Limão",
-"Rosa Pink",
-"Bege Areia",
-"Grafite",
-"Vinho",
-"Turquesa",
-"Lilás",
-"Dourado",
-"Prata",
-"Cobre",
-"Verde Militar",
-"Azul Marinho",
-"Bordô",
-"Coral",
-"Mostarda",
-"Petróleo",
-"Lavanda",
-"Terracota",
-"Off-White"
-];
+  
+  // Definição dos materiais e cores
+  const materiais = {
+    couro: {
+      nome: "Couro Sintético",
+      cores: [
+        { nome: "Preto Elegance", codigo: "#1A1A1A" },
+        { nome: "Marrom Clássico", codigo: "#5E2C04" },
+        { nome: "Bege Natural", codigo: "#E6D5B8" },
+        { nome: "Vinho Nobre", codigo: "#722F37" },
+        { nome: "Azul Royal", codigo: "#0F056B" },
+        { nome: "Verde Floresta", codigo: "#228B22" },
+        { nome: "Grafite", codigo: "#383838" },
+        { nome: "Terra Queimada", codigo: "#8B4513" },
+        { nome: "Borgonha", codigo: "#800020" },
+        { nome: "Caramelo", codigo: "#D27D46" },
+        { nome: "Cinza Platinum", codigo: "#C0C0C0" },
+        { nome: "Azul Petróleo", codigo: "#003B4D" },
+        { nome: "Off-White", codigo: "#F5F5DC" }
+      ]
+    },
+    couro_sport: {
+      nome: "Couro Sport",
+      cores: [
+        { nome: "Preto com Costuras Vermelhas", codigo: "#000000", detalhe: "#FF0000" },
+        { nome: "Azul Racing com Branco", codigo: "#00008B", detalhe: "#FFFFFF" },
+        { nome: "Cinza Metalizado com Laranja", codigo: "#808080", detalhe: "#FFA500" },
+        { nome: "Branco Gelado com Preto", codigo: "#F8F8FF", detalhe: "#000000" }
+      ]
+    },
+    pelucia: {
+      nome: "Pelúcia (Xinil)",
+      cores: [
+        { nome: "Preto Fosco", codigo: "#0D0D0D" },
+        { nome: "Cinza Chumbo", codigo: "#2F4F4F" },
+        { nome: "Azul Marinho", codigo: "#000080" },
+        { nome: "Verde Militar", codigo: "#4B5320" },
+        { nome: "Vermelho Ferrari", codigo: "#FF2800" },
+        { nome: "Bege Areia", codigo: "#F5E8C7" },
+        { nome: "Bordô", codigo: "#7C0A02" },
+        { nome: "Azul Celeste", codigo: "#4682B4" },
+        { nome: "Terracota", codigo: "#E2725B" },
+        { nome: "Lavanda", codigo: "#967BB6" },
+        { nome: "Verde Limão", codigo: "#C9DC87" },
+        { nome: "Rosa Blush", codigo: "#FFD1DC" }
+      ]
+    }
+  };
+  
+  // Definição dos kits de revestimento
+  const kitsRevestimento = {
+    "pelucia_total": {
+      nome: "Kit em Pelúcia (Xinil) - Total",
+      descricao: "Todas as partes em pelúcia/xinil",
+      preco: 1200,
+      partes: {
+        chao: { material: "pelucia", cor: "", corNome: "" },
+        banco: { material: "pelucia", cor: "", corNome: "" },
+        braco: { material: "pelucia", cor: "", corNome: "" },
+        cabeca: { material: "pelucia", cor: "", corNome: "" },
+        laterais: { material: "pelucia", cor: "", corNome: "" }
+      }
+    },
+    "couro_chao_pelucia_resto": {
+      nome: "Couro no Chão + Resto em Pelúcia",
+      descricao: "Chão em couro sintético, demais partes em pelúcia",
+      preco: 1500,
+      partes: {
+        chao: { material: "couro", cor: "", corNome: "" },
+        banco: { material: "pelucia", cor: "", corNome: "" },
+        braco: { material: "pelucia", cor: "", corNome: "" },
+        cabeca: { material: "pelucia", cor: "", corNome: "" },
+        laterais: { material: "pelucia", cor: "", corNome: "" }
+      }
+    },
+    "couro_total": {
+      nome: "Kit Couro Completo",
+      descricao: "Todas as partes em couro sintético",
+      preco: 2000,
+      partes: {
+        chao: { material: "couro", cor: "", corNome: "" },
+        banco: { material: "couro", cor: "", corNome: "" },
+        braco: { material: "couro", cor: "", corNome: "" },
+        cabeca: { material: "couro", cor: "", corNome: "" },
+        laterais: { material: "couro", cor: "", corNome: "" }
+      }
+    },
+    "couro_sport": {
+      nome: "Kit Couro Sport",
+      descricao: "Couro com detalhes esportivos",
+      preco: 2200,
+      partes: {
+        chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+        banco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+        braco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+        cabeca: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+        laterais: { material: "couro_sport", cor: "", corNome: "", detalhe: "" }
+      }
+    }
+  };
+  
   // Mapeamento de tipos de máquina para exibição
   const tipoMaquinaMap = {
     'escavadeira-hidraulica': 'Escavadeira Hidráulica',
@@ -145,7 +211,7 @@ const cores = [
     'mini-escavadeira': 'Mini Escavadeira',
     'mini-carregadeira': 'Mini Carregadeira'
   };
-
+  
   // Variáveis globais
   const state = {
     linha: '',
@@ -157,12 +223,18 @@ const cores = [
       transportadora: 'Correios'
     }
   };
-
+  
   // Armazenamento da cor selecionada
   let corSelecionada = {
     nome: '',
     imagem: 'imagens/cores/placeholder.jpg'
   };
+  
+  // Armazenamento do kit selecionado
+  let kitSelecionado = null;
+  
+  // Variável para controlar o tipo de revestimento selecionado
+  let tipoRevestimento = 'cor-simples';
 
   // Elementos DOM
   const botoesLinha = document.querySelectorAll('.botao-linha');
@@ -194,7 +266,136 @@ const cores = [
   const confirmarCorBtn = document.getElementById('confirmar-cor');
   const seletorCor = document.getElementById('seletor-cor');
   const textoCorSelecionada = document.getElementById('texto-cor-selecionada');
+  const kitRevestimentoContainer = document.getElementById('kit-revestimento-container');
+  const personalizacaoContainer = document.getElementById('personalizacao-container');
+  const partesPersonalizacao = document.getElementById('partes-personalizacao');
+  
   let corSelecionadaModal = null;
+  let parteSelecionadaModal = null;
+  
+  // Função para selecionar o tipo de revestimento
+  function selecionarTipoRevestimento(tipo) {
+    tipoRevestimento = tipo;
+    
+    // Ativar/desativar botões
+    document.querySelectorAll('.botao-opcao').forEach(botao => {
+      botao.classList.toggle('ativo', botao.dataset.tipo === tipo);
+    });
+    
+    // Mostrar container correto
+    document.getElementById('cor-simples-container').style.display = 
+      tipo === 'cor-simples' ? 'block' : 'none';
+    document.getElementById('kit-revestimento-container').style.display = 
+      tipo === 'kit-revestimento' ? 'block' : 'none';
+    
+    // Se for kit, carregar os kits
+    if (tipo === 'kit-revestimento') {
+      mostrarKitsRevestimento();
+    }
+  }
+
+  // Função para mostrar os kits disponíveis
+  function mostrarKitsRevestimento() {
+    const grid = document.querySelector('.kits-grid');
+    grid.innerHTML = '';
+    
+    Object.entries(kitsRevestimento).forEach(([id, kit]) => {
+      const kitElement = document.createElement('div');
+      kitElement.className = 'botao-linha';
+      kitElement.innerHTML = `
+        <h4>${kit.nome}</h4>
+        <p>${kit.descricao}</p>
+        <p>R$ ${kit.preco.toFixed(2)}</p>
+      `;
+      
+      kitElement.addEventListener('click', () => {
+        // Resetar seleções anteriores
+        document.querySelectorAll('.kits-grid > div').forEach(el => {
+          el.classList.remove('selecionado');
+        });
+        
+        // Marcar como selecionado
+        kitElement.classList.add('selecionado');
+        
+        // Armazenar kit selecionado
+        kitSelecionado = { ...kit, id };
+        
+        // Mostrar opções de personalização
+        mostrarPersonalizacaoKit();
+      });
+      
+      grid.appendChild(kitElement);
+    });
+    
+    // Esconder personalização inicialmente
+    document.getElementById('personalizacao-container').style.display = 'none';
+  }
+
+  // Função para mostrar as partes do kit para personalização
+  function mostrarPersonalizacaoKit() {
+    const container = document.getElementById('personalizacao-container');
+    const partesContainer = document.getElementById('partes-personalizacao');
+    
+    partesContainer.innerHTML = '';
+    
+    Object.entries(kitSelecionado.partes).forEach(([parte, config]) => {
+      const parteDiv = document.createElement('div');
+      parteDiv.className = 'parte-kit';
+      
+      const materialInfo = materiais[config.material];
+      
+      parteDiv.innerHTML = `
+        <label>${parte.replace(/_/g, ' ')} (${materialInfo.nome})</label>
+        <div class="seletor-cor-parte" data-parte="${parte}">
+          <div class="cor-preview" style="background-color: ${config.cor || '#ccc'}"></div>
+          <span>${config.corNome || 'Selecione a cor'}</span>
+        </div>
+      `;
+      
+      // Adicionar evento para abrir seletor de cores
+      parteDiv.querySelector('.seletor-cor-parte').addEventListener('click', function() {
+        abrirModalCoresParaParte(parte, config.material);
+      });
+      
+      partesContainer.appendChild(parteDiv);
+    });
+    
+    container.style.display = 'block';
+  }
+
+  // Função para adicionar o kit personalizado ao carrinho
+  function adicionarKitAoCarrinho() {
+    // Verificar se todas as partes têm cor selecionada
+    for (const [parte, config] of Object.entries(kitSelecionado.partes)) {
+      if (!config.cor) {
+        mostrarFeedback(`Selecione uma cor para ${parte.replace(/_/g, ' ')}`, 'erro');
+        return;
+      }
+    }
+    
+    // Criar item para o carrinho
+    const item = {
+      tipo: 'kit_revestimento',
+      kitId: kitSelecionado.id,
+      nome: kitSelecionado.nome,
+      preco: kitSelecionado.preco,
+      partes: { ...kitSelecionado.partes },
+      id: Date.now()
+    };
+    
+    // Adicionar ao carrinho
+    state.carrinho.push(item);
+    salvarCarrinho();
+    atualizarCarrinho();
+    mostrarFeedback('Kit adicionado ao carrinho!');
+    
+    // Resetar seleção
+    kitSelecionado = null;
+    document.getElementById('personalizacao-container').style.display = 'none';
+    document.querySelectorAll('.kits-grid > div').forEach(el => {
+      el.classList.remove('selecionado');
+    });
+  }
 
   // Inicialização
   document.addEventListener('DOMContentLoaded', () => {
@@ -214,10 +415,10 @@ const cores = [
         selecionarMaquina(this);
       });
     });
-
+  
     // Abrir modal de cores quando clicar no seletor
     seletorCor.addEventListener('click', abrirModalCores);
-
+  
     // Fechar modal
     fecharModal.addEventListener('click', fecharModalCores);
     modalCores.addEventListener('click', function(e) {
@@ -225,21 +426,34 @@ const cores = [
         fecharModalCores();
       }
     });
-
+  
     // Confirmar seleção de cor
     confirmarCorBtn.addEventListener('click', confirmarCorSelecionada);
-
+  
     // Fechar modal com ESC
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && modalCores.style.display === 'flex') {
         fecharModalCores();
       }
     });
-
+  
     // Auto-completar endereço via CEP
     document.getElementById('cep').addEventListener('blur', buscarEnderecoViaCEP);
-  });
 
+    // Adicionar eventos para os botões de seleção de tipo de revestimento
+    document.querySelectorAll('.botao-opcao').forEach(botao => {
+      botao.addEventListener('click', function() {
+        selecionarTipoRevestimento(this.dataset.tipo);
+      });
+    });
+    
+    // Inicializar com cor simples selecionada
+    selecionarTipoRevestimento('cor-simples');
+    
+    // Adicionar evento para o botão de adicionar kit ao carrinho
+    document.getElementById('btn-adicionar-kit').addEventListener('click', adicionarKitAoCarrinho);
+  });
+  
   // Função para buscar endereço via CEP (ViaCEP)
   async function buscarEnderecoViaCEP() {
     const cep = document.getElementById('cep').value.replace(/\D/g, '');
@@ -247,11 +461,11 @@ const cores = [
     if (cep.length !== 8) {
       return;
     }
-
+  
     try {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
       const data = await response.json();
-
+  
       if (!data.erro) {
         document.getElementById('estado').value = data.uf;
         document.getElementById('cidade').value = data.localidade;
@@ -265,7 +479,7 @@ const cores = [
       mostrarFeedback('Erro ao buscar CEP', 'erro');
     }
   }
-
+  
   // Função para calcular frete usando API pública (ViaCEP + lógica regional)
   async function calcularFrete() {
     const cep = cepFreteInput.value.replace(/\D/g, '');
@@ -274,12 +488,12 @@ const cores = [
       mostrarFeedback('Digite um CEP válido (8 dígitos)', 'erro');
       return;
     }
-
+  
     // Mostrar loading
     const btnFrete = document.querySelector('.btn-calcular-frete');
     btnFrete.disabled = true;
     btnFrete.textContent = 'Calculando...';
-
+  
     try {
       // 1. Validar CEP usando ViaCEP
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
@@ -288,13 +502,13 @@ const cores = [
       if (cepData.erro) {
         throw new Error('CEP não encontrado');
       }
-
+  
       // 2. Calcular frete baseado na região do CEP
       const regiao = parseInt(cep.charAt(0));
       let valorFrete = 0;
       let prazoFrete = 0;
       let transportadora = 'Correios';
-
+  
       // Tabela de frete baseada na região
       switch(regiao) {
         case 1: case 2: case 3: // Sudeste
@@ -322,22 +536,22 @@ const cores = [
           prazoFrete = 10;
           transportadora = 'Transportadora Parceira';
       }
-
+  
       // 3. Atualizar estado e UI
       state.frete = {
         valor: valorFrete,
         prazo: prazoFrete,
         transportadora: transportadora
       };
-
+  
       valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
       prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
       transportadoraFreteSpan.textContent = state.frete.transportadora;
       resultadoFrete.style.display = 'block';
-
+  
       atualizarTotais();
       mostrarFeedback('Frete calculado com sucesso!');
-
+  
     } catch (error) {
       console.error('Erro no cálculo de frete:', error);
       mostrarFeedback(`Erro ao calcular frete: ${error.message}`, 'erro');
@@ -358,34 +572,49 @@ const cores = [
       btnFrete.textContent = 'Calcular';
     }
   }
-
+  
   // Função para atualizar a pré-visualização da cor
   function atualizarPreviewCor() {
     corPreviewImg.src = corSelecionada.imagem;
     corPreviewImg.alt = `Pré-visualização ${corSelecionada.nome}`;
     textoCorSelecionada.textContent = corSelecionada.nome || 'Selecione uma cor';
   }
-
+  
   // Função para abrir o modal de cores
   function abrirModalCores() {
     // Limpar grid
     gridCores.innerHTML = '';
     
     // Popular o grid com as opções de cor
+    const cores = [
+      { nome: "Preto", codigo: "#000000", imagem: "imagens/cores/preto.jpg" },
+      { nome: "Cinza", codigo: "#808080", imagem: "imagens/cores/cinza.jpg" },
+      { nome: "Vermelho", codigo: "#FF0000", imagem: "imagens/cores/vermelho.jpg" },
+      { nome: "Azul", codigo: "#0000FF", imagem: "imagens/cores/azul.jpg" },
+      { nome: "Verde", codigo: "#008000", imagem: "imagens/cores/verde.jpg" },
+      { nome: "Amarelo", codigo: "#FFFF00", imagem: "imagens/cores/amarelo.jpg" },
+      { nome: "Branco", codigo: "#FFFFFF", imagem: "imagens/cores/branco.jpg" },
+      { nome: "Marrom", codigo: "#A52A2A", imagem: "imagens/cores/marrom.jpg" },
+      { nome: "Bege", codigo: "#F5F5DC", imagem: "imagens/cores/bege.jpg" },
+      { nome: "Laranja", codigo: "#FFA500", imagem: "imagens/cores/laranja.jpg" },
+      { nome: "Roxo", codigo: "#800080", imagem: "imagens/cores/roxo.jpg" },
+      { nome: "Rosa", codigo: "#FFC0CB", imagem: "imagens/cores/rosa.jpg" }
+    ];
+  
     cores.forEach((cor, index) => {
       const corItem = document.createElement('div');
       corItem.className = 'cor-item';
-      if (corSelecionada.nome === cor) {
+      if (corSelecionada.nome === cor.nome) {
         corItem.classList.add('selecionada');
         corSelecionadaModal = cor;
       }
       
-      corItem.dataset.cor = cor;
-      corItem.dataset.imagem = `imagens/cores/cor${index+1}.jpg`;
+      corItem.dataset.cor = cor.nome;
+      corItem.dataset.imagem = cor.imagem;
       
       corItem.innerHTML = `
-        <img src="imagens/cores/cor${index+1}.jpg" alt="${cor}" loading="lazy">
-        <span>${cor}</span>
+        <img src="${cor.imagem}" alt="${cor.nome}" loading="lazy">
+        <span>${cor.nome}</span>
       `;
       
       corItem.addEventListener('click', function() {
@@ -396,7 +625,10 @@ const cores = [
         
         // Adicionar seleção atual
         this.classList.add('selecionada');
-        corSelecionadaModal = this.dataset.cor;
+        corSelecionadaModal = {
+          nome: this.dataset.cor,
+          imagem: this.dataset.imagem
+        };
       });
       
       gridCores.appendChild(corItem);
@@ -406,16 +638,102 @@ const cores = [
     modalCores.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
-
+  
+  // Função para abrir o modal de cores para uma parte específica
+  function abrirModalCoresParaParte(parte, tipoMaterial) {
+    const modal = document.getElementById('modal-cores');
+    const grid = document.getElementById('grid-cores');
+    const tituloModal = modal.querySelector('h3');
+    
+    tituloModal.textContent = `Selecione a cor para ${parte.replace(/_/g, ' ')}`;
+    grid.innerHTML = '';
+    
+    const material = materiais[tipoMaterial];
+    
+    material.cores.forEach((cor, index) => {
+      const corItem = document.createElement('div');
+      corItem.className = 'cor-item';
+      corItem.style.position = 'relative';
+      corItem.style.height = '100px';
+      corItem.style.borderRadius = '8px';
+      corItem.style.overflow = 'hidden';
+      corItem.style.cursor = 'pointer';
+      corItem.style.boxShadow = '0 3px 6px rgba(0,0,0,0.2)';
+      
+      // Para couro sport com detalhes
+      if (cor.detalhe) {
+        corItem.style.background = `linear-gradient(135deg, ${cor.codigo} 50%, ${cor.detalhe} 50%)`;
+      } else {
+        corItem.style.backgroundColor = cor.codigo;
+      }
+      
+      corItem.innerHTML = `
+        <div style="
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(0,0,0,0.7);
+          color: white;
+          padding: 5px;
+          text-align: center;
+          font-size: 0.8rem;
+        ">
+          ${cor.nome}
+        </div>
+      `;
+      
+      corItem.addEventListener('click', function() {
+        // Remover seleção anterior
+        document.querySelectorAll('.cor-item.selecionada').forEach(item => {
+          item.classList.remove('selecionada');
+        });
+        
+        // Adicionar seleção atual
+        this.classList.add('selecionada');
+        corSelecionadaModal = cor;
+        parteSelecionadaModal = parte;
+      });
+      
+      grid.appendChild(corItem);
+    });
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  
   // Função para fechar o modal de cores
   function fecharModalCores() {
     modalCores.style.display = 'none';
     document.body.style.overflow = 'auto';
   }
-
+  
   // Função para confirmar a cor selecionada
   function confirmarCorSelecionada() {
-    if (corSelecionadaModal) {
+    if (corSelecionadaModal && parteSelecionadaModal) {
+      // Atualizar a cor no kit selecionado
+      kitSelecionado.partes[parteSelecionadaModal].cor = corSelecionadaModal.codigo;
+      kitSelecionado.partes[parteSelecionadaModal].corNome = corSelecionadaModal.nome;
+      
+      if (corSelecionadaModal.detalhe) {
+        kitSelecionado.partes[parteSelecionadaModal].detalhe = corSelecionadaModal.detalhe;
+      }
+      
+      // Atualizar o preview
+      const seletor = document.querySelector(`.botao-seletor-cor[data-parte="${parteSelecionadaModal}"]`);
+      const preview = seletor.querySelector('.cor-preview');
+      preview.style.backgroundColor = corSelecionadaModal.codigo;
+      if (corSelecionadaModal.detalhe) {
+        preview.style.background = `linear-gradient(135deg, ${corSelecionadaModal.codigo} 50%, ${corSelecionadaModal.detalhe} 50%)`;
+      }
+      seletor.querySelector('span').textContent = corSelecionadaModal.nome;
+      
+      fecharModalCores();
+      
+      // Resetar variáveis
+      corSelecionadaModal = null;
+      parteSelecionadaModal = null;
+    } else if (corSelecionadaModal) {
       const corItemSelecionado = document.querySelector('.cor-item.selecionada');
       if (corItemSelecionado) {
         corSelecionada = {
@@ -436,7 +754,7 @@ const cores = [
       mostrarFeedback('Nenhuma cor selecionada', 'erro');
     }
   }
-
+  
   // Função para resetar a seleção
   function resetarSelecao() {
     // Resetar seleção de cor
@@ -455,7 +773,7 @@ const cores = [
     document.querySelectorAll('.botao-maquina.ativo').forEach(btn => btn.classList.remove('ativo'));
     state.tipoMaquina = '';
   }
-
+  
   // Função para mostrar formulário do cliente
   function mostrarFormularioCliente() {
     if (state.carrinho.length === 0) {
@@ -467,7 +785,7 @@ const cores = [
     formClienteContainer.style.display = 'block';
     formClienteContainer.scrollIntoView({ behavior: 'smooth' });
   }
-
+  
   // Função para selecionar linha principal
   function selecionarLinha(botao) {
     // Remover classe 'ativo' de todos os botões
@@ -496,6 +814,7 @@ const cores = [
     
     // Ocultar formulário de seleção até escolher a máquina
     selecaoContainer.style.display = 'none';
+    kitRevestimentoContainer.style.display = 'none';
     
     // Rolagem suave para os botões de máquina
     setTimeout(() => {
@@ -508,7 +827,7 @@ const cores = [
       }
     }, 100);
   }
-
+  
   // Função para selecionar máquina específica
   function selecionarMaquina(botao) {
     // Remover classe 'ativo' de todos os botões de máquina
@@ -522,6 +841,7 @@ const cores = [
     
     // Mostrar container de seleção
     selecaoContainer.style.display = 'block';
+    kitRevestimentoContainer.style.display = 'none';
     
     // Popular marcas
     popularMarcas();
@@ -531,8 +851,8 @@ const cores = [
       selecaoContainer.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   }
-
-  // Popular marcas
+  
+  // Função para popular marcas
   function popularMarcas() {
     marcaSelect.innerHTML = '<option value="">Selecione...</option>';
     modeloSelect.innerHTML = '<option value="">Selecione uma marca primeiro</option>';
@@ -548,7 +868,7 @@ const cores = [
       marcaSelect.appendChild(option);
     });
   }
-
+  
   // Evento para marca
   marcaSelect.addEventListener('change', function() {
     modeloSelect.innerHTML = '<option value="">Selecione...</option>';
@@ -566,184 +886,197 @@ const cores = [
       modeloSelect.appendChild(option);
     });
   });
-
+  
   // Evento para modelo
   modeloSelect.addEventListener('change', function() {
     anoSelect.innerHTML = '<option value="">Selecione...</option>';
     
     if (!this.value || !marcaSelect.value) return;
     
-    // Obter anos para o modelo selecionado
-    const anosDisponiveis = dados[state.linha][marcaSelect.value][this.value].anos;
+    // Obter todos os anos para o modelo selecionado
+    const anos = dados[state.linha][marcaSelect.value][this.value].anos;
     
-    anosDisponiveis.forEach(ano => {
+    anos.forEach(ano => {
       const option = document.createElement('option');
       option.value = ano;
       option.textContent = ano;
       anoSelect.appendChild(option);
     });
   });
-
-  // Adicionar ao carrinho
+  
+  // Função para adicionar item ao carrinho
   function adicionarAoCarrinho() {
-    const campos = [
-      {id: 'marca', nome: 'Marca'},
-      {id: 'modelo', nome: 'Modelo'},
-      {id: 'ano', nome: 'Ano'}
-    ];
-
-    // Verificar se uma cor foi selecionada
-    if (!corSelecionada.nome) {
-      mostrarFeedback('Selecione uma cor', 'erro');
+    if (!state.linha || !state.tipoMaquina || !marcaSelect.value || !modeloSelect.value || !anoSelect.value || !corSelecionada.nome) {
+      mostrarFeedback('Preencha todos os campos antes de adicionar ao carrinho', 'erro');
       return;
     }
-
-    // Verificar outros campos vazios
-    const faltando = campos.filter(campo => !document.getElementById(campo.id).value);
-    
-    if(faltando.length > 0) {
-      mostrarFeedback(`Preencha: ${faltando.map(c => c.nome).join(', ')}`, 'erro');
-      return;
-    }
-    
+  
     const item = {
       linha: state.linha,
-      tipo: state.tipoMaquina,
+      tipoMaquina: tipoMaquinaMap[state.tipoMaquina] || state.tipoMaquina,
       marca: marcaSelect.value,
       modelo: modeloSelect.value,
       ano: anoSelect.value,
       cor: corSelecionada.nome,
+      corImagem: corSelecionada.imagem,
+      preco: calcularPreco(state.linha, state.tipoMaquina),
       id: Date.now()
     };
-    
+  
     state.carrinho.push(item);
     salvarCarrinho();
     atualizarCarrinho();
     mostrarFeedback('Item adicionado ao carrinho!');
-    
-    // Resetar seleção para novo item
-    resetarSelecao();
-    
-    // Rolagem suave para o carrinho
-    setTimeout(() => {
-      document.querySelector('.carrinho').scrollIntoView({ behavior: 'smooth' });
-    }, 300);
   }
-
-  // Mostrar feedback visual
-  function mostrarFeedback(mensagem, tipo = 'sucesso') {
-    feedbackIcon.textContent = tipo === 'sucesso' ? '✓' : '✗';
-    feedbackMessage.textContent = mensagem;
+  
+  // Função para calcular preço baseado no tipo de máquina
+  function calcularPreco(linha, tipoMaquina) {
+    // Preços base por linha
+    const precosBase = {
+      "Linha Amarela": 1500,
+      "Linha Verde": 1200,
+      "Linha Mini": 1000
+    };
     
-    // Atualizar classes
-    feedback.className = 'feedback';
-    feedback.classList.add(tipo === 'erro' ? 'erro' : 'sucesso');
-    feedback.classList.add('visible');
+    // Adicionais por tipo de máquina
+    const adicionais = {
+      "Escavadeira Hidráulica": 200,
+      "Retro Escavadeira": 150,
+      "Pá Carregadeira": 180,
+      "Moto Niveladora": 100,
+      "Trator de Esteira": 250,
+      "Trator": 100,
+      "Pulverizador": 150,
+      "Colheitadeira": 200,
+      "Mini Escavadeira": 50,
+      "Mini Carregadeira": 50
+    };
+    
+    const precoBase = precosBase[linha] || 1000;
+    const adicional = adicionais[tipoMaquina] || 0;
+    
+    return precoBase + adicional;
+  }
+  
+  // Função para salvar carrinho no localStorage
+  function salvarCarrinho() {
+    localStorage.setItem('carrinho', JSON.stringify(state.carrinho));
+  }
+  
+  // Função para atualizar a exibição do carrinho
+  function atualizarCarrinho() {
+    const listaCarrinho = document.getElementById('listaCarrinho');
+    listaCarrinho.innerHTML = '';
+    
+    let total = 0;
+    
+    state.carrinho.forEach(item => {
+      const li = document.createElement('li');
+      
+      if (item.tipo === 'kit_revestimento') {
+        let partesHTML = '';
+        for (const [parte, config] of Object.entries(item.partes)) {
+          partesHTML += `
+            <div style="margin-left: 10px; margin-top: 8px; display: flex; align-items: center;">
+              <div style="
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: ${config.cor};
+                ${config.detalhe ? `background: linear-gradient(135deg, ${config.cor} 50%, ${config.detalhe} 50%);` : ''}
+                margin-right: 8px;
+              "></div>
+              <span style="font-size: 0.8rem;">
+                ${parte.replace(/_/g, ' ')}: 
+                <strong>${config.corNome}</strong>
+              </span>
+            </div>
+          `;
+        }
+        
+        li.innerHTML = `
+          <div>
+            <strong style="color: ${
+              item.kitId.includes('sport') ? '#08d118' : 
+              item.kitId.includes('couro') ? '#F9A01B' : '#4682B4'
+            };">${item.nome}</strong>
+            ${partesHTML}
+            <div style="margin-top: 10px; font-weight: bold;">
+              Valor: R$ ${item.preco.toFixed(2)}
+            </div>
+          </div>
+          <button onclick="removerDoCarrinho(${item.id})">Remover</button>
+        `;
+      } else {
+        li.innerHTML = `
+          <div>
+            <strong>${item.tipoMaquina}</strong><br>
+            ${item.marca} ${item.modelo} (${item.ano})<br>
+            Cor: ${item.cor}
+            <div style="margin-top: 10px; font-weight: bold;">
+              Valor: R$ ${item.preco.toFixed(2)}
+            </div>
+          </div>
+          <button onclick="removerDoCarrinho(${item.id})">Remover</button>
+        `;
+      }
+      
+      listaCarrinho.appendChild(li);
+      total += item.preco;
+    });
+    
+    totalItensSpan.textContent = `R$ ${total.toFixed(2)}`;
+    atualizarTotais();
+  }
+  
+  // Função para atualizar totais (itens + frete)
+  function atualizarTotais() {
+    const totalItens = state.carrinho.reduce((sum, item) => sum + item.preco, 0);
+    const totalGeral = totalItens + state.frete.valor;
+    
+    totalItensSpan.textContent = `R$ ${totalItens.toFixed(2)}`;
+    totalGeralSpan.textContent = `R$ ${totalGeral.toFixed(2)}`;
+  }
+  
+  // Função para remover item do carrinho
+  function removerDoCarrinho(id) {
+    state.carrinho = state.carrinho.filter(item => item.id !== id);
+    salvarCarrinho();
+    atualizarCarrinho();
+    mostrarFeedback('Item removido do carrinho');
+  }
+  
+  // Função para mostrar feedback ao usuário
+  function mostrarFeedback(mensagem, tipo = 'sucesso') {
+    feedbackMessage.textContent = mensagem;
+    feedback.className = 'feedback visible';
+    feedbackIcon.textContent = tipo === 'erro' ? '✕' : '✓';
+    
+    if (tipo === 'erro') {
+      feedback.classList.add('erro');
+    } else {
+      feedback.classList.remove('erro');
+    }
     
     setTimeout(() => {
       feedback.classList.remove('visible');
     }, 3000);
   }
-
-  // Salvar carrinho no localStorage
-  function salvarCarrinho() {
-    localStorage.setItem('carrinho', JSON.stringify(state.carrinho));
-    atualizarTotais();
-  }
-
-  // Atualizar exibição do carrinho
-  function atualizarCarrinho() {
-    const lista = document.getElementById("listaCarrinho");
-    lista.innerHTML = "";
-    
-    if (state.carrinho.length === 0) {
-      lista.innerHTML = "<li style='text-align:center;'>Seu carrinho está vazio</li>";
-      atualizarTotais();
-      return;
-    }
-    
-    state.carrinho.forEach((item, i) => {
-      const li = document.createElement("li");
-      li.innerHTML = `
-        <div>
-          <strong>${item.linha} - ${tipoMaquinaMap[item.tipo] || item.tipo}</strong><br>
-          ${item.marca} ${item.modelo} (${item.ano})<br>
-          Cor: ${item.cor}
-        </div>
-        <button onclick="removerItem(${item.id})" style="
-          background: #ff3333;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          padding: 5px 10px;
-          cursor: pointer;
-          font-size: 0.8rem;
-        ">Remover</button>
-      `;
-      lista.appendChild(li);
-    });
-    
-    atualizarTotais();
-  }
-
-  // Atualizar totais do carrinho
-  function atualizarTotais() {
-    const totalItens = state.carrinho.length * 450;
-    totalItensSpan.textContent = `R$ ${totalItens.toFixed(2)}`;
-    
-    const totalGeral = totalItens + state.frete.valor;
-    totalGeralSpan.textContent = `R$ ${totalGeral.toFixed(2)}`;
-  }
-
-  // Remover item do carrinho
-  function removerItem(id) {
-    const index = state.carrinho.findIndex(item => item.id === id);
-    if (index !== -1) {
-      state.carrinho.splice(index, 1);
-      salvarCarrinho();
-      atualizarCarrinho();
-      mostrarFeedback('Item removido do carrinho');
-    }
-  }
-
-  // Gerar protocolo aleatório
-  function generateProtocol() {
-    const datePart = new Date().toISOString().slice(2, 10).replace(/-/g, '');
-    const randomPart = Math.floor(1000 + Math.random() * 9000);
-    return `PED-${datePart}-${randomPart}`;
-  }
-
-  // Finalizar pedido
+  
+  // Função para finalizar pedido via WhatsApp (versão atualizada)
   function finalizarPedido() {
-    // Verificar dados do cliente
-    const camposCliente = [
-      'nome', 'cpf_cnpj', 'inscricao_estadual', 'telefone',
-      'cep', 'estado', 'cidade', 'bairro', 'rua', 'numero'
-    ];
-    
-    const faltando = camposCliente.filter(campo => !document.getElementById(campo).value);
-    
-    if(faltando.length > 0) {
-      mostrarFeedback('Preencha todos os dados do cliente', 'erro');
-      return;
-    }
-    
     if (state.carrinho.length === 0) {
       mostrarFeedback('Carrinho vazio!', 'erro');
       return;
     }
     
-    // Desabilitar o botão para evitar múltiplos cliques
-    const btnEnviar = document.querySelector('#form-cliente-container button');
-    btnEnviar.disabled = true;
-    btnEnviar.innerHTML = '<span>Preparando mensagem...</span>';
-    
-    // Salvar dados do cliente
-    const cliente = {};
-    camposCliente.forEach(campo => {
-      cliente[campo] = document.getElementById(campo).value;
-    });
-    localStorage.setItem('cliente', JSON.stringify(cliente));
+    // Validar formulário
+    const form = document.getElementById('formCliente');
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      mostrarFeedback('Preencha todos os campos obrigatórios', 'erro');
+      return;
+    }
     
     // Dados da loja
     const numeroWhatsApp = "554399546879";
@@ -752,6 +1085,20 @@ const cores = [
     const dataHora = new Date().toLocaleString('pt-BR');
     const pixInfo = "000.000.000-00 (CNPJ)\nNome: HELTO MACHADO";
     
+    // Obter dados do cliente
+    const cliente = {
+      nome: document.getElementById('nome').value,
+      cpf_cnpj: document.getElementById('cpf_cnpj').value,
+      inscricao_estadual: document.getElementById('inscricao_estadual').value,
+      telefone: document.getElementById('telefone').value,
+      rua: document.getElementById('rua').value,
+      numero: document.getElementById('numero').value,
+      bairro: document.getElementById('bairro').value,
+      cidade: document.getElementById('cidade').value,
+      estado: document.getElementById('estado').value,
+      cep: document.getElementById('cep').value
+    };
+  
     // Montar cabeçalho
     let mensagem = "*LOJA DO OPERADOR - CAPAS PERSONALIZADAS*\n";
     mensagem += "Av. Exemplo, 123 - Centro, Ivaipora, PR, 86870-000\n";
@@ -775,14 +1122,27 @@ const cores = [
     // Itens do pedido
     mensagem += "*ITENS DO PEDIDO*\n\n";
     state.carrinho.forEach((item, index) => {
-      mensagem += `${index+1} ${item.linha} - ${tipoMaquinaMap[item.tipo] || item.tipo}\n`;
-      mensagem += `   ${item.marca} ${item.modelo} (${item.ano})\n`;
-      mensagem += `   Cor: ${item.cor}\n`;
-      mensagem += `   Valor: R$ 450,00\n\n`;
+      if (item.tipo === 'kit_revestimento') {
+        mensagem += `${index+1} ${item.nome}\n`;
+        mensagem += `   Valor: R$ ${item.preco.toFixed(2)}\n`;
+        
+        for (const [parte, config] of Object.entries(item.partes)) {
+          mensagem += `   ${parte.replace(/_/g, ' ')}: ${config.corNome} (${config.cor})`;
+          if (config.detalhe) {
+            mensagem += ` com detalhe em ${config.detalhe}`;
+          }
+          mensagem += '\n';
+        }
+      } else {
+        mensagem += `${index+1} ${item.linha} - ${item.tipoMaquina}\n`;
+        mensagem += `   ${item.marca} ${item.modelo} (${item.ano})\n`;
+        mensagem += `   Cor: ${item.cor}\n`;
+        mensagem += `   Valor: R$ ${item.preco.toFixed(2)}\n\n`;
+      }
     });
     
     // Rodapé
-    const totalItens = state.carrinho.length * 450;
+    const totalItens = state.carrinho.reduce((sum, item) => sum + item.preco, 0);
     const totalGeral = totalItens + state.frete.valor;
     
     mensagem += "--------------------------------------------------\n";
@@ -804,14 +1164,24 @@ const cores = [
     // Criar o link do WhatsApp
     const url = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
     
-    // Abrir em nova aba após um pequeno delay para dar feedback visual
-    setTimeout(() => {
-      window.open(url, "_blank");
-      
-      // Restaurar o botão após 2 segundos
-      setTimeout(() => {
-        btnEnviar.disabled = false;
-        btnEnviar.innerHTML = '<span>📦 Enviar Pedido via WhatsApp</span>';
-      }, 2000);
-    }, 500);
+    // Abrir WhatsApp em nova aba
+    window.open(url, '_blank');
+    
+    // Limpar carrinho após envio
+    state.carrinho = [];
+    salvarCarrinho();
+    atualizarCarrinho();
+    form.reset();
+    formClienteContainer.style.display = 'none';
+    document.querySelector('.carrinho').style.display = 'block';
+  }
+  
+  // Função para gerar protocolo
+  function generateProtocol() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let protocol = '';
+    for (let i = 0; i < 10; i++) {
+      protocol += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return protocol;
   }
