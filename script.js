@@ -387,6 +387,12 @@ function abrirModalCoresParaParte(parte, tipoMaterial) {
         const corItem = document.createElement('div');
         corItem.className = 'cor-item';
         
+        // Verificar se esta cor já está selecionada para esta parte
+        if (kitSelecionado.partes[parte].corNome === cor.nome) {
+            corItem.classList.add('selecionada');
+            corSelecionadaModal = cor;
+        }
+        
         // Estilo especial para cores com detalhes
         if (cor.detalhe) {
             corItem.style.background = `linear-gradient(135deg, ${cor.codigo} 50%, ${cor.detalhe} 50%)`;
@@ -424,7 +430,13 @@ function fecharModalCores() {
 
 // Função para confirmar a cor selecionada
 function confirmarCorSelecionada() {
-    if (corSelecionadaModal && parteSelecionadaModal) {
+    if (!corSelecionadaModal) {
+        mostrarFeedback('Selecione uma cor antes de confirmar', 'erro');
+        return;
+    }
+
+    // Se for para uma parte específica do kit
+    if (parteSelecionadaModal) {
         // Atualizar a cor no kit selecionado
         kitSelecionado.partes[parteSelecionadaModal].cor = corSelecionadaModal.codigo;
         kitSelecionado.partes[parteSelecionadaModal].corNome = corSelecionadaModal.nome;
@@ -443,15 +455,20 @@ function confirmarCorSelecionada() {
             }
             seletor.querySelector('span').textContent = corSelecionadaModal.nome;
         }
-        
-        fecharModalCores();
-        
-        // Resetar variáveis
-        corSelecionadaModal = null;
-        parteSelecionadaModal = null;
     } else {
-        mostrarFeedback('Selecione uma cor antes de confirmar', 'erro');
+        // Se for para cor simples
+        corSelecionada = {
+            nome: corSelecionadaModal.nome,
+            imagem: corSelecionadaModal.imagem
+        };
+        atualizarPreviewCor();
     }
+    
+    fecharModalCores();
+    
+    // Resetar variáveis
+    corSelecionadaModal = null;
+    parteSelecionadaModal = null;
 }
 
 // Função para adicionar o kit personalizado ao carrinho
@@ -488,189 +505,6 @@ function adicionarKitAoCarrinho() {
     });
 }
 
-// Inicialização
-document.addEventListener('DOMContentLoaded', () => {
-    atualizarCarrinho();
-    atualizarPreviewCor();
-    
-    // Adiciona eventos aos botões de linha principal
-    botoesLinha.forEach(botao => {
-        botao.addEventListener('click', function() {
-            selecionarLinha(this);
-        });
-    });
-    
-    // Adiciona eventos aos botões de máquina
-    botoesMaquina.forEach(botao => {
-        botao.addEventListener('click', function() {
-            selecionarMaquina(this);
-        });
-    });
-  
-    // Abrir modal de cores quando clicar no seletor
-    seletorCor.addEventListener('click', abrirModalCores);
-  
-    // Fechar modal
-    fecharModal.addEventListener('click', fecharModalCores);
-    modalCores.addEventListener('click', function(e) {
-        if (e.target === modalCores) {
-            fecharModalCores();
-        }
-    });
-  
-    // Confirmar seleção de cor
-    confirmarCorBtn.addEventListener('click', confirmarCorSelecionada);
-  
-    // Fechar modal com ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modalCores.style.display === 'flex') {
-            fecharModalCores();
-        }
-    });
-  
-    // Auto-completar endereço via CEP
-    document.getElementById('cep').addEventListener('blur', buscarEnderecoViaCEP);
-
-    // Adicionar eventos para os botões de seleção de tipo de revestimento
-    document.querySelectorAll('.botao-opcao').forEach(botao => {
-        botao.addEventListener('click', function() {
-            selecionarTipoRevestimento(this.dataset.tipo);
-        });
-    });
-    
-    // Inicializar com cor simples selecionada
-    selecionarTipoRevestimento('cor-simples');
-    
-    // Adicionar evento para o botão de adicionar kit ao carrinho
-    document.getElementById('btn-adicionar-kit').addEventListener('click', adicionarKitAoCarrinho);
-});
-
-// Função para buscar endereço via CEP (ViaCEP)
-async function buscarEnderecoViaCEP() {
-    const cep = document.getElementById('cep').value.replace(/\D/g, '');
-    
-    if (cep.length !== 8) {
-        return;
-    }
-  
-    try {
-        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-        const data = await response.json();
-  
-        if (!data.erro) {
-            document.getElementById('estado').value = data.uf;
-            document.getElementById('cidade').value = data.localidade;
-            document.getElementById('bairro').value = data.bairro;
-            document.getElementById('rua').value = data.logradouro;
-        } else {
-            mostrarFeedback('CEP não encontrado', 'erro');
-        }
-    } catch (error) {
-        console.error('Erro ao buscar CEP:', error);
-        mostrarFeedback('Erro ao buscar CEP', 'erro');
-    }
-}
-  
-// Função para calcular frete usando API pública (ViaCEP + lógica regional)
-async function calcularFrete() {
-    const cep = cepFreteInput.value.replace(/\D/g, '');
-    
-    if (!cep || cep.length !== 8) {
-        mostrarFeedback('Digite um CEP válido (8 dígitos)', 'erro');
-        return;
-    }
-  
-    // Mostrar loading
-    const btnFrete = document.querySelector('.btn-calcular-frete');
-    btnFrete.disabled = true;
-    btnFrete.textContent = 'Calculando...';
-  
-    try {
-        // 1. Validar CEP usando ViaCEP
-        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-        const cepData = await response.json();
-        
-        if (cepData.erro) {
-            throw new Error('CEP não encontrado');
-        }
-  
-        // 2. Calcular frete baseado na região do CEP
-        const regiao = parseInt(cep.charAt(0));
-        let valorFrete = 0;
-        let prazoFrete = 0;
-        let transportadora = 'Correios';
-  
-        // Tabela de frete baseada na região
-        switch(regiao) {
-            case 1: case 2: case 3: // Sudeste
-                valorFrete = 30 + (state.carrinho.length * 5);
-                prazoFrete = 3;
-                transportadora = 'Correios PAC';
-                break;
-            case 4: case 5: // Nordeste
-                valorFrete = 45 + (state.carrinho.length * 7);
-                prazoFrete = 7;
-                transportadora = 'Correios PAC';
-                break;
-            case 6: // Centro-Oeste
-                valorFrete = 40 + (state.carrinho.length * 6);
-                prazoFrete = 5;
-                transportadora = 'Correios SEDEX';
-                break;
-            case 7: case 8: case 9: // Sul e Norte
-                valorFrete = 50 + (state.carrinho.length * 8);
-                prazoFrete = 8;
-                transportadora = 'Correios PAC';
-                break;
-            default: // Outros
-                valorFrete = 60 + (state.carrinho.length * 10);
-                prazoFrete = 10;
-                transportadora = 'Transportadora Parceira';
-        }
-  
-        // 3. Atualizar estado e UI
-        state.frete = {
-            valor: valorFrete,
-            prazo: prazoFrete,
-            transportadora: transportadora
-        };
-  
-        valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
-        prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
-        transportadoraFreteSpan.textContent = state.frete.transportadora;
-        resultadoFrete.style.display = 'block';
-  
-        atualizarTotais();
-        mostrarFeedback('Frete calculado com sucesso!');
-  
-    } catch (error) {
-        console.error('Erro no cálculo de frete:', error);
-        mostrarFeedback(`Erro ao calcular frete: ${error.message}`, 'erro');
-        
-        // Usar valores padrão como fallback
-        state.frete = {
-            valor: 50 + (state.carrinho.length * 10),
-            prazo: 5,
-            transportadora: 'Transportadora padrão'
-        };
-        
-        valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
-        prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
-        transportadoraFreteSpan.textContent = state.frete.transportadora;
-        resultadoFrete.style.display = 'block';
-    } finally {
-        btnFrete.disabled = false;
-        btnFrete.textContent = 'Calcular';
-    }
-}
-  
-// Função para atualizar a pré-visualização da cor
-function atualizarPreviewCor() {
-    corPreviewImg.src = corSelecionada.imagem;
-    corPreviewImg.alt = `Pré-visualização ${corSelecionada.nome}`;
-    textoCorSelecionada.textContent = corSelecionada.nome || 'Selecione uma cor';
-}
-  
 // Função para abrir o modal de cores
 function abrirModalCores() {
     // Limpar grid
@@ -695,6 +529,8 @@ function abrirModalCores() {
     cores.forEach((cor, index) => {
         const corItem = document.createElement('div');
         corItem.className = 'cor-item';
+        
+        // Verificar se é a cor atualmente selecionada
         if (corSelecionada.nome === cor.nome) {
             corItem.classList.add('selecionada');
             corSelecionadaModal = cor;
@@ -729,7 +565,14 @@ function abrirModalCores() {
     modalCores.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
-  
+
+// Função para atualizar a pré-visualização da cor
+function atualizarPreviewCor() {
+    corPreviewImg.src = corSelecionada.imagem;
+    corPreviewImg.alt = `Pré-visualização ${corSelecionada.nome}`;
+    textoCorSelecionada.textContent = corSelecionada.nome || 'Selecione uma cor';
+}
+
 // Função para resetar a seleção
 function resetarSelecao() {
     // Resetar seleção de cor
@@ -748,7 +591,7 @@ function resetarSelecao() {
     document.querySelectorAll('.botao-maquina.ativo').forEach(btn => btn.classList.remove('ativo'));
     state.tipoMaquina = '';
 }
-  
+
 // Função para mostrar formulário do cliente
 function mostrarFormularioCliente() {
     if (state.carrinho.length === 0) {
@@ -760,7 +603,7 @@ function mostrarFormularioCliente() {
     formClienteContainer.style.display = 'block';
     formClienteContainer.scrollIntoView({ behavior: 'smooth' });
 }
-  
+
 // Função para selecionar linha principal
 function selecionarLinha(botao) {
     // Remover classe 'ativo' de todos os botões
@@ -802,7 +645,7 @@ function selecionarLinha(botao) {
         }
     }, 100);
 }
-  
+
 // Função para selecionar máquina específica
 function selecionarMaquina(botao) {
     // Remover classe 'ativo' de todos os botões de máquina
@@ -826,7 +669,7 @@ function selecionarMaquina(botao) {
         selecaoContainer.scrollIntoView({ behavior: 'smooth' });
     }, 100);
 }
-  
+
 // Função para popular marcas
 function popularMarcas() {
     marcaSelect.innerHTML = '<option value="">Selecione...</option>';
@@ -843,7 +686,7 @@ function popularMarcas() {
         marcaSelect.appendChild(option);
     });
 }
-  
+
 // Evento para marca
 marcaSelect.addEventListener('change', function() {
     modeloSelect.innerHTML = '<option value="">Selecione...</option>';
@@ -861,7 +704,7 @@ marcaSelect.addEventListener('change', function() {
         modeloSelect.appendChild(option);
     });
 });
-  
+
 // Evento para modelo
 modeloSelect.addEventListener('change', function() {
     anoSelect.innerHTML = '<option value="">Selecione...</option>';
@@ -878,7 +721,7 @@ modeloSelect.addEventListener('change', function() {
         anoSelect.appendChild(option);
     });
 });
-  
+
 // Função para adicionar item ao carrinho
 function adicionarAoCarrinho() {
     if (!state.linha || !state.tipoMaquina || !marcaSelect.value || !modeloSelect.value || !anoSelect.value || !corSelecionada.nome) {
@@ -903,7 +746,7 @@ function adicionarAoCarrinho() {
     atualizarCarrinho();
     mostrarFeedback('Item adicionado ao carrinho!');
 }
-  
+
 // Função para calcular preço baseado no tipo de máquina
 function calcularPreco(linha, tipoMaquina) {
     // Preços base por linha
@@ -932,12 +775,12 @@ function calcularPreco(linha, tipoMaquina) {
     
     return precoBase + adicional;
 }
-  
+
 // Função para salvar carrinho no localStorage
 function salvarCarrinho() {
     localStorage.setItem('carrinho', JSON.stringify(state.carrinho));
 }
-  
+
 // Função para atualizar a exibição do carrinho
 function atualizarCarrinho() {
     const listaCarrinho = document.getElementById('listaCarrinho');
@@ -1003,7 +846,7 @@ function atualizarCarrinho() {
     totalItensSpan.textContent = `R$ ${total.toFixed(2)}`;
     atualizarTotais();
 }
-  
+
 // Função para atualizar totais (itens + frete)
 function atualizarTotais() {
     const totalItens = state.carrinho.reduce((sum, item) => sum + item.preco, 0);
@@ -1012,7 +855,7 @@ function atualizarTotais() {
     totalItensSpan.textContent = `R$ ${totalItens.toFixed(2)}`;
     totalGeralSpan.textContent = `R$ ${totalGeral.toFixed(2)}`;
 }
-  
+
 // Função para remover item do carrinho
 function removerDoCarrinho(id) {
     state.carrinho = state.carrinho.filter(item => item.id !== id);
@@ -1020,7 +863,7 @@ function removerDoCarrinho(id) {
     atualizarCarrinho();
     mostrarFeedback('Item removido do carrinho');
 }
-  
+
 // Função para mostrar feedback ao usuário
 function mostrarFeedback(mensagem, tipo = 'sucesso') {
     feedbackMessage.textContent = mensagem;
@@ -1037,7 +880,7 @@ function mostrarFeedback(mensagem, tipo = 'sucesso') {
         feedback.classList.remove('visible');
     }, 3000);
 }
-  
+
 // Função para finalizar pedido via WhatsApp (versão atualizada)
 function finalizarPedido() {
     if (state.carrinho.length === 0) {
@@ -1150,7 +993,7 @@ function finalizarPedido() {
     formClienteContainer.style.display = 'none';
     document.querySelector('.carrinho').style.display = 'block';
 }
-  
+
 // Função para gerar protocolo
 function generateProtocol() {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -1160,3 +1003,179 @@ function generateProtocol() {
     }
     return protocol;
 }
+
+// Função para buscar endereço via CEP (ViaCEP)
+async function buscarEnderecoViaCEP() {
+    const cep = document.getElementById('cep').value.replace(/\D/g, '');
+    
+    if (cep.length !== 8) {
+        return;
+    }
+  
+    try {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const data = await response.json();
+  
+        if (!data.erro) {
+            document.getElementById('estado').value = data.uf;
+            document.getElementById('cidade').value = data.localidade;
+            document.getElementById('bairro').value = data.bairro;
+            document.getElementById('rua').value = data.logradouro;
+        } else {
+            mostrarFeedback('CEP não encontrado', 'erro');
+        }
+    } catch (error) {
+        console.error('Erro ao buscar CEP:', error);
+        mostrarFeedback('Erro ao buscar CEP', 'erro');
+    }
+}
+
+// Função para calcular frete usando API pública (ViaCEP + lógica regional)
+async function calcularFrete() {
+    const cep = cepFreteInput.value.replace(/\D/g, '');
+    
+    if (!cep || cep.length !== 8) {
+        mostrarFeedback('Digite um CEP válido (8 dígitos)', 'erro');
+        return;
+    }
+  
+    // Mostrar loading
+    const btnFrete = document.querySelector('.btn-calcular-frete');
+    btnFrete.disabled = true;
+    btnFrete.textContent = 'Calculando...';
+  
+    try {
+        // 1. Validar CEP usando ViaCEP
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const cepData = await response.json();
+        
+        if (cepData.erro) {
+            throw new Error('CEP não encontrado');
+        }
+  
+        // 2. Calcular frete baseado na região do CEP
+        const regiao = parseInt(cep.charAt(0));
+        let valorFrete = 0;
+        let prazoFrete = 0;
+        let transportadora = 'Correios';
+  
+        // Tabela de frete baseada na região
+        switch(regiao) {
+            case 1: case 2: case 3: // Sudeste
+                valorFrete = 30 + (state.carrinho.length * 5);
+                prazoFrete = 3;
+                transportadora = 'Correios PAC';
+                break;
+            case 4: case 5: // Nordeste
+                valorFrete = 45 + (state.carrinho.length * 7);
+                prazoFrete = 7;
+                transportadora = 'Correios PAC';
+                break;
+            case 6: // Centro-Oeste
+                valorFrete = 40 + (state.carrinho.length * 6);
+                prazoFrete = 5;
+                transportadora = 'Correios SEDEX';
+                break;
+            case 7: case 8: case 9: // Sul e Norte
+                valorFrete = 50 + (state.carrinho.length * 8);
+                prazoFrete = 8;
+                transportadora = 'Correios PAC';
+                break;
+            default: // Outros
+                valorFrete = 60 + (state.carrinho.length * 10);
+                prazoFrete = 10;
+                transportadora = 'Transportadora Parceira';
+        }
+  
+        // 3. Atualizar estado e UI
+        state.frete = {
+            valor: valorFrete,
+            prazo: prazoFrete,
+            transportadora: transportadora
+        };
+  
+        valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
+        prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
+        transportadoraFreteSpan.textContent = state.frete.transportadora;
+        resultadoFrete.style.display = 'block';
+  
+        atualizarTotais();
+        mostrarFeedback('Frete calculado com sucesso!');
+  
+    } catch (error) {
+        console.error('Erro no cálculo de frete:', error);
+        mostrarFeedback(`Erro ao calcular frete: ${error.message}`, 'erro');
+        
+        // Usar valores padrão como fallback
+        state.frete = {
+            valor: 50 + (state.carrinho.length * 10),
+            prazo: 5,
+            transportadora: 'Transportadora padrão'
+        };
+        
+        valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
+        prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
+        transportadoraFreteSpan.textContent = state.frete.transportadora;
+        resultadoFrete.style.display = 'block';
+    } finally {
+        btnFrete.disabled = false;
+        btnFrete.textContent = 'Calcular';
+    }
+}
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', () => {
+    atualizarCarrinho();
+    atualizarPreviewCor();
+    
+    // Adiciona eventos aos botões de linha principal
+    botoesLinha.forEach(botao => {
+        botao.addEventListener('click', function() {
+            selecionarLinha(this);
+        });
+    });
+    
+    // Adiciona eventos aos botões de máquina
+    botoesMaquina.forEach(botao => {
+        botao.addEventListener('click', function() {
+            selecionarMaquina(this);
+        });
+    });
+  
+    // Abrir modal de cores quando clicar no seletor
+    seletorCor.addEventListener('click', abrirModalCores);
+  
+    // Fechar modal
+    fecharModal.addEventListener('click', fecharModalCores);
+    modalCores.addEventListener('click', function(e) {
+        if (e.target === modalCores) {
+            fecharModalCores();
+        }
+    });
+  
+    // Confirmar seleção de cor
+    confirmarCorBtn.addEventListener('click', confirmarCorSelecionada);
+  
+    // Fechar modal com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalCores.style.display === 'flex') {
+            fecharModalCores();
+        }
+    });
+  
+    // Auto-completar endereço via CEP
+    document.getElementById('cep').addEventListener('blur', buscarEnderecoViaCEP);
+
+    // Adicionar eventos para os botões de seleção de tipo de revestimento
+    document.querySelectorAll('.botao-opcao').forEach(botao => {
+        botao.addEventListener('click', function() {
+            selecionarTipoRevestimento(this.dataset.tipo);
+        });
+    });
+    
+    // Inicializar com cor simples selecionada
+    selecionarTipoRevestimento('cor-simples');
+    
+    // Adicionar evento para o botão de adicionar ao carrinho
+    document.querySelector('button[onclick="adicionarAoCarrinho()"]').addEventListener('click', adicionarAoCarrinho);
+});
