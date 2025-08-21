@@ -105,44 +105,44 @@
           nome: "Couro Sintético",
           cores: [
             { nome: "Preto Elegance", codigo: "#1A1A1A", imagem: "imagens/cor1.jpg" },
-            { nome: "Marrom Clássico", codigo: "#5E2C04", imagem: "cor2.jpg" },
-            { nome: "Bege Natural", codigo: "#E6D5B8", imagem: "cor3.jpg" },
-            { nome: "Vinho Nobre", codigo: "#722F37", imagem: "cor4.jpg" },
-            { nome: "Azul Royal", codigo: "#0F056B", imagem: "cor5.jpg" },
-            { nome: "Verde Floresta", codigo: "#228B22", imagem: "cor6.jpg" },
-            { nome: "Grafite", codigo: "#383838", imagem: "cor7.jpg" },
-            { nome: "Terra Queimada", codigo: "#8B4513", imagem: "cor8.jpg" },
-            { nome: "Borgonha", codigo: "#800020", imagem: "cor9.jpg" },
-            { nome: "Caramelo", codigo: "#D27D46", imagem: "cor10.jpg" },
-            { nome: "Cinza Platinum", codigo: "#C0C0C0", imagem: "cor11.jpg" },
-            { nome: "Azul Petróleo", codigo: "#003B4D", imagem: "cor12.jpg" },
-            { nome: "Off-White", codigo: "#F5F5DC", imagem: "cor13.jpg" }
+            { nome: "Marrom Clássico", codigo: "#5E2C04", imagem: "imagens/cor2.jpg" },
+            { nome: "Bege Natural", codigo: "#E6D5B8", imagem: "imagens/cor3.jpg" },
+            { nome: "Vinho Nobre", codigo: "#722F37", imagem: "imagens/cor4.jpg" },
+            { nome: "Azul Royal", codigo: "#0F056B", imagem: "imagens/cor5.jpg" },
+            { nome: "Verde Floresta", codigo: "#228B22", imagem: "imagens/cor6.jpg" },
+            { nome: "Grafite", codigo: "#383838", imagem: "imagens/cor7.jpg" },
+            { nome: "Terra Queimada", codigo: "#8B4513", imagem: "imagens/cor8.jpg" },
+            { nome: "Borgonha", codigo: "#800020", imagem: "imagens/cor9.jpg" },
+            { nome: "Caramelo", codigo: "#D27D46", imagem: "imagens/cor10.jpg" },
+            { nome: "Cinza Platinum", codigo: "#C0C0C0", imagem: "imagens/cor11.jpg" },
+            { nome: "Azul Petróleo", codigo: "#003B4D", imagem: "imagens/cor12.jpg" },
+            { nome: "Off-White", codigo: "#F5F5DC", imagem: "imagens/cor13.jpg" }
           ]
         },
         couro_sport: {
           nome: "Couro Sport",
           cores: [
-            { nome: "Preto com Costuras Vermelhas", codigo: "#000000", detalhe: "#FF0000", imagem: "cor14.jpg" },
-            { nome: "Azul Racing com Branco", codigo: "#00008B", detalhe: "#FFFFFF", imagem: "cor15.jpg" },
-            { nome: "Cinza Metalizado com Laranja", codigo: "#808080", detalhe: "#FFA500", imagem: "cor16.jpg" },
-            { nome: "Branco Gelado com Preto", codigo: "#F8F8FF", detalhe: "#000000", imagem: "cor17.jpg" }
+            { nome: "Preto com Costuras Vermelhas", codigo: "#000000", detalhe: "#FF0000", imagem: "imagens/cor14.jpg" },
+            { nome: "Azul Racing com Branco", codigo: "#00008B", detalhe: "#FFFFFF", imagem: "imagens/cor15.jpg" },
+            { nome: "Cinza Metalizado com Laranja", codigo: "#808080", detalhe: "#FFA500", imagem: "imagens/cor16.jpg" },
+            { nome: "Branco Gelado com Preto", codigo: "#F8F8FF", detalhe: "#000000", imagem: "imagens/cor17.jpg" }
           ]
         },
         pelucia: {
           nome: "Pelúcia (Xinil)",
           cores: [
-            { nome: "Preto Fosco", codigo: "#0D0D0D", imagem: "cor18.jpg" },
-            { nome: "Cinza Chumbo", codigo: "#2F4F4F", imagem: "cor19.jpg" },
-            { nome: "Azul Marinho", codigo: "#000080", imagem: "cor20.jpg" },
-            { nome: "Verde Militar", codigo: "#4B5320", imagem: "cor21.jpg" },
-            { nome: "Vermelho Ferrari", codigo: "#FF2800", imagem: "cor22.jpg" },
-            { nome: "Bege Areia", codigo: "#F5E8C7", imagem: "cor23.jpg" },
-            { nome: "Bordô", codigo: "#7C0A02", imagem: "cor24.jpg" },
-            { nome: "Azul Celeste", codigo: "#4682B4", imagem: "cor25.jpg" },
-            { nome: "Terracota", codigo: "#E2725B", imagem: "cor26.jpg" },
-            { nome: "Lavanda", codigo: "#967BB6", imagem: "cor27.jpg" },
-            { nome: "Verde Limão", codigo: "#C9DC87", imagem: "cor28.jpg" },
-            { nome: "Rosa Blush", codigo: "#FFD1DC", imagem: "cor29.jpg" }
+            { nome: "Preto Fosco", codigo: "#0D0D0D", imagem: "imagens/cor18.jpg" },
+            { nome: "Cinza Chumbo", codigo: "#2F4F4F", imagem: "imagens/cor19.jpg" },
+            { nome: "Azul Marinho", codigo: "#000080", imagem: "imagens/cor20.jpg" },
+            { nome: "Verde Militar", codigo: "#4B5320", imagem: "imagens/cor21.jpg" },
+            { nome: "Vermelho Ferrari", codigo: "#FF2800", imagem: "imagens/cor22.jpg" },
+            { nome: "Bege Areia", codigo: "#F5E8C7", imagem: "imagens/cor23.jpg" },
+            { nome: "Bordô", codigo: "#7C0A02", imagem: "imagens/cor24.jpg" },
+            { nome: "Azul Celeste", codigo: "#4682B4", imagem: "imagens/cor25.jpg" },
+            { nome: "Terracota", codigo: "#E2725B", imagem: "imagens/cor26.jpg" },
+            { nome: "Lavanda", codigo: "#967BB6", imagem: "imagens/cor27.jpg" },
+            { nome: "Verde Limão", codigo: "#C9DC87", imagem: "imagens/cor28.jpg" },
+            { nome: "Rosa Blush", codigo: "#FFD1DC", imagem: "imagens/cor29.jpg" }
           ]
         }
     };
