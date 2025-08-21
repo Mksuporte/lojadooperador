@@ -104,7 +104,7 @@
         couro: {
           nome: "Couro Sintético",
           cores: [
-            { nome: "Preto Elegance", codigo: "#1A1A1A", imagem: "cor1.jpg" },
+            { nome: "Preto Elegance", codigo: "#1A1A1A", imagem: "imagens/cor1.jpg" },
             { nome: "Marrom Clássico", codigo: "#5E2C04", imagem: "cor2.jpg" },
             { nome: "Bege Natural", codigo: "#E6D5B8", imagem: "cor3.jpg" },
             { nome: "Vinho Nobre", codigo: "#722F37", imagem: "cor4.jpg" },
