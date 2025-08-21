@@ -1,3 +1,4 @@
+
     // Dados dos produtos atualizados
     const dados = {
         "Linha Amarela": {
@@ -98,50 +99,50 @@
         }
     };
 
-    // Definição dos materiais e cores
+    // Definição dos materiais e cores - AGORA COM IMAGENS
     const materiais = {
         couro: {
           nome: "Couro Sintético",
           cores: [
-            { nome: "Preto Elegance", codigo: "#1A1A1A" },
-            { nome: "Marrom Clássico", codigo: "#5E2C04" },
-            { nome: "Bege Natural", codigo: "#E6D5B8" },
-            { nome: "Vinho Nobre", codigo: "#722F37" },
-            { nome: "Azul Royal", codigo: "#0F056B" },
-            { nome: "Verde Floresta", codigo: "#228B22" },
-            { nome: "Grafite", codigo: "#383838" },
-            { nome: "Terra Queimada", codigo: "#8B4513" },
-            { nome: "Borgonha", codigo: "#800020" },
-            { nome: "Caramelo", codigo: "#D27D46" },
-            { nome: "Cinza Platinum", codigo: "#C0C0C0" },
-            { nome: "Azul Petróleo", codigo: "#003B4D" },
-            { nome: "Off-White", codigo: "#F5F5DC" }
+            { nome: "Preto Elegance", codigo: "#1A1A1A", imagem: "cor1.jpg" },
+            { nome: "Marrom Clássico", codigo: "#5E2C04", imagem: "cor2.jpg" },
+            { nome: "Bege Natural", codigo: "#E6D5B8", imagem: "cor3.jpg" },
+            { nome: "Vinho Nobre", codigo: "#722F37", imagem: "cor4.jpg" },
+            { nome: "Azul Royal", codigo: "#0F056B", imagem: "cor5.jpg" },
+            { nome: "Verde Floresta", codigo: "#228B22", imagem: "cor6.jpg" },
+            { nome: "Grafite", codigo: "#383838", imagem: "cor7.jpg" },
+            { nome: "Terra Queimada", codigo: "#8B4513", imagem: "cor8.jpg" },
+            { nome: "Borgonha", codigo: "#800020", imagem: "cor9.jpg" },
+            { nome: "Caramelo", codigo: "#D27D46", imagem: "cor10.jpg" },
+            { nome: "Cinza Platinum", codigo: "#C0C0C0", imagem: "cor11.jpg" },
+            { nome: "Azul Petróleo", codigo: "#003B4D", imagem: "cor12.jpg" },
+            { nome: "Off-White", codigo: "#F5F5DC", imagem: "cor13.jpg" }
           ]
         },
         couro_sport: {
           nome: "Couro Sport",
           cores: [
-            { nome: "Preto com Costuras Vermelhas", codigo: "#000000", detalhe: "#FF0000" },
-            { nome: "Azul Racing com Branco", codigo: "#00008B", detalhe: "#FFFFFF" },
-            { nome: "Cinza Metalizado com Laranja", codigo: "#808080", detalhe: "#FFA500" },
-            { nome: "Branco Gelado com Preto", codigo: "#F8F8FF", detalhe: "#000000" }
+            { nome: "Preto com Costuras Vermelhas", codigo: "#000000", detalhe: "#FF0000", imagem: "cor14.jpg" },
+            { nome: "Azul Racing com Branco", codigo: "#00008B", detalhe: "#FFFFFF", imagem: "cor15.jpg" },
+            { nome: "Cinza Metalizado com Laranja", codigo: "#808080", detalhe: "#FFA500", imagem: "cor16.jpg" },
+            { nome: "Branco Gelado com Preto", codigo: "#F8F8FF", detalhe: "#000000", imagem: "cor17.jpg" }
           ]
         },
         pelucia: {
           nome: "Pelúcia (Xinil)",
           cores: [
-            { nome: "Preto Fosco", codigo: "#0D0D0D" },
-            { nome: "Cinza Chumbo", codigo: "#2F4F4F" },
-            { nome: "Azul Marinho", codigo: "#000080" },
-            { nome: "Verde Militar", codigo: "#4B5320" },
-            { nome: "Vermelho Ferrari", codigo: "#FF2800" },
-            { nome: "Bege Areia", codigo: "#F5E8C7" },
-            { nome: "Bordô", codigo: "#7C0A02" },
-            { nome: "Azul Celeste", codigo: "#4682B4" },
-            { nome: "Terracota", codigo: "#E2725B" },
-            { nome: "Lavanda", codigo: "#967BB6" },
-            { nome: "Verde Limão", codigo: "#C9DC87" },
-            { nome: "Rosa Blush", codigo: "#FFD1DC" }
+            { nome: "Preto Fosco", codigo: "#0D0D0D", imagem: "cor18.jpg" },
+            { nome: "Cinza Chumbo", codigo: "#2F4F4F", imagem: "cor19.jpg" },
+            { nome: "Azul Marinho", codigo: "#000080", imagem: "cor20.jpg" },
+            { nome: "Verde Militar", codigo: "#4B5320", imagem: "cor21.jpg" },
+            { nome: "Vermelho Ferrari", codigo: "#FF2800", imagem: "cor22.jpg" },
+            { nome: "Bege Areia", codigo: "#F5E8C7", imagem: "cor23.jpg" },
+            { nome: "Bordô", codigo: "#7C0A02", imagem: "cor24.jpg" },
+            { nome: "Azul Celeste", codigo: "#4682B4", imagem: "cor25.jpg" },
+            { nome: "Terracota", codigo: "#E2725B", imagem: "cor26.jpg" },
+            { nome: "Lavanda", codigo: "#967BB6", imagem: "cor27.jpg" },
+            { nome: "Verde Limão", codigo: "#C9DC87", imagem: "cor28.jpg" },
+            { nome: "Rosa Blush", codigo: "#FFD1DC", imagem: "cor29.jpg" }
           ]
         }
     };
@@ -256,27 +257,37 @@
     const gridCores = document.getElementById('grid-cores');
     const fecharModal = document.querySelector('.fechar-modal');
     const confirmarCorBtn = document.getElementById('confirmar-cor');
-    const kitRevestimentoContainer = document.getElementById('kit-revestimento-container');
+    const kitsGrid = document.getElementById('kits-grid');
     const personalizacaoContainer = document.getElementById('personalizacao-container');
     const partesPersonalizacao = document.getElementById('partes-personalizacao');
+    const tituloSelecao = document.getElementById('titulo-selecao');
+
+    // Função para gerar protocolo
+    function generateProtocol() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let protocol = '';
+        for (let i = 0; i < 10; i++) {
+            protocol += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return protocol;
+    }
 
     // Função para mostrar os kits disponíveis
     function mostrarKitsRevestimento() {
-        const grid = document.querySelector('.kits-grid');
-        grid.innerHTML = '';
+        kitsGrid.innerHTML = '';
         
         Object.entries(kitsRevestimento).forEach(([id, kit]) => {
             const kitElement = document.createElement('div');
-            kitElement.className = 'botao-linha';
+            kitElement.className = 'kit-item';
             kitElement.innerHTML = `
                 <h4>${kit.nome}</h4>
                 <p>${kit.descricao}</p>
-                <p>R$ ${kit.preco.toFixed(2)}</p>
+                <p><strong>R$ ${kit.preco.toFixed(2)}</strong></p>
             `;
             
             kitElement.addEventListener('click', () => {
                 // Resetar seleções anteriores
-                document.querySelectorAll('.kits-grid > div').forEach(el => {
+                document.querySelectorAll('.kit-item').forEach(el => {
                     el.classList.remove('selecionado');
                 });
                 
@@ -288,9 +299,12 @@
                 
                 // Mostrar opções de personalização
                 mostrarPersonalizacaoKit();
+                
+                // Feedback para o usuário
+                mostrarFeedback(`Kit ${kit.nome} selecionado!`);
             });
             
-            grid.appendChild(kitElement);
+            kitsGrid.appendChild(kitElement);
         });
         
         // Esconder personalização inicialmente
@@ -308,10 +322,12 @@
             const materialInfo = materiais[config.material];
             
             parteDiv.innerHTML = `
-                <label>${parte.replace(/_/g, ' ')} (${materialInfo.nome})</label>
+                <label>${parte.replace(/_/g, ' ').toUpperCase()} (${materialInfo.nome})</label>
                 <div class="seletor-cor-parte" data-parte="${parte}">
-                    <div class="cor-preview" style="background-color: ${config.cor || '#ccc'}"></div>
-                    <span>${config.corNome || 'Selecione a cor'}</span>
+                    <div class="cor-preview" style="background-color: ${config.cor || '#ccc'};
+                        ${config.detalhe ? `background: linear-gradient(135deg, ${config.cor} 50%, ${config.detalhe} 50%);` : ''}">
+                    </div>
+                    <span>${config.corNome || 'Clique para selecionar a cor'}</span>
                 </div>
             `;
             
@@ -354,14 +370,10 @@
                 corSelecionadaModal = cor;
             }
             
-            // Estilo especial para cores com detalhes
-            if (cor.detalhe) {
-                corItem.style.background = `linear-gradient(135deg, ${cor.codigo} 50%, ${cor.detalhe} 50%)`;
-            } else {
-                corItem.style.backgroundColor = cor.codigo;
-            }
-            
-            corItem.innerHTML = `<span>${cor.nome}</span>`;
+            corItem.innerHTML = `
+                <img src="${cor.imagem}" alt="${cor.nome}">
+                <span>${cor.nome}</span>
+            `;
             
             corItem.addEventListener('click', function() {
                 // Remover seleção anterior
@@ -420,16 +432,29 @@
         // Resetar variáveis
         corSelecionadaModal = null;
         parteSelecionadaModal = null;
+        
+        mostrarFeedback('Cor selecionada com sucesso!');
     }
 
-    // Função para adicionar o kit personalizado ao carrinho
-    function adicionarKitAoCarrinho() {
+    // Função para adicionar item ao carrinho
+    function adicionarAoCarrinho() {
+        if (!kitSelecionado) {
+            mostrarFeedback('Selecione um kit de revestimento antes de adicionar ao carrinho', 'erro');
+            return;
+        }
+        
         // Verificar se todas as partes têm cor selecionada
         for (const [parte, config] of Object.entries(kitSelecionado.partes)) {
             if (!config.cor) {
                 mostrarFeedback(`Selecione uma cor para ${parte.replace(/_/g, ' ')}`, 'erro');
                 return;
             }
+        }
+        
+        // Verificar se marca, modelo e ano foram selecionados
+        if (!marcaSelect.value || !modeloSelect.value || !anoSelect.value) {
+            mostrarFeedback('Selecione marca, modelo e ano do equipamento', 'erro');
+            return;
         }
         
         // Criar item para o carrinho
@@ -456,7 +481,7 @@
         // Resetar seleção
         kitSelecionado = null;
         personalizacaoContainer.style.display = 'none';
-        document.querySelectorAll('.kits-grid > div').forEach(el => {
+        document.querySelectorAll('.kit-item').forEach(el => {
             el.classList.remove('selecionado');
         });
     }
@@ -475,7 +500,7 @@
         // Resetar kit selecionado
         kitSelecionado = null;
         personalizacaoContainer.style.display = 'none';
-        document.querySelectorAll('.kits-grid > div').forEach(el => {
+        document.querySelectorAll('.kit-item').forEach(el => {
             el.classList.remove('selecionado');
         });
     }
@@ -544,6 +569,9 @@
         // Definir tipo de máquina selecionada
         state.tipoMaquina = botao.dataset.tipo;
         
+        // Atualizar título da seção
+        tituloSelecao.textContent = `Personalize o kit para ${tipoMaquinaMap[state.tipoMaquina] || state.tipoMaquina}`;
+        
         // Mostrar container de seleção
         selecaoContainer.style.display = 'block';
         
@@ -574,119 +602,6 @@
             option.textContent = marca;
             marcaSelect.appendChild(option);
         });
-    }
-
-    // Evento para marca
-    marcaSelect.addEventListener('change', function() {
-        modeloSelect.innerHTML = '<option value="">Selecione...</option>';
-        anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
-        
-        if (!this.value) return;
-        
-        // Obter todos os modelos da marca selecionada
-        const modelos = Object.keys(dados[state.linha][this.value]);
-        
-        modelos.forEach(modelo => {
-            const option = document.createElement('option');
-            option.value = modelo;
-            option.textContent = modelo;
-            modeloSelect.appendChild(option);
-        });
-    });
-
-    // Evento para modelo
-    modeloSelect.addEventListener('change', function() {
-        anoSelect.innerHTML = '<option value="">Selecione...</option>';
-        
-        if (!this.value || !marcaSelect.value) return;
-        
-        // Obter todos os anos para o modelo selecionado
-        const anos = dados[state.linha][marcaSelect.value][this.value].anos;
-        
-        anos.forEach(ano => {
-            const option = document.createElement('option');
-            option.value = ano;
-            option.textContent = ano;
-            anoSelect.appendChild(option);
-        });
-    });
-
-    // Função para adicionar item ao carrinho (agora apenas para kits)
-    function adicionarAoCarrinho() {
-        if (!kitSelecionado) {
-            mostrarFeedback('Selecione um kit de revestimento antes de adicionar ao carrinho', 'erro');
-            return;
-        }
-        
-        // Verificar se todas as partes têm cor selecionada
-        for (const [parte, config] of Object.entries(kitSelecionado.partes)) {
-            if (!config.cor) {
-                mostrarFeedback(`Selecione uma cor para ${parte.replace(/_/g, ' ')}`, 'erro');
-                return;
-            }
-        }
-        
-        // Criar item para o carrinho
-        const item = {
-            tipo: 'kit_revestimento',
-            kitId: kitSelecionado.id,
-            nome: kitSelecionado.nome,
-            preco: kitSelecionado.preco,
-            partes: { ...kitSelecionado.partes },
-            id: Date.now(),
-            linha: state.linha,
-            tipoMaquina: tipoMaquinaMap[state.tipoMaquina] || state.tipoMaquina,
-            marca: marcaSelect.value,
-            modelo: modeloSelect.value,
-            ano: anoSelect.value
-        };
-        
-        // Adicionar ao carrinho
-        state.carrinho.push(item);
-        salvarCarrinho();
-        atualizarCarrinho();
-        mostrarFeedback('Kit adicionado ao carrinho!');
-        
-        // Resetar seleção
-        kitSelecionado = null;
-        personalizacaoContainer.style.display = 'none';
-        document.querySelectorAll('.kits-grid > div').forEach(el => {
-            el.classList.remove('selecionado');
-        });
-        
-        // Resetar dropdowns
-        marcaSelect.selectedIndex = 0;
-        modeloSelect.innerHTML = '<option value="">Selecione uma marca primeiro</option>';
-        anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
-    }
-
-    // Função para calcular preço baseado no tipo de máquina
-    function calcularPreco(linha, tipoMaquina) {
-        // Preços base por linha
-        const precosBase = {
-            "Linha Amarela": 1500,
-            "Linha Verde": 1200,
-            "Linha Mini": 1000
-        };
-        
-        // Adicionais por tipo de máquina
-        const adicionais = {
-            "Escavadeira Hidráulica": 200,
-            "Retro Escavadeira": 150,
-            "Pá Carregadeira": 180,
-            "Moto Niveladora": 100,
-            "Trator de Esteira": 250,
-            "Trator": 100,
-            "Pulverizador": 150,
-            "Colheitadeira": 200,
-            "Mini Escavadeira": 50,
-            "Mini Carregadeira": 50
-        };
-        
-        const precoBase = precosBase[linha] || 1000;
-        const adicional = adicionais[tipoMaquina] || 0;
-        
-        return precoBase + adicional;
     }
 
     // Função para salvar carrinho no localStorage
@@ -782,18 +697,51 @@
         }, 3000);
     }
 
-    // Função para finalizar pedido via WhatsApp
-    function finalizarPedido() {
-        if (state.carrinho.length === 0) {
-            mostrarFeedback('Carrinho vazio!', 'erro');
+    // Função para calcular frete (simulação)
+    function calcularFrete() {
+        const cep = cepFreteInput.value.replace(/\D/g, '');
+        
+        if (cep.length !== 8) {
+            mostrarFeedback('Digite um CEP válido com 8 dígitos', 'erro');
             return;
         }
         
+        // Simulação de cálculo de frete
+        const valorFrete = Math.random() * 50 + 20; // Valor entre 20 and 70
+        const prazo = Math.floor(Math.random() * 10) + 5; // Prazo entre 5 e 15 dias
+        
+        state.frete = {
+            valor: parseFloat(valorFrete.toFixed(2)),
+            prazo: prazo,
+            transportadora: 'Correios'
+        };
+        
+        // Atualizar exibição
+        valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
+        prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
+        transportadoraFreteSpan.textContent = state.frete.transportadora;
+        
+        resultadoFrete.style.display = 'block';
+        atualizarTotais();
+        
+        mostrarFeedback('Frete calculado com sucesso!');
+    }
+
+    // Função para finalizar o pedido e abrir o WhatsApp
+    function finalizarPedido() {
         // Validar formulário
-        const form = document.getElementById('formCliente');
-        if (!form.checkValidity()) {
-            form.reportValidity();
+        const nome = document.getElementById('nome').value;
+        const cpf_cnpj = document.getElementById('cpf_cnpj').value;
+        const telefone = document.getElementById('telefone').value;
+        const cep = document.getElementById('cep').value;
+        
+        if (!nome || !cpf_cnpj || !telefone || !cep) {
             mostrarFeedback('Preencha todos os campos obrigatórios', 'erro');
+            return;
+        }
+        
+        if (state.carrinho.length === 0) {
+            mostrarFeedback('Carrinho vazio! Adicione itens antes de finalizar', 'erro');
             return;
         }
         
@@ -879,145 +827,15 @@
         // Criar o link do WhatsApp
         const url = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
         
-        // Abrir WhatsApp em nova aba
+        // Abrir WhatsApp
         window.open(url, '_blank');
         
         // Limpar carrinho após envio
         state.carrinho = [];
         salvarCarrinho();
         atualizarCarrinho();
-        form.reset();
-        formClienteContainer.style.display = 'none';
-        document.querySelector('.carrinho').style.display = 'block';
-    }
-
-    // Função para gerar protocolo
-    function generateProtocol() {
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let protocol = '';
-        for (let i = 0; i < 10; i++) {
-            protocol += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return protocol;
-    }
-
-    // Função para buscar endereço via CEP (ViaCEP)
-    async function buscarEnderecoViaCEP() {
-        const cep = document.getElementById('cep').value.replace(/\D/g, '');
         
-        if (cep.length !== 8) {
-            return;
-        }
-      
-        try {
-            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-            const data = await response.json();
-      
-            if (!data.erro) {
-                document.getElementById('estado').value = data.uf;
-                document.getElementById('cidade').value = data.localidade;
-                document.getElementById('bairro').value = data.bairro;
-                document.getElementById('rua').value = data.logradouro;
-            } else {
-                mostrarFeedback('CEP não encontrado', 'erro');
-            }
-        } catch (error) {
-            console.error('Erro ao buscar CEP:', error);
-            mostrarFeedback('Erro ao buscar CEP', 'erro');
-        }
-    }
-
-    // Função para calcular frete usando API pública (ViaCEP + lógica regional)
-    async function calcularFrete() {
-        const cep = cepFreteInput.value.replace(/\D/g, '');
-        
-        if (!cep || cep.length !== 8) {
-            mostrarFeedback('Digite um CEP válido (8 dígitos)', 'erro');
-            return;
-        }
-      
-        // Mostrar loading
-        const btnFrete = document.querySelector('.btn-calcular-frete');
-        btnFrete.disabled = true;
-        btnFrete.textContent = 'Calculando...';
-      
-        try {
-            // 1. Validar CEP usando ViaCEP
-            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-            const cepData = await response.json();
-            
-            if (cepData.erro) {
-                throw new Error('CEP não encontrado');
-            }
-      
-            // 2. Calcular frete baseado na região do CEP
-            const regiao = parseInt(cep.charAt(0));
-            let valorFrete = 0;
-            let prazoFrete = 0;
-            let transportadora = 'Correios';
-      
-            // Tabela de frete baseada na região
-            switch(regiao) {
-                case 1: case 2: case 3: // Sudeste
-                    valorFrete = 30 + (state.carrinho.length * 5);
-                    prazoFrete = 3;
-                    transportadora = 'Correios PAC';
-                    break;
-                case 4: case 5: // Nordeste
-                    valorFrete = 45 + (state.carrinho.length * 7);
-                    prazoFrete = 7;
-                    transportadora = 'Correios PAC';
-                    break;
-                case 6: // Centro-Oeste
-                    valorFrete = 40 + (state.carrinho.length * 6);
-                    prazoFrete = 5;
-                    transportadora = 'Correios SEDEX';
-                    break;
-                case 7: case 8: case 9: // Sul e Norte
-                    valorFrete = 50 + (state.carrinho.length * 8);
-                    prazoFrete = 8;
-                    transportadora = 'Correios PAC';
-                    break;
-                default: // Outros
-                    valorFrete = 60 + (state.carrinho.length * 10);
-                    prazoFrete = 10;
-                    transportadora = 'Transportadora Parceira';
-            }
-      
-            // 3. Atualizar estado e UI
-            state.frete = {
-                valor: valorFrete,
-                prazo: prazoFrete,
-                transportadora: transportadora
-            };
-      
-            valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
-            prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
-            transportadoraFreteSpan.textContent = state.frete.transportadora;
-            resultadoFrete.style.display = 'block';
-      
-            atualizarTotais();
-            mostrarFeedback('Frete calculado com sucesso!');
-      
-        } catch (error) {
-            console.error('Erro no cálculo de frete:', error);
-            mostrarFeedback(`Erro ao calcular frete: ${error.message}`, 'erro');
-            
-            // Usar valores padrão como fallback
-            state.frete = {
-                valor: 50 + (state.carrinho.length * 10),
-                prazo: 5,
-                transportadora: 'Transportadora padrão'
-            };
-            
-            valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
-            prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
-            transportadoraFreteSpan.textContent = state.frete.transportadora;
-            resultadoFrete.style.display = 'block';
-        } finally {
-            btnFrete.disabled = false;
-            btnFrete.textContent = 'Calcular';
-        }
+        mostrarFeedback('Pedido enviado com sucesso! Em breve entraremos em contato.');
     }
 
     // Inicialização
@@ -1055,10 +873,39 @@
                 fecharModalCores();
             }
         });
-      
-        // Auto-completar endereço via CEP
-        document.getElementById('cep').addEventListener('blur', buscarEnderecoViaCEP);
         
-        // Adicionar evento para o botão de adicionar ao carrinho
-        document.querySelector('button[onclick="adicionarAoCarrinho()"]').addEventListener('click', adicionarAoCarrinho);
+        // Evento para marca
+        marcaSelect.addEventListener('change', function() {
+            modeloSelect.innerHTML = '<option value="">Selecione...</option>';
+            anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
+            
+            if (!this.value) return;
+            
+            // Obter todos os modelos da marca selecionada
+            const modelos = Object.keys(dados[state.linha][this.value]);
+            
+            modelos.forEach(modelo => {
+                const option = document.createElement('option');
+                option.value = modelo;
+                option.textContent = modelo;
+                modeloSelect.appendChild(option);
+            });
+        });
+
+        // Evento para modelo
+        modeloSelect.addEventListener('change', function() {
+            anoSelect.innerHTML = '<option value="">Selecione...</option>';
+            
+            if (!this.value || !marcaSelect.value) return;
+            
+            // Obter todos os anos para o modelo selecionado
+            const anos = dados[state.linha][marcaSelect.value][this.value].anos;
+            
+            anos.forEach(ano => {
+                const option = document.createElement('option');
+                option.value = ano;
+                option.textContent = ano;
+                anoSelect.appendChild(option);
+            });
+        });
     });
