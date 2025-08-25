@@ -81,7 +81,7 @@ const dados = {
       "Trator A114": { anos: ["2017", "2018", "2019"] },
       "Trator N134": { anos: ["2019", "2020", "2021"] },
       "Colheitadeira BH 2080": { anos: ["2016", "2017", "2018"] },
-      "Colheitadeira BH 3080": { anos: ["2018", "2019", "2020"] },
+      "Colheitadeira BH 3080": { anos: ["2018", "2019", "2020] },
       "Plantadeira VP 1250": { anos: ["2015", "2016", "2017"] },
       "Pulverizador VP 3000": { anos: ["2019", "2020", "2021"] }
     }
@@ -286,6 +286,17 @@ function generateProtocol() {
     return protocol;
 }
 
+// Função para obter a imagem da cor baseada no material e nome da cor
+function obterImagemDaCor(material, corNome) {
+    if (!material || !corNome) return '';
+    
+    const materialObj = materiais[material];
+    if (!materialObj || !materialObj.cores) return '';
+    
+    const corEncontrada = materialObj.cores.find(cor => cor.nome === corNome);
+    return corEncontrada ? corEncontrada.imagem : '';
+}
+
 // Função para mostrar os kits disponíveis
 function mostrarKitsRevestimento() {
     kitsGrid.innerHTML = '';
@@ -338,9 +349,11 @@ function mostrarPersonalizacaoKit() {
         parteDiv.innerHTML = `
             <label>${parte.replace(/_/g, ' ').toUpperCase()} (${materialInfo.nome})</label>
             <div class="seletor-cor-parte" data-parte="${parte}">
-                <div class="cor-preview" style="background-color: ${config.cor || '#ccc'};
-                    ${config.detalhe ? `background: linear-gradient(135deg, ${config.cor} 50%, ${config.detalhe} 50%);` : ''}">
-                </div>
+                ${config.cor ? `
+                    <img src="${obterImagemDaCor(config.material, config.corNome)}" alt="${config.corNome}" class="cor-preview-image">
+                ` : `
+                    <div class="cor-preview" style="background-color: #ccc;"></div>
+                `}
                 <span>${config.corNome || 'Clique para selecionar a cor'}</span>
             </div>
         `;
@@ -371,6 +384,9 @@ function abrirModalCoresParaParte(parte, tipoMaterial) {
     tituloModal.textContent = `Selecione cor para ${parte.replace(/_/g, ' ')}`;
     gridCores.innerHTML = '';
     
+    // Definir a parte selecionada
+    parteSelecionadaModal = parte;
+    
     // Obter cores disponíveis para este material
     const cores = materiais[tipoMaterial].cores;
     
@@ -398,7 +414,6 @@ function abrirModalCoresParaParte(parte, tipoMaterial) {
             // Adicionar seleção atual
             this.classList.add('selecionada');
             corSelecionadaModal = cor;
-            parteSelecionadaModal = parte;
         });
         
         gridCores.appendChild(corItem);
@@ -417,8 +432,15 @@ function fecharModalCores() {
 
 // Função para confirmar a cor selecionada
 function confirmarCorSelecionada() {
-    if (!corSelecionadaModal) {
+    if (!corSelecionadaModal || !parteSelecionadaModal) {
         mostrarFeedback('Selecione uma cor antes de confirmar', 'erro');
+        return;
+    }
+
+    // Verificar se a parte existe no kit selecionado
+    if (!kitSelecionado || !kitSelecionado.partes || !kitSelecionado.partes[parteSelecionadaModal]) {
+        mostrarFeedback('Erro ao selecionar a cor. Tente novamente.', 'erro');
+        fecharModalCores();
         return;
     }
 
@@ -430,14 +452,25 @@ function confirmarCorSelecionada() {
         kitSelecionado.partes[parteSelecionadaModal].detalhe = corSelecionadaModal.detalhe;
     }
     
-    // Atualizar o preview
+    // Atualizar o preview com a IMAGEM da cor
     const seletor = document.querySelector(`.seletor-cor-parte[data-parte="${parteSelecionadaModal}"]`);
     if (seletor) {
-        const preview = seletor.querySelector('.cor-preview');
-        preview.style.backgroundColor = corSelecionadaModal.codigo;
-        if (corSelecionadaModal.detalhe) {
-            preview.style.background = `linear-gradient(135deg, ${corSelecionadaModal.codigo} 50%, ${corSelecionadaModal.detalhe} 50%)`;
-        }
+        // Remover preview antigo
+        const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
+        if (previewAntigo) previewAntigo.remove();
+        
+        // Adicionar nova imagem de preview
+        const imgPreview = document.createElement('img');
+        imgPreview.src = corSelecionadaModal.imagem;
+        imgPreview.alt = corSelecionadaModal.nome;
+        imgPreview.className = 'cor-preview-image';
+        imgPreview.style.width = '30px';
+        imgPreview.style.height = '30px';
+        imgPreview.style.borderRadius = '50%';
+        imgPreview.style.objectFit = 'cover';
+        imgPreview.style.border = '1px solid #888';
+        
+        seletor.insertBefore(imgPreview, seletor.querySelector('span'));
         seletor.querySelector('span').textContent = corSelecionadaModal.nome;
     }
     
@@ -653,14 +686,14 @@ function atualizarCarrinho() {
                 if (config && config.cor && config.corNome) {
                     partesHTML += `
                         <div style="margin-left: 10px; margin-top: 8px; display: flex; align-items: center;">
-                            <div style="
+                            <img src="${obterImagemDaCor(config.material, config.corNome)}" alt="${config.corNome}" style="
                                 width: 15px;
                                 height: 15px;
                                 border-radius: 50%;
-                                background-color: ${config.cor};
-                                ${config.detalhe ? `background: linear-gradient(135deg, ${config.cor} 50%, ${config.detalhe} 50%);` : ''}
+                                object-fit: cover;
+                                border: 1px solid #888;
                                 margin-right: 8px;
-                            "></div>
+                            ">
                             <span style="font-size: 0.8rem;">
                                 ${parte.replace(/_/g, ' ')}: 
                                 <strong>${config.corNome}</strong>
