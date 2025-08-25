@@ -29,7 +29,7 @@ const dados = {
     "CAT": {
       "320D": { anos: ["2015", "2016", "2017"] },
       "336D": { anos: ["2018", "2019", "2020"] },
-      "349D": { anos: ["2019", "2020", "2021] }
+      "349D": { anos: ["2019", "2020", "2021"] }
     },
     "SDLG": {
       "E6135F": { anos: ["2018", "2019", "2020"] },
@@ -62,7 +62,7 @@ const dados = {
       "Pulverizador Patriot 2250": { anos: ["2017", "2018", "2019"] }
     },
     "New Holland": {
-      "Trator T7.210": { anos: ["2016", "2017", "8"] },
+      "Trator T7.210": { anos: ["2016", "2017", "2018"] },
       "Trator T8.390": { anos: ["2019", "2020", "2021"] },
       "Colheitadeira CR6.80": { anos: ["2018", "2019", "2020"] },
       "Colheitadeira TC5.90": { anos: ["2019", "2020", "2021"] },
@@ -845,7 +845,7 @@ function finalizarPedido() {
     // Dados do cliente
     mensagem += "*DADOS DO CLIENTE*\n";
     mensagem += `Nome: ${cliente.nome}\n`;
-    mensagram += `CPF/CNPJ: ${cliente.cpf_cnpj}\n`;
+    mensagem += `CPF/CNPJ: ${cliente.cpf_cnpj}\n`;
     mensagem += `Inscrição Estadual: ${cliente.inscricao_estadual}\n`;
     mensagem += `Telefone: ${cliente.telefone}\n`;
     mensagem += `Endereço: ${cliente.rua}, ${cliente.numero}, ${cliente.bairro}\n`;
