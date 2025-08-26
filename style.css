@@ -1,5 +1,4 @@
-
-    :root {
+ :root {
       --cor-primaria: #333;
       --cor-secundaria: #F9A01B;
       --cor-terciaria: #F9A01B;
@@ -214,6 +213,71 @@
 
     .nome-maquina.linha-verde {
       color: #08d118;
+    }
+    /* NOVOS ESTILOS PARA OS KITS COM IMAGENS */
+    .kit-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background: #555;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      gap: 15px;
+    }
+
+    .kit-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .kit-item.selecionado {
+      background: #F9A01B;
+      color: #000;
+      border-color: #fff;
+      transform: scale(1.05);
+    }
+
+    .kit-imagem {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .kit-info {
+      flex-grow: 1;
+    }
+
+    .kit-info h4 {
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+    }
+
+    .kit-info p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+
+    .kit-preco {
+      font-weight: bold;
+      color: #08d118;
+      font-size: 1.1rem;
+    }
+
+    /* Responsivo para os kits */
+    @media (max-width: 768px) {
+      .kit-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .kit-imagem {
+        width: 80px;
+        height: 80px;
+      }
     }
 
     /* Container de seleção */
