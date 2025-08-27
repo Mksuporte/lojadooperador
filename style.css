@@ -492,12 +492,31 @@
 
     .form-cliente-container input {
       width: 100%;
-      padding: 5px;
+      padding: 12px;
       margin: 8px 0;
       border-radius: 5px;
-      border: none;
+      border: 1px solid #555;
       background-color: #fff;
       color: #000;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .form-cliente-container input.invalido {
+      border-color: var(--cor-erro);
+      box-shadow: 0 0 5px rgba(244, 67, 54, 0.5);
+    }
+
+    .form-cliente-container input.valido {
+      border-color: var(--cor-sucesso);
+    }
+
+    .form-cliente-container .mensagem-erro {
+      color: var(--cor-erro);
+      font-size: 0.8rem;
+      margin-top: -5px;
+      margin-bottom: 10px;
+      display: none;
     }
 
     .form-cliente-container button {
