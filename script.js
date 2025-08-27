@@ -1,4 +1,4 @@
- // Dados dos produtos atualizados
+// Dados dos produtos atualizados
     const dados = {
       "Linha Amarela": {
         "Zoomlion": {
@@ -58,7 +58,7 @@
           "Trator Puma 220": { anos: ["2019", "2020", "2021"] },
           "Colheitadeira Axial Flow 240": { anos: ["2015", "2016", "2017"] },
           "Colheitadeira Axial Flow 7150": { anos: ["2019", "2020", "2021"] },
-          "Plantadeira Exact Emerge 1200": { anos: ["2018", "2019", "2020"] },
+          "Plantadeira Exact Emerge 1200": { anos: ["2018", "2019", '2020'] },
           "Pulverizador Patriot 2250": { anos: ["2017", "2018", "2019"] }
         },
         "New Holland": {
@@ -279,6 +279,12 @@
     const personalizacaoContainer = document.getElementById('personalizacao-container');
     const partesPersonalizacao = document.getElementById('partes-personalizacao');
     const tituloSelecao = document.getElementById('titulo-selecao');
+    const cortinaCheckbox = document.getElementById('cortina-checkbox');
+    const cortinaPersonalizacao = document.getElementById('cortina-personalizacao');
+    const cortinaPreco = document.getElementById('cortina-preco');
+    
+    // Preço da cortina
+    const precoCortina = 150;
     
     // Função para gerar protocolo
     function generateProtocol() {
@@ -402,7 +408,7 @@
             corItem.className = 'cor-item';
             
             // Verificar se esta cor já está selecionada para esta parte
-            if (kitSelecionado.partes[parte].corNome === cor.nome) {
+            if (kitSelecionado && kitSelecionado.partes && kitSelecionado.partes[parte] && kitSelecionado.partes[parte].corNome === cor.nome) {
                 corItem.classList.add('selecionada');
                 corSelecionadaModal = cor;
             }
@@ -444,41 +450,63 @@
             return;
         }
     
-        // Verificar se a parte existe no kit selecionado
-        if (!kitSelecionado || !kitSelecionado.partes || !kitSelecionado.partes[parteSelecionadaModal]) {
+        // Verificar se a parte existe no kit selecionado ou se é a cortina
+        if (parteSelecionadaModal === 'cortina') {
+            // Atualizar a cor da cortina
+            const seletor = document.querySelector(`.seletor-cor-parte[data-parte="cortina"]`);
+            if (seletor) {
+                // Remover preview antigo
+                const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
+                if (previewAntigo) previewAntigo.remove();
+                
+                // Adicionar nova imagem de preview
+                const imgPreview = document.createElement('img');
+                imgPreview.src = corSelecionadaModal.imagem;
+                imgPreview.alt = corSelecionadaModal.nome;
+                imgPreview.className = 'cor-preview-image';
+                imgPreview.style.width = '30px';
+                imgPreview.style.height = '30px';
+                imgPreview.style.borderRadius = '50%';
+                imgPreview.style.objectFit = 'cover';
+                imgPreview.style.border = '1px solid #888';
+                
+                seletor.insertBefore(imgPreview, seletor.querySelector('span'));
+                seletor.querySelector('span').textContent = corSelecionadaModal.nome;
+            }
+        } else if (!kitSelecionado || !kitSelecionado.partes || !kitSelecionado.partes[parteSelecionadaModal]) {
             mostrarFeedback('Erro ao selecionar a cor. Tente novamente.', 'erro');
             fecharModalCores();
             return;
-        }
-    
-        // Atualizar a cor no kit selecionado
-        kitSelecionado.partes[parteSelecionadaModal].cor = corSelecionadaModal.codigo;
-        kitSelecionado.partes[parteSelecionadaModal].corNome = corSelecionadaModal.nome;
-        
-        if (corSelecionadaModal.detalhe) {
-            kitSelecionado.partes[parteSelecionadaModal].detalhe = corSelecionadaModal.detalhe;
-        }
-        
-        // Atualizar o preview com a IMAGEM da cor
-        const seletor = document.querySelector(`.seletor-cor-parte[data-parte="${parteSelecionadaModal}"]`);
-        if (seletor) {
-            // Remover preview antigo
-            const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
-            if (previewAntigo) previewAntigo.remove();
+        } else {
+            // Atualizar a cor no kit selecionado
+            kitSelecionado.partes[parteSelecionadaModal].cor = corSelecionadaModal.codigo;
+            kitSelecionado.partes[parteSelecionadaModal].corNome = corSelecionadaModal.nome;
             
-            // Adicionar nova imagem de preview
-            const imgPreview = document.createElement('img');
-            imgPreview.src = corSelecionadaModal.imagem;
-            imgPreview.alt = corSelecionadaModal.nome;
-            imgPreview.className = 'cor-preview-image';
-            imgPreview.style.width = '30px';
-            imgPreview.style.height = '30px';
-            imgPreview.style.borderRadius = '50%';
-            imgPreview.style.objectFit = 'cover';
-            imgPreview.style.border = '1px solid #888';
+            if (corSelecionadaModal.detalhe) {
+                kitSelecionado.partes[parteSelecionadaModal].detalhe = corSelecionadaModal.detalhe;
+            }
             
-            seletor.insertBefore(imgPreview, seletor.querySelector('span'));
-            seletor.querySelector('span').textContent = corSelecionadaModal.nome;
+            // Atualizar o preview com a IMAGEM da cor
+            const seletor = document.querySelector(`.seletor-cor-parte[data-parte="${parteSelecionadaModal}"]`);
+            if (seletor) {
+                // Remover preview antigo
+                const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
+                if (previewAntigo) previewAntigo.remove();
+                
+                // Adicionar nova imagem de preview
+                const imgPreview = document.createElement('img');
+                imgPreview.src = corSelecionadaModal.imagem;
+                imgPreview.alt = corSelecionadaModal.nome;
+                imgPreview.className = 'cor-preview-image';
+                imgPreview.style.width = '30px';
+                imgPreview.style.height = '30px';
+                imgPreview.style.borderRadius = '50%';
+                imgPreview.style.objectFit = 'cover';
+                imgPreview.style.border = '1px solid #888';
+                
+                seletor.insertBefore(imgPreview, seletor.querySelector('span'));
+                seletor.querySelector('span').textContent = corSelecionadaModal.nome;
+            }
         }
         
         fecharModalCores();
@@ -511,6 +539,22 @@
             return;
         }
         
+        // Verificar se cortina foi selecionada e se tem cor definida
+        let cortinaInfo = null;
+        if (cortinaCheckbox.checked) {
+            const cortinaCorElement = document.querySelector('.seletor-cor-parte[data-parte="cortina"] span');
+            if (!cortinaCorElement || cortinaCorElement.textContent === 'Clique para selecionar a cor') {
+                mostrarFeedback('Selecione uma cor para a cortina', 'erro');
+                return;
+            }
+            
+            cortinaInfo = {
+                material: "pelucia", // Material padrão para cortina
+                cor: corSelecionadaModal ? corSelecionadaModal.codigo : "#000000", 
+                corNome: cortinaCorElement.textContent
+            };
+        }
+        
         // Criar item para o carrinho
         const item = {
             tipo: 'kit_revestimento',
@@ -523,7 +567,9 @@
             tipoMaquina: tipoMaquinaMap[state.tipoMaquina] || state.tipoMaquina,
             marca: marcaSelect.value,
             modelo: modeloSelect.value,
-            ano: anoSelect.value
+            ano: anoSelect.value,
+            cortina: cortinaInfo,
+            precoCortina: cortinaCheckbox.checked ? precoCortina : 0
         };
         
         // Adicionar ao carrinho
@@ -538,6 +584,23 @@
         document.querySelectorAll('.kit-item').forEach(el => {
             el.classList.remove('selecionado');
         });
+        
+        // Resetar cortina
+        cortinaCheckbox.checked = false;
+        cortinaPersonalizacao.style.display = 'none';
+        const cortinaCorElement = document.querySelector('.seletor-cor-parte[data-parte="cortina"]');
+        if (cortinaCorElement) {
+            const preview = cortinaCorElement.querySelector('.cor-preview-image');
+            if (preview) preview.remove();
+            
+            const span = cortinaCorElement.querySelector('span');
+            if (span) span.textContent = 'Clique para selecionar a cor';
+            
+            const newPreview = document.createElement('div');
+            newPreview.className = 'cor-preview';
+            newPreview.style.backgroundColor = '#ccc';
+            cortinaCorElement.insertBefore(newPreview, span);
+        }
     }
     
     // Função para resetar a seleção
@@ -557,6 +620,10 @@
         document.querySelectorAll('.kit-item').forEach(el => {
             el.classList.remove('selecionado');
         });
+        
+        // Resetar cortina
+        cortinaCheckbox.checked = false;
+        cortinaPersonalizacao.style.display = 'none';
     }
     
     // Função para mostrar formulário do cliente
@@ -590,7 +657,7 @@
         } else if (state.linha === "Linha Verde") {
             maquinasAmarelas.style.display = "none";
             maquinasVerdes.style.display = "grid";
-            maquinasMini.style.display = "none";
+            maquinasMini.style.display = 'none';
         } else if (state.linha === "Linha Mini") {
             maquinasAmarelas.style.display = "none";
             maquinasVerdes.style.display = "none";
@@ -681,7 +748,7 @@
             salvarCarrinho();
         }
         
-        // Usar for loop em vez de forEach com Object.entries para maior segurança
+        // Usar for loop em vez of forEach com Object.entries para maior segurança
         for (let i = 0; i < state.carrinho.length; i++) {
             const item = state.carrinho[i];
             
@@ -711,6 +778,26 @@
                 }
             }
             
+            // Adicionar informações da cortina se existir
+            if (item.cortina) {
+                partesHTML += `
+                    <div style="margin-left: 10px; margin-top: 8px; display: flex; align-items: center;">
+                        <img src="${obterImagemDaCor(item.cortina.material, item.cortina.corNome)}" alt="${item.cortina.corNome}" style="
+                            width: 15px;
+                            height: 15px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            border: 1px solid #888;
+                            margin-right: 8px;
+                        ">
+                        <span style="font-size: 0.8rem;">
+                            Cortina: 
+                            <strong>${item.cortina.corNome}</strong>
+                        </span>
+                    </div>
+                `;
+            }
+            
             const li = document.createElement('li');
             li.innerHTML = `
                 <div>
@@ -723,13 +810,14 @@
                     ${partesHTML}
                     <div style="margin-top: 10px; font-weight: bold;">
                         Valor: R$ ${item.preco ? item.preco.toFixed(2) : '0.00'}
+                        ${item.precoCortina > 0 ? `+ Cortina: R$ ${item.precoCortina.toFixed(2)}` : ''}
                     </div>
                 </div>
                 <button onclick="removerDoCarrinho(${item.id || 0})">Remover</button>
             `;
             
             listaCarrinho.appendChild(li);
-            total += item.preco || 0;
+            total += (item.preco || 0) + (item.precoCortina || 0);
         }
         
         totalItensSpan.textContent = `R$ ${total.toFixed(2)}`;
@@ -738,7 +826,7 @@
     
     // Função para atualizar totais (itens + frete)
     function atualizarTotais() {
-        const totalItens = state.carrinho.reduce((sum, item) => sum + (item.preco || 0), 0);
+        const totalItens = state.carrinho.reduce((sum, item) => sum + (item.preco || 0) + (item.precoCortina || 0), 0);
         const totalGeral = totalItens + state.frete.valor;
         
         totalItensSpan.textContent = `R$ ${totalItens.toFixed(2)}`;
@@ -878,21 +966,28 @@
                     }
                 }
             }
+            
+            // Adicionar informações da cortina se existir
+            if (item.cortina) {
+                mensagem += `   Cortina: ${item.cortina.corNome}\n`;
+                mensagem += `   Valor da Cortina: R$ ${item.precoCortina.toFixed(2)}\n`;
+            }
+            
             mensagem += '\n';
         });
         
         // Rodapé
-        const totalItens = state.carrinho.reduce((sum, item) => sum + (item.preco || 0), 0);
+        const totalItens = state.carrinho.reduce((sum, item) => sum + (item.preco || 0) + (item.precoCortina || 0), 0);
         const totalGeral = totalItens + state.frete.valor;
         
         mensagem += "--------------------------------------------------\n";
-        mensagem += "*Taxa de entrega:* R$ ${state.frete.valor.toFixed(2)}\n";
-        mensagem += "*Transportadora:* ${state.frete.transportadora}\n";
-        mensagem += "*Prazo de entrega:* ${state.frete.prazo} dias úteis\n";
-        mensagem += "*Total dos itens:* R$ ${totalItens.toFixed(2)}\n";
-        mensagem += "*Total:* R$ ${totalGeral.toFixed(2)}\n\n";
+        mensagem += `*Taxa de entrega:* R$ ${state.frete.valor.toFixed(2)}\n`;
+        mensagem += `*Transportadora:* ${state.frete.transportadora}\n`;
+        mensagem += `*Prazo de entrega:* ${state.frete.prazo} dias úteis\n`;
+        mensagem += `*Total dos itens:* R$ ${totalItens.toFixed(2)}\n`;
+        mensagem += `*Total:* R$ ${totalGeral.toFixed(2)}\n\n`;
         mensagem += "*Forma de Pagamento:* A definir\n";
-        mensagem += "*Chave PIX:* ${pixInfo}\n";
+        mensagem += `*Chave PIX:* ${pixInfo}\n`;
         mensagem += "--------------------------------------------------\n";
         mensagem += "*Observações:* \n";
         mensagem += "--------------------------------------------------\n";
@@ -984,5 +1079,19 @@
                 option.textContent = ano;
                 anoSelect.appendChild(option);
             });
+        });
+        
+        // Evento para checkbox da cortina
+        cortinaCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                cortinaPersonalizacao.style.display = 'block';
+            } else {
+                cortinaPersonalizacao.style.display = 'none';
+            }
+        });
+        
+        // Evento para seleção de cor da cortina
+        document.querySelector('.seletor-cor-parte[data-parte="cortina"]').addEventListener('click', function() {
+            abrirModalCoresParaParte('cortina', 'pelucia');
         });
     });

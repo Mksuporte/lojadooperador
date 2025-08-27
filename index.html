@@ -119,6 +119,25 @@
       <div id="personalizacao-container">
         <h4>Personalização das Partes</h4>
         <div id="partes-personalizacao"></div>
+        
+        <!-- Opção de cortina como adicional -->
+        <div class="cortina-option">
+          <div class="cortina-info">
+            <input type="checkbox" id="cortina-checkbox" class="cortina-checkbox">
+            <label for="cortina-checkbox">Adicionar Cortina</label>
+            <span class="cortina-preco" id="cortina-preco">+ R$ 150,00</span>
+          </div>
+          <div id="cortina-personalizacao" style="display: none;">
+            <div class="parte-kit">
+              <label>CORTINA</label>
+              <div class="seletor-cor-parte" data-parte="cortina">
+                <div class="cor-preview" style="background-color: #ccc;"></div>
+                <span>Clique para selecionar a cor</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <button onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
       </div>
     </div>

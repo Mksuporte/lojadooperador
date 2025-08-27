@@ -663,6 +663,33 @@
       vertical-align: middle;
     }
 
+    /* Estilos para a opção de cortina */
+    .cortina-option {
+      margin-top: 20px;
+      padding: 15px;
+      background: #555;
+      border-radius: 8px;
+      border: 1px solid #666;
+    }
+
+    .cortina-checkbox {
+      margin-right: 10px;
+      width: 18px;
+      height: 18px;
+    }
+
+    .cortina-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .cortina-preco {
+      margin-left: auto;
+      font-weight: bold;
+      color: #08d118;
+    }
+
     /* Responsivo */
     @media (max-width: 768px) {
       .linha-botoes, .maquinas-container {
