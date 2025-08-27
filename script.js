@@ -1,4 +1,4 @@
-    // Dados dos produtos atualizados
+   // Dados dos produtos atualizados
     const dados = {
       "Linha Amarela": {
         "Zoomlion": {
@@ -74,7 +74,7 @@
           "Trator MF 7714": { anos: ["2018", "2019", "2020"] },
           "Colheitadeira MF 9250": { anos: ["2017", "2018", "2019"] },
           "Colheitadeira MF 9795": { anos: ["2019", "2020", "2021"] },
-          "Plantadeira MF 9800": { anos: ["2016", "2017", "2018"] },
+         "Plantadeira MF 9800": { anos: ["2016", "2017", "2018"] },
           "Pulverizador MF 3200": { anos: ["2018", "2019", "2020"] }
         },
         "Valtra": {
@@ -182,7 +182,7 @@
           partes: {
             chao: { material: "couro", cor: "", corNome: "" },
             banco: { material: "couro", cor: "", corNome: "" },
-            braco: { material: "couro", cor: "", corNome: "" },
+            braco: { material: "couro",cor: "", corNome: "" },
             cabeca: { material: "couro", cor: "", corNome: "" },
             laterais: { material: "couro", cor: "", corNome: "" }
           }
@@ -307,7 +307,23 @@
         return corEncontrada ? corEncontrada.imagem : '';
     }
     
-    // Função para mostrar os kits disponíveis - MODIFICADA PARA MOSTRAR IMAGENS
+    // Nova função para reparar o layout das imagens
+    function repararLayoutImagem(imgElement) {
+        // Forçar o redimensionamento correto
+        imgElement.style.width = '100px';
+        imgElement.style.height = '100px';
+        imgElement.style.objectFit = 'cover';
+        
+        // Adicionar pequeno delay para garantir que o navegador renderizou
+        setTimeout(() => {
+            imgElement.classList.add('reiniciar-animacoes');
+            setTimeout(() => {
+                imgElement.classList.remove('reiniciar-animacoes');
+            }, 50);
+        }, 10);
+    }
+    
+    // Função para mostrar os kits disponíveis - MODIFICADA PARA CORRIGIR O PROBLEMA DAS IMAGENS
     function mostrarKitsRevestimento() {
         kitsGrid.innerHTML = '';
         
@@ -315,7 +331,7 @@
             const kitElement = document.createElement('div');
             kitElement.className = 'kit-item';
             kitElement.innerHTML = `
-                <img src="${kit.imagem}" alt="${kit.nome}" class="kit-imagem" onerror="this.src='imagens/kits/placeholder.jpg'">
+                <img src="${kit.imagem}" alt="${kit.nome}" class="kit-imagem" onerror="this.src='imagens/kits/placeholder.jpg'; this.onerror=null;" onload="repararLayoutImagem(this)">
                 <div class="kit-info">
                     <h4>${kit.nome}</h4>
                     <p>${kit.descricao}</p>
@@ -347,6 +363,14 @@
         
         // Esconder personalização inicialmente
         personalizacaoContainer.style.display = 'none';
+        
+        // Forçar repaint para evitar problemas de renderização
+        setTimeout(() => {
+            kitsGrid.classList.add('reiniciar-animacoes');
+            setTimeout(() => {
+                kitsGrid.classList.remove('reiniciar-animacoes');
+            }, 50);
+        }, 100);
     }
     
     // Função para mostrar as partes do kit para personalização
@@ -603,7 +627,7 @@
         }
     }
     
-    // Função para resetar a seleção
+    // Função para resetar a seleção - MODIFICADA PARA CORRIGIR O PROBLEMA
     function resetarSelecao() {
         // Resetar dropdowns
         marcaSelect.selectedIndex = 0;
@@ -611,7 +635,12 @@
         anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
         
         // Resetar máquina selecionada
-        document.querySelectorAll('.botao-maquina.ativo').forEach(btn => btn.classList.remove('ativo'));
+        document.querySelectorAll('.botao-maquina.ativo').forEach(btn => {
+            btn.classList.remove('ativo');
+            // Forçar repaint
+            btn.classList.add('reiniciar-animacoes');
+            setTimeout(() => btn.classList.remove('reiniciar-animacoes'), 50);
+        });
         state.tipoMaquina = '';
         
         // Resetar kit selecionado
@@ -619,11 +648,34 @@
         personalizacaoContainer.style.display = 'none';
         document.querySelectorAll('.kit-item').forEach(el => {
             el.classList.remove('selecionado');
+            // Forçar repaint
+            el.classList.add('reiniciar-animacoes');
+            setTimeout(() => el.classList.remove('reiniciar-animacoes'), 50);
         });
         
         // Resetar cortina
         cortinaCheckbox.checked = false;
         cortinaPersonalizacao.style.display = 'none';
+        const cortinaCorElement = document.querySelector('.seletor-cor-parte[data-parte="cortina"]');
+        if (cortinaCorElement) {
+            const preview = cortinaCorElement.querySelector('.cor-preview-image');
+            if (preview) preview.remove();
+            
+            const span = cortinaCorElement.querySelector('span');
+            if (span) span.textContent = 'Clique para selecionar a cor';
+            
+            const newPreview = document.createElement('div');
+            newPreview.className = 'cor-preview';
+            newPreview.style.backgroundColor = '#ccc';
+            cortinaCorElement.insertBefore(newPreview, span);
+        }
+        
+        // Forçar repaint geral
+        setTimeout(() => {
+            document.querySelectorAll('.kit-imagem').forEach(img => {
+                repararLayoutImagem(img);
+            });
+        }, 100);
     }
     
     // Função para mostrar formulário do cliente
@@ -638,10 +690,15 @@
         formClienteContainer.scrollIntoView({ behavior: 'smooth' });
     }
     
-    // Função para selecionar linha principal
+    // Função para selecionar linha principal - MODIFICADA PARA CORRIGIR O PROBLEMA
     function selecionarLinha(botao) {
         // Remover classe 'ativo' de todos os botões
-        botoesLinha.forEach(btn => btn.classList.remove('ativo'));
+        botoesLinha.forEach(btn => {
+            btn.classList.remove('ativo');
+            // Forçar repaint
+            btn.classList.add('reiniciar-animacoes');
+            setTimeout(() => btn.classList.remove('reiniciar-animacoes'), 50);
+        });
         
         // Adicionar classe 'ativo' ao botão clicado
         botao.classList.add('ativo');
@@ -657,7 +714,7 @@
         } else if (state.linha === "Linha Verde") {
             maquinasAmarelas.style.display = "none";
             maquinasVerdes.style.display = "grid";
-            maquinasMini.style.display = 'none';
+            maquinasMini.style.display = "none";
         } else if (state.linha === "Linha Mini") {
             maquinasAmarelas.style.display = "none";
             maquinasVerdes.style.display = "none";
@@ -666,6 +723,12 @@
         
         // Ocultar formulário de seleção até escolher a máquina
         selecaoContainer.style.display = 'none';
+        
+        // Forçar repaint dos containers de máquinas
+        [maquinasAmarelas, maquinasVerdes, maquinasMini].forEach(container => {
+            container.classList.add('reiniciar-animacoes');
+            setTimeout(() => container.classList.remove('reiniciar-animacoes'), 50);
+        });
         
         // Rolagem suave para os botões de máquina
         setTimeout(() => {
@@ -749,7 +812,7 @@
         }
         
         // Usar for loop em vez of forEach com Object.entries para maior segurança
-        for (let i = 0; i < state.carrinho.length; i++) {
+        for (let i = 0; i < state.carrinho.length; i) {
             const item = state.carrinho[i];
             
             let partesHTML = '';
