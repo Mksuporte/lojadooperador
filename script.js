@@ -1,4 +1,4 @@
-// Dados dos produtos atualizados
+    // Dados dos produtos atualizados
     const dados = {
       "Linha Amarela": {
         "Zoomlion": {
@@ -58,7 +58,7 @@
           "Trator Puma 220": { anos: ["2019", "2020", "2021"] },
           "Colheitadeira Axial Flow 240": { anos: ["2015", "2016", "2017"] },
           "Colheitadeira Axial Flow 7150": { anos: ["2019", "2020", "2021"] },
-          "Plantadeira Exact Emerge 1200": { anos: ["2018", "2019", '2020'] },
+          "Plantadeira Exact Emerge 1200": { anos: ["2018", "2019", "2020"] },
           "Pulverizador Patriot 2250": { anos: ["2017", "2018", "2019"] }
         },
         "New Holland": {
@@ -888,6 +888,82 @@
         mostrarFeedback('Frete calculado com sucesso!');
     }
     
+    // Funções de validação de formulário
+    function validarSomenteNumeros(input) {
+        const valor = input.value.replace(/\D/g, '');
+        input.value = valor;
+        return valor !== '';
+    }
+    
+    function validarSomenteLetras(input) {
+        const valor = input.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+        input.value = valor;
+        return valor !== '';
+    }
+    
+    function validarTextoGeral(input) {
+        // Permite letras, números, espaços e alguns caracteres especiais comuns em endereços
+        const valor = input.value.replace(/[^a-zA-ZÀ-ÿ0-9\s.,\-]/g, '');
+        input.value = valor;
+        return valor !== '';
+    }
+    
+    function validarCampo(input, tipo) {
+        const mensagemErro = document.getElementById(`erro-${input.id}`);
+        let valido = false;
+        
+        if (tipo === 'numero') {
+            valido = validarSomenteNumeros(input);
+            if (!valido) {
+                mensagemErro.textContent = 'Por favor, insira apenas números';
+            }
+        } else if (tipo === 'texto') {
+            valido = validarSomenteLetras(input);
+            if (!valido) {
+                mensagemErro.textContent = 'Por favor, insira apenas letras e espaços';
+            }
+        } else if (tipo === 'texto-geral') {
+            valido = validarTextoGeral(input);
+            if (!valido) {
+                mensagemErro.textContent = 'Por favor, insira um valor válido';
+            }
+        }
+        
+        if (valido) {
+            input.classList.remove('invalido');
+            input.classList.add('valido');
+            mensagemErro.style.display = 'none';
+        } else {
+            input.classList.remove('valido');
+            input.classList.add('invalido');
+            mensagemErro.style.display = 'block';
+        }
+        
+        return valido;
+    }
+    
+    function validarFormulario() {
+        // Validar todos os campos
+        const nomeValido = validarCampo(document.getElementById('nome'), 'texto');
+        const cpfCnpjValido = validarCampo(document.getElementById('cpf_cnpj'), 'numero');
+        const inscricaoEstadualValido = document.getElementById('inscricao_estadual').value === '' || validarCampo(document.getElementById('inscricao_estadual'), 'numero');
+        const telefoneValido = validarCampo(document.getElementById('telefone'), 'numero');
+        const cepValido = validarCampo(document.getElementById('cep'), 'numero');
+        const estadoValido = validarCampo(document.getElementById('estado'), 'texto');
+        const cidadeValido = validarCampo(document.getElementById('cidade'), 'texto');
+        const bairroValido = validarCampo(document.getElementById('bairro'), 'texto');
+        const ruaValido = validarCampo(document.getElementById('rua'), 'texto-geral');
+        const numeroValido = validarCampo(document.getElementById('numero'), 'numero');
+        
+        // Verificar se todos os campos obrigatórios estão preenchidos e válidos
+        if (nomeValido && cpfCnpjValido && telefoneValido && cepValido && 
+            estadoValido && cidadeValido && bairroValido && ruaValido && numeroValido) {
+            finalizarPedido();
+        } else {
+            mostrarFeedback('Por favor, preencha todos os campos corretamente', 'erro');
+        }
+    }
+    
     // Função para finalizar o pedido e abrir o WhatsApp
     function finalizarPedido() {
         // Validar formulário
@@ -1093,5 +1169,48 @@
         // Evento para seleção de cor da cortina
         document.querySelector('.seletor-cor-parte[data-parte="cortina"]').addEventListener('click', function() {
             abrirModalCoresParaParte('cortina', 'pelucia');
+        });
+        
+        // Adicionar eventos de validação aos campos do formulário
+        document.getElementById('nome').addEventListener('input', function() {
+            validarCampo(this, 'texto');
+        });
+        
+        document.getElementById('cpf_cnpj').addEventListener('input', function() {
+            validarCampo(this, 'numero');
+        });
+        
+        document.getElementById('inscricao_estadual').addEventListener('input', function() {
+            if (this.value) {
+                validarCampo(this, 'numero');
+            }
+        });
+        
+        document.getElementById('telefone').addEventListener('input', function() {
+            validarCampo(this, 'numero');
+        });
+        
+        document.getElementById('cep').addEventListener('input', function() {
+            validarCampo(this, 'numero');
+        });
+        
+        document.getElementById('estado').addEventListener('input', function() {
+            validarCampo(this, 'texto');
+        });
+        
+        document.getElementById('cidade').addEventListener('input', function() {
+            validarCampo(this, 'texto');
+        });
+        
+        document.getElementById('bairro').addEventListener('input', function() {
+            validarCampo(this, 'texto');
+        });
+        
+        document.getElementById('rua').addEventListener('input', function() {
+            validarCampo(this, 'texto-geral');
+        });
+        
+        document.getElementById('numero').addEventListener('input', function() {
+            validarCampo(this, 'numero');
         });
     });
