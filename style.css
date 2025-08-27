@@ -1,4 +1,4 @@
- :root {
+:root {
       --cor-primaria: #333;
       --cor-secundaria: #F9A01B;
       --cor-terciaria: #F9A01B;
@@ -245,6 +245,12 @@
       object-fit: cover;
       border-radius: 5px;
       flex-shrink: 0;
+      transition: none !important; /* Remove transições que podem causar flickering */
+    }
+
+    .kit-item.selecionado .kit-imagem {
+      width: 100px;
+      height: 100px;
     }
 
     .kit-info {
@@ -480,7 +486,7 @@
       background-color: var(--card-bg);
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px15px rgba(0, 0, 0, 0.2);
       border: 1px solid #555;
     }
 
@@ -707,6 +713,18 @@
       margin-left: auto;
       font-weight: bold;
       color: #08d118;
+    }
+
+    /* ESTILOS ADICIONAIS PARA CORRIGIR O PROBLEMA DAS IMAGENS */
+    .reiniciar-animacoes {
+      animation: none !important;
+      transition: none !important;
+    }
+    
+    /* Prevenir quebra de layout ao recarregar conteúdo */
+    .conteudo-dinamico {
+      will-change: transform;
+      backface-visibility: hidden;
     }
 
     /* Responsivo */
