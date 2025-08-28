@@ -676,6 +676,13 @@
       border-radius: 50%;
       border: 1px solid #888;
     }
+/* Estilos para os itens depois de selecionado */
+ .cor-preview-image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid #888;
+    }
 
     /* Estilos para os itens do kit no carrinho */
     .cor-preview {
@@ -799,3 +806,4 @@
         gap: 10px;
       }
     }
+
