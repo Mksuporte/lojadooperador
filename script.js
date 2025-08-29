@@ -1,207 +1,207 @@
-  // Dados dos produtos atualizados
+// Dados dos produtos atualizados
     const dados = {
-      "Linha Amarela": {
-        "Zoomlion": {
-          "ZE205E": { anos: ["2018", "2019", "2020"] },
-          "ZE360E": { anos: ["2019", "2020", "2021"] }
+        "Linha Amarela": {
+            "Zoomlion": {
+                "ZE205E": { anos: ["2018", "2019", "2020"] },
+                "ZE360E": { anos: ["2019", "2020", "2021"] }
+            },
+            "Komatsu": {
+                "PC200": { anos: ["2015", "2016", "2017"] },
+                "PC300": { anos: ["2019", "2020", "2021"] },
+                "PC450": { anos: ["2018", "2019", "2020"] }
+            },
+            "Hyundai": {
+                "R220LC-9S": { anos: ["2017", "2018", "2019"] },
+                "R300LC-9S": { anos: ["2019", "2020", "2021"] }
+            },
+            "John Deere": {
+                "200G": { anos: ["2016", "2017", "2020"] },
+                "350G": { anos: ["2019", "2020", "2021"] }
+            },
+            "New Holland": {
+                "C232": { anos: ["2015", "2016", "2017"] },
+                "C238": { anos: ["2018", "2019", "2020"] }
+            },
+            "Volvo": {
+                "EC200E": { anos: ["2017", "2018", "2019"] },
+                "EC300E": { anos: ["2019", "2020", "2021"] }
+            },
+            "CAT": {
+                "320D": { anos: ["2015", "2016", "2017"] },
+                "336D": { anos: ["2018", "2019", "2020"] },
+                "349D": { anos: ["2019", "2020", "2021"] }
+            },
+            "SDLG": {
+                "E6135F": { anos: ["2018", "2019", "2020"] },
+                "E6225F": { anos: ["2019", "2020", "2021"] }
+            },
+            "Case": {
+                "CX210C": { anos: ["2017", "2018", "2019"] },
+                "CX350C": { anos: ["2019", "2020", "2021"] }
+            },
+            "Link Belt": {
+                "X3 2050": { anos: ["2016", "2017", "2018"] },
+                "X3 3050": { anos: ["2019", "2020", "2021"] }
+            }
         },
-        "Komatsu": {
-          "PC200": { anos: ["2015", "2016", "2017"] },
-          "PC300": { anos: ["2019", "2020", "2021"] },
-          "PC450": { anos: ["2018", "2019", "2020"] }
+        "Linha Verde": {
+            "John Deere": {
+                "Trator 5075E": { anos: ["2018", "2019", "2020"] },
+                "Trator 6110J": { anos: ["2019", "2020", "2021"] },
+                "Colheitadeira S550": { anos: ["2017", "2018", "2019"] },
+                "Colheitadeira S770": { anos: ["2019", "2020", "2021"] },
+                "Plantadeira 2512H": { anos: ["2016", "2017", "2018"] },
+                "Pulverizador 4730": { anos: ["2018", "2019", "2020"] }
+            },
+            "Case IH": {
+                "Trator Magnum 340": { anos: ["2017", "2018", "2019"] },
+                "Trator Puma 220": { anos: ["2019", "2020", "2021"] },
+                "Colheitadeira Axial Flow 240": { anos: ["2015", "2016", "2017"] },
+                "Colheitadeira Axial Flow 7150": { anos: ["2019", "2020", "2021"] },
+                "Plantadeira Exact Emerge 1200": { anos: ["2018", "2019", "2020"] },
+                "Pulverizador Patriot 2250": { anos: ["2017", "2018", "2019"] }
+            },
+            "New Holland": {
+                "Trator T7.210": { anos: ["2016", "2017", "2018"] },
+                "Trator T8.390": { anos: ["2019", "2020", "2021"] },
+                "Colheitadeira CR6.80": { anos: ["2018", "2019", "2020"] },
+                "Colheitadeira TC5.90": { anos: ["2019", "2020", "2021"] },
+                "Plantadeira PL5000": { anos: ["2017", "2018", "2019"] },
+                "Pulverizador PL6020": { anos: ["2019", "2020", "2021"] }
+            },
+            "Massey Ferguson": {
+                "Trator MF 6713": { anos: ["2015", "2016", "2017"] },
+                "Trator MF 7714": { anos: ["2018", "2019", "2020"] },
+                "Colheitadeira MF 9250": { anos: ["2017", "2018", "2019"] },
+                "Colheitadeira MF 9795": { anos: ["2019", "2020", "2021"] },
+                "Plantadeira MF 9800": { anos: ["2016", "2017", "2018"] },
+                "Pulverizador MF 3200": { anos: ["2018", "2019", "2020"] }
+            },
+            "Valtra": {
+                "Trator A114": { anos: ["2017", "2018", "2019"] },
+                "Trator N134": { anos: ["2019", "2020", "2021"] },
+                "Colheitadeira BH 2080": { anos: ["2016", "2017", "2018"] },
+                "Colheitadeira BH 3080": { anos: ["2018", "2019", "2020"] },
+                "Plantadeira VP 1250": { anos: ["2015", "2016", "2017"] },
+                "Pulverizador VP 3000": { anos: ["2019", "2020", "2021"] }
+            }
         },
-        "Hyundai": {
-          "R220LC-9S": { anos: ["2017", "2018", "2019"] },
-          "R300LC-9S": { anos: ["2019", "2020", "2021"] }
-        },
-        "John Deere": {
-          "200G": { anos: ["2016", "2017", "2018"] },
-          "350G": { anos: ["2019", "2020", "2021"] }
-        },
-        "New Holland": {
-          "C232": { anos: ["2015", "2016", "2017"] },
-          "C238": { anos: ["2018", "2019", "2020"] }
-        },
-        "Volvo": {
-          "EC200E": { anos: ["2017", "2018", "2019"] },
-          "EC300E": { anos: ["2019", "2020", "2021"] }
-        },
-        "CAT": {
-          "320D": { anos: ["2015", "2016", "2017"] },
-          "336D": { anos: ["2018", "2019", "2020"] },
-          "349D": { anos: ["2019", "2020", "2021"] }
-        },
-        "SDLG": {
-          "E6135F": { anos: ["2018", "2019", "2020"] },
-          "E6225F": { anos: ["2019", "2020", "2021"] }
-        },
-        "Case": {
-          "CX210C": { anos: ["2017", "2018", "2019"] },
-          "CX350C": { anos: ["2019", "2020", "2021"] }
-        },
-        "Link Belt": {
-          "X3 2050": { anos: ["2016", "2017", "2018"] },
-          "X3 3050": { anos: ["2019", "2020", "2021"] }
+        "Linha Mini": {
+            "Bobcat": {
+                "E20": { anos: ["2018", "2019", "2020"] },
+                "E35": { anos: ["2019", "2020", "2021"] }
+            },
+            "Takeuchi": {
+                "TB216": { anos: ["2017", "2018", "2019"] },
+                "TB230": { anos: ["2019", "2020", "2021"] }
+            }
         }
-      },
-      "Linha Verde": {
-        "John Deere": {
-          "Trator 5075E": { anos: ["2018", "2019", "2020"] },
-          "Trator 6110J": { anos: ["2019", "2020", "2021"] },
-          "Colheitadeira S550": { anos: ["2017", "2018", "2019"] },
-          "Colheitadeira S770": { anos: ["2019", "2020", "2021"] },
-          "Plantadeira 2512H": { anos: ["2016", "2017", "2018"] },
-          "Pulverizador 4730": { anos: ["2018", "2019", "2020"] }
-        },
-        "Case IH": {
-          "Trator Magnum 340": { anos: ["2017", "2018", "2019"] },
-          "Trator Puma 220": { anos: ["2019", "2020", "2021"] },
-          "Colheitadeira Axial Flow 240": { anos: ["2015", "2016", "2017"] },
-          "Colheitadeira Axial Flow 7150": { anos: ["2019", "2020", "2021"] },
-          "Plantadeira Exact Emerge 1200": { anos: ["2018", "2019", "2020"] },
-          "Pulverizador Patriot 2250": { anos: ["2017", "2018", "2019"] }
-        },
-        "New Holland": {
-          "Trator T7.210": { anos: ["2016", "2017", "2018"] },
-          "Trator T8.390": { anos: ["2019", "2020", "2021"] },
-          "Colheitadeira CR6.80": { anos: ["2018", "2019", "2020"] },
-          "Colheitadeira TC5.90": { anos: ["2019", "2020", "2021"] },
-          "Plantadeira PL5000": { anos: ["2017", "2018", "2019"] },
-          "Pulverizador PL6020": { anos: ["2019", "2020", "2021"] }
-        },
-        "Massey Ferguson": {
-          "Trator MF 6713": { anos: ["2015", "2016", "2017"] },
-          "Trator MF 7714": { anos: ["2018", "2019", "2020"] },
-          "Colheitadeira MF 9250": { anos: ["2017", "2018", "2019"] },
-          "Colheitadeira MF 9795": { anos: ["2019", "2020", "2021"] },
-          "Plantadeira MF 9800": { anos: ["2016", "2017", "2018"] },
-          "Pulverizador MF 3200": { anos: ["2018", "2019", "2020"] }
-        },
-        "Valtra": {
-          "Trator A114": { anos: ["2017", "2018", "2019"] },
-          "Trator N134": { anos: ["2019", "2020", "2021"] },
-          "Colheitadeira BH 2080": { anos: ["2016", "2017", "2018"] },
-          "Colheitadeira BH 3080": { anos: ["2018", "2019", "2020"] },
-          "Plantadeira VP 1250": { anos: ["2015", "2016", "2017"] },
-          "Pulverizador VP 3000": { anos: ["2019", "2020", "2021"] }
-        }
-      },
-      "Linha Mini": {
-        "Bobcat": {
-          "E20": { anos: ["2018", "2019", "2020"] },
-          "E35": { anos: ["2019", "2020", "2021"] }
-        },
-        "Takeuchi": {
-          "TB216": { anos: ["2017", "2018", "2019"] },
-          "TB230": { anos: ["2019", "2020", "2021"] }
-        }
-      }
     };
-    
+
     // Definição dos materiais e cores - AGORA COM IMAGENS
     const materiais = {
         couro: {
-          nome: "Couro Sintético",
-          cores: [
-            { nome: "Preto Elegance", codigo: "#1A1A1A", imagem: "imagens/cores/cor1.jpg" },
-            { nome: "Marrum Clássico", codigo: "#5E2C04", imagem: "imagens/cores/cor2.jpg" },
-            { nome: "Bege Natural", codigo: "#E6D5B8", imagem: "imagens/cores/cor3.jpg" },
-            { nome: "Vinho Nobre", codigo: "#722F37", imagem: "imagens/cores/cor4.jpg" },
-            { nome: "Azul Royal", codigo: "#0F056B", imagem: "imagens/cores/cor5.jpg" },
-            { nome: "Verde Floresta", codigo: "#228B22", imagem: "imagens/cores/cor6.jpg" },
-            { nome: "Grafite", codigo: "#383838", imagem: "imagens/cores/cor7.jpg" },
-            { nome: "Terra Queimada", codigo: "#8B4513", imagem: "imagens/cores/cor8.jpg" },
-            { nome: "Borgonha", codigo: "#800020", imagem: "imagens/cores/cor9.jpg" },
-            { nome: "Caramelo", codigo: "#D27D46", imagem: "imagens/cores/cor10.jpg" },
-            { nome: "Cinza Platinum", codigo: "#C0C0C0", imagem: "imagens/cores/cor11.jpg" },
-            { nome: "Azul Petróleo", codigo: "#003B4D", imagem: "imagens/cores/cor12.jpg" },
-            { nome: "Off-White", codigo: "#F5F5DC", imagem: "imagens/cores/cor13.jpg" }
-          ]
+            nome: "Couro Sintético",
+            cores: [
+                { nome: "Preto Elegance", codigo: "#1A1A1A", imagem: "imagens/cores/cor1.jpg" },
+                { nome: "Marrum Clássico", codigo: "#5E2C04", imagem: "imagens/cores/cor2.jpg" },
+                { nome: "Bege Natural", codigo: "#E6D5B8", imagem: "imagens/cores/cor3.jpg" },
+                { nome: "Vinho Nobre", codigo: "#722F37", imagem: "imagens/cores/cor4.jpg" },
+                { nome: "Azul Royal", codigo: "#0F056B", imagem: "imagens/cores/cor5.jpg" },
+                { nome: "Verde Floresta", codigo: "#228B22", imagem: "imagens/cores/cor6.jpg" },
+                { nome: "Grafite", codigo: "#383838", imagem: "imagens/cores/cor7.jpg" },
+                { nome: "Terra Queimada", codigo: "#8B4513", imagem: "imagens/cores/cor8.jpg" },
+                { nome: "Borgonha", codigo: "#800020", imagem: "imagens/cores/cor9.jpg" },
+                { nome: "Caramelo", codigo: "#D27D46", imagem: "imagens/cores/cor10.jpg" },
+                { nome: "Cinza Platinum", codigo: "#C0C0C0", imagem: "imagens/cores/cor11.jpg" },
+                { nome: "Azul Petróleo", codigo: "#003B4D", imagem: "imagens/cores/cor12.jpg" },
+                { nome: "Off-White", codigo: "#F5F5DC", imagem: "imagens/cores/cor13.jpg" }
+            ]
         },
         couro_sport: {
-          nome: "Couro Sport",
-          cores: [
-            { nome: "Preto com Costuras Vermelhas", codigo: "#000000", detalhe: "#FF0000", imagem: "imagens/cores/cor14.jpg" },
-            { nome: "Azul Racing com Branco", codigo: "#00008B", detalhe: "#FFFFFF", imagem: "imagens/cores/cor15.jpg" },
-            { nome: "Cinza Metalizado com Laranja", codigo: "#808080", detalhe: "#FFA500", imagem: "imagens/cores/cor16.jpg" },
-            { nome: "Branco Gelado com Preto", codigo: "#F8F8FF", detalhe: "#000000", imagem: "imagens/cores/cor17.jpg" }
-          ]
+            nome: "Couro Sport",
+            cores: [
+                { nome: "Preto com Costuras Vermelhas", codigo: "#000000", detalhe: "#FF0000", imagem: "imagens/cores/cor14.jpg" },
+                { nome: "Azul Racing com Branco", codigo: "#00008B", detalhe: "#FFFFFF", imagem: "imagens/cores/cor15.jpg" },
+                { nome: "Cinza Metalizado com Laranja", codigo: "#808080", detalhe: "#FFA500", imagem: "imagens/cores/cor16.jpg" },
+                { nome: "Branco Gelado com Preto", codigo: "#F8F8FF", detalhe: "#000000", imagem: "imagens/cores/cor17.jpg" }
+            ]
         },
         pelucia: {
-          nome: "Pelúcia (Xinil)",
-          cores: [
-            { nome: "Preto Fosco", codigo: "#0D0D0D", imagem: "imagens/cores/cor18.jpg" },
-            { nome: "Cinza Chumbo", codigo: "#2F4F4F", imagem: "imagens/cores/cor19.jpg" },
-            { nome: "Azul Marinho", codigo: "#000080", imagem: "imagens/cores/cor20.jpg" },
-            { nome: "Verde Militar", codigo: "#4B5320", imagem: "imagens/cores/cor21.jpg" },
-            { nome: "Vermelho Ferrari", codigo: "#FF2800", imagem: "imagens/cores/cor22.jpg" },
-            { nome: "Bege Areia", codigo: "#F5E8C7", imagem: "imagens/cores/cor23.jpg" },
-            { nome: "Bordô", codigo: "#7C0A02", imagem: "imagens/cores/cor24.jpg" },
-            { nome: "Azul Celeste", codigo: "#4682B4", imagem: "imagens/cores/cor25.jpg" },
-            { nome: "Terracota", codigo: "#E2725B", imagem: "imagens/cores/cor26.jpg" },
-            { nome: "Lavanda", codigo: "#967BB6", imagem: "imagens/cores/cor27.jpg" },
-            { nome: "Verde Limão", codigo: "#C9DC87", imagem: "imagens/cores/cor28.jpg" },
-            { nome: "Rosa Blush", codigo: "#FFD1DC", imagem: "imagens/cores/cor29.jpg" }
-          ]
+            nome: "Pelúcia (Xinil)",
+            cores: [
+                { nome: "Preto Fosco", codigo: "#0D0D0D", imagem: "imagens/cores/cor18.jpg" },
+                { nome: "Cinza Chumbo", codigo: "#2F4F4F", imagem: "imagens/cores/cor19.jpg" },
+                { nome: "Azul Marinho", codigo: "#000080", imagem: "imagens/cores/cor20.jpg" },
+                { nome: "Verde Militar", codigo: "#4B5320", imagem: "imagens/cores/cor21.jpg" },
+                { nome: "Vermelho Ferrari", codigo: "#FF2800", imagem: "imagens/cores/cor22.jpg" },
+                { nome: "Bege Areia", codigo: "#F5E8C7", imagem: "imagens/cores/cor23.jpg" },
+                { nome: "Bordô", codigo: "#7C0A02", imagem: "imagens/cores/cor24.jpg" },
+                { nome: "Azul Celeste", codigo: "#4682B4", imagem: "imagens/cores/cor25.jpg" },
+                { nome: "Terracota", codigo: "#E2725B", imagem: "imagens/cores/cor26.jpg" },
+                { nome: "Lavanda", codigo: "#967BB6", imagem: "imagens/cores/cor27.jpg" },
+                { nome: "Verde Limão", codigo: "#C9DC87", imagem: "imagens/cores/cor28.jpg" },
+                { nome: "Rosa Blush", codigo: "#FFD1DC", imagem: "imagens/cores/cor29.jpg" }
+            ]
         }
     };
-    
+
     // Definição dos kits de revestimento - AGORA COM IMAGENS
     const kitsRevestimento = {
         "pelucia_total": {
-          nome: "Kit em Pelúcia (Xinil) - Total",
-          descricao: "Todas as partes em pelúcia/xinil",
-          preco: 1200,
-          imagem: "imagens/kits/kit_pelucia_total.jpg",
-          partes: {
-            chao: { material: "pelucia", cor: "", corNome: "" },
-            banco: { material: "pelucia", cor: "", corNome: "" },
-            braco: { material: "pelucia", cor: "", corNome: "" },
-            cabeca: { material: "pelucia", cor: "", corNome: "" },
-            laterais: { material: "pelucia", cor: "", corNome: "" }
-          }
+            nome: "Kit em Pelúcia (Xinil) - Total",
+            descricao: "Todas as partes em pelúcia/xinil",
+            preco: 1200,
+            imagem: "imagens/kits/kit_pelucia_total.jpg",
+            partes: {
+                chao: { material: "pelucia", cor: "", corNome: "" },
+                banco: { material: "pelucia", cor: "", corNome: "" },
+                braco: { material: "pelucia", cor: "", corNome: "" },
+                cabeca: { material: "pelucia", cor: "", corNome: "" },
+                laterais: { material: "pelucia", cor: "", corNome: "" }
+            }
         },
         "couro_chao_pelucia_resto": {
-          nome: "Couro no Chão + Resto em Pelúcia",
-          descricao: "Chão em couro sintético, demais partes em pelúcia",
-          preco: 1500,
-          imagem: "imagens/kits/kit_couro_chao.jpg",
-          partes: {
-            chao: { material: "couro", cor: "", corNome: "" },
-            banco: { material: "pelucia", cor: "", corNome: "" },
-            braco: { material: "pelucia", cor: "", corNome: "" },
-            cabeca: { material: "pelucia", cor: "", corNome: "" },
-            laterais: { material: "pelucia", cor: "", corNome: "" }
-          }
+            nome: "Couro no Chão + Resto em Pelúcia",
+            descricao: "Chão em couro sintético, demais partes em pelúcia",
+            preco: 1500,
+            imagem: "imagens/kits/kit_couro_chao.jpg",
+            partes: {
+                chao: { material: "couro", cor: "", corNome: "" },
+                banco: { material: "pelucia", cor: "", corNome: "" },
+                braco: { material: "pelucia", cor: "", corNome: "" },
+                cabeca: { material: "pelucia", cor: "", corNome: "" },
+                laterais: { material: "pelucia", cor: "", corNome: "" }
+            }
         },
         "couro_total": {
-          nome: "Kit Couro Completo",
-          descricao: "Todas as partes em couro sintético",
-          preco: 2000,
-          imagem: "imagens/kits/kit_couro_total.jpg",
-          partes: {
-            chao: { material: "couro", cor: "", corNome: "" },
-            banco: { material: "couro", cor: "", corNome: "" },
-            braco: { material: "couro", cor: "", corNome: "" },
-            cabeca: { material: "couro", cor: "", corNome: "" },
-            laterais: { material: "couro", cor: "", corNome: "" }
-          }
+            nome: "Kit Couro Completo",
+            descricao: "Todas as partes em couro sintético",
+            preco: 2000,
+            imagem: "imagens/kits/kit_couro_total.jpg",
+            partes: {
+                chao: { material: "couro", cor: "", corNome: "" },
+                banco: { material: "couro", cor: "", corNome: "" },
+                braco: { material: "couro", cor: "", corNome: "" },
+                cabeca: { material: "couro", cor: "", corNome: "" },
+                laterais: { material: "couro", cor: "", corNome: "" }
+            }
         },
         "couro_sport": {
-          nome: "Kit Couro Sport",
-          descricao: "Couro com detalhes esportivos",
-          preco: 2200,
-          imagem: "imagens/kits/kit_couro_sport.jpg",
-          partes: {
-            chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-            banco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-            braco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-            cabeca: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-            laterais: { material: "couro_sport", cor: "", corNome: "", detalhe: "" }
-          }
+            nome: "Kit Couro Sport",
+            descricao: "Couro com detalhes esportivos",
+            preco: 2200,
+            imagem: "imagens/kits/kit_couro_sport.jpg",
+            partes: {
+                chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+                banco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+                braco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+                cabeca: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+                laterais: { material: "couro_sport", cor: "", corNome: "", detalhe: "" }
+            }
         }
     };
-    
+
     // Mapeamento de tipos de máquina para exibição
     const tipoMaquinaMap = {
         'escavadeira-hidraulica': 'Escavadeira Hidráulica',
@@ -215,19 +215,19 @@
         'mini-escavadeira': 'Mini Escavadeira',
         'mini-carregadeira': 'Mini Carregadeira'
     };
-    
+
     // Variáveis globais
     const state = {
         linha: '',
         tipoMaquina: '',
         carrinho: [],
         frete: {
-          valor: 0,
-          prazo: 0,
-          transportadora: 'Correios'
+            valor: 0,
+            prazo: 0,
+            transportadora: 'Correios'
         }
     };
-    
+
     // Inicialização segura do carrinho
     try {
         const carrinhoSalvo = localStorage.getItem('carrinho');
@@ -242,12 +242,12 @@
         state.carrinho = [];
         localStorage.setItem('carrinho', JSON.stringify([]));
     }
-    
+
     // Armazenamento do kit selecionado
     let kitSelecionado = null;
     let corSelecionadaModal = null;
     let parteSelecionadaModal = null;
-    
+
     // Elementos DOM
     const botoesLinha = document.querySelectorAll('.botao-linha');
     const selecaoContainer = document.getElementById('selecao-container');
@@ -258,12 +258,10 @@
     const maquinasVerdes = document.getElementById('maquinas-verdes');
     const maquinasMini = document.getElementById('maquinas-mini');
     const botoesMaquina = document.querySelectorAll('.botao-maquina');
-    const btnFinalizar = document.querySelector('.btn-finalizar');
     const feedback = document.getElementById('feedback');
     const feedbackIcon = document.getElementById('feedback-icon');
     const feedbackMessage = document.getElementById('feedback-message');
     const formClienteContainer = document.getElementById('form-cliente-container');
-    const formCliente = document.getElementById('formCliente');
     const cepFreteInput = document.getElementById('cep-frete');
     const resultadoFrete = document.getElementById('resultado-frete');
     const valorFreteSpan = document.getElementById('valor-frete');
@@ -282,10 +280,10 @@
     const cortinaCheckbox = document.getElementById('cortina-checkbox');
     const cortinaPersonalizacao = document.getElementById('cortina-personalizacao');
     const cortinaPreco = document.getElementById('cortina-preco');
-    
+
     // Preço da cortina
     const precoCortina = 150;
-    
+
     // Função para gerar protocolo
     function generateProtocol() {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -295,7 +293,7 @@
         }
         return protocol;
     }
-    
+
     // Função para obter a imagem da cor baseada no material e nome da cor
     function obterImagemDaCor(material, corNome) {
         if (!material || !corNome) return '';
@@ -306,8 +304,8 @@
         const corEncontrada = materialObj.cores.find(cor => cor.nome === corNome);
         return corEncontrada ? corEncontrada.imagem : '';
     }
-    
-    // Função para mostrar os kits disponíveis - MODIFICADA PARA MOSTRAR IMAGENS
+
+    // Função para mostrar os kits disponíveis
     function mostrarKitsRevestimento() {
         kitsGrid.innerHTML = '';
         
@@ -348,7 +346,7 @@
         // Esconder personalização inicialmente
         personalizacaoContainer.style.display = 'none';
     }
-    
+
     // Função para mostrar as partes do kit para personalização
     function mostrarPersonalizacaoKit() {
         partesPersonalizacao.innerHTML = '';
@@ -389,7 +387,7 @@
             });
         }, 100);
     }
-    
+
     // Função para abrir modal de cores para uma parte específica
     function abrirModalCoresParaParte(parte, tipoMaterial) {
         const tituloModal = modalCores.querySelector('h3');
@@ -414,7 +412,7 @@
             }
             
             corItem.innerHTML = `
-                <img src="${cor.imagem}" alt="${cor.nome}">
+                <img src="${cor.imagem}" alt="${cor.nome}" onerror="this.style.backgroundColor='${cor.codigo}'">
                 <span>${cor.nome}</span>
             `;
             
@@ -436,13 +434,13 @@
         modalCores.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
-    
+
     // Função para fechar o modal de cores
     function fecharModalCores() {
         modalCores.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
-    
+
     // Função para confirmar a cor selecionada
     function confirmarCorSelecionada() {
         if (!corSelecionadaModal || !parteSelecionadaModal) {
@@ -464,11 +462,9 @@
                 imgPreview.src = corSelecionadaModal.imagem;
                 imgPreview.alt = corSelecionadaModal.nome;
                 imgPreview.className = 'cor-preview-image';
-                imgPreview.style.width = '30px';
-                imgPreview.style.height = '30px';
-                imgPreview.style.borderRadius = '50%';
-                imgPreview.style.objectFit = 'cover';
-                imgPreview.style.border = '1px solid #888';
+                imgPreview.onerror = function() {
+                    this.style.backgroundColor = corSelecionadaModal.codigo;
+                };
                 
                 seletor.insertBefore(imgPreview, seletor.querySelector('span'));
                 seletor.querySelector('span').textContent = corSelecionadaModal.nome;
@@ -498,11 +494,9 @@
                 imgPreview.src = corSelecionadaModal.imagem;
                 imgPreview.alt = corSelecionadaModal.nome;
                 imgPreview.className = 'cor-preview-image';
-                imgPreview.style.width = '30px';
-                imgPreview.style.height = '30px';
-                imgPreview.style.borderRadius = '50%';
-                imgPreview.style.objectFit = 'cover';
-                imgPreview.style.border = '1px solid #888';
+                imgPreview.onerror = function() {
+                    this.style.backgroundColor = corSelecionadaModal.codigo;
+                };
                 
                 seletor.insertBefore(imgPreview, seletor.querySelector('span'));
                 seletor.querySelector('span').textContent = corSelecionadaModal.nome;
@@ -517,7 +511,7 @@
         
         mostrarFeedback('Cor selecionada com sucesso!');
     }
-    
+
     // Função para adicionar item ao carrinho
     function adicionarAoCarrinho() {
         if (!kitSelecionado) {
@@ -602,7 +596,7 @@
             cortinaCorElement.insertBefore(newPreview, span);
         }
     }
-    
+
     // Função para resetar a seleção
     function resetarSelecao() {
         // Resetar dropdowns
@@ -625,7 +619,7 @@
         cortinaCheckbox.checked = false;
         cortinaPersonalizacao.style.display = 'none';
     }
-    
+
     // Função para mostrar formulário do cliente
     function mostrarFormularioCliente() {
         if (state.carrinho.length === 0) {
@@ -637,7 +631,7 @@
         formClienteContainer.style.display = 'block';
         formClienteContainer.scrollIntoView({ behavior: 'smooth' });
     }
-    
+
     // Função para selecionar linha principal
     function selecionarLinha(botao) {
         // Remover classe 'ativo' de todos os botões
@@ -678,7 +672,7 @@
             }
         }, 100);
     }
-    
+
     // Função para selecionar máquina específica
     function selecionarMaquina(botao) {
         // Remover classe 'ativo' de todos os botões de máquina
@@ -707,7 +701,7 @@
             selecaoContainer.scrollIntoView({ behavior: 'smooth' });
         }, 100);
     }
-    
+
     // Função para popular marcas
     function popularMarcas() {
         marcaSelect.innerHTML = '<option value="">Selecione...</option>';
@@ -724,7 +718,7 @@
             marcaSelect.appendChild(option);
         });
     }
-    
+
     // Função para salvar carrinho no localStorage
     function salvarCarrinho() {
         try {
@@ -733,7 +727,7 @@
             console.error('Erro ao salvar carrinho:', error);
         }
     }
-    
+
     // Função para atualizar a exibição do carrinho
     function atualizarCarrinho() {
         const listaCarrinho = document.getElementById('listaCarrinho');
@@ -760,14 +754,14 @@
                     if (config && config.cor && config.corNome) {
                         partesHTML += `
                             <div style="margin-left: 10px; margin-top: 8px; display: flex; align-items: center;">
-                                <img src="${obterImagemDaCor(config.material, config.corNome)}" alt="${config.corNome}" style="
+                                <div style="
                                     width: 15px;
                                     height: 15px;
                                     border-radius: 50%;
-                                    object-fit: cover;
                                     border: 1px solid #888;
                                     margin-right: 8px;
-                                ">
+                                    background-color: ${config.cor};
+                                "></div>
                                 <span style="font-size: 0.8rem;">
                                     ${parte.replace(/_/g, ' ')}: 
                                     <strong>${config.corNome}</strong>
@@ -782,14 +776,14 @@
             if (item.cortina) {
                 partesHTML += `
                     <div style="margin-left: 10px; margin-top: 8px; display: flex; align-items: center;">
-                        <img src="${obterImagemDaCor(item.cortina.material, item.cortina.corNome)}" alt="${item.cortina.corNome}" style="
+                        <div style="
                             width: 15px;
                             height: 15px;
                             border-radius: 50%;
-                            object-fit: cover;
                             border: 1px solid #888;
                             margin-right: 8px;
-                        ">
+                            background-color: ${item.cortina.cor};
+                        "></div>
                         <span style="font-size: 0.8rem;">
                             Cortina: 
                             <strong>${item.cortina.corNome}</strong>
@@ -823,7 +817,7 @@
         totalItensSpan.textContent = `R$ ${total.toFixed(2)}`;
         atualizarTotais();
     }
-    
+
     // Função para atualizar totais (itens + frete)
     function atualizarTotais() {
         const totalItens = state.carrinho.reduce((sum, item) => sum + (item.preco || 0) + (item.precoCortina || 0), 0);
@@ -832,7 +826,7 @@
         totalItensSpan.textContent = `R$ ${totalItens.toFixed(2)}`;
         totalGeralSpan.textContent = `R$ ${totalGeral.toFixed(2)}`;
     }
-    
+
     // Função para remover item do carrinho
     function removerDoCarrinho(id) {
         state.carrinho = state.carrinho.filter(item => item.id !== id);
@@ -840,7 +834,7 @@
         atualizarCarrinho();
         mostrarFeedback('Item removido do carrinho');
     }
-    
+
     // Função para mostrar feedback ao usuário
     function mostrarFeedback(mensagem, tipo = 'sucesso') {
         feedbackMessage.textContent = mensagem;
@@ -857,7 +851,7 @@
             feedback.classList.remove('visible');
         }, 3000);
     }
-    
+
     // Função para calcular frete (simulação)
     function calcularFrete() {
         const cep = cepFreteInput.value.replace(/\D/g, '');
@@ -887,7 +881,7 @@
         
         mostrarFeedback('Frete calculado com sucesso!');
     }
-    
+
     // Funções de validação de formulário
     function validarSomenteNumeros(input) {
         const valor = input.value.replace(/\D/g, '');
@@ -963,7 +957,7 @@
             mostrarFeedback('Por favor, preencha todos os campos corretamente', 'erro');
         }
     }
-    
+
     // Função para finalizar o pedido e abrir o WhatsApp
     function finalizarPedido() {
         // Validar formulário
@@ -1034,7 +1028,8 @@
             if (item.partes && typeof item.partes === 'object') {
                 for (const [parte, config] of Object.entries(item.partes)) {
                     if (config && config.corNome) {
-                        mensagem += `   ${parte.replace(/_/g, ' ')}: ${config.corNome} (${config.cor || ''})`;
+                        // MODIFICAÇÃO AQUI: Exibir apenas o nome da cor, não o código
+                        mensagem += `   ${parte.replace(/_/g, ' ')}: ${config.corNome}`;
                         if (config.detalhe) {
                             mensagem += ` com detalhe em ${config.detalhe}`;
                         }
@@ -1045,6 +1040,7 @@
             
             // Adicionar informações da cortina se existir
             if (item.cortina) {
+                // MODIFICAÇÃO AQUI: Exibir apenas o nome da cor, não o código
                 mensagem += `   Cortina: ${item.cortina.corNome}\n`;
                 mensagem += `   Valor da Cortina: R$ ${item.precoCortina.toFixed(2)}\n`;
             }
@@ -1085,7 +1081,7 @@
         
         mostrarFeedback('Pedido enviado com sucesso! Em breve entraremos em contato.');
     }
-    
+
     // Inicialização
     document.addEventListener('DOMContentLoaded', () => {
         atualizarCarrinho();
