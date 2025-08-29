@@ -1,5 +1,10 @@
 // Dados dos produtos atualizados
     const dados = {
+        "CAT": {
+                "320D": { anos: ["2015", "2016", "2017"] },
+                "336D": { anos: ["2018", "2019", "2020"] },
+                "349D": { anos: ["2019", "2020", "2021"] }
+            },
         "Linha Amarela": {
             "Zoomlion": {
                 "ZE205E": { anos: ["2018", "2019", "2020"] },
@@ -26,11 +31,7 @@
                 "EC200E": { anos: ["2017", "2018", "2019"] },
                 "EC300E": { anos: ["2019", "2020", "2021"] }
             },
-            "CAT": {
-                "320D": { anos: ["2015", "2016", "2017"] },
-                "336D": { anos: ["2018", "2019", "2020"] },
-                "349D": { anos: ["2019", "2020", "2021"] }
-            },
+            
             "SDLG": {
                 "E6135F": { anos: ["2018", "2019", "2020"] },
                 "E6225F": { anos: ["2019", "2020", "2021"] }
@@ -1209,4 +1210,5 @@
         document.getElementById('numero').addEventListener('input', function() {
             validarCampo(this, 'numero');
         });
+
     });
