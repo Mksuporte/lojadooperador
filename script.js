@@ -692,9 +692,7 @@ function adicionarAoCarrinho() {
         cortinaCorElement.insertBefore(newPreview, span);
     }
     
-    // Resetar foto do banco
-    fotoBancoInput.value = '';
-}
+    
 
 // Função para resetar a seleção
 function resetarSelecao() {
@@ -766,8 +764,7 @@ function selecionarLinha(botao) {
     // Ocultar formulário de seleção até escolher a máquina
     selecaoContainer.style.display = 'none';
     
-    // Resetar seleção
-    resetarSelecao();
+    
     
     // Rolagem suave para os botões de máquina
     setTimeout(() => {
@@ -1234,12 +1231,7 @@ function finalizarPedido() {
 document.addEventListener('DOMContentLoaded', () => {
     atualizarCarrinho();
     
-    // Adiciona eventos aos botões de linha principal
-    botoesLinha.forEach(botao => {
-        botao.addEventListener('click', function() {
-            selecionarLinha(this);
-        });
-    });
+   
     
     // Adiciona eventos aos botões de máquina
     botoesMaquina.forEach(botao => {
