@@ -643,16 +643,7 @@ function adicionarAoCarrinho() {
         };
     }
     
-    // Obter informações da foto do banco, se enviada
-    let fotoBancoInfo = null;
-    if (fotoBancoInput.files.length > 0) {
-        fotoBancoInfo = {
-            nome: fotoBancoInput.files[0].name,
-            tamanho: fotoBancoInput.files[0].size,
-            tipo: fotoBancoInput.files[0].type
-        };
-    }
-    
+  
     // Criar item para o carrinho
     const item = {
         tipo: 'kit_revestimento',

@@ -732,35 +732,7 @@
       color: #08d118;
     }
 
-    /* Upload de foto */
-    .upload-foto {
-      margin-top: 20px;
-      padding: 15px;
-      border: 2px dashed #F9A01B;
-      border-radius: 8px;
-      text-align: center;
-      background-color: rgba(249, 160, 27, 0.1);
-    }
-
-    .upload-foto p {
-      margin-bottom: 10px;
-      color: #F9A01B;
-      font-weight: bold;
-    }
-
-    .upload-foto small {
-      color: #aaa;
-    }
-
-    #foto-banco {
-      width: 100%;
-      padding: 10px;
-      background-color: #555;
-      border-radius: 5px;
-      border: 1px solid #666;
-      color: white;
-      margin-top: 10px;
-    }
+    
 
     /* Responsivo */
     @media (max-width: 768px) {
