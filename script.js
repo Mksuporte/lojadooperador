@@ -658,7 +658,7 @@ function adicionarAoCarrinho() {
         ano: anoSelect.value,
         cortina: cortinaInfo,
         precoCortina: cortinaCheckbox.checked ? precoCortina : 0,
-        fotoBanco: fotoBancoInfo
+       
     };
     
     // Adicionar ao carrinho
