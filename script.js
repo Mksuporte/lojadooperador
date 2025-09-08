@@ -643,7 +643,6 @@ function adicionarAoCarrinho() {
         };
     }
     
-  
     // Criar item para o carrinho
     const item = {
         tipo: 'kit_revestimento',
@@ -691,7 +690,7 @@ function adicionarAoCarrinho() {
         newPreview.style.backgroundColor = '#ccc';
         cortinaCorElement.insertBefore(newPreview, span);
     }
-}
+} 
     
 
 // Função para resetar a seleção
