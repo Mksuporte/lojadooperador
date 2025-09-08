@@ -606,7 +606,7 @@ function confirmarCorSelecionada() {
     mostrarFeedback('Cor selecionada com sucesso!');
 }
 
-// Função para adicionar item ao carrinho
+// Função para adicionar item ao carrinho - CORRIGIDA
 function adicionarAoCarrinho() {
     if (!kitSelecionado) {
         mostrarFeedback('Selecione um kit de revestimento antes de adicionar ao carrinho', 'erro');
@@ -637,13 +637,13 @@ function adicionarAoCarrinho() {
         }
         
         cortinaInfo = {
-            material: "pelucia", // Material padrão para cortina
+            material: "pelucia",
             cor: corSelecionadaModal ? corSelecionadaModal.codigo : "#000000", 
             corNome: cortinaCorElement.textContent
         };
     }
     
-    // Criar item para o carrinho
+    // Criar item para o carrinho - REMOVIDA a referência a fotoBancoInfo
     const item = {
         tipo: 'kit_revestimento',
         kitId: kitSelecionado.id,
@@ -657,8 +657,8 @@ function adicionarAoCarrinho() {
         modelo: modeloSelect.value,
         ano: anoSelect.value,
         cortina: cortinaInfo,
-        precoCortina: cortinaCheckbox.checked ? precoCortina : 0,
-       
+        precoCortina: cortinaCheckbox.checked ? precoCortina : 0
+        // REMOVIDO: fotoBanco: fotoBancoInfo
     };
     
     // Adicionar ao carrinho
@@ -854,27 +854,24 @@ function salvarCarrinho() {
     }
 }
 
-// Função para atualizar a exibição do carrinho
+// Função para atualizar a exibição do carrinho - REMOVIDAS referências a foto do banco
 function atualizarCarrinho() {
     const listaCarrinho = document.getElementById('listaCarrinho');
     listaCarrinho.innerHTML = '';
     
     let total = 0;
     
-    // VERIFICAÇÃO DE SEGURANÇA - Corrige o erro
     if (!state.carrinho || !Array.isArray(state.carrinho)) {
         console.warn('Carrinho inválido, inicializando array vazio');
         state.carrinho = [];
         salvarCarrinho();
     }
     
-    // Usar for loop em vez of forEach com Object.entries para maior segurança
     for (let i = 0; i < state.carrinho.length; i++) {
         const item = state.carrinho[i];
         
         let partesHTML = '';
         
-        // Verificação adicional para garantir que item.partes existe
         if (item.partes && typeof item.partes === 'object') {
             for (const [parte, config] of Object.entries(item.partes)) {
                 if (config && config.cor && config.corNome) {
@@ -918,17 +915,7 @@ function atualizarCarrinho() {
             `;
         }
         
-        // Adicionar informação sobre foto do banco se existir
-        if (item.fotoBanco) {
-            partesHTML += `
-                <div style="margin-left: 10px; margin-top: 8px; display: flex; align-items: center;">
-                    <span style="font-size: 0.8rem;">
-                        Foto do banco enviada: 
-                        <strong>${item.fotoBanco.nome}</strong>
-                    </span>
-                </div>
-            `;
-        }
+        // REMOVIDO: Bloco de código relacionado à foto do banco
         
         const li = document.createElement('li');
         li.innerHTML = `
@@ -1183,10 +1170,7 @@ function finalizarPedido() {
             mensagem += `   Valor da Cortina: R$ ${item.precoCortina.toFixed(2)}\n`;
         }
         
-        // Adicionar informações da foto do banco se existir
-        if (item.fotoBanco) {
-            mensagem += `   Foto do banco enviada: ${item.fotoBanco.nome}\n`;
-        }
+       
         
         mensagem += '\n';
     });
