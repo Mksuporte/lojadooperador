@@ -362,7 +362,7 @@ const tituloSelecao = document.getElementById('titulo-selecao');
 const cortinaCheckbox = document.getElementById('cortina-checkbox');
 const cortinaPersonalizacao = document.getElementById('cortina-personalizacao');
 const cortinaPreco = document.getElementById('cortina-preco');
-const fotoBancoInput = document.getElementById('foto-banco');
+
 
 // Preço da cortina
 const precoCortina = 150;
@@ -716,8 +716,7 @@ function resetarSelecao() {
     cortinaCheckbox.checked = false;
     cortinaPersonalizacao.style.display = 'none';
     
-    // Resetar foto do banco
-    fotoBancoInput.value = '';
+   
     
     // Atualizar kits para desabilitados
     mostrarKitsRevestimento();
