@@ -691,7 +691,7 @@ function adicionarAoCarrinho() {
         newPreview.style.backgroundColor = '#ccc';
         cortinaCorElement.insertBefore(newPreview, span);
     }
-    
+}
     
 
 // Função para resetar a seleção
