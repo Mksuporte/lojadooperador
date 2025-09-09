@@ -214,7 +214,6 @@
     .nome-maquina.linha-verde {
       color: #08d118;
     }
-    
     /* NOVOS ESTILOS PARA OS KITS COM IMAGENS */
     .kit-item {
       display: flex;
@@ -238,12 +237,6 @@
       color: #000;
       border-color: #fff;
       transform: scale(1.05);
-    }
-
-    .kit-item.desabilitado {
-      opacity: 0.6;
-      pointer-events: none;
-      position: relative;
     }
 
     .kit-imagem {
@@ -272,27 +265,6 @@
       font-weight: bold;
       color: #08d118;
       font-size: 1.1rem;
-    }
-
-    .aviso-kit {
-      background-color: #ffeb3b;
-      color: #333;
-      padding: 5px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      margin-top: 8px;
-      text-align: center;
-    }
-
-    .kit-item.desabilitado::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(255, 255, 255, 0.7);
-      cursor: not-allowed;
     }
 
     /* Responsivo para os kits */
@@ -731,8 +703,6 @@
       font-weight: bold;
       color: #08d118;
     }
-
-    
 
     /* Responsivo */
     @media (max-width: 768px) {
