@@ -212,18 +212,18 @@ const materiais = {
     pelucia: {
         nome: "Pelúcia (Xinil)",
         cores: [
-            { nome: "Preto Fosco", imagem: "imagens/cores/cor18.jpg" },
-            { nome: "Cinza Chumbo", imagem: "imagens/cores/cor19.jpg" },
-            { nome: "Azul Marinho", imagem: "imagens/cores/cor20.jpg" },
-            { nome: "Verde Militar", imagem: "imagens/cores/cor21.jpg" },
-            { nome: "Vermelho Ferrari", imagem: "imagens/cores/cor22.jpg" },
-            { nome: "Bege Areia", imagem: "imagens/cores/cor23.jpg" },
-            { nome: "Bordô", imagem: "imagens/cores/cor24.jpg" },
-            { nome: "Azul Celeste", imagem: "imagens/cores/cor25.jpg" },
-            { nome: "Terracota", imagem: "imagens/cores/cor26.jpg" },
-            { nome: "Lavanda", imagem: "imagens/cores/cor27.jpg" },
-            { nome: "Verde Limão", imagem: "imagens/cores/cor28.jpg" },
-            { nome: "Rosa Blush", imagem: "imagens/cores/cor29.jpg" }
+            { nome: "Rosa", imagem: "imagens/cores/rosa.jpg" },
+            { nome: "Laranja", imagem: "imagens/cores/laranja.jpg" },
+            { nome: "Mescla", imagem: "imagens/cores/mescla.jpg" },
+            { nome: "Marrom", imagem: "imagens/cores/marrom.jpg" },
+            { nome: "Grafite", imagem: "imagens/cores/grafite.jpg" },
+            { nome: "Preto", imagem: "imagens/cores/preto.jpg" },
+            { nome: "Preto Mais Pelinhos", imagem: "imagens/cores/preto2.jpg" },
+            { nome: "Azul Mais Pelinhos", imagem: "imagens/cores/azul.jpg" },
+            { nome: "Verde Mais Pelinhos", imagem: "imagens/cores/verde.jpg" },
+            { nome: "Amarelo Mais Pelinhos", imagem: "imagens/cores/amarelo.jpg" },
+            { nome: "Vermelho Mais Pelinhos", imagem: "imagens/cores/vermelho.jpg" },
+            { nome: "Grafite Mais Pelinhos", imagem: "imagens/cores/grafite2.jpg" }
         ]
     }
 };
