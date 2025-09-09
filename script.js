@@ -1,5 +1,4 @@
-
-    // Dados dos produtos atualizados
+ // Dados dos produtos atualizados
     const dados = {        
     "Linha Amarela": {
         "CAT": {
@@ -186,48 +185,49 @@ const materiais = {
     couro: {
         nome: "Couro Sintético",
         cores: [
-            { nome: "Preto Elegance", codigo: "#1A1A1A", imagem: "imagens/cores/cor1.jpg" },
-            { nome: "Marrum Clássico", codigo: "#5E2C04", imagem: "imagens/cores/cor2.jpg" },
-            { nome: "Bege Natural", codigo: "#E6D5B8", imagem: "imagens/cores/cor3.jpg" },
-            { nome: "Vinho Nobre", codigo: "#722F37", imagem: "imagens/cores/cor4.jpg" },
-            { nome: "Azul Royal", codigo: "#0F056B", imagem: "imagens/cores/cor5.jpg" },
-            { nome: "Verde Floresta", codigo: "#228B22", imagem: "imagens/cores/cor6.jpg" },
-            { nome: "Grafite", codigo: "#383838", imagem: "imagens/cores/cor7.jpg" },
-            { nome: "Terra Queimada", codigo: "#8B4513", imagem: "imagens/cores/cor8.jpg" },
-            { nome: "Borgonha", codigo: "#800020", imagem: "imagens/cores/cor9.jpg" },
-            { nome: "Caramelo", codigo: "#D27D46", imagem: "imagens/cores/cor10.jpg" },
-            { nome: "Cinza Platinum", codigo: "#C0C0C0", imagem: "imagens/cores/cor11.jpg" },
-            { nome: "Azul Petróleo", codigo: "#003B4D", imagem: "imagens/cores/cor12.jpg" },
-            { nome: "Off-White", codigo: "#F5F5DC", imagem: "imagens/cores/cor13.jpg" }
+            { nome: "Preto Elegance", imagem: "imagens/cores/cor1.jpg" },
+            { nome: "Marrum Clássico", imagem: "imagens/cores/cor2.jpg" },
+            { nome: "Bege Natural", imagem: "imagens/cores/cor3.jpg" },
+            { nome: "Vinho Nobre", imagem: "imagens/cores/cor4.jpg" },
+            { nome: "Azul Royal", imagem: "imagens/cores/cor5.jpg" },
+            { nome: "Verde Floresta", imagem: "imagens/cores/cor6.jpg" },
+            { nome: "Grafite", imagem: "imagens/cores/cor7.jpg" },
+            { nome: "Terra Queimada", imagem: "imagens/cores/cor8.jpg" },
+            { nome: "Borgonha", imagem: "imagens/cores/cor9.jpg" },
+            { nome: "Caramelo", imagem: "imagens/cores/cor10.jpg" },
+            { nome: "Cinza Platinum", imagem: "imagens/cores/cor11.jpg" },
+            { nome: "Azul Petróleo", imagem: "imagens/cores/cor12.jpg" },
+            { nome: "Off-White", imagem: "imagens/cores/cor13.jpg" }
         ]
     },
     couro_sport: {
         nome: "Couro Sport",
         cores: [
-            { nome: "Preto com Costuras Vermelhas", codigo: "#000000", detalhe: "#FF0000", imagem: "imagens/cores/cor14.jpg" },
-            { nome: "Azul Racing com Branco", codigo: "#00008B", detalhe: "#FFFFFF", imagem: "imagens/cores/cor15.jpg" },
-            { nome: "Cinza Metalizado com Laranja", codigo: "#808080", detalhe: "#FFA500", imagem: "imagens/cores/cor16.jpg" },
-            { nome: "Branco Gelado com Preto", codigo: "#F8F8FF", detalhe: "#000000", imagem: "imagens/cores/cor17.jpg" }
+            { nome: "Preto com Costuras Vermelhas", imagem: "imagens/cores/cor14.jpg" },
+            { nome: "Azul Racing com Branco", imagem: "imagens/cores/cor15.jpg" },
+            { nome: "Cinza Metalizado com Laranja", imagem: "imagens/cores/cor16.jpg" },
+            { nome: "Branco Gelado com Preto", imagem: "imagens/cores/cor17.jpg" }
         ]
     },
     pelucia: {
         nome: "Pelúcia (Xinil)",
         cores: [
-            { nome: "Preto Fosco", codigo: "#0D0D0D", imagem: "imagens/cores/cor18.jpg" },
-            { nome: "Cinza Chumbo", codigo: "#2F4F4F", imagem: "imagens/cores/cor19.jpg" },
-            { nome: "Azul Marinho", codigo: "#000080", imagem: "imagens/cores/cor20.jpg" },
-            { nome: "Verde Militar", codigo: "#4B5320", imagem: "imagens/cores/cor21.jpg" },
-            { nome: "Vermelho Ferrari", codigo: "#FF2800", imagem: "imagens/cores/cor22.jpg" },
-            { nome: "Bege Areia", codigo: "#F5E8C7", imagem: "imagens/cores/cor23.jpg" },
-            { nome: "Bordô", codigo: "#7C0A02", imagem: "imagens/cores/cor24.jpg" },
-            { nome: "Azul Celeste", codigo: "#4682B4", imagem: "imagens/cores/cor25.jpg" },
-            { nome: "Terracota", codigo: "#E2725B", imagem: "imagens/cores/cor26.jpg" },
-            { nome: "Lavanda", codigo: "#967BB6", imagem: "imagens/cores/cor27.jpg" },
-            { nome: "Verde Limão", codigo: "#C9DC87", imagem: "imagens/cores/cor28.jpg" },
-            { nome: "Rosa Blush", codigo: "#FFD1DC", imagem: "imagens/cores/cor29.jpg" }
+            { nome: "Preto Fosco", imagem: "imagens/cores/cor18.jpg" },
+            { nome: "Cinza Chumbo", imagem: "imagens/cores/cor19.jpg" },
+            { nome: "Azul Marinho", imagem: "imagens/cores/cor20.jpg" },
+            { nome: "Verde Militar", imagem: "imagens/cores/cor21.jpg" },
+            { nome: "Vermelho Ferrari", imagem: "imagens/cores/cor22.jpg" },
+            { nome: "Bege Areia", imagem: "imagens/cores/cor23.jpg" },
+            { nome: "Bordô", imagem: "imagens/cores/cor24.jpg" },
+            { nome: "Azul Celeste", imagem: "imagens/cores/cor25.jpg" },
+            { nome: "Terracota", imagem: "imagens/cores/cor26.jpg" },
+            { nome: "Lavanda", imagem: "imagens/cores/cor27.jpg" },
+            { nome: "Verde Limão", imagem: "imagens/cores/cor28.jpg" },
+            { nome: "Rosa Blush", imagem: "imagens/cores/cor29.jpg" }
         ]
     }
 };
+
 
 // Definição dos kits de revestimento - AGORA COM IMAGENS
 const kitsRevestimento = {
