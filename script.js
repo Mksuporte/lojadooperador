@@ -185,7 +185,7 @@ const materiais = {
     couro: {
         nome: "Couro Sintético",
         cores: [
-            { nome: "Preto Elegance", imagem: "imagens/cores/cor1.jpg" },
+            { nome: "Pelucia Rosa", imagem: "imagens/cores/rosa.jpg" },
             { nome: "Marrum Clássico", imagem: "imagens/cores/cor2.jpg" },
             { nome: "Bege Natural", imagem: "imagens/cores/cor3.jpg" },
             { nome: "Vinho Nobre", imagem: "imagens/cores/cor4.jpg" },
