@@ -1,4 +1,4 @@
-<script>
+
     // Dados dos produtos atualizados
     const dados = {
         "Linha Amarela": {
