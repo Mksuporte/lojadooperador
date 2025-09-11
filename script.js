@@ -558,7 +558,7 @@ const tipoMaquinaMap = {
             return;
         } else {
             // Atualizar a cor no kit selecionado
-            kitSelecionado.partes[parteSelecionadaModal].cor = corSelecionadaModal.codigo;
+            kitSelecionado.partes[parteSelecionadaModal].cor = corSelecionadaModal.imagem; 
             kitSelecionado.partes[parteSelecionadaModal].corNome = corSelecionadaModal.nome;
             
             if (corSelecionadaModal.detalhe) {
@@ -1331,4 +1331,5 @@ anoSelect.addEventListener('change', () => {
         document.getElementById('numero').addEventListener('input', function() {
             validarCampo(this, 'numero');
         });
+
     });
