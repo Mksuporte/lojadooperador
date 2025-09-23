@@ -1099,11 +1099,11 @@ anoSelect.addEventListener('change', () => {
         }
         
         // Dados da loja
-        const numeroWhatsApp = "554399546879";
+        const numeroWhatsApp = "554399064226";
         const numeroPedido = Math.floor(10000 + Math.random() * 90000);
         const protocolo = generateProtocol();
         const dataHora = new Date().toLocaleString('pt-BR');
-        const pixInfo = "000.000.000-00 (CNPJ)\nNome: HELTO MACHADO";
+        const pixInfo = "000.000.000-00 (CNPJ)\nNome: HELTON MACHADO";
         
         // Obter dados do cliente
         const cliente = {
@@ -1121,8 +1121,9 @@ anoSelect.addEventListener('change', () => {
       
         // Montar cabeçalho
         let mensagem = "*LOJA DO OPERADOR - CAPAS PERSONALIZADAS*\n";
-        mensagem += "Av. Exemplo, 123 - Centro, Ivaipora, PR, 86870-000\n";
-        mensagem += "43 9954-6879\n";
+        mensagem += "*Cuidando das Suas Máquinas e de seus Operadores*\n";
+        mensagem += "Ivaipora, PR, 86870-000\n";
+        mensagem += "CONTATO:  43 9906-4226\n";
         mensagem += "--------------------------------------------------\n";
         mensagem += `*Pedido:* ${numeroPedido}\n`;
         mensagem += `*Protocolo:* ${protocolo}\n`;
