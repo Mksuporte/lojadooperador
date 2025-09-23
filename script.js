@@ -1123,12 +1123,12 @@ function validarFormulario() {
         };
       
         // Montar cabeçalho
-        let mensagem = "*LOJA DO OPERADOR - CAPAS PERSONALIZADAS*\n";
+        let mensagem = "---------> 👷‍♂️ *LOJA DO OPERADOR - CAPAS PERSONALIZADAS* 👷‍♂️ <---------\n";
         mensagem += "*✧ Sua equipe motivada ✧*\n";
         mensagem += "*✧ Seu patrimônio protegido, Seu negócio mais forte ✧*\n";
         mensagem += "*✧ Cuidando das Suas Máquinas e de seus Operadores ✧*\n";
         mensagem += "Ivaipora, PR, 86870000\n";
-        mensagem += "Contato:  43 99064226\n";
+        mensagem += "Contato: 43 99064226\n";
         mensagem += "--------------------------------------------------\n";
         mensagem += `*Pedido:* ${numeroPedido}\n`;
         mensagem += `*Protocolo:* ${protocolo}\n`;
