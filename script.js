@@ -1123,7 +1123,7 @@ function validarFormulario() {
         };
       
         // Montar cabeçalho
-        let mensagem = "*---------> 👷‍♂️ LOJA DO OPERADOR - CAPAS PERSONALIZADAS 👷‍♂️ <---------*\n";
+        let mensagem = "*---------> &#128119; LOJA DO OPERADOR - CAPAS PERSONALIZADAS 👷‍♂️ <---------*\n";
         mensagem += "*✧ Sua equipe motivada ✧*\n";
         mensagem += "*✧ Seu patrimônio protegido, Seu negócio mais forte ✧*\n";
         mensagem += "*✧ Cuidando das Suas Máquinas e de seus Operadores ✧*\n";
