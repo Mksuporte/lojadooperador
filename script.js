@@ -1004,81 +1004,84 @@ anoSelect.addEventListener('change', () => {
         mostrarFeedback('Frete calculado com sucesso!');
     }
 
-    // Funções de validação de formulário
-    function validarSomenteNumeros(input) {
-        const valor = input.value.replace(/\D/g, '');
-        input.value = valor;
-        return valor !== '';
-    }
+   // Funções de validação de formulário
+function validarSomenteNumeros(input) {
+    const valor = input.value.replace(/\D/g, '');
+    input.value = valor;
+    return valor !== '';
+}
+
+function validarSomenteLetras(input) {
+    let valor = input.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+    valor = valor.toUpperCase(); // 🔹 transforma tudo em MAIÚSCULO
+    input.value = valor;
+    return valor !== '';
+}
+
+function validarTextoGeral(input) {
+    // Permite letras, números, espaços e alguns caracteres especiais comuns em endereços
+    let valor = input.value.replace(/[^a-zA-ZÀ-ÿ0-9\s.,\-]/g, '');
+    valor = valor.toUpperCase(); // 🔹 transforma tudo em MAIÚSCULO
+    input.value = valor;
+    return valor !== '';
+}
+
+function validarCampo(input, tipo) {
+    const mensagemErro = document.getElementById(`erro-${input.id}`);
+    let valido = false;
     
-    function validarSomenteLetras(input) {
-        const valor = input.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
-        input.value = valor;
-        return valor !== '';
-    }
-    
-    function validarTextoGeral(input) {
-        // Permite letras, números, espaços e alguns caracteres especiais comuns em endereços
-        const valor = input.value.replace(/[^a-zA-ZÀ-ÿ0-9\s.,\-]/g, '');
-        input.value = valor;
-        return valor !== '';
-    }
-    
-    function validarCampo(input, tipo) {
-        const mensagemErro = document.getElementById(`erro-${input.id}`);
-        let valido = false;
-        
-        if (tipo === 'numero') {
-            valido = validarSomenteNumeros(input);
-            if (!valido) {
-                mensagemErro.textContent = 'Por favor, insira apenas números';
-            }
-        } else if (tipo === 'texto') {
-            valido = validarSomenteLetras(input);
-            if (!valido) {
-                mensagemErro.textContent = 'Por favor, insira apenas letras e espaços';
-            }
-        } else if (tipo === 'texto-geral') {
-            valido = validarTextoGeral(input);
-            if (!valido) {
-                mensagemErro.textContent = 'Por favor, insira um valor válido';
-            }
+    if (tipo === 'numero') {
+        valido = validarSomenteNumeros(input);
+        if (!valido) {
+            mensagemErro.textContent = 'Por favor, insira apenas números';
         }
-        
-        if (valido) {
-            input.classList.remove('invalido');
-            input.classList.add('valido');
-            mensagemErro.style.display = 'none';
-        } else {
-            input.classList.remove('valido');
-            input.classList.add('invalido');
-            mensagemErro.style.display = 'block';
+    } else if (tipo === 'texto') {
+        valido = validarSomenteLetras(input);
+        if (!valido) {
+            mensagemErro.textContent = 'Por favor, insira apenas letras e espaços';
         }
-        
-        return valido;
-    }
-    
-    function validarFormulario() {
-        // Validar todos os campos
-        const nomeValido = validarCampo(document.getElementById('nome'), 'texto');
-        const cpfCnpjValido = validarCampo(document.getElementById('cpf_cnpj'), 'numero');
-        const inscricaoEstadualValido = document.getElementById('inscricao_estadual').value === '' || validarCampo(document.getElementById('inscricao_estadual'), 'numero');
-        const telefoneValido = validarCampo(document.getElementById('telefone'), 'numero');
-        const cepValido = validarCampo(document.getElementById('cep'), 'numero');
-        const estadoValido = validarCampo(document.getElementById('estado'), 'texto');
-        const cidadeValido = validarCampo(document.getElementById('cidade'), 'texto');
-        const bairroValido = validarCampo(document.getElementById('bairro'), 'texto');
-        const ruaValido = validarCampo(document.getElementById('rua'), 'texto-geral');
-        const numeroValido = validarCampo(document.getElementById('numero'), 'numero');
-        
-        // Verificar se todos os campos obrigatórios estão preenchidos e válidos
-        if (nomeValido && cpfCnpjValido && telefoneValido && cepValido && 
-            estadoValido && cidadeValido && bairroValido && ruaValido && numeroValido) {
-            finalizarPedido();
-        } else {
-            mostrarFeedback('Por favor, preencha todos os campos corretamente', 'erro');
+    } else if (tipo === 'texto-geral') {
+        valido = validarTextoGeral(input);
+        if (!valido) {
+            mensagemErro.textContent = 'Por favor, insira um valor válido';
         }
     }
+    
+    if (valido) {
+        input.classList.remove('invalido');
+        input.classList.add('valido');
+        mensagemErro.style.display = 'none';
+    } else {
+        input.classList.remove('valido');
+        input.classList.add('invalido');
+        mensagemErro.style.display = 'block';
+    }
+    
+    return valido;
+}
+
+function validarFormulario() {
+    // Validar todos os campos
+    const nomeValido = validarCampo(document.getElementById('nome'), 'texto');
+    const cpfCnpjValido = validarCampo(document.getElementById('cpf_cnpj'), 'numero');
+    const inscricaoEstadualValido = document.getElementById('inscricao_estadual').value === '' || validarCampo(document.getElementById('inscricao_estadual'), 'numero');
+    const telefoneValido = validarCampo(document.getElementById('telefone'), 'numero');
+    const cepValido = validarCampo(document.getElementById('cep'), 'numero');
+    const estadoValido = validarCampo(document.getElementById('estado'), 'texto');
+    const cidadeValido = validarCampo(document.getElementById('cidade'), 'texto');
+    const bairroValido = validarCampo(document.getElementById('bairro'), 'texto');
+    const ruaValido = validarCampo(document.getElementById('rua'), 'texto-geral');
+    const numeroValido = validarCampo(document.getElementById('numero'), 'numero');
+    
+    // Verificar se todos os campos obrigatórios estão preenchidos e válidos
+    if (nomeValido && cpfCnpjValido && telefoneValido && cepValido && 
+        estadoValido && cidadeValido && bairroValido && ruaValido && numeroValido) {
+        finalizarPedido();
+    } else {
+        mostrarFeedback('Por favor, preencha todos os campos corretamente', 'erro');
+    }
+}
+
 
     // Função para finalizar o pedido e abrir o WhatsApp
     function finalizarPedido() {
@@ -1121,9 +1124,11 @@ anoSelect.addEventListener('change', () => {
       
         // Montar cabeçalho
         let mensagem = "*LOJA DO OPERADOR - CAPAS PERSONALIZADAS*\n";
-        mensagem += "*Cuidando das Suas Máquinas e de seus Operadores*\n";
-        mensagem += "Ivaipora, PR, 86870-000\n";
-        mensagem += "CONTATO:  43 9906-4226\n";
+        mensagem += "*✧ Sua equipe motivada ✧*\n";
+        mensagem += "*✧ Seu patrimônio protegido, Seu negócio mais forte ✧*\n";
+        mensagem += "*✧ Cuidando das Suas Máquinas e de seus Operadores ✧*\n";
+        mensagem += "Ivaipora, PR, 86870000\n";
+        mensagem += "Contato:  43 99064226\n";
         mensagem += "--------------------------------------------------\n";
         mensagem += `*Pedido:* ${numeroPedido}\n`;
         mensagem += `*Protocolo:* ${protocolo}\n`;
