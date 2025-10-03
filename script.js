@@ -234,20 +234,17 @@ const kitsRevestimento = {
     "pelucia_total": {
         nome: "Kit em Pelúcia (Xinil) - Total",
         descricao: "Todas as partes em pelúcia/xinil",
-        preco: 1200,
+        preco: 850,
         imagem: "imagens/kits/kit_pelucia_total.jpg",
         partes: {
-            chao: { material: "pelucia", cor: "", corNome: "" },
-            banco: { material: "pelucia", cor: "", corNome: "" },
-            braco: { material: "pelucia", cor: "", corNome: "" },
-            cabeca: { material: "pelucia", cor: "", corNome: "" },
-            laterais: { material: "pelucia", cor: "", corNome: "" }
+            kit: { material: "pelucia", cor: "", corNome: "" },
+           
         }
     },
     "couro_chao_pelucia_resto": {
         nome: "Couro no Chão + Resto em Pelúcia",
-        descricao: "Chão em couro sintético, demais partes em pelúcia",
-        preco: 1500,
+        descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia",
+        preco: 950,
         imagem: "imagens/kits/kit_couro_chao.jpg",
         partes: {
             chao: { material: "couro", cor: "", corNome: "" },
@@ -270,7 +267,8 @@ const kitsRevestimento = {
             laterais: { material: "couro", cor: "", corNome: "" }
         }
     },
-    "couro_sport": {
+   
+     "couro_sport": {
         nome: "Kit Couro Sport",
         descricao: "Couro com detalhes esportivos",
         preco: 2200,
@@ -365,7 +363,7 @@ const tipoMaquinaMap = {
     const cortinaPreco = document.getElementById('cortina-preco');
 
     // Preço da cortina
-    const precoCortina = 150;
+    const precoCortina = 300;
 
     // Função para gerar protocolo
     function generateProtocol() {
