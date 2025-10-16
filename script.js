@@ -386,6 +386,29 @@ const tipoMaquinaMap = {
         return corEncontrada ? corEncontrada.imagem : '';
     }
 
+      // Animação e feedback visual de clique
+    document.querySelectorAll('.botao-linha').forEach(botao => {
+      botao.addEventListener('click', () => {
+        botao.classList.add('clicado');
+        setTimeout(() => botao.classList.remove('clicado'), 300);
+        document.getElementById('passo2').style.color = '#F9A01B';
+      });
+    });
+
+    // Alternância do popup de ajuda
+    const ajudaBtn = document.getElementById('btn-ajuda');
+    const popupAjuda = document.getElementById('popup-ajuda');
+    ajudaBtn.addEventListener('click', () => {
+      popupAjuda.style.display = popupAjuda.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Exibir ajuda automática após inatividade
+    let interagiu = false;
+    document.addEventListener('click', () => interagiu = true);
+    setTimeout(() => {
+      if (!interagiu) popupAjuda.style.display = 'block';
+    }, 7000);
+    
     // Função para mostrar os kits disponíveis
     function mostrarKitsRevestimento() {
         kitsGrid.innerHTML = '';
