@@ -339,6 +339,7 @@ const tipoMaquinaMap = {
     const maquinasVerdes = document.getElementById('maquinas-verdes');
     const maquinasMini = document.getElementById('maquinas-mini');
     const botoesMaquina = document.querySelectorAll('.botao-maquina');
+    const passo2 = document.getElementById("passo2");
     const feedback = document.getElementById('feedback');
     const feedbackIcon = document.getElementById('feedback-icon');
     const feedbackMessage = document.getElementById('feedback-message');
@@ -365,6 +366,19 @@ const tipoMaquinaMap = {
     // Preço da cortina
     const precoCortina = 300;
 
+botoesMaquina.forEach(botao => {
+  botao.addEventListener("click", () => {
+    // Define o deslocamento para que o Passo 2 apareça visível no topo
+    const offset = -80; // ajuste conforme o tamanho do seu cabeçalho
+    const y = passo2.getBoundingClientRect().top + window.scrollY + offset;
+    
+    // Faz a rolagem suave até o Passo 2
+    window.scrollTo({
+      top: y,
+      behavior: "smooth"
+    });
+  });
+  
     // Função para gerar protocolo
     function generateProtocol() {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
