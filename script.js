@@ -1231,6 +1231,31 @@ function validarFormulario() {
         
         mostrarFeedback('Pedido enviado com sucesso! Em breve entraremos em contato.');
     }
+document.addEventListener("DOMContentLoaded", () => {
+  const botoesLinha = document.querySelectorAll(".botao-linha");
+  const passo2 = document.getElementById("passo2");
+  const containersMaquinas = document.querySelectorAll(".maquinas-container");
+
+  botoesLinha.forEach(botao => {
+    botao.addEventListener("click", () => {
+      // Esconde todos os containers de máquinas
+      containersMaquinas.forEach(container => (container.style.display = "none"));
+
+      // Mostra o passo 2
+      passo2.style.display = "block";
+
+      // Mostra apenas as máquinas da linha clicada
+      const linhaSelecionada = botao.getAttribute("data-linha");
+      if (linhaSelecionada === "Linha Amarela") {
+        document.getElementById("maquinas-amarelas").style.display = "flex";
+      } else if (linhaSelecionada === "Linha Verde") {
+        document.getElementById("maquinas-verdes").style.display = "flex";
+      } else if (linhaSelecionada === "Linha Mini") {
+        document.getElementById("maquinas-mini").style.display = "flex";
+      }
+    });
+  });
+});
 
     // Inicialização
     document.addEventListener('DOMContentLoaded', () => {
