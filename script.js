@@ -362,7 +362,6 @@ const tipoMaquinaMap = {
     const cortinaPersonalizacao = document.getElementById('cortina-personalizacao');
     const cortinaPreco = document.getElementById('cortina-preco');
 
-    
     // Preço da cortina
     const precoCortina = 300;
 
