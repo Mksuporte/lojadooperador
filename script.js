@@ -328,6 +328,33 @@ const tipoMaquinaMap = {
     let kitSelecionado = null;
     let corSelecionadaModal = null;
     let parteSelecionadaModal = null;
+const botoesMaquina = document.querySelectorAll('.botao-maquina');
+const passo2 = document.getElementById("passo2");
+
+// Seleciona o botão de ação (por exemplo, "Fale Conosco" ou "Finalizar")
+const botaoFinal = document.getElementById('botao-final') || document.querySelector('.botao-final');
+
+botoesMaquina.forEach(botao => {
+  botao.addEventListener("click", () => {
+    // Se existir o botão final, rola até ele
+    if (botaoFinal) {
+      const offset = -120; // ajuste: garante que o Passo 2 ainda fique visível
+      const y = botaoFinal.getBoundingClientRect().top + window.scrollY + offset;
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+    } else {
+      // Caso o botão ainda não exista, rola apenas até o Passo 2
+      const offset = -80;
+      const y = passo2.getBoundingClientRect().top + window.scrollY + offset;
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+    }
+  });
+});
 
     // Elementos DOM
     const botoesLinha = document.querySelectorAll('.botao-linha');
