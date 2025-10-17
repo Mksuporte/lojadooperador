@@ -86,6 +86,10 @@
     #passo2,
 .maquinas-container {
   display: none;
+  text-align: center;
+      color: #F9A01B;
+      margin-bottom: 20px;
+      font-size: 1rem;
 }
 
     .botao-linha {
