@@ -407,7 +407,7 @@ const tipoMaquinaMap = {
     document.addEventListener('click', () => interagiu = true);
     setTimeout(() => {
       if (!interagiu) popupAjuda.style.display = 'block';
-    }, 7000);
+    }, 1000);
     
     // Função para mostrar os kits disponíveis
     function mostrarKitsRevestimento() {
