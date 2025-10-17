@@ -395,19 +395,33 @@ const tipoMaquinaMap = {
       });
     });
 
-    // Alternância do popup de ajuda
-    const ajudaBtn = document.getElementById('btn-ajuda');
-    const popupAjuda = document.getElementById('popup-ajuda');
-    ajudaBtn.addEventListener('click', () => {
-      popupAjuda.style.display = popupAjuda.style.display === 'block' ? 'none' : 'block';
-    });
+   // Alternância do popup de ajuda
+const ajudaBtn = document.getElementById('btn-ajuda');
+const popupAjuda = document.getElementById('popup-ajuda');
 
-    // Exibir ajuda automática após inatividade
-    let interagiu = false;
-    document.addEventListener('click', () => interagiu = true);
-    setTimeout(() => {
-      if (!interagiu) popupAjuda.style.display = 'block';
-    }, 1000);
+ajudaBtn.addEventListener('click', (event) => {
+  event.stopPropagation(); // evita fechar imediatamente ao clicar no botão
+  popupAjuda.style.display = popupAjuda.style.display === 'block' ? 'none' : 'block';
+});
+
+// Fecha o popup ao clicar fora dele (funciona em celular e PC)
+document.addEventListener('click', (event) => {
+  if (
+    popupAjuda.style.display === 'block' &&
+    !popupAjuda.contains(event.target) &&
+    event.target !== ajudaBtn
+  ) {
+    popupAjuda.style.display = 'none';
+  }
+});
+
+// Exibir ajuda automática após inatividade
+let interagiu = false;
+document.addEventListener('click', () => (interagiu = true));
+setTimeout(() => {
+  if (!interagiu) popupAjuda.style.display = 'block';
+}, 7000);
+
     
     // Função para mostrar os kits disponíveis
     function mostrarKitsRevestimento() {
