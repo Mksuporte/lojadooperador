@@ -232,7 +232,7 @@ const materiais = {
 // Definição dos kits de revestimento - AGORA COM IMAGENS
 const kitsRevestimento = {
     "pelucia_total": {
-        nome: "Kit em Pelúcia (Xinil) - Total",
+        nome: "Kit todo na Pelúcia (Xinil) - Total",
         descricao: "Todas as partes em pelúcia/xinil",
         preco: 850,
         imagem: "imagens/kits/kit_pelucia_total.jpg",
@@ -242,7 +242,7 @@ const kitsRevestimento = {
         }
     },
     "couro_chao_pelucia_resto": {
-        nome: "Couro no Chão + Resto em Pelúcia",
+        nome: "Couro no Chão + Resto na Pelúcia",
         descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia",
         preco: 950,
         imagem: "imagens/kits/kit_couro_chao.jpg",
@@ -255,7 +255,7 @@ const kitsRevestimento = {
         }
     },
     "couro_total": {
-        nome: "Kit Couro Completo",
+        nome: "Couro Sporte no chão + restante na Pelúcia",
         descricao: "Todas as partes em couro sintético",
         preco: 2000,
         imagem: "imagens/kits/kit_couro_total.jpg",
