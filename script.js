@@ -242,7 +242,7 @@ const kitsRevestimento = {
         }
     },
     "couro_chao_pelucia_resto": {
-        nome: "Couro no Chão + Resto na Pelúcia",
+        nome: "Kit Couro no Chão + Resto na Pelúcia",
         descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia",
         preco: 950,
         imagem: "imagens/kits/kit_couro_chao.jpg",
@@ -255,7 +255,7 @@ const kitsRevestimento = {
         }
     },
     "couro_total": {
-        nome: "Couro Sporte no chão + restante na Pelúcia",
+        nome: "Couro sintético Sporte no chão + restante na Pelúcia",
         descricao: "Todas as partes em couro sintético",
         preco: 2000,
         imagem: "imagens/kits/kit_couro_total.jpg",
@@ -269,7 +269,7 @@ const kitsRevestimento = {
     },
    
      "couro_sport": {
-        nome: "Kit Couro Sport",
+        nome: "Kit Couro sintetico no chão + banco, apoio de braço e apoio de cabeça no Sued, Restante na Pelucia",
         descricao: "Couro com detalhes esportivos",
         preco: 2200,
         imagem: "imagens/kits/kit_couro_sport.jpg",
