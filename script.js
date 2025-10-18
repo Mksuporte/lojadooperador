@@ -232,7 +232,7 @@ const materiais = {
 // Definição dos kits de revestimento - AGORA COM IMAGENS
 const kitsRevestimento = {
     "pelucia_total": {
-        nome: "Kit todo na Pelúcia (Xinil) - Total",
+        nome: "Kit todo na Pelúcia (Xinil)",
         descricao: "Todas as partes em pelúcia/xinil",
         preco: 850,
         imagem: "imagens/kits/kit_pelucia_total.jpg",
@@ -255,23 +255,25 @@ const kitsRevestimento = {
         }
     },
     "couro_total": {
-        nome: "Couro sintético Sporte no chão + restante na Pelúcia",
-        descricao: "Todas as partes em couro sintético",
-        preco: 2000,
-        imagem: "imagens/kits/kit_couro_total.jpg",
-        partes: {
-            chao: { material: "couro", cor: "", corNome: "" },
-            banco: { material: "couro", cor: "", corNome: "" },
-            braco: { material: "couro", cor: "", corNome: "" },
-            cabeca: { material: "couro", cor: "", corNome: "" },
-            laterais: { material: "couro", cor: "", corNome: "" }
-        }
+    nome: "Couro sintético Sporte no chão + restante na Pelúcia",
+    descricao: "Chão em couro sintético ou sport, restante em pelúcia",
+    preco: 1000,
+    imagem: "imagens/kits/kit_couro_total.jpg",
+    partes: {
+        chao: { material: "couro", cor: "", corNome: "" },
+        banco: { material: "pelucia", cor: "", corNome: "" },
+        braco: { material: "pelucia", cor: "", corNome: "" },
+        cabeca: { material: "pelucia", cor: "", corNome: "" },
+        laterais: { material: "pelucia", cor: "", corNome: "" }
     },
+    opcaoChao: true // ⚙️ novo campo que ativa o seletor de tipo do chão
+},
+
    
      "couro_sport": {
         nome: "Kit Couro sintetico no chão + banco, apoio de braço e apoio de cabeça no Sued, Restante na Pelucia",
         descricao: "Couro com detalhes esportivos",
-        preco: 2200,
+        preco: 1150,
         imagem: "imagens/kits/kit_couro_sport.jpg",
         partes: {
             chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
@@ -281,7 +283,11 @@ const kitsRevestimento = {
             laterais: { material: "couro_sport", cor: "", corNome: "", detalhe: "" }
         }
     }
+
+   
 };
+ 
+
 
 // Mapeamento de tipos de máquina para exibição
 const tipoMaquinaMap = {
@@ -435,7 +441,7 @@ setTimeout(() => {
                 <div class="kit-info">
                     <h4>${kit.nome}</h4>
                     <p>${kit.descricao}</p>
-                    <p class="kit-preco">R$ ${kit.preco.toFixed(2)}</p>
+                    <p class="kit-preco">Total R$ ${kit.preco.toFixed(2)}</p>
                 </div>
             `;
             
@@ -494,7 +500,48 @@ setTimeout(() => {
             
             partesPersonalizacao.appendChild(parteDiv);
         });
-        
+        // Se o kit tiver opção de escolha de material do chão
+if (kitSelecionado.opcaoChao) {
+    const seletorChao = document.createElement("div");
+    seletorChao.classList.add("parte-kit");
+    seletorChao.innerHTML = `
+        <label style="color:#F9A01B; font-weight:bold;">Material do Chão:</label>
+        <select id="tipo-chao">
+            <option value="couro">Couro Sintético</option>
+            <option value="couro_sport">Couro Sport</option>
+        </select>
+    `;
+    partesPersonalizacao.prepend(seletorChao);
+
+    // Atualiza o material do chão conforme escolha
+   document.getElementById("tipo-chao").addEventListener("change", (e) => {
+    const novoMaterial = e.target.value;
+
+    // Atualiza material do chão
+    kitSelecionado.partes.chao.material = novoMaterial;
+
+    // Recalcula o preço conforme o material
+    if (novoMaterial === "couro_sport") {
+        kitSelecionado.preco = 1200; // valor quando é Couro Sport
+    } else {
+        kitSelecionado.preco = 1000; // valor base (Couro Sintético)
+    }
+
+    // Atualiza exibição do preço no card selecionado
+    const precoElemento = document.querySelector(".kit-item.selecionado .kit-preco");
+    if (precoElemento) {
+        precoElemento.textContent = `Total R$ ${kitSelecionado.preco.toFixed(2)}`;
+    }
+
+    mostrarFeedback(
+        `Material do chão atualizado para ${
+            novoMaterial === "couro" ? "Couro Sintético" : "Couro Sport"
+        }. Novo total: R$ ${kitSelecionado.preco.toFixed(2)}`
+    );
+});
+
+}
+
         personalizacaoContainer.style.display = 'block';
         
         // Rolagem suave para a seção de personalização
@@ -960,7 +1007,7 @@ anoSelect.addEventListener('change', () => {
                     <div>${item.marca || ''} ${item.modelo || ''} (${item.ano || ''})</div>
                     ${partesHTML}
                     <div style="margin-top: 10px; font-weight: bold;">
-                        Valor: R$ ${item.preco ? item.preco.toFixed(2) : '0.00'}
+                        Valor: Total R$ ${item.preco ? item.preco.toFixed(2) : '0.00'}
                         ${item.precoCortina > 0 ? `+ Cortina: R$ ${item.precoCortina.toFixed(2)}` : ''}
                     </div>
                 </div>
@@ -1187,7 +1234,7 @@ function validarFormulario() {
             mensagem += `${index+1} ${item.linha || ''} - ${item.tipoMaquina || ''}\n`;
             mensagem += `   ${item.marca || ''} ${item.modelo || ''} (${item.ano || ''})\n`;
             mensagem += `   ${item.nome || ''}\n`;
-            mensagem += `   Valor: R$ ${item.preco ? item.preco.toFixed(2) : '0.00'}\n`;
+            mensagem += `   Valor: Total R$ ${item.preco ? item.preco.toFixed(2) : '0.00'}\n`;
             
             if (item.partes && typeof item.partes === 'object') {
                 for (const [parte, config] of Object.entries(item.partes)) {

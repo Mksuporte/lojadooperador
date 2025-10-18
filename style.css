@@ -886,4 +886,19 @@
         grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
         gap: 10px;
       }
+      #tipo-chao {
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #555;
+}
+#tipo-chao:focus {
+  box-shadow: 0 0 0 2px #F9A01B;
+  outline: none;
+}
+
     }
