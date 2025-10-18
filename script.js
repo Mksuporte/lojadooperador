@@ -473,132 +473,94 @@ setTimeout(() => {
 
     // Função para mostrar as partes do kit para personalização
     function mostrarPersonalizacaoKit() {
-        partesPersonalizacao.innerHTML = '';
-        
-        Object.entries(kitSelecionado.partes).forEach(([parte, config]) => {
-            const parteDiv = document.createElement('div');
-            parteDiv.className = 'parte-kit';
-            
-            const materialInfo = materiais[config.material];
-            
-            parteDiv.innerHTML = `
-                <label>${parte.replace(/_/g, ' ').toUpperCase()} (${materialInfo.nome})</label>
-                <div class="seletor-cor-parte" data-parte="${parte}">
-                    ${config.cor ? `
-                        <img src="${obterImagemDaCor(config.material, config.corNome)}" alt="${config.corNome}" class="cor-preview-image">
-                    ` : `
-                        <div class="cor-preview" style="background-color: #ccc;"></div>
-                    `}
-                    <span>${config.corNome || 'Clique para selecionar a cor'}</span>
-                </div>
-            `;
-            
-            // Adicionar evento para abrir seletor de cores
-            parteDiv.querySelector('.seletor-cor-parte').addEventListener('click', function() {
-                abrirModalCoresParaParte(parte, config.material);
-            });
-            
-            partesPersonalizacao.appendChild(parteDiv);
+    partesPersonalizacao.innerHTML = '';
+
+    // Obter os materiais únicos do kit
+    const materiaisUnicos = [...new Set(Object.values(kitSelecionado.partes).map(p => p.material))];
+
+    // Criar um seletor por material
+    materiaisUnicos.forEach(material => {
+        const materialInfo = materiais[material];
+        if (!materialInfo) return;
+
+        const materialDiv = document.createElement('div');
+        materialDiv.className = 'parte-kit';
+        materialDiv.innerHTML = `
+            <label>${materialInfo.nome}</label>
+            <div class="seletor-cor-parte" data-material="${material}">
+                <div class="cor-preview" style="background-color: #ccc;"></div>
+                <span>Clique para selecionar a cor</span>
+            </div>
+        `;
+
+        // Evento para abrir o seletor de cor
+        materialDiv.querySelector('.seletor-cor-parte').addEventListener('click', () => {
+            abrirModalCoresParaMaterial(material);
         });
-        // Se o kit tiver opção de escolha de material do chão
-if (kitSelecionado.opcaoChao) {
-    const seletorChao = document.createElement("div");
-    seletorChao.classList.add("parte-kit");
-    seletorChao.innerHTML = `
-        <label style="color:#F9A01B; font-weight:bold;">Material do Chão:</label>
-        <select id="tipo-chao">
-            <option value="couro">Couro Sintético</option>
-            <option value="couro_sport">Couro Sport</option>
-        </select>
-    `;
-    partesPersonalizacao.prepend(seletorChao);
 
-    // Atualiza o material do chão conforme escolha
-   document.getElementById("tipo-chao").addEventListener("change", (e) => {
-    const novoMaterial = e.target.value;
+        partesPersonalizacao.appendChild(materialDiv);
+    });
 
-    // Atualiza material do chão
-    kitSelecionado.partes.chao.material = novoMaterial;
+    // Adiciona seletor do chão se aplicável
+    if (kitSelecionado.opcaoChao) {
+        const seletorChao = document.createElement("div");
+        seletorChao.classList.add("parte-kit");
+        seletorChao.innerHTML = `
+            <label style="color:#F9A01B; font-weight:bold;">Material do Chão:</label>
+            <select id="tipo-chao">
+                <option value="couro">Couro Sintético</option>
+                <option value="couro_sport">Couro Sport</option>
+            </select>
+        `;
+        partesPersonalizacao.prepend(seletorChao);
 
-    // Recalcula o preço conforme o material
-    if (novoMaterial === "couro_sport") {
-        kitSelecionado.preco = 1200; // valor quando é Couro Sport
-    } else {
-        kitSelecionado.preco = 1000; // valor base (Couro Sintético)
+        document.getElementById("tipo-chao").addEventListener("change", (e) => {
+            const novoMaterial = e.target.value;
+            kitSelecionado.partes.chao.material = novoMaterial;
+            mostrarFeedback(
+                "Material do chão atualizado para " +
+                (novoMaterial === "couro" ? "Couro Sintético" : "Couro Sport")
+            );
+        });
     }
 
-    // Atualiza exibição do preço no card selecionado
-    const precoElemento = document.querySelector(".kit-item.selecionado .kit-preco");
-    if (precoElemento) {
-        precoElemento.textContent = `Total R$ ${kitSelecionado.preco.toFixed(2)}`;
-    }
-
-    mostrarFeedback(
-        `Material do chão atualizado para ${
-            novoMaterial === "couro" ? "Couro Sintético" : "Couro Sport"
-        }. Novo total: R$ ${kitSelecionado.preco.toFixed(2)}`
-    );
-});
-
+    personalizacaoContainer.style.display = 'block';
+    setTimeout(() => {
+        personalizacaoContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
 }
 
-        personalizacaoContainer.style.display = 'block';
-        
-        // Rolagem suave para a seção de personalização
-        setTimeout(() => {
-            personalizacaoContainer.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }, 100);
-    }
 
     // Função para abrir modal de cores para uma parte específica
-    function abrirModalCoresParaParte(parte, tipoMaterial) {
-        const tituloModal = modalCores.querySelector('h3');
-        
-        tituloModal.textContent = `Selecione cor para ${parte.replace(/_/g, ' ')}`;
-        gridCores.innerHTML = '';
-        
-        // Definir a parte selecionada
-        parteSelecionadaModal = parte;
-        
-        // Obter cores disponíveis para este material
-        const cores = materiais[tipoMaterial].cores;
-        
-        cores.forEach(cor => {
-            const corItem = document.createElement('div');
-            corItem.className = 'cor-item';
-            
-            // Verificar se esta cor já está selecionada para esta parte
-            if (kitSelecionado && kitSelecionado.partes && kitSelecionado.partes[parte] && kitSelecionado.partes[parte].corNome === cor.nome) {
-                corItem.classList.add('selecionada');
-                corSelecionadaModal = cor;
-            }
-            
-            corItem.innerHTML = `
-                <img src="${cor.imagem}" alt="${cor.nome}" onerror="this.style.backgroundColor='${cor.codigo}'">
-                <span>${cor.nome}</span>
-            `;
-            
-            corItem.addEventListener('click', function() {
-                // Remover seleção anterior
-                document.querySelectorAll('.cor-item.selecionada').forEach(item => {
-                    item.classList.remove('selecionada');
-                });
-                
-                // Adicionar seleção atual
-                this.classList.add('selecionada');
-                corSelecionadaModal = cor;
-            });
-            
-            gridCores.appendChild(corItem);
+    function abrirModalCoresParaMaterial(material) {
+    const tituloModal = modalCores.querySelector('h3');
+    tituloModal.textContent = `Selecione a cor para ${materiais[material].nome}`;
+    gridCores.innerHTML = '';
+
+    parteSelecionadaModal = material; // agora representa o tipo de material
+    const cores = materiais[material].cores;
+
+    cores.forEach(cor => {
+        const corItem = document.createElement('div');
+        corItem.className = 'cor-item';
+        corItem.innerHTML = `
+            <img src="${cor.imagem}" alt="${cor.nome}">
+            <span>${cor.nome}</span>
+        `;
+
+        corItem.addEventListener('click', () => {
+            document.querySelectorAll('.cor-item').forEach(i => i.classList.remove('selecionada'));
+            corItem.classList.add('selecionada');
+            corSelecionadaModal = cor;
         });
-        
-        // Mostrar modal
-        modalCores.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
+
+        gridCores.appendChild(corItem);
+    });
+
+    modalCores.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
 
     // Função para fechar o modal de cores
     function fecharModalCores() {
@@ -607,75 +569,67 @@ if (kitSelecionado.opcaoChao) {
     }
 
     // Função para confirmar a cor selecionada
-    function confirmarCorSelecionada() {
-        if (!corSelecionadaModal || !parteSelecionadaModal) {
-            mostrarFeedback('Selecione uma cor antes de confirmar', 'erro');
-            return;
-        }
-    
-        // Verificar se a parte existe no kit selecionado ou se é a cortina
-        if (parteSelecionadaModal === 'cortina') {
-            // Atualizar a cor da cortina
-            const seletor = document.querySelector(`.seletor-cor-parte[data-parte="cortina"]`);
-            if (seletor) {
-                // Remover preview antigo
-                const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
-                if (previewAntigo) previewAntigo.remove();
-                
-                // Adicionar nova imagem de preview
-                const imgPreview = document.createElement('img');
-                imgPreview.src = corSelecionadaModal.imagem;
-                imgPreview.alt = corSelecionadaModal.nome;
-                imgPreview.className = 'cor-preview-image';
-                imgPreview.onerror = function() {
-                    this.style.backgroundColor = corSelecionadaModal.codigo;
-                };
-                
-                seletor.insertBefore(imgPreview, seletor.querySelector('span'));
-                seletor.querySelector('span').textContent = corSelecionadaModal.nome;
-            }
-        } else if (!kitSelecionado || !kitSelecionado.partes || !kitSelecionado.partes[parteSelecionadaModal]) {
-            mostrarFeedback('Erro ao selecionar a cor. Tente novamente.', 'erro');
-            fecharModalCores();
-            return;
-        } else {
-            // Atualizar a cor no kit selecionado
-            kitSelecionado.partes[parteSelecionadaModal].cor = corSelecionadaModal.imagem; 
-            kitSelecionado.partes[parteSelecionadaModal].corNome = corSelecionadaModal.nome;
-            
-            if (corSelecionadaModal.detalhe) {
-                kitSelecionado.partes[parteSelecionadaModal].detalhe = corSelecionadaModal.detalhe;
-            }
-            
-            // Atualizar o preview com a IMAGEM da cor
-            const seletor = document.querySelector(`.seletor-cor-parte[data-parte="${parteSelecionadaModal}"]`);
-            if (seletor) {
-                // Remover preview antigo
-                const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
-                if (previewAntigo) previewAntigo.remove();
-                
-                // Adicionar nova imagem de preview
-                const imgPreview = document.createElement('img');
-                imgPreview.src = corSelecionadaModal.imagem;
-                imgPreview.alt = corSelecionadaModal.nome;
-                imgPreview.className = 'cor-preview-image';
-                imgPreview.onerror = function() {
-                    this.style.backgroundColor = corSelecionadaModal.codigo;
-                };
-                
-                seletor.insertBefore(imgPreview, seletor.querySelector('span'));
-                seletor.querySelector('span').textContent = corSelecionadaModal.nome;
-            }
-        }
-        
-        fecharModalCores();
-        
-        // Resetar variáveis
-        corSelecionadaModal = null;
-        parteSelecionadaModal = null;
-        
-        mostrarFeedback('Cor selecionada com sucesso!');
+  function confirmarCorSelecionada() {
+    if (!corSelecionadaModal || !parteSelecionadaModal) {
+        mostrarFeedback('Selecione uma cor antes de confirmar', 'erro');
+        return;
     }
+
+    // Caso a cor seja da cortina (continua igual)
+    if (parteSelecionadaModal === 'cortina') {
+        const seletor = document.querySelector(`.seletor-cor-parte[data-parte="cortina"]`);
+        if (seletor) {
+            const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
+            if (previewAntigo) previewAntigo.remove();
+
+            const imgPreview = document.createElement('img');
+            imgPreview.src = corSelecionadaModal.imagem;
+            imgPreview.alt = corSelecionadaModal.nome;
+            imgPreview.className = 'cor-preview-image';
+            seletor.insertBefore(imgPreview, seletor.querySelector('span'));
+            seletor.querySelector('span').textContent = corSelecionadaModal.nome;
+        }
+    } 
+    // Novo comportamento: aplica a cor a todas as partes do mesmo material
+    else if (kitSelecionado && kitSelecionado.partes) {
+        const materialSelecionado = parteSelecionadaModal; // ex: "pelucia" ou "couro"
+
+        // Atualiza todas as partes que usam esse material
+        Object.entries(kitSelecionado.partes).forEach(([parte, config]) => {
+            if (config.material === materialSelecionado) {
+                config.cor = corSelecionadaModal.imagem;
+                config.corNome = corSelecionadaModal.nome;
+            }
+        });
+
+        // Atualiza o preview do seletor geral desse material
+        const seletor = document.querySelector(`.seletor-cor-parte[data-material="${materialSelecionado}"]`);
+        if (seletor) {
+            const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
+            if (previewAntigo) previewAntigo.remove();
+
+            const imgPreview = document.createElement('img');
+            imgPreview.src = corSelecionadaModal.imagem;
+            imgPreview.alt = corSelecionadaModal.nome;
+            imgPreview.className = 'cor-preview-image';
+            seletor.insertBefore(imgPreview, seletor.querySelector('span'));
+            seletor.querySelector('span').textContent = corSelecionadaModal.nome;
+        }
+    } 
+    else {
+        mostrarFeedback('Erro ao aplicar a cor. Tente novamente.', 'erro');
+        fecharModalCores();
+        return;
+    }
+
+    fecharModalCores();
+
+    // Resetar variáveis
+    corSelecionadaModal = null;
+    parteSelecionadaModal = null;
+
+    mostrarFeedback('Cor aplicada com sucesso!');
+}
 
     // Função para adicionar item ao carrinho
     function adicionarAoCarrinho() {
