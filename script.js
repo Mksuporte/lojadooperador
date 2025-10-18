@@ -233,7 +233,7 @@ const materiais = {
 const kitsRevestimento = {
     "pelucia_total": {
         nome: "Kit todo na Pelúcia (Xinil)",
-        descricao: "Todas as partes em pelúcia/xinil",
+        descricao: "Todas as partes na pelúcia/xinil",
         preco: 850,
         imagem: "imagens/kits/kit_pelucia_total.jpg",
         partes: {
@@ -256,7 +256,7 @@ const kitsRevestimento = {
     },
     "couro_total": {
     nome: "Couro sintético Sporte no chão + restante na Pelúcia",
-    descricao: "Chão em couro sintético ou sport, restante em pelúcia",
+    descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
     preco: 1000,
     imagem: "imagens/kits/kit_couro_total.jpg",
     partes: {
@@ -271,8 +271,8 @@ const kitsRevestimento = {
 
    
      "couro_sport": {
-        nome: "Kit Couro sintetico no chão + banco, apoio de braço e apoio de cabeça no Sued, Restante na Pelucia",
-        descricao: "Couro com detalhes esportivos",
+        nome: "Kit Couro com detalhes esportivos ",
+        descricao: "Couro sintetico no chão + banco, apoio de braço e apoio de cabeça no Sued, Restante na Pelucia",
         preco: 1150,
         imagem: "imagens/kits/kit_couro_sport.jpg",
         partes: {
