@@ -185,19 +185,19 @@ const materiais = {
     couro: {
         nome: "Couro Sintético",
         cores: [
-            { nome: "Pelucia Rosa", imagem: "imagens/cores/pretoamarelo.jpg" },
-            { nome: "Marrum Clássico", imagem: "imagens/cores/azulmarinho.jpg" },
-            { nome: "Bege Natural", imagem: "imagens/cores/courovermelho.jpg" },
-            { nome: "Vinho Nobre", imagem: "imagens/cores/pretocomprata.jpg" },
-            { nome: "Azul Royal", imagem: "imagens/cores/pretocomvermelho.jpg" },
-            { nome: "Verde Floresta", imagem: "imagens/cores/grafitecomgrafite.jpg" },
-            { nome: "Grafite", imagem: "imagens/cores/marromcafe.jpg" },
-            { nome: "Terra Queimada", imagem: "imagens/cores/marromferrari.jpg" },
-            { nome: "Borgonha", imagem: "imagens/cores/pretomosaico.jpg" },
-            { nome: "Caramelo", imagem: "imagens/cores/pretocomazul.jpg" },
-            { nome: "Cinza Platinum", imagem: "imagens/cores/begecommarrom.jpg" },
-            { nome: "Azul Petróleo", imagem: "imagens/cores/corolla.jpg" },
-            { nome: "Off-White", imagem: "imagens/cores/pretocomverde.jpg" }
+            { nome: "Preto Amarelo", imagem: "imagens/cores/pretoamarelo.jpg" },
+            { nome: "Azul Marinho", imagem: "imagens/cores/azulmarinho.jpg" },
+            { nome: "Couro Vermelho", imagem: "imagens/cores/courovermelho.jpg" },
+            { nome: "Preto com Prata", imagem: "imagens/cores/pretocomprata.jpg" },
+            { nome: "Preto com Vermelho", imagem: "imagens/cores/pretocomvermelho.jpg" },
+            { nome: "Grafite com Grafite", imagem: "imagens/cores/grafitecomgrafite.jpg" },
+            { nome: "Marrom Café", imagem: "imagens/cores/marromcafe.jpg" },
+            { nome: "Marrom Ferrari", imagem: "imagens/cores/marromferrari.jpg" },
+            { nome: "Preto Mosaico", imagem: "imagens/cores/pretomosaico.jpg" },
+            { nome: "Preto com Azul", imagem: "imagens/cores/pretocomazul.jpg" },
+            { nome: "Bege com Marrom", imagem: "imagens/cores/begecommarrom.jpg" },
+            { nome: "Corolla", imagem: "imagens/cores/corolla.jpg" },
+            { nome: "Preto com Verde", imagem: "imagens/cores/pretocomverde.jpg" }
         ]
     },
     couro_sport: {
