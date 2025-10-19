@@ -185,28 +185,28 @@ const materiais = {
     couro: {
         nome: "Couro Sintético",
         cores: [
-            { nome: "Pelucia Rosa", imagem: "imagens/cores/rosa.jpg" },
-            { nome: "Marrum Clássico", imagem: "imagens/cores/cor2.jpg" },
-            { nome: "Bege Natural", imagem: "imagens/cores/cor3.jpg" },
-            { nome: "Vinho Nobre", imagem: "imagens/cores/cor4.jpg" },
-            { nome: "Azul Royal", imagem: "imagens/cores/cor5.jpg" },
-            { nome: "Verde Floresta", imagem: "imagens/cores/cor6.jpg" },
-            { nome: "Grafite", imagem: "imagens/cores/cor7.jpg" },
-            { nome: "Terra Queimada", imagem: "imagens/cores/cor8.jpg" },
-            { nome: "Borgonha", imagem: "imagens/cores/cor9.jpg" },
-            { nome: "Caramelo", imagem: "imagens/cores/cor10.jpg" },
-            { nome: "Cinza Platinum", imagem: "imagens/cores/cor11.jpg" },
-            { nome: "Azul Petróleo", imagem: "imagens/cores/cor12.jpg" },
-            { nome: "Off-White", imagem: "imagens/cores/cor13.jpg" }
+            { nome: "Pelucia Rosa", imagem: "imagens/cores/pretoamarelo.jpg" },
+            { nome: "Marrum Clássico", imagem: "imagens/cores/azulmarinho.jpg" },
+            { nome: "Bege Natural", imagem: "imagens/cores/courovermelho.jpg" },
+            { nome: "Vinho Nobre", imagem: "imagens/cores/pretocomprata.jpg" },
+            { nome: "Azul Royal", imagem: "imagens/cores/pretocomvermelho.jpg" },
+            { nome: "Verde Floresta", imagem: "imagens/cores/grafitecomgrafite.jpg" },
+            { nome: "Grafite", imagem: "imagens/cores/marromcafe.jpg" },
+            { nome: "Terra Queimada", imagem: "imagens/cores/marromferrari.jpg" },
+            { nome: "Borgonha", imagem: "imagens/cores/pretomosaico.jpg" },
+            { nome: "Caramelo", imagem: "imagens/cores/pretocomazul.jpg" },
+            { nome: "Cinza Platinum", imagem: "imagens/cores/begecommarrom.jpg" },
+            { nome: "Azul Petróleo", imagem: "imagens/cores/corolla.jpg" },
+            { nome: "Off-White", imagem: "imagens/cores/pretocomverde.jpg" }
         ]
     },
     couro_sport: {
         nome: "Couro Sport",
         cores: [
-            { nome: "Preto com Costuras Vermelhas", imagem: "imagens/cores/cor14.jpg" },
-            { nome: "Azul Racing com Branco", imagem: "imagens/cores/cor15.jpg" },
-            { nome: "Cinza Metalizado com Laranja", imagem: "imagens/cores/cor16.jpg" },
-            { nome: "Branco Gelado com Preto", imagem: "imagens/cores/cor17.jpg" }
+            { nome: "Preto com Costuras Vermelhas", imagem: "imagens/cores/couromarrom.jpg" },
+            { nome: "Azul Racing com Branco", imagem: "imagens/cores/courosportebege.jpg" },
+            { nome: "Cinza Metalizado com Laranja", imagem: "imagens/cores/courosportecinzaclaro.jpg" },
+            { nome: "Branco Gelado com Preto", imagem: "imagens/cores/courosportecinzaescuro.jpg" }
         ]
     },
     pelucia: {
@@ -502,27 +502,44 @@ setTimeout(() => {
     });
 
     // Adiciona seletor do chão se aplicável
-    if (kitSelecionado.opcaoChao) {
-        const seletorChao = document.createElement("div");
-        seletorChao.classList.add("parte-kit");
-        seletorChao.innerHTML = `
-            <label style="color:#F9A01B; font-weight:bold;">Material do Chão:</label>
-            <select id="tipo-chao">
-                <option value="couro">Couro Sintético</option>
-                <option value="couro_sport">Couro Sport</option>
-            </select>
-        `;
-        partesPersonalizacao.prepend(seletorChao);
+if (kitSelecionado.opcaoChao) {
+    const seletorChao = document.createElement("div");
+    seletorChao.classList.add("parte-kit");
+    seletorChao.innerHTML = `
+        <label style="color:#F9A01B; font-weight:bold;">Material do Chão:</label>
+        <select id="tipo-chao">
+            <option value="couro">Couro Sintético</option>
+            <option value="couro_sport">Couro Sport</option>
+        </select>
+    `;
+    partesPersonalizacao.prepend(seletorChao);
 
-        document.getElementById("tipo-chao").addEventListener("change", (e) => {
-            const novoMaterial = e.target.value;
-            kitSelecionado.partes.chao.material = novoMaterial;
-            mostrarFeedback(
-                "Material do chão atualizado para " +
-                (novoMaterial === "couro" ? "Couro Sintético" : "Couro Sport")
-            );
-        });
-    }
+    const seletorMaterialChao = document.createElement("div");
+    seletorMaterialChao.classList.add("seletor-cor-parte");
+    seletorMaterialChao.dataset.material = "couro"; // valor padrão
+    seletorMaterialChao.innerHTML = `
+        <div class="cor-preview" style="background-color: #ccc;"></div>
+        <span>Clique para selecionar a cor do chão</span>
+    `;
+    // adiciona evento para abrir modal correto conforme material atual
+    seletorMaterialChao.addEventListener("click", () => {
+        const materialAtual = kitSelecionado.partes.chao.material;
+        abrirModalCoresParaMaterial(materialAtual);
+    });
+    partesPersonalizacao.appendChild(seletorMaterialChao);
+
+    // evento para alterar material do chão
+    document.getElementById("tipo-chao").addEventListener("change", (e) => {
+        const novoMaterial = e.target.value;
+        kitSelecionado.partes.chao.material = novoMaterial;
+        seletorMaterialChao.dataset.material = novoMaterial; // atualiza data-material
+        mostrarFeedback(
+            "Material do chão atualizado para " +
+            (novoMaterial === "couro" ? "Couro Sintético" : "Couro Sport")
+        );
+    });
+}
+
 
     personalizacaoContainer.style.display = 'block';
     setTimeout(() => {

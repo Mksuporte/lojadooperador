@@ -900,5 +900,29 @@
   box-shadow: 0 0 0 2px #F9A01B;
   outline: none;
 }
+/* Ajuste visual para o bloco de seleção de chão */
+.parte-kit select#tipo-chao {
+  background: #666;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%;
+  border: 1px solid #777;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+}
+
+.parte-kit select#tipo-chao:focus {
+  box-shadow: 0 0 0 2px #F9A01B;
+  outline: none;
+  background: #555;
+}
+
+.parte-kit select#tipo-chao option {
+  background: #333;
+  color: #fff;
+}
+
 
     }
