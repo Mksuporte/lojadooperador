@@ -371,6 +371,65 @@ const cortinaPreco = document.getElementById('cortina-preco');
 // Preço da cortina
 const precoCortina = 300;
 
+// ✅ CORREÇÃO: Função para inicializar a cortina
+function inicializarCortina() {
+    const cortinaCheckbox = document.getElementById('cortina-checkbox');
+    const cortinaPersonalizacao = document.getElementById('cortina-personalizacao');
+    const seletorCortina = document.querySelector('.seletor-cor-parte[data-parte="cortina"]');
+    
+    console.log('Inicializando cortina:', {
+        checkbox: !!cortinaCheckbox,
+        personalizacao: !!cortinaPersonalizacao,
+        seletor: !!seletorCortina
+    });
+
+    // Evento para mostrar/ocultar personalização da cortina
+    if (cortinaCheckbox && cortinaPersonalizacao) {
+        cortinaCheckbox.addEventListener('change', function() {
+            console.log('Cortina checkbox:', this.checked);
+            cortinaPersonalizacao.style.display = this.checked ? 'block' : 'none';
+            
+            // Resetar seleção se desmarcado
+            if (!this.checked && kitSelecionado && kitSelecionado.cortina) {
+                delete kitSelecionado.cortina;
+                resetarSelecaoCortina();
+            }
+        });
+    }
+
+    // Evento para abrir seletor de cor da cortina
+    if (seletorCortina) {
+        seletorCortina.addEventListener('click', function() {
+            console.log('Abrindo seletor de cor da cortina');
+            parteSelecionadaModal = 'cortina';
+            abrirModalCoresParaMaterial('pelucia');
+        });
+    }
+}
+
+// ✅ CORREÇÃO: Função para resetar seleção da cortina
+function resetarSelecaoCortina() {
+    const seletorCortina = document.querySelector('.seletor-cor-parte[data-parte="cortina"]');
+    if (seletorCortina) {
+        // Remove preview de imagem se existir
+        const imgPreview = seletorCortina.querySelector('.cor-preview-image');
+        if (imgPreview) imgPreview.remove();
+        
+        // Remove preview de cor se existir
+        const corPreview = seletorCortina.querySelector('.cor-preview');
+        if (corPreview) corPreview.remove();
+        
+        // Adiciona preview padrão
+        const newPreview = document.createElement('div');
+        newPreview.className = 'cor-preview';
+        newPreview.style.backgroundColor = '#ccc';
+        
+        const span = seletorCortina.querySelector('span');
+        seletorCortina.insertBefore(newPreview, span);
+        span.textContent = 'Clique para selecionar a cor';
+    }
+}
+
 // Função para gerar protocolo
 function generateProtocol() {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -390,6 +449,22 @@ function obterImagemDaCor(material, corNome) {
 
     const corEncontrada = materialObj.cores.find(cor => cor.nome === corNome);
     return corEncontrada ? corEncontrada.imagem : '';
+}
+
+// Atualiza a imagem principal do kit conforme a cor escolhida
+function atualizarImagemDoKit(corNome) {
+    if (!kitSelecionado || !kitSelecionado.id) return;
+    
+    const nomeNormalizado = corNome.toLowerCase().replace(/\s+/g, '_');
+    const novaImagem = `imagens/kits/${kitSelecionado.id}_${nomeNormalizado}.jpg`;
+    
+    const imagemKit = document.querySelector('.kit-item.selecionado img');
+    if (imagemKit) {
+        imagemKit.src = novaImagem;
+        imagemKit.onerror = () => {
+            imagemKit.src = kitSelecionado.imagem; // volta para a base se não existir
+        };
+    }
 }
 
 // Animação e feedback visual de clique
@@ -427,7 +502,6 @@ document.addEventListener('click', () => (interagiu = true));
 setTimeout(() => {
     if (!interagiu) popupAjuda.style.display = 'block';
 }, 7000);
-
 
 // Função para mostrar os kits disponíveis
 function mostrarKitsRevestimento() {
@@ -471,30 +545,52 @@ function mostrarKitsRevestimento() {
     personalizacaoContainer.style.display = 'none';
 }
 
-// Função para mostrar as partes do kit para personalização
+// ✅✅✅ CORREÇÃO CRÍTICA: Função para mostrar as partes do kit para personalização
 function mostrarPersonalizacaoKit() {
     partesPersonalizacao.innerHTML = '';
 
     // Obter os materiais únicos do kit
     const materiaisUnicos = [...new Set(Object.values(kitSelecionado.partes).map(p => p.material))];
 
+    console.log('Materiais únicos do kit:', materiaisUnicos);
+
     // Criar um seletor por material
     materiaisUnicos.forEach(material => {
         const materialInfo = materiais[material];
         if (!materialInfo) return;
 
+        // ✅ CORREÇÃO: Verificar se já existe uma cor selecionada para este material
+        let corSelecionada = null;
+        Object.values(kitSelecionado.partes).forEach(config => {
+            if (config.material === material && config.corNome) {
+                corSelecionada = config;
+            }
+        });
+
         const materialDiv = document.createElement('div');
         materialDiv.className = 'parte-kit';
+        
+        let previewContent = '';
+        let textoPreview = 'Clique para selecionar a cor';
+        
+        if (corSelecionada && corSelecionada.cor) {
+            previewContent = `<img src="${corSelecionada.cor}" alt="${corSelecionada.corNome}" class="cor-preview-image" onerror="this.style.backgroundColor='#ccc'">`;
+            textoPreview = corSelecionada.corNome;
+        } else {
+            previewContent = '<div class="cor-preview" style="background-color: #ccc;"></div>';
+        }
+
         materialDiv.innerHTML = `
             <label>${materialInfo.nome}</label>
             <div class="seletor-cor-parte" data-material="${material}">
-                <div class="cor-preview" style="background-color: #ccc;"></div>
-                <span>Clique para selecionar a cor</span>
+                ${previewContent}
+                <span>${textoPreview}</span>
             </div>
         `;
 
         // Evento para abrir o seletor de cor
         materialDiv.querySelector('.seletor-cor-parte').addEventListener('click', () => {
+            parteSelecionadaModal = material;
             abrirModalCoresParaMaterial(material);
         });
 
@@ -514,16 +610,24 @@ function mostrarPersonalizacaoKit() {
     `;
         partesPersonalizacao.prepend(seletorChao);
 
+        // ✅ CORREÇÃO: Verificar cor atual do chão
+        let corChaoSelecionada = kitSelecionado.partes.chao.corNome || 'Clique para selecionar a cor do chão';
+        let previewChao = kitSelecionado.partes.chao.cor ? 
+            `<img src="${kitSelecionado.partes.chao.cor}" alt="${kitSelecionado.partes.chao.corNome}" class="cor-preview-image" onerror="this.style.backgroundColor='#ccc'">` :
+            '<div class="cor-preview" style="background-color: #ccc;"></div>';
+
         const seletorMaterialChao = document.createElement("div");
         seletorMaterialChao.classList.add("seletor-cor-parte");
-        seletorMaterialChao.dataset.material = "couro"; // valor padrão
+        seletorMaterialChao.dataset.material = kitSelecionado.partes.chao.material;
         seletorMaterialChao.innerHTML = `
-        <div class="cor-preview" style="background-color: #ccc;"></div>
-        <span>Clique para selecionar a cor do chão</span>
+        ${previewChao}
+        <span>${corChaoSelecionada}</span>
     `;
+        
         // adiciona evento para abrir modal correto conforme material atual
         seletorMaterialChao.addEventListener("click", () => {
             const materialAtual = kitSelecionado.partes.chao.material;
+            parteSelecionadaModal = materialAtual;
             abrirModalCoresParaMaterial(materialAtual);
         });
         partesPersonalizacao.appendChild(seletorMaterialChao);
@@ -533,6 +637,22 @@ function mostrarPersonalizacaoKit() {
             const novoMaterial = e.target.value;
             kitSelecionado.partes.chao.material = novoMaterial;
             seletorMaterialChao.dataset.material = novoMaterial; // atualiza data-material
+            
+            // ✅ CORREÇÃO: Resetar cor quando mudar o material
+            kitSelecionado.partes.chao.cor = "";
+            kitSelecionado.partes.chao.corNome = "";
+            
+            // Atualizar preview
+            const preview = seletorMaterialChao.querySelector('.cor-preview-image, .cor-preview');
+            if (preview) preview.remove();
+            
+            const newPreview = document.createElement('div');
+            newPreview.className = 'cor-preview';
+            newPreview.style.backgroundColor = '#ccc';
+            const span = seletorMaterialChao.querySelector('span');
+            seletorMaterialChao.insertBefore(newPreview, span);
+            span.textContent = 'Clique para selecionar a cor do chão';
+            
             mostrarFeedback(
                 "Material do chão atualizado para " +
                 (novoMaterial === "couro" ? "Couro Sintético" : "Couro Sport")
@@ -540,28 +660,57 @@ function mostrarPersonalizacaoKit() {
         });
     }
 
-
     personalizacaoContainer.style.display = 'block';
     setTimeout(() => {
         personalizacaoContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
 }
 
-
-// Função para abrir modal de cores para uma parte específica
+// ✅✅✅ CORREÇÃO CRÍTICA: Função para abrir modal de cores para material
 function abrirModalCoresParaMaterial(material) {
     const tituloModal = modalCores.querySelector('h3');
-    tituloModal.textContent = `Selecione a cor para ${materiais[material].nome}`;
+    
+    // Texto específico para cortina
+    if (parteSelecionadaModal === 'cortina') {
+        tituloModal.textContent = `Selecione a cor para a Cortina`;
+    } else {
+        tituloModal.textContent = `Selecione a cor para ${materiais[material].nome}`;
+    }
+    
     gridCores.innerHTML = '';
 
-    parteSelecionadaModal = material; // agora representa o tipo de material
     const cores = materiais[material].cores;
 
     cores.forEach(cor => {
         const corItem = document.createElement('div');
         corItem.className = 'cor-item';
+        
+        // ✅ CORREÇÃO: Verificar se esta cor está selecionada para o material atual
+        let jaSelecionada = false;
+        if (kitSelecionado && kitSelecionado.partes) {
+            // Verifica se alguma parte com este material já tem esta cor
+            Object.values(kitSelecionado.partes).forEach(config => {
+                if (config.material === material && config.corNome === cor.nome) {
+                    jaSelecionada = true;
+                }
+            });
+        }
+        
+        // ✅ CORREÇÃO: Verificar se está selecionada para cortina
+        if (parteSelecionadaModal === 'cortina' && kitSelecionado && kitSelecionado.cortina && kitSelecionado.cortina.corNome === cor.nome) {
+            jaSelecionada = true;
+        }
+        
+        if (jaSelecionada) {
+            corItem.classList.add('selecionada');
+            // Se não há cor selecionada ainda, seleciona esta automaticamente
+            if (!corSelecionadaModal) {
+                corSelecionadaModal = cor;
+            }
+        }
+        
         corItem.innerHTML = `
-            <img src="${cor.imagem}" alt="${cor.nome}">
+            <img src="${cor.imagem}" alt="${cor.nome}" onerror="this.style.backgroundColor='#ccc'">
             <span>${cor.nome}</span>
         `;
 
@@ -578,59 +727,113 @@ function abrirModalCoresParaMaterial(material) {
     document.body.style.overflow = 'hidden';
 }
 
-
 // Função para fechar o modal de cores
 function fecharModalCores() {
     modalCores.style.display = 'none';
     document.body.style.overflow = 'auto';
 }
 
-// Função para confirmar a cor selecionada
+// ✅✅✅ CORREÇÃO CRÍTICA: Função para confirmar a cor selecionada
 function confirmarCorSelecionada() {
-    if (!corSelecionadaModal || !parteSelecionadaModal) {
+    if (!corSelecionadaModal) {
         mostrarFeedback('Selecione uma cor antes de confirmar', 'erro');
         return;
     }
 
-    // Caso a cor seja da cortina (continua igual)
+    // CASO ESPECIAL PARA CORTINA
     if (parteSelecionadaModal === 'cortina') {
-        const seletor = document.querySelector(`.seletor-cor-parte[data-parte="cortina"]`);
+        const seletor = document.querySelector('.seletor-cor-parte[data-parte="cortina"]');
         if (seletor) {
+            // Limpar preview anterior
             const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
             if (previewAntigo) previewAntigo.remove();
 
+            // Criar novo preview com imagem
             const imgPreview = document.createElement('img');
             imgPreview.src = corSelecionadaModal.imagem;
             imgPreview.alt = corSelecionadaModal.nome;
             imgPreview.className = 'cor-preview-image';
-            seletor.insertBefore(imgPreview, seletor.querySelector('span'));
-            seletor.querySelector('span').textContent = corSelecionadaModal.nome;
+            imgPreview.onerror = function() {
+                // Fallback se a imagem não carregar
+                this.style.display = 'none';
+                const fallbackDiv = document.createElement('div');
+                fallbackDiv.className = 'cor-preview';
+                fallbackDiv.style.backgroundColor = '#ccc';
+                seletor.insertBefore(fallbackDiv, seletor.querySelector('span'));
+            };
+            
+            const span = seletor.querySelector('span');
+            seletor.insertBefore(imgPreview, span);
+            span.textContent = corSelecionadaModal.nome;
+            
+            // ✅ ARMAZENAR A COR DA CORTINA NO KIT SELECIONADO
+            if (!kitSelecionado) {
+                kitSelecionado = {};
+            }
+            kitSelecionado.cortina = {
+                material: "pelucia",
+                cor: corSelecionadaModal.imagem,
+                corNome: corSelecionadaModal.nome
+            };
+            
+            console.log('Cortina selecionada:', kitSelecionado.cortina);
         }
+        
+        fecharModalCores();
+        corSelecionadaModal = null;
+        parteSelecionadaModal = null;
+        mostrarFeedback('Cor da cortina selecionada com sucesso!');
+        return;
     }
-    // Novo comportamento: aplica a cor a todas as partes do mesmo material
-    else if (kitSelecionado && kitSelecionado.partes) {
+
+    // ✅ CORREÇÃO: PARA OS MATERIAIS DOS KITS
+    if (kitSelecionado && kitSelecionado.partes) {
         const materialSelecionado = parteSelecionadaModal; // ex: "pelucia" ou "couro"
+
+        console.log('Aplicando cor para material:', materialSelecionado, 'Cor:', corSelecionadaModal.nome);
 
         // Atualiza todas as partes que usam esse material
         Object.entries(kitSelecionado.partes).forEach(([parte, config]) => {
             if (config.material === materialSelecionado) {
                 config.cor = corSelecionadaModal.imagem;
                 config.corNome = corSelecionadaModal.nome;
+                console.log(`Parte "${parte}" atualizada com cor:`, config.corNome);
             }
         });
 
-        // Atualiza o preview do seletor geral desse material
+        // ✅ CORREÇÃO: Atualiza o preview do seletor geral desse material
         const seletor = document.querySelector(`.seletor-cor-parte[data-material="${materialSelecionado}"]`);
         if (seletor) {
+            // Limpar preview anterior
             const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
             if (previewAntigo) previewAntigo.remove();
 
+            // Criar novo preview com imagem
             const imgPreview = document.createElement('img');
             imgPreview.src = corSelecionadaModal.imagem;
             imgPreview.alt = corSelecionadaModal.nome;
             imgPreview.className = 'cor-preview-image';
-            seletor.insertBefore(imgPreview, seletor.querySelector('span'));
-            seletor.querySelector('span').textContent = corSelecionadaModal.nome;
+            imgPreview.onerror = function() {
+                // Fallback se a imagem não carregar
+                this.style.display = 'none';
+                const fallbackDiv = document.createElement('div');
+                fallbackDiv.className = 'cor-preview';
+                fallbackDiv.style.backgroundColor = '#ccc';
+                seletor.insertBefore(fallbackDiv, seletor.querySelector('span'));
+            };
+            
+            const span = seletor.querySelector('span');
+            seletor.insertBefore(imgPreview, span);
+            span.textContent = corSelecionadaModal.nome;
+            
+            console.log('Preview atualizado para material:', materialSelecionado);
+        } else {
+            console.warn('Seletor não encontrado para material:', materialSelecionado);
+        }
+
+        // ✅ CORREÇÃO: Atualizar imagem do kit se for o kit de pelúcia total
+        if (kitSelecionado.id === 'pelucia_total') {
+            atualizarImagemDoKit(corSelecionadaModal.nome);
         }
     }
     else {
@@ -640,15 +843,12 @@ function confirmarCorSelecionada() {
     }
 
     fecharModalCores();
-
-    // Resetar variáveis
     corSelecionadaModal = null;
     parteSelecionadaModal = null;
-
     mostrarFeedback('Cor aplicada com sucesso!');
 }
 
-// Função para adicionar item ao carrinho
+// ✅ CORREÇÃO: Função para adicionar item ao carrinho (parte da cortina)
 function adicionarAoCarrinho() {
     if (!kitSelecionado) {
         mostrarFeedback('Selecione um kit de revestimento antes de adicionar ao carrinho', 'erro');
@@ -669,7 +869,7 @@ function adicionarAoCarrinho() {
         return;
     }
 
-    // Verificar se cortina foi selecionada e se tem cor definida
+    // ✅ CORREÇÃO: Verificar se cortina foi selecionada e se tem cor definida
     let cortinaInfo = null;
     if (cortinaCheckbox.checked) {
         const cortinaCorElement = document.querySelector('.seletor-cor-parte[data-parte="cortina"] span');
@@ -677,12 +877,22 @@ function adicionarAoCarrinho() {
             mostrarFeedback('Selecione uma cor para a cortina', 'erro');
             return;
         }
-
-        cortinaInfo = {
-            material: "pelucia", // Material padrão para cortina
-            cor: corSelecionadaModal ? corSelecionadaModal.codigo : "#000000",
-            corNome: cortinaCorElement.textContent
-        };
+        
+        // ✅ USA A COR SALVA NO kitSelecionado.cortina
+        if (kitSelecionado && kitSelecionado.cortina) {
+            cortinaInfo = {
+                material: kitSelecionado.cortina.material,
+                cor: kitSelecionado.cortina.cor,
+                corNome: kitSelecionado.cortina.corNome
+            };
+        } else {
+            // Fallback caso não esteja no kitSelecionado
+            cortinaInfo = {
+                material: "pelucia",
+                cor: "#000000", 
+                corNome: cortinaCorElement.textContent
+            };
+        }
     }
 
     // Criar item para o carrinho
@@ -718,19 +928,7 @@ function adicionarAoCarrinho() {
     // Resetar cortina
     cortinaCheckbox.checked = false;
     cortinaPersonalizacao.style.display = 'none';
-    const cortinaCorElement = document.querySelector('.seletor-cor-parte[data-parte="cortina"]');
-    if (cortinaCorElement) {
-        const preview = cortinaCorElement.querySelector('.cor-preview-image');
-        if (preview) preview.remove();
-
-        const span = cortinaCorElement.querySelector('span');
-        if (span) span.textContent = 'Clique para selecionar a cor';
-
-        const newPreview = document.createElement('div');
-        newPreview.className = 'cor-preview';
-        newPreview.style.backgroundColor = '#ccc';
-        cortinaCorElement.insertBefore(newPreview, span);
-    }
+    resetarSelecaoCortina();
 }
 
 // Função para resetar a seleção
@@ -754,6 +952,7 @@ function resetarSelecao() {
     // Resetar cortina
     cortinaCheckbox.checked = false;
     cortinaPersonalizacao.style.display = 'none';
+    resetarSelecaoCortina();
 }
 
 // Função para mostrar formulário do cliente
@@ -829,9 +1028,6 @@ function selecionarMaquina(botao) {
     // Popular marcas
     popularMarcas();
 
-    // Mostrar kits de revestimento
-    //mostrarKitsRevestimento();
-
     // Rolagem suave para o formulário
     setTimeout(() => {
         selecaoContainer.scrollIntoView({ behavior: 'smooth' });
@@ -892,7 +1088,6 @@ anoSelect.addEventListener('change', () => {
         mostrarKitsRevestimento();
     }
 });
-
 
 // Função para salvar carrinho no localStorage
 function salvarCarrinho() {
@@ -1056,44 +1251,65 @@ function calcularFrete() {
     mostrarFeedback('Frete calculado com sucesso!');
 }
 
-// Funções de validação de formulário
-function validarSomenteNumeros(input) {
-    const valor = input.value.replace(/\D/g, '');
+// ✅ CORREÇÃO: Funções de validação de formulário atualizadas
+function validarSomenteNumeros(input, maxLength = null) {
+    let valor = input.value.replace(/\D/g, '');
+    
+    // Aplica limite máximo se especificado
+    if (maxLength && valor.length > maxLength) {
+        valor = valor.substring(0, maxLength);
+    }
+    
     input.value = valor;
     return valor !== '';
 }
 
-function validarSomenteLetras(input) {
+function validarSomenteLetras(input, maxLength = null) {
     let valor = input.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
-    valor = valor.toUpperCase(); // 🔹 transforma tudo em MAIÚSCULO
+    valor = valor.toUpperCase();
+    
+    // Aplica limite máximo se especificado
+    if (maxLength && valor.length > maxLength) {
+        valor = valor.substring(0, maxLength);
+    }
+    
     input.value = valor;
     return valor !== '';
 }
 
-function validarTextoGeral(input) {
+function validarTextoGeral(input, maxLength = null) {
     // Permite letras, números, espaços e alguns caracteres especiais comuns em endereços
     let valor = input.value.replace(/[^a-zA-ZÀ-ÿ0-9\s.,\-]/g, '');
-    valor = valor.toUpperCase(); // 🔹 transforma tudo em MAIÚSCULO
+    valor = valor.toUpperCase();
+    
+    // Aplica limite máximo se especificado
+    if (maxLength && valor.length > maxLength) {
+        valor = valor.substring(0, maxLength);
+    }
+    
     input.value = valor;
     return valor !== '';
 }
 
-function validarCampo(input, tipo) {
+function validarCampo(input, tipo, maxLength = null) {
     const mensagemErro = document.getElementById(`erro-${input.id}`);
     let valido = false;
 
     if (tipo === 'numero') {
-        valido = validarSomenteNumeros(input);
+        valido = validarSomenteNumeros(input, maxLength);
         if (!valido) {
             mensagemErro.textContent = 'Por favor, insira apenas números';
+        } else if (maxLength && input.value.length < maxLength) {
+            mensagemErro.textContent = `Digite exatamente ${maxLength} números`;
+            valido = false;
         }
     } else if (tipo === 'texto') {
-        valido = validarSomenteLetras(input);
+        valido = validarSomenteLetras(input, maxLength);
         if (!valido) {
             mensagemErro.textContent = 'Por favor, insira apenas letras e espaços';
         }
     } else if (tipo === 'texto-geral') {
-        valido = validarTextoGeral(input);
+        valido = validarTextoGeral(input, maxLength);
         if (!valido) {
             mensagemErro.textContent = 'Por favor, insira um valor válido';
         }
@@ -1113,17 +1329,17 @@ function validarCampo(input, tipo) {
 }
 
 function validarFormulario() {
-    // Validar todos os campos
-    const nomeValido = validarCampo(document.getElementById('nome'), 'texto');
-    const cpfCnpjValido = validarCampo(document.getElementById('cpf_cnpj'), 'numero');
-    const inscricaoEstadualValido = document.getElementById('inscricao_estadual').value === '' || validarCampo(document.getElementById('inscricao_estadual'), 'numero');
-    const telefoneValido = validarCampo(document.getElementById('telefone'), 'numero');
-    const cepValido = validarCampo(document.getElementById('cep'), 'numero');
-    const estadoValido = validarCampo(document.getElementById('estado'), 'texto');
-    const cidadeValido = validarCampo(document.getElementById('cidade'), 'texto');
-    const bairroValido = validarCampo(document.getElementById('bairro'), 'texto');
-    const ruaValido = validarCampo(document.getElementById('rua'), 'texto-geral');
-    const numeroValido = validarCampo(document.getElementById('numero'), 'numero');
+    // Validar todos os campos com limites apropriados
+    const nomeValido = validarCampo(document.getElementById('nome'), 'texto', 50);
+    const cpfCnpjValido = validarCampo(document.getElementById('cpf_cnpj'), 'numero', 18);
+    const inscricaoEstadualValido = document.getElementById('inscricao_estadual').value === '' || validarCampo(document.getElementById('inscricao_estadual'), 'numero', 15);
+    const telefoneValido = validarCampo(document.getElementById('telefone'), 'numero', 15);
+    const cepValido = validarCampo(document.getElementById('cep'), 'numero', 8);
+    const estadoValido = validarCampo(document.getElementById('estado'), 'texto', 2);
+    const cidadeValido = validarCampo(document.getElementById('cidade'), 'texto', 30);
+    const bairroValido = validarCampo(document.getElementById('bairro'), 'texto', 30);
+    const ruaValido = validarCampo(document.getElementById('rua'), 'texto-geral', 50);
+    const numeroValido = validarCampo(document.getElementById('numero'), 'numero', 6);
 
     // Verificar se todos os campos obrigatórios estão preenchidos e válidos
     if (nomeValido && cpfCnpjValido && telefoneValido && cepValido &&
@@ -1133,7 +1349,6 @@ function validarFormulario() {
         mostrarFeedback('Por favor, preencha todos os campos corretamente', 'erro');
     }
 }
-
 
 // Função para finalizar o pedido e abrir o WhatsApp
 function finalizarPedido() {
@@ -1176,7 +1391,7 @@ function finalizarPedido() {
 
     // Montar cabeçalho
     let mensagem = "👷 LOJA DO OPERADOR 👷‍♂️ \n";
-    mensagem += "*✧ CAPAS PERSONALIZADAS ✧*\n";
+    mensagem += "*✧ INTERNAS PERSONALIZADAS ✧*\n";
     mensagem += "*✧ Sua equipe motivada ✧*\n";
     mensagem += "*✧ Seu patrimônio protegido, Seu negócio mais forte ✧*\n";
     mensagem += "*✧ Cuidando das Suas Máquinas e de seus Operadores ✧*\n";
@@ -1262,35 +1477,13 @@ function finalizarPedido() {
 
     mostrarFeedback('Pedido enviado com sucesso! Em breve entraremos em contato.');
 }
-document.addEventListener("DOMContentLoaded", () => {
-    const botoesLinha = document.querySelectorAll(".botao-linha");
-    const passo2 = document.getElementById("passo2");
-    const containersMaquinas = document.querySelectorAll(".maquinas-container");
-
-    botoesLinha.forEach(botao => {
-        botao.addEventListener("click", () => {
-            // Esconde todos os containers de máquinas
-            containersMaquinas.forEach(container => (container.style.display = "none"));
-
-            // Mostra o passo 2
-            passo2.style.display = "block";
-
-            // Mostra apenas as máquinas da linha clicada
-            const linhaSelecionada = botao.getAttribute("data-linha");
-            if (linhaSelecionada === "Linha Amarela") {
-                document.getElementById("maquinas-amarelas").style.display = "flex";
-            } else if (linhaSelecionada === "Linha Verde") {
-                document.getElementById("maquinas-verdes").style.display = "flex";
-            } else if (linhaSelecionada === "Linha Mini") {
-                document.getElementById("maquinas-mini").style.display = "flex";
-            }
-        });
-    });
-});
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     atualizarCarrinho();
+
+    // ✅ CORREÇÃO: Inicializar cortina
+    inicializarCortina();
 
     // Adiciona eventos aos botões de linha principal
     botoesLinha.forEach(botao => {
@@ -1359,61 +1552,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Evento para checkbox da cortina
-    cortinaCheckbox.addEventListener('change', function () {
-        if (this.checked) {
-            cortinaPersonalizacao.style.display = 'block';
-        } else {
-            cortinaPersonalizacao.style.display = 'none';
-        }
-    });
+    // ✅ REMOVIDO: Evento duplicado para checkbox da cortina
+    // (já está sendo tratado na função inicializarCortina)
 
-    // Evento para seleção de cor da cortina
-    document.querySelector('.seletor-cor-parte[data-parte="cortina"]').addEventListener('click', function () {
-        abrirModalCoresParaParte('cortina', 'pelucia');
-    });
+    // ✅ REMOVIDO: Evento duplicado para seleção de cor da cortina
+    // (já está sendo tratado na função inicializarCortina)
 
     // Adicionar eventos de validação aos campos do formulário
     document.getElementById('nome').addEventListener('input', function () {
-        validarCampo(this, 'texto');
+        validarCampo(this, 'texto', 50);
     });
 
     document.getElementById('cpf_cnpj').addEventListener('input', function () {
-        validarCampo(this, 'numero');
+        validarCampo(this, 'numero', 18);
     });
 
     document.getElementById('inscricao_estadual').addEventListener('input', function () {
         if (this.value) {
-            validarCampo(this, 'numero');
+            validarCampo(this, 'numero', 15);
         }
     });
 
     document.getElementById('telefone').addEventListener('input', function () {
-        validarCampo(this, 'numero');
+        validarCampo(this, 'numero', 15);
     });
 
     document.getElementById('cep').addEventListener('input', function () {
-        validarCampo(this, 'numero');
+        validarCampo(this, 'numero', 8);
     });
 
     document.getElementById('estado').addEventListener('input', function () {
-        validarCampo(this, 'texto');
+        validarCampo(this, 'texto', 2);
     });
 
     document.getElementById('cidade').addEventListener('input', function () {
-        validarCampo(this, 'texto');
+        validarCampo(this, 'texto', 30);
     });
 
     document.getElementById('bairro').addEventListener('input', function () {
-        validarCampo(this, 'texto');
+        validarCampo(this, 'texto', 30);
     });
 
     document.getElementById('rua').addEventListener('input', function () {
-        validarCampo(this, 'texto-geral');
+        validarCampo(this, 'texto-geral', 50);
     });
 
     document.getElementById('numero').addEventListener('input', function () {
-        validarCampo(this, 'numero');
+        validarCampo(this, 'numero', 6);
     });
-
 });
