@@ -1,1603 +1,318 @@
-// Dados dos produtos atualizados
-const dados = {
-    "Linha Amarela": {
-        "CAT": {
-            // Modelos D2L (joystick hidráulico)
-            "312D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "313D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "315D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "318D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "320D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "323D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "336D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+/* =====================================================
+   script.js — Versão refinada com envio para WhatsApp
+   ===================================================== */
 
-            // Modelos GC (joystick elétrico)
-            "313GC": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "316GC": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "318GC": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "320GC": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "323GC": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "330GC": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "336GC": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "340GC": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "350GC": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-
-        "Hyundai": {
-            // Modelos LC7 (molde antigo até 2011)
-            "140LC7": { anos: ["2008", "2009", "2010", "2011"] },
-            "160LC7": { anos: ["2008", "2009", "2010", "2011"] },
-
-            // Modelos LC9 (molde novo a partir de 2013)
-            "140LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "150LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "160LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "180LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "200RLC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "225LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "260LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "350LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "360LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-
-        "Volvo": {
-            // Modelos até 2013 (molde SDLG, banco grande)
-            "140": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "200": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "210": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "220": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "240": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "360": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "460": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-
-            // Modelos a partir de 2014 (banco grande)
-            "140": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "200": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "210": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "220": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "240": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "360": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "460": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-
-        "SDLG": {
-            "LG6150": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "LG6225": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "LG6250": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-
-        "Komatsu": {
-            "PC130": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC160": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC180": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC200": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC210": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC240": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC300": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC340": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC350": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC360": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC380": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC400": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC450": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "PC500": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-
-        "John Deere": {
-            "130G": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "130P": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "160G": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "160P": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "200G": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "210G": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "210P": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "250G": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "250P": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "350G": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "350P": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "470G": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "470P": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-
-        "New Holland": {
-            "145C": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "175C": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "215C": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "245C": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "385C": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "405C": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "485C": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-
-        "Case": {
-            "CX130": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "CX180": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "CX220": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "CX240": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "CX350": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "CX370": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "CX490": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "CX500": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "CX800": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-
-        "Link Belt": {
-            "X3 2050": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "X3 3050": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        }
-    },
-    "Linha Verde": {
-        "John Deere": {
-            "Trator 5075E": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Trator 6110J": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira S550": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira S770": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Plantadeira 2512H": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Pulverizador 4730": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-        "Case IH": {
-            "Trator Magnum 340": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Trator Puma 220": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira Axial Flow 240": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira Axial Flow 7150": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Plantadeira Exact Emerge 1200": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Pulverizador Patriot 2250": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-        "New Holland": {
-            "Trator T7.210": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Trator T8.390": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira CR6.80": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira TC5.90": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Plantadeira PL5000": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Pulverizador PL6020": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-        "Massey Ferguson": {
-            "Trator MF 6713": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Trator MF 7714": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira MF 9250": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira MF 9795": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Plantadeira MF 9800": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Pulverizador MF 3200": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-        "Valtra": {
-            "Trator A114": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Trator N134": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira BH 2080": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Colheitadeira BH 3080": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Plantadeira VP 1250": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "Pulverizador VP 3000": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        }
-    },
-    "Linha Mini": {
-        "Bobcat": {
-            "E20": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "E35": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        },
-        "Takeuchi": {
-            "TB216": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
-            "TB230": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
-        }
-    }
-};
-
-// Definição dos materiais e cores - AGORA COM IMAGENS
-const materiais = {
-    couro: {
-        nome: "Couro Sintético",
-        cores: [
-            { nome: "Preto Amarelo", imagem: "imagens/cores/pretoamarelo.jpg" },
-            { nome: "Azul Marinho", imagem: "imagens/cores/azulmarinho.jpg" },
-            { nome: "Couro Vermelho", imagem: "imagens/cores/courovermelho.jpg" },
-            { nome: "Preto com Prata", imagem: "imagens/cores/pretocomprata.jpg" },
-            { nome: "Preto com Vermelho", imagem: "imagens/cores/pretocomvermelho.jpg" },
-            { nome: "Grafite com Grafite", imagem: "imagens/cores/grafitecomgrafite.jpg" },
-            { nome: "Marrom Café", imagem: "imagens/cores/marromcafe.jpg" },
-            { nome: "Marrom Ferrari", imagem: "imagens/cores/marromferrari.jpg" },
-            { nome: "Preto Mosaico", imagem: "imagens/cores/pretomosaico.jpg" },
-            { nome: "Preto com Azul", imagem: "imagens/cores/pretocomazul.jpg" },
-            { nome: "Bege com Marrom", imagem: "imagens/cores/begecommarrom.jpg" },
-            { nome: "Corolla", imagem: "imagens/cores/corolla.jpg" },
-            { nome: "Preto com Verde", imagem: "imagens/cores/pretocomverde.jpg" }
-        ]
-    },
-    couro_sport: {
-        nome: "Couro Sport",
-        cores: [
-            { nome: "Preto com Costuras Vermelhas", imagem: "imagens/cores/couromarrom.jpg" },
-            { nome: "Azul Racing com Branco", imagem: "imagens/cores/courosportebege.jpg" },
-            { nome: "Cinza Metalizado com Laranja", imagem: "imagens/cores/courosportecinzaclaro.jpg" },
-            { nome: "Branco Gelado com Preto", imagem: "imagens/cores/courosportecinzaescuro.jpg" }
-        ]
-    },
-    pelucia: {
-        nome: "Pelúcia (Xinil)",
-        cores: [
-            { nome: "Grafite Mais Pelinhos", imagem: "imagens/cores/grafite2.jpg" },
-            { nome: "Grafite", imagem: "imagens/cores/grafite.jpg" },
-            { nome: "Preto Mais Pelinhos", imagem: "imagens/cores/preto2.jpg" },
-            { nome: "Preto", imagem: "imagens/cores/preto.jpg" },
-            { nome: "Azul Mais Pelinhos", imagem: "imagens/cores/azul.jpg" },
-            { nome: "Mescla", imagem: "imagens/cores/mescla.jpg" },
-            { nome: "Marrom", imagem: "imagens/cores/marrom.jpg" },
-            { nome: "Vermelho Mais Pelinhos", imagem: "imagens/cores/vermelho.jpg" },
-            { nome: "Amarelo Mais Pelinhos", imagem: "imagens/cores/amarelo.jpg" },
-            { nome: "Verde Mais Pelinhos", imagem: "imagens/cores/verde.jpg" },
-            { nome: "Rosa", imagem: "imagens/cores/rosa.jpg" },
-            { nome: "Laranja", imagem: "imagens/cores/laranja.jpg" }
-        ]
-    }
-};
-
-
-// Definição dos kits de revestimento - AGORA COM IMAGENS
 const kitsRevestimento = {
-    "pelucia_total": {
-        nome: "Kit todo na Pelúcia (Xinil)",
-        descricao: "Todas as partes na pelúcia (Xinil)",
-        preco: 850,
-        imagem: "imagens/kits/kit_pelucia_total.jpg",
-        partes: {
-            kit: { material: "pelucia", cor: "", corNome: "" },
-
-        }
-    },
-    "couro_chao_pelucia_resto": {
-        nome: "Kit Couro no Chão + Resto na Pelúcia (Xinil)",
-        descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia (Xinil)",
-        preco: 950,
-        imagem: "imagens/kits/kit_couro_chao.jpg",
-        partes: {
-            chao: { material: "couro", cor: "", corNome: "" },
-            banco: { material: "pelucia", cor: "", corNome: "" },
-            braco: { material: "pelucia", cor: "", corNome: "" },
-            cabeca: { material: "pelucia", cor: "", corNome: "" },
-            laterais: { material: "pelucia", cor: "", corNome: "" }
-        }
-    },
-    "couro_total": {
-        nome: "Couro sintético Sporte no chão + restante na Pelúcia (Xinil)",
-        descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
-        preco: 1000,
-        imagem: "imagens/kits/kit_couro_total.jpg",
-        partes: {
-            chao: { material: "couro", cor: "", corNome: "" },
-            banco: { material: "pelucia", cor: "", corNome: "" },
-            braco: { material: "pelucia", cor: "", corNome: "" },
-            cabeca: { material: "pelucia", cor: "", corNome: "" },
-            laterais: { material: "pelucia", cor: "", corNome: "" }
-        },
-        opcaoChao: true // ⚙️ novo campo que ativa o seletor de tipo do chão
-    },
-
-
-    "couro_sport": {
-        nome: "Kit Couro com detalhes esportivos ",
-        descricao: "Couro sintetico no chão + banco, apoio de braço e apoio de cabeça no Sued, Restante na Pelucia (Xinil)",
-        preco: 1150,
-        imagem: "imagens/kits/kit_couro_sport.jpg",
-        partes: {
-            chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-            banco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-            braco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-            cabeca: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-            laterais: { material: "couro_sport", cor: "", corNome: "", detalhe: "" }
-        }
-    }
-
-
+  pelucia_total: {
+    nome: "Kit todo na Pelúcia (Xinil)",
+    descricao: "Todas as partes na pelúcia (Xinil)",
+    preco: 850,
+    imagem: "imagens/kits/kit_pelucia_total.jpg",
+  },
+  couro_chao_pelucia_resto: {
+    nome: "Kit Couro no Chão + Resto na Pelúcia (Xinil)",
+    descricao: "Chão e pedais em couro, restante na pelúcia (Xinil)",
+    preco: 950,
+    imagem: "imagens/kits/kit_couro_chao.jpg",
+  },
+  couro_total: {
+    nome: "Kit Couro sintético Sport no chão + restante na Pelúcia (Xinil)",
+    descricao: "Chão e pedais em couro, restante na pelúcia (Xinil)",
+    preco: 1000,
+    imagem: "imagens/kits/kit_couro_total.jpg",
+  },
+  couro_sport: {
+    nome: "Kit Couro com detalhes esportivos",
+    descricao: "Couro sintético + detalhes em Sued + Pelúcia (Xinil)",
+    preco: 1150,
+    imagem: "imagens/kits/kit_couro_sport.jpg",
+  },
 };
 
+let carrinho = [];
+let maquinaSelecionada = "";
 
+/* =====================================================
+   GERA O CARROSSEL DINAMICAMENTE
+   ===================================================== */
+function gerarCarrosselKits() {
+  const slidesContainer = document.getElementById("slides-kits");
+  slidesContainer.innerHTML = "";
 
-// Mapeamento de tipos de máquina para exibição
-const tipoMaquinaMap = {
-    'escavadeira-hidraulica': 'Escavadeira Hidráulica',
-    'retro-escavadeira': 'Retro Escavadeira',
-    'pa-carregadeira': 'Pá Carregadeira',
-    'moto-niveladora': 'Moto Niveladora',
-    'trator-esteira': 'Trator de Esteira',
-    'trator': 'Trator',
-    'pulverizador': 'Pulverizador',
-    'colheitadeira': 'Colheitadeira',
-    'mini-escavadeira': 'Mini Escavadeira',
-    'mini-carregadeira': 'Mini Carregadeira'
-};
-
-// Variáveis globais
-const state = {
-    linha: '',
-    tipoMaquina: '',
-    carrinho: [],
-    frete: {
-        valor: 0,
-        prazo: 0,
-        transportadora: 'Correios'
-    }
-};
-
-// Inicialização segura do carrinho
-try {
-    const carrinhoSalvo = localStorage.getItem('carrinho');
-    if (carrinhoSalvo) {
-        const parsed = JSON.parse(carrinhoSalvo);
-        if (Array.isArray(parsed)) {
-            state.carrinho = parsed;
-        }
-    }
-} catch (error) {
-    console.error('Erro ao carregar carrinho:', error);
-    state.carrinho = [];
-    localStorage.setItem('carrinho', JSON.stringify([]));
-}
-
-// Armazenamento do kit selecionado
-let kitSelecionado = null;
-let corSelecionadaModal = null;
-let parteSelecionadaModal = null;
-
-// Elementos DOM
-const botoesLinha = document.querySelectorAll('.botao-linha');
-const selecaoContainer = document.getElementById('selecao-container');
-const marcaSelect = document.getElementById('marca');
-const modeloSelect = document.getElementById('modelo');
-const anoSelect = document.getElementById('ano');
-const maquinasAmarelas = document.getElementById('maquinas-amarelas');
-const maquinasVerdes = document.getElementById('maquinas-verdes');
-const maquinasMini = document.getElementById('maquinas-mini');
-const botoesMaquina = document.querySelectorAll('.botao-maquina');
-const feedback = document.getElementById('feedback');
-const feedbackIcon = document.getElementById('feedback-icon');
-const feedbackMessage = document.getElementById('feedback-message');
-const formClienteContainer = document.getElementById('form-cliente-container');
-const cepFreteInput = document.getElementById('cep-frete');
-const resultadoFrete = document.getElementById('resultado-frete');
-const valorFreteSpan = document.getElementById('valor-frete');
-const prazoFreteSpan = document.getElementById('prazo-frete');
-const transportadoraFreteSpan = document.getElementById('transportadora-frete');
-const totalItensSpan = document.getElementById('total-itens');
-const totalGeralSpan = document.getElementById('total-geral');
-const modalCores = document.getElementById('modal-cores');
-const gridCores = document.getElementById('grid-cores');
-const fecharModal = document.querySelector('.fechar-modal');
-const confirmarCorBtn = document.getElementById('confirmar-cor');
-const kitsGrid = document.getElementById('kits-grid');
-const personalizacaoContainer = document.getElementById('personalizacao-container');
-const partesPersonalizacao = document.getElementById('partes-personalizacao');
-const tituloSelecao = document.getElementById('titulo-selecao');
-const cortinaCheckbox = document.getElementById('cortina-checkbox');
-const cortinaPersonalizacao = document.getElementById('cortina-personalizacao');
-const cortinaPreco = document.getElementById('cortina-preco');
-
-// Preço da cortina
-const precoCortina = 300;
-
-// ✅ CORREÇÃO: Função para inicializar a cortina
-function inicializarCortina() {
-    const cortinaCheckbox = document.getElementById('cortina-checkbox');
-    const cortinaPersonalizacao = document.getElementById('cortina-personalizacao');
-    const seletorCortina = document.querySelector('.seletor-cor-parte[data-parte="cortina"]');
-    
-    console.log('Inicializando cortina:', {
-        checkbox: !!cortinaCheckbox,
-        personalizacao: !!cortinaPersonalizacao,
-        seletor: !!seletorCortina
-    });
-
-    // Evento para mostrar/ocultar personalização da cortina
-    if (cortinaCheckbox && cortinaPersonalizacao) {
-        cortinaCheckbox.addEventListener('change', function() {
-            console.log('Cortina checkbox:', this.checked);
-            cortinaPersonalizacao.style.display = this.checked ? 'block' : 'none';
-            
-            // Resetar seleção se desmarcado
-            if (!this.checked && kitSelecionado && kitSelecionado.cortina) {
-                delete kitSelecionado.cortina;
-                resetarSelecaoCortina();
-            }
-        });
-    }
-
-    // Evento para abrir seletor de cor da cortina
-    if (seletorCortina) {
-        seletorCortina.addEventListener('click', function() {
-            console.log('Abrindo seletor de cor da cortina');
-            parteSelecionadaModal = 'cortina';
-            abrirModalCoresParaMaterial('pelucia');
-        });
-    }
-}
-
-// ✅ CORREÇÃO: Função para resetar seleção da cortina
-function resetarSelecaoCortina() {
-    const seletorCortina = document.querySelector('.seletor-cor-parte[data-parte="cortina"]');
-    if (seletorCortina) {
-        // Remove preview de imagem se existir
-        const imgPreview = seletorCortina.querySelector('.cor-preview-image');
-        if (imgPreview) imgPreview.remove();
-        
-        // Remove preview de cor se existir
-        const corPreview = seletorCortina.querySelector('.cor-preview');
-        if (corPreview) corPreview.remove();
-        
-        // Adiciona preview padrão
-        const newPreview = document.createElement('div');
-        newPreview.className = 'cor-preview';
-        newPreview.style.backgroundColor = '#ccc';
-        
-        const span = seletorCortina.querySelector('span');
-        seletorCortina.insertBefore(newPreview, span);
-        span.textContent = 'Clique para selecionar a cor';
-    }
-}
-
-// Função para gerar protocolo
-function generateProtocol() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let protocol = '';
-    for (let i = 0; i < 10; i++) {
-        protocol += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return protocol;
-}
-
-// Função para obter a imagem da cor baseada no material e nome da cor
-function obterImagemDaCor(material, corNome) {
-    if (!material || !corNome) return '';
-
-    const materialObj = materiais[material];
-    if (!materialObj || !materialObj.cores) return '';
-
-    const corEncontrada = materialObj.cores.find(cor => cor.nome === corNome);
-    return corEncontrada ? corEncontrada.imagem : '';
-}
-
-// Atualiza a imagem principal do kit conforme a cor escolhida
-function atualizarImagemDoKit(corNome) {
-    if (!kitSelecionado || !kitSelecionado.id) return;
-    
-    const nomeNormalizado = corNome.toLowerCase().replace(/\s+/g, '_');
-    const novaImagem = `imagens/kits/${kitSelecionado.id}_${nomeNormalizado}.jpg`;
-    
-    const imagemKit = document.querySelector('.kit-item.selecionado img');
-    if (imagemKit) {
-        imagemKit.src = novaImagem;
-        imagemKit.onerror = () => {
-            imagemKit.src = kitSelecionado.imagem; // volta para a base se não existir
-        };
-    }
-}
-
-// Animação e feedback visual de clique
-document.querySelectorAll('.botao-linha').forEach(botao => {
-    botao.addEventListener('click', () => {
-        botao.classList.add('clicado');
-        setTimeout(() => botao.classList.remove('clicado'), 300);
-        document.getElementById('passo2').style.color = '#F9A01B';
-    });
-});
-
-// Alternância do popup de ajuda
-const ajudaBtn = document.getElementById('btn-ajuda');
-const popupAjuda = document.getElementById('popup-ajuda');
-
-ajudaBtn.addEventListener('click', (event) => {
-    event.stopPropagation(); // evita fechar imediatamente ao clicar no botão
-    popupAjuda.style.display = popupAjuda.style.display === 'block' ? 'none' : 'block';
-});
-
-// Fecha o popup ao clicar fora dele (funciona em celular e PC)
-document.addEventListener('click', (event) => {
-    if (
-        popupAjuda.style.display === 'block' &&
-        !popupAjuda.contains(event.target) &&
-        event.target !== ajudaBtn
-    ) {
-        popupAjuda.style.display = 'none';
-    }
-});
-
-// Exibir ajuda automática após inatividade
-let interagiu = false;
-document.addEventListener('click', () => (interagiu = true));
-setTimeout(() => {
-    if (!interagiu) popupAjuda.style.display = 'block';
-}, 7000);
-
-// Função para mostrar os kits disponíveis
-function mostrarKitsRevestimento() {
-    kitsGrid.innerHTML = '';
-
-    Object.entries(kitsRevestimento).forEach(([id, kit]) => {
-        const kitElement = document.createElement('div');
-        kitElement.className = 'kit-item';
-        kitElement.innerHTML = `
-                <img src="${kit.imagem}" alt="${kit.nome}" class="kit-imagem" onerror="this.src='imagens/kits/placeholder.jpg'">
-                <div class="kit-info">
-                    <h4>${kit.nome}</h4>
-                    <p>${kit.descricao}</p>
-                    <p class="kit-preco">Total R$ ${kit.preco.toFixed(2)}</p>
-                </div>
-            `;
-
-        kitElement.addEventListener('click', () => {
-            // Resetar seleções anteriores
-            document.querySelectorAll('.kit-item').forEach(el => {
-                el.classList.remove('selecionado');
-            });
-
-            // Marcar como selecionado
-            kitElement.classList.add('selecionado');
-
-            // Armazenar kit selecionado
-            kitSelecionado = { ...kit, id };
-
-            // Mostrar opções de personalização
-            mostrarPersonalizacaoKit();
-
-            // Feedback para o usuário
-            mostrarFeedback(`Kit ${kit.nome} selecionado!`);
-        });
-
-        kitsGrid.appendChild(kitElement);
-    });
-
-    // Esconder personalização inicialmente
-    personalizacaoContainer.style.display = 'none';
-}
-
-// ✅✅✅ CORREÇÃO CRÍTICA: Função para mostrar as partes do kit para personalização
-function mostrarPersonalizacaoKit() {
-    partesPersonalizacao.innerHTML = '';
-
-    // Obter os materiais únicos do kit
-    const materiaisUnicos = [...new Set(Object.values(kitSelecionado.partes).map(p => p.material))];
-
-    console.log('Materiais únicos do kit:', materiaisUnicos);
-
-    // Criar um seletor por material
-    materiaisUnicos.forEach(material => {
-        const materialInfo = materiais[material];
-        if (!materialInfo) return;
-
-        // ✅ CORREÇÃO: Verificar se já existe uma cor selecionada para este material
-        let corSelecionada = null;
-        Object.values(kitSelecionado.partes).forEach(config => {
-            if (config.material === material && config.corNome) {
-                corSelecionada = config;
-            }
-        });
-
-        const materialDiv = document.createElement('div');
-        materialDiv.className = 'parte-kit';
-        
-        let previewContent = '';
-        let textoPreview = 'Clique para selecionar a cor';
-        
-        if (corSelecionada && corSelecionada.cor) {
-            previewContent = `<img src="${corSelecionada.cor}" alt="${corSelecionada.corNome}" class="cor-preview-image" onerror="this.style.backgroundColor='#ccc'">`;
-            textoPreview = corSelecionada.corNome;
-        } else {
-            previewContent = '<div class="cor-preview" style="background-color: #ccc;"></div>';
-        }
-
-        materialDiv.innerHTML = `
-            <label>${materialInfo.nome}</label>
-            <div class="seletor-cor-parte" data-material="${material}">
-                ${previewContent}
-                <span>${textoPreview}</span>
-            </div>
-        `;
-
-        // Evento para abrir o seletor de cor
-        materialDiv.querySelector('.seletor-cor-parte').addEventListener('click', () => {
-            parteSelecionadaModal = material;
-            abrirModalCoresParaMaterial(material);
-        });
-
-        partesPersonalizacao.appendChild(materialDiv);
-    });
-
-    // Adiciona seletor do chão se aplicável
-    if (kitSelecionado.opcaoChao) {
-        const seletorChao = document.createElement("div");
-        seletorChao.classList.add("parte-kit");
-        seletorChao.innerHTML = `
-        <label style="color:#F9A01B; font-weight:bold;">Material do Chão:</label>
-        <select id="tipo-chao">
-            <option value="couro">Couro Sintético</option>
-            <option value="couro_sport">Couro Sport</option>
-        </select>
+  Object.entries(kitsRevestimento).forEach(([key, kit]) => {
+    slidesContainer.innerHTML += `
+      <div class="swiper-slide" data-kit="${key}">
+        <div class="slide-content">
+          <img src="${kit.imagem}" alt="${kit.nome}" class="slide-img" loading="lazy">
+          <div class="slide-caption">
+            <h3>${kit.nome}</h3>
+            <p>${kit.descricao}</p>
+            <strong style="color:#f9a01b">R$ ${kit.preco.toFixed(2)}</strong><br>
+            <button class="btn-selecionar-kit" data-kit="${key}">
+              Selecionar Este Kit
+            </button>
+          </div>
+        </div>
+      </div>
     `;
-        partesPersonalizacao.prepend(seletorChao);
+  });
 
-        // ✅ CORREÇÃO: Verificar cor atual do chão
-        let corChaoSelecionada = kitSelecionado.partes.chao.corNome || 'Clique para selecionar a cor do chão';
-        let previewChao = kitSelecionado.partes.chao.cor ? 
-            `<img src="${kitSelecionado.partes.chao.cor}" alt="${kitSelecionado.partes.chao.corNome}" class="cor-preview-image" onerror="this.style.backgroundColor='#ccc'">` :
-            '<div class="cor-preview" style="background-color: #ccc;"></div>';
+  const swiper = new Swiper(".main-swiper", {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    centeredSlides: true,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    autoplay: { delay: 4000, disableOnInteraction: false },
+  });
 
-        const seletorMaterialChao = document.createElement("div");
-        seletorMaterialChao.classList.add("seletor-cor-parte");
-        seletorMaterialChao.dataset.material = kitSelecionado.partes.chao.material;
-        seletorMaterialChao.innerHTML = `
-        ${previewChao}
-        <span>${corChaoSelecionada}</span>
-    `;
-        
-        // adiciona evento para abrir modal correto conforme material atual
-        seletorMaterialChao.addEventListener("click", () => {
-            const materialAtual = kitSelecionado.partes.chao.material;
-            parteSelecionadaModal = materialAtual;
-            abrirModalCoresParaMaterial(materialAtual);
-        });
-        partesPersonalizacao.appendChild(seletorMaterialChao);
-
-        // evento para alterar material do chão
-        document.getElementById("tipo-chao").addEventListener("change", (e) => {
-            const novoMaterial = e.target.value;
-            kitSelecionado.partes.chao.material = novoMaterial;
-            seletorMaterialChao.dataset.material = novoMaterial; // atualiza data-material
-            
-            // ✅ CORREÇÃO: Resetar cor quando mudar o material
-            kitSelecionado.partes.chao.cor = "";
-            kitSelecionado.partes.chao.corNome = "";
-            
-            // Atualizar preview
-            const preview = seletorMaterialChao.querySelector('.cor-preview-image, .cor-preview');
-            if (preview) preview.remove();
-            
-            const newPreview = document.createElement('div');
-            newPreview.className = 'cor-preview';
-            newPreview.style.backgroundColor = '#ccc';
-            const span = seletorMaterialChao.querySelector('span');
-            seletorMaterialChao.insertBefore(newPreview, span);
-            span.textContent = 'Clique para selecionar a cor do chão';
-            
-            mostrarFeedback(
-                "Material do chão atualizado para " +
-                (novoMaterial === "couro" ? "Couro Sintético" : "Couro Sport")
-            );
-        });
-    }
-
-    personalizacaoContainer.style.display = 'block';
-    setTimeout(() => {
-        personalizacaoContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-}
-
-// ✅✅✅ CORREÇÃO CRÍTICA: Função para abrir modal de cores para material
-function abrirModalCoresParaMaterial(material) {
-    const tituloModal = modalCores.querySelector('h3');
-    
-    // Texto específico para cortina
-    if (parteSelecionadaModal === 'cortina') {
-        tituloModal.textContent = `Selecione a cor para a Cortina`;
-    } else {
-        tituloModal.textContent = `Selecione a cor para ${materiais[material].nome}`;
-    }
-    
-    gridCores.innerHTML = '';
-
-    const cores = materiais[material].cores;
-
-    cores.forEach(cor => {
-        const corItem = document.createElement('div');
-        corItem.className = 'cor-item';
-        
-        // ✅ CORREÇÃO: Verificar se esta cor está selecionada para o material atual
-        let jaSelecionada = false;
-        if (kitSelecionado && kitSelecionado.partes) {
-            // Verifica se alguma parte com este material já tem esta cor
-            Object.values(kitSelecionado.partes).forEach(config => {
-                if (config.material === material && config.corNome === cor.nome) {
-                    jaSelecionada = true;
-                }
-            });
-        }
-        
-        // ✅ CORREÇÃO: Verificar se está selecionada para cortina
-        if (parteSelecionadaModal === 'cortina' && kitSelecionado && kitSelecionado.cortina && kitSelecionado.cortina.corNome === cor.nome) {
-            jaSelecionada = true;
-        }
-        
-        if (jaSelecionada) {
-            corItem.classList.add('selecionada');
-            // Se não há cor selecionada ainda, seleciona esta automaticamente
-            if (!corSelecionadaModal) {
-                corSelecionadaModal = cor;
-            }
-        }
-        
-        corItem.innerHTML = `
-            <img src="${cor.imagem}" alt="${cor.nome}" onerror="this.style.backgroundColor='#ccc'">
-            <span>${cor.nome}</span>
-        `;
-
-        corItem.addEventListener('click', () => {
-            document.querySelectorAll('.cor-item').forEach(i => i.classList.remove('selecionada'));
-            corItem.classList.add('selecionada');
-            corSelecionadaModal = cor;
-        });
-
-        gridCores.appendChild(corItem);
+  // Clique no botão ou slide
+  document.querySelectorAll(".btn-selecionar-kit").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      selecionarKit(btn.dataset.kit);
     });
+  });
 
-    modalCores.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+  document.querySelectorAll(".swiper-slide").forEach((slide) => {
+    slide.addEventListener("click", (e) => {
+      const kitKey = slide.dataset.kit;
+      selecionarKit(kitKey);
+    });
+  });
 }
 
-// Função para fechar o modal de cores
-function fecharModalCores() {
-    modalCores.style.display = 'none';
-    document.body.style.overflow = 'auto';
+/* =====================================================
+   AO CLICAR EM UM KIT DO CARROSSEL
+   ===================================================== */
+function selecionarKit(chave) {
+  const kit = kitsRevestimento[chave];
+  if (!kit) return;
+
+  const secaoSelecao = document.getElementById("selecao-container");
+  const personalizacao = document.getElementById("personalizacao-container");
+  const carrinhoSection = document.querySelector(".carrinho");
+  const form = document.getElementById("form-cliente-container");
+
+  [secaoSelecao, personalizacao, carrinhoSection, form].forEach((el) => {
+    el.style.display = "block";
+    setTimeout(() => el.classList.add("mostrar"), 50);
+  });
+
+  const partesDiv = document.getElementById("partes-personalizacao");
+  partesDiv.innerHTML = `
+    <p><strong>${kit.nome}</strong></p>
+    <p style="color:#ccc">${kit.descricao}</p>
+    <p><strong>Preço: R$ ${kit.preco.toFixed(2)}</strong></p>
+    <input type="hidden" id="kit-selecionado-chave" value="${chave}">
+    <button class="btn-adicionar-carrinho" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+  `;
+
+  secaoSelecao.scrollIntoView({ behavior: "smooth" });
 }
 
-// ✅✅✅ CORREÇÃO CRÍTICA: Função para confirmar a cor selecionada
-function confirmarCorSelecionada() {
-    if (!corSelecionadaModal) {
-        mostrarFeedback('Selecione uma cor antes de confirmar', 'erro');
-        return;
-    }
-
-    // CASO ESPECIAL PARA CORTINA
-    if (parteSelecionadaModal === 'cortina') {
-        const seletor = document.querySelector('.seletor-cor-parte[data-parte="cortina"]');
-        if (seletor) {
-            // Limpar preview anterior
-            const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
-            if (previewAntigo) previewAntigo.remove();
-
-            // Criar novo preview com imagem
-            const imgPreview = document.createElement('img');
-            imgPreview.src = corSelecionadaModal.imagem;
-            imgPreview.alt = corSelecionadaModal.nome;
-            imgPreview.className = 'cor-preview-image';
-            imgPreview.onerror = function() {
-                // Fallback se a imagem não carregar
-                this.style.display = 'none';
-                const fallbackDiv = document.createElement('div');
-                fallbackDiv.className = 'cor-preview';
-                fallbackDiv.style.backgroundColor = '#ccc';
-                seletor.insertBefore(fallbackDiv, seletor.querySelector('span'));
-            };
-            
-            const span = seletor.querySelector('span');
-            seletor.insertBefore(imgPreview, span);
-            span.textContent = corSelecionadaModal.nome;
-            
-            // ✅ ARMAZENAR A COR DA CORTINA NO KIT SELECIONADO
-            if (!kitSelecionado) {
-                kitSelecionado = {};
-            }
-            kitSelecionado.cortina = {
-                material: "pelucia",
-                cor: corSelecionadaModal.imagem,
-                corNome: corSelecionadaModal.nome
-            };
-            
-            console.log('Cortina selecionada:', kitSelecionado.cortina);
-        }
-        
-        fecharModalCores();
-        corSelecionadaModal = null;
-        parteSelecionadaModal = null;
-        mostrarFeedback('Cor da cortina selecionada com sucesso!');
-        return;
-    }
-
-    // ✅ CORREÇÃO: PARA OS MATERIAIS DOS KITS
-    if (kitSelecionado && kitSelecionado.partes) {
-        const materialSelecionado = parteSelecionadaModal; // ex: "pelucia" ou "couro"
-
-        console.log('Aplicando cor para material:', materialSelecionado, 'Cor:', corSelecionadaModal.nome);
-
-        // Atualiza todas as partes que usam esse material
-        Object.entries(kitSelecionado.partes).forEach(([parte, config]) => {
-            if (config.material === materialSelecionado) {
-                config.cor = corSelecionadaModal.imagem;
-                config.corNome = corSelecionadaModal.nome;
-                console.log(`Parte "${parte}" atualizada com cor:`, config.corNome);
-            }
-        });
-
-        // ✅ CORREÇÃO: Atualiza o preview do seletor geral desse material
-        const seletor = document.querySelector(`.seletor-cor-parte[data-material="${materialSelecionado}"]`);
-        if (seletor) {
-            // Limpar preview anterior
-            const previewAntigo = seletor.querySelector('.cor-preview, .cor-preview-image');
-            if (previewAntigo) previewAntigo.remove();
-
-            // Criar novo preview com imagem
-            const imgPreview = document.createElement('img');
-            imgPreview.src = corSelecionadaModal.imagem;
-            imgPreview.alt = corSelecionadaModal.nome;
-            imgPreview.className = 'cor-preview-image';
-            imgPreview.onerror = function() {
-                // Fallback se a imagem não carregar
-                this.style.display = 'none';
-                const fallbackDiv = document.createElement('div');
-                fallbackDiv.className = 'cor-preview';
-                fallbackDiv.style.backgroundColor = '#ccc';
-                seletor.insertBefore(fallbackDiv, seletor.querySelector('span'));
-            };
-            
-            const span = seletor.querySelector('span');
-            seletor.insertBefore(imgPreview, span);
-            span.textContent = corSelecionadaModal.nome;
-            
-            console.log('Preview atualizado para material:', materialSelecionado);
-        } else {
-            console.warn('Seletor não encontrado para material:', materialSelecionado);
-        }
-
-        // ✅ CORREÇÃO: Atualizar imagem do kit se for o kit de pelúcia total
-        if (kitSelecionado.id === 'pelucia_total') {
-            atualizarImagemDoKit(corSelecionadaModal.nome);
-        }
-    }
-    else {
-        mostrarFeedback('Erro ao aplicar a cor. Tente novamente.', 'erro');
-        fecharModalCores();
-        return;
-    }
-
-    fecharModalCores();
-    corSelecionadaModal = null;
-    parteSelecionadaModal = null;
-    mostrarFeedback('Cor aplicada com sucesso!');
+/* =====================================================
+   SELEÇÃO DE MÁQUINA
+   ===================================================== */
+function configurarSelecaoMaquina() {
+  const itensMaquina = document.querySelectorAll('.maquina-item');
+  
+  itensMaquina.forEach(item => {
+    item.addEventListener('click', function() {
+      // Remove seleção anterior
+      itensMaquina.forEach(i => i.classList.remove('selecionado'));
+      
+      // Adiciona seleção atual
+      this.classList.add('selecionado');
+      
+      // Atualiza máquina selecionada
+      maquinaSelecionada = this.querySelector('p').textContent;
+      document.getElementById('maquina-selecionada').value = maquinaSelecionada;
+    });
+  });
 }
 
-// ✅ CORREÇÃO: Função para adicionar item ao carrinho (parte da cortina)
+/* =====================================================
+   CARRINHO
+   ===================================================== */
 function adicionarAoCarrinho() {
-    if (!kitSelecionado) {
-        mostrarFeedback('Selecione um kit de revestimento antes de adicionar ao carrinho', 'erro');
-        return;
-    }
+  const chave = document.getElementById("kit-selecionado-chave").value;
+  const kit = kitsRevestimento[chave];
+  if (!kit) return alert("Selecione um kit primeiro!");
 
-    // Verificar se todas as partes têm cor selecionada
-    for (const [parte, config] of Object.entries(kitSelecionado.partes)) {
-        if (!config.cor) {
-            mostrarFeedback(`Selecione uma cor para ${parte.replace(/_/g, ' ')}`, 'erro');
-            return;
-        }
-    }
-
-    // Verificar se marca, modelo e ano foram selecionados
-    if (!marcaSelect.value || !modeloSelect.value || !anoSelect.value) {
-        mostrarFeedback('Selecione marca, modelo e ano do equipamento', 'erro');
-        return;
-    }
-
-    // ✅ CORREÇÃO: Verificar se cortina foi selecionada e se tem cor definida
-    let cortinaInfo = null;
-    if (cortinaCheckbox.checked) {
-        const cortinaCorElement = document.querySelector('.seletor-cor-parte[data-parte="cortina"] span');
-        if (!cortinaCorElement || cortinaCorElement.textContent === 'Clique para selecionar a cor') {
-            mostrarFeedback('Selecione uma cor para a cortina', 'erro');
-            return;
-        }
-        
-        // ✅ USA A COR SALVA NO kitSelecionado.cortina
-        if (kitSelecionado && kitSelecionado.cortina) {
-            cortinaInfo = {
-                material: kitSelecionado.cortina.material,
-                cor: kitSelecionado.cortina.cor,
-                corNome: kitSelecionado.cortina.corNome
-            };
-        } else {
-            // Fallback caso não esteja no kitSelecionado
-            cortinaInfo = {
-                material: "pelucia",
-                cor: "#000000", 
-                corNome: cortinaCorElement.textContent
-            };
-        }
-    }
-
-    // Criar item para o carrinho
-    const item = {
-        tipo: 'kit_revestimento',
-        kitId: kitSelecionado.id,
-        nome: kitSelecionado.nome,
-        preco: kitSelecionado.preco,
-        partes: { ...kitSelecionado.partes },
-        id: Date.now(),
-        linha: state.linha,
-        tipoMaquina: tipoMaquinaMap[state.tipoMaquina] || state.tipoMaquina,
-        marca: marcaSelect.value,
-        modelo: modeloSelect.value,
-        ano: anoSelect.value,
-        cortina: cortinaInfo,
-        precoCortina: cortinaCheckbox.checked ? precoCortina : 0
-    };
-
-    // Adicionar ao carrinho
-    state.carrinho.push(item);
-    salvarCarrinho();
+  // Verifica se já existe no carrinho
+  const existeNoCarrinho = carrinho.some(item => item.chave === chave);
+  if (!existeNoCarrinho) {
+    carrinho.push({
+      chave: chave,
+      nome: kit.nome,
+      preco: kit.preco,
+      descricao: kit.descricao
+    });
     atualizarCarrinho();
-    mostrarFeedback('Kit adicionado ao carrinho!');
-
-    // Resetar seleção
-    kitSelecionado = null;
-    personalizacaoContainer.style.display = 'none';
-    document.querySelectorAll('.kit-item').forEach(el => {
-        el.classList.remove('selecionado');
-    });
-
-    // Resetar cortina
-    cortinaCheckbox.checked = false;
-    cortinaPersonalizacao.style.display = 'none';
-    resetarSelecaoCortina();
+    alert("Kit adicionado ao carrinho!");
+  } else {
+    alert("Este kit já está no carrinho!");
+  }
 }
 
-// Função para resetar a seleção
-function resetarSelecao() {
-    // Resetar dropdowns
-    marcaSelect.selectedIndex = 0;
-    modeloSelect.innerHTML = '<option value="">Selecione uma marca primeiro</option>';
-    anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
-
-    // Resetar máquina selecionada
-    document.querySelectorAll('.botao-maquina.ativo').forEach(btn => btn.classList.remove('ativo'));
-    state.tipoMaquina = '';
-
-    // Resetar kit selecionado
-    kitSelecionado = null;
-    personalizacaoContainer.style.display = 'none';
-    document.querySelectorAll('.kit-item').forEach(el => {
-        el.classList.remove('selecionado');
-    });
-
-    // Resetar cortina
-    cortinaCheckbox.checked = false;
-    cortinaPersonalizacao.style.display = 'none';
-    resetarSelecaoCortina();
-}
-
-// Função para mostrar formulário do cliente
-function mostrarFormularioCliente() {
-    if (state.carrinho.length === 0) {
-        mostrarFeedback('Carrinho vazio!', 'erro');
-        return;
-    }
-
-    document.querySelector('.carrinho').style.display = 'none';
-    formClienteContainer.style.display = 'block';
-    formClienteContainer.scrollIntoView({ behavior: 'smooth' });
-}
-
-// Função para selecionar linha principal
-function selecionarLinha(botao) {
-    // Remover classe 'ativo' de todos os botões
-    botoesLinha.forEach(btn => btn.classList.remove('ativo'));
-
-    // Adicionar classe 'ativo' ao botão clicado
-    botao.classList.add('ativo');
-
-    // Definir linha selecionada
-    state.linha = botao.dataset.linha;
-
-    // Mostrar botões de máquina apropriados
-    if (state.linha === "Linha Amarela") {
-        maquinasAmarelas.style.display = "grid";
-        maquinasVerdes.style.display = "none";
-        maquinasMini.style.display = "none";
-    } else if (state.linha === "Linha Verde") {
-        maquinasAmarelas.style.display = "none";
-        maquinasVerdes.style.display = "grid";
-        maquinasMini.style.display = 'none';
-    } else if (state.linha === "Linha Mini") {
-        maquinasAmarelas.style.display = "none";
-        maquinasVerdes.style.display = "none";
-        maquinasMini.style.display = "grid";
-    }
-
-    // Ocultar formulário de seleção até escolher a máquina
-    selecaoContainer.style.display = 'none';
-
-    // Rolagem suave para os botões de máquina
-    setTimeout(() => {
-        if (state.linha === "Linha Amarela") {
-            maquinasAmarelas.scrollIntoView({ behavior: 'smooth' });
-        } else if (state.linha === "Linha Verde") {
-            maquinasVerdes.scrollIntoView({ behavior: 'smooth' });
-        } else if (state.linha === "Linha Mini") {
-            maquinasMini.scrollIntoView({ behavior: 'smooth' });
-        }
-    }, 100);
-}
-
-// Função para selecionar máquina específica
-function selecionarMaquina(botao) {
-    // Remover classe 'ativo' de todos os botões de máquina
-    botoesMaquina.forEach(btn => btn.classList.remove('ativo'));
-
-    // Adicionar classe 'ativo' ao botão clicado
-    botao.classList.add('ativo');
-
-    // Definir tipo de máquina selecionada
-    state.tipoMaquina = botao.dataset.tipo;
-
-    // Atualizar título da seção
-    tituloSelecao.textContent = `Personalize o kit para ${tipoMaquinaMap[state.tipoMaquina] || state.tipoMaquina}`;
-
-    // Mostrar container de seleção
-    selecaoContainer.style.display = 'block';
-
-    // Popular marcas
-    popularMarcas();
-
-    // Rolagem suave para o formulário
-    setTimeout(() => {
-        selecaoContainer.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-}
-
-// Função para popular marcas
-function popularMarcas() {
-    marcaSelect.innerHTML = '<option value="">Selecione...</option>';
-    modeloSelect.innerHTML = '<option value="">Selecione uma marca primeiro</option>';
-    anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
-
-    // Obter todas as marcas disponíveis para a linha selecionada
-    const marcas = Object.keys(dados[state.linha]);
-
-    marcas.forEach(marca => {
-        const option = document.createElement('option');
-        option.value = marca;
-        option.textContent = marca;
-        marcaSelect.appendChild(option);
-    });
-}
-
-// Quando mudar a marca → popula os modelos
-marcaSelect.addEventListener('change', () => {
-    modeloSelect.innerHTML = '<option value="">Selecione um modelo</option>';
-    anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
-
-    if (marcaSelect.value) {
-        const modelos = Object.keys(dados[state.linha][marcaSelect.value]);
-        modelos.forEach(modelo => {
-            const option = document.createElement('option');
-            option.value = modelo;
-            option.textContent = modelo;
-            modeloSelect.appendChild(option);
-        });
-    }
-});
-
-// Quando mudar o modelo → popula os anos
-modeloSelect.addEventListener('change', () => {
-    anoSelect.innerHTML = '<option value="">Selecione um ano</option>';
-
-    if (modeloSelect.value) {
-        const anos = dados[state.linha][marcaSelect.value][modeloSelect.value].anos;
-        anos.forEach(ano => {
-            const option = document.createElement('option');
-            option.value = ano;
-            option.textContent = ano;
-            anoSelect.appendChild(option);
-        });
-    }
-});
-
-// Quando selecionar o ano → só então mostra os kits
-anoSelect.addEventListener('change', () => {
-    if (anoSelect.value) {
-        mostrarKitsRevestimento();
-    }
-});
-
-// Função para salvar carrinho no localStorage
-function salvarCarrinho() {
-    try {
-        localStorage.setItem('carrinho', JSON.stringify(state.carrinho));
-    } catch (error) {
-        console.error('Erro ao salvar carrinho:', error);
-    }
-}
-
-// Função para atualizar a exibição do carrinho
 function atualizarCarrinho() {
-    const listaCarrinho = document.getElementById('listaCarrinho');
-    listaCarrinho.innerHTML = '';
-
-    let total = 0;
-
-    // VERIFICAÇÃO DE SEGURANÇA - Corrige o erro
-    if (!state.carrinho || !Array.isArray(state.carrinho)) {
-        console.warn('Carrinho inválido, inicializando array vazio');
-        state.carrinho = [];
-        salvarCarrinho();
-    }
-
-    // Usar for loop em vez of forEach com Object.entries para maior segurança
-    for (let i = 0; i < state.carrinho.length; i++) {
-        const item = state.carrinho[i];
-
-        let partesHTML = '';
-
-        // Verificação adicional para garantir que item.partes existe
-        if (item.partes && typeof item.partes === 'object') {
-            for (const [parte, config] of Object.entries(item.partes)) {
-                if (config && config.cor && config.corNome) {
-                    partesHTML += `
-                            <div style="margin-left: 10px; margin-top: 8px; display: flex; align-items: center;">
-                                <div style="
-                                    width: 15px;
-                                    height: 15px;
-                                    border-radius: 50%;
-                                    border: 1px solid #888;
-                                    margin-right: 8px;
-                                    background-color: ${config.cor};
-                                "></div>
-                                <span style="font-size: 0.8rem;">
-                                    ${parte.replace(/_/g, ' ')}: 
-                                    <strong>${config.corNome}</strong>
-                                </span>
-                            </div>
-                        `;
-                }
-            }
-        }
-
-        // Adicionar informações da cortina se existir
-        if (item.cortina) {
-            partesHTML += `
-                    <div style="margin-left: 10px; margin-top: 8px; display: flex; align-items: center;">
-                        <div style="
-                            width: 15px;
-                            height: 15px;
-                            border-radius: 50%;
-                            border: 1px solid #888;
-                            margin-right: 8px;
-                            background-color: ${item.cortina.cor};
-                        "></div>
-                        <span style="font-size: 0.8rem;">
-                            Cortina: 
-                            <strong>${item.cortina.corNome}</strong>
-                        </span>
-                    </div>
-                `;
-        }
-
-        const li = document.createElement('li');
-        li.innerHTML = `
-                <div>
-                    <strong style="color: ${item.kitId && item.kitId.includes('sport') ? '#08d118' :
-                item.kitId && item.kitId.includes('couro') ? '#F9A01B' : '#4682B4'
-            };">${item.nome || 'Kit sem nome'}</strong>
-                    <div>${item.linha || ''} - ${item.tipoMaquina || ''}</div>
-                    <div>${item.marca || ''} ${item.modelo || ''} (${item.ano || ''})</div>
-                    ${partesHTML}
-                    <div style="margin-top: 10px; font-weight: bold;">
-                        Valor: Total R$ ${item.preco ? item.preco.toFixed(2) : '0.00'}
-                        ${item.precoCortina > 0 ? `+ Cortina: R$ ${item.precoCortina.toFixed(2)}` : ''}
-                    </div>
-                </div>
-                <button onclick="removerDoCarrinho(${item.id || 0})">Remover</button>
-            `;
-
-        listaCarrinho.appendChild(li);
-        total += (item.preco || 0) + (item.precoCortina || 0);
-    }
-
-    totalItensSpan.textContent = `R$ ${total.toFixed(2)}`;
-    atualizarTotais();
+  const lista = document.getElementById("listaCarrinho");
+  lista.innerHTML = "";
+  let total = 0;
+  
+  carrinho.forEach((kit, index) => {
+    lista.innerHTML += `
+      <li>
+        ${kit.nome} - R$ ${kit.preco.toFixed(2)}
+        <button class="btn-remover" onclick="removerDoCarrinho(${index})">×</button>
+      </li>
+    `;
+    total += kit.preco;
+  });
+  
+  document.getElementById("total-geral").textContent = `R$ ${total.toFixed(2)}`;
 }
 
-// Função para atualizar totais (itens + frete)
-function atualizarTotais() {
-    const totalItens = state.carrinho.reduce((sum, item) => sum + (item.preco || 0) + (item.precoCortina || 0), 0);
-    const totalGeral = totalItens + state.frete.valor;
-
-    totalItensSpan.textContent = `R$ ${totalItens.toFixed(2)}`;
-    totalGeralSpan.textContent = `R$ ${totalGeral.toFixed(2)}`;
+function removerDoCarrinho(index) {
+  carrinho.splice(index, 1);
+  atualizarCarrinho();
 }
 
-// Função para remover item do carrinho
-function removerDoCarrinho(id) {
-    state.carrinho = state.carrinho.filter(item => item.id !== id);
-    salvarCarrinho();
-    atualizarCarrinho();
-    mostrarFeedback('Item removido do carrinho');
+/* =====================================================
+   FORMULÁRIO + VALIDAÇÃO + WHATSAPP
+   ===================================================== */
+function mostrarFormularioCliente() {
+  if (carrinho.length === 0) {
+    alert("Adicione pelo menos um kit ao carrinho antes de finalizar!");
+    return;
+  }
+  
+  if (!maquinaSelecionada) {
+    alert("Selecione uma máquina antes de finalizar!");
+    return;
+  }
+  
+  document.getElementById("form-cliente-container").scrollIntoView({ behavior: "smooth" });
 }
 
-// Função para mostrar feedback ao usuário
-function mostrarFeedback(mensagem, tipo = 'sucesso') {
-    feedbackMessage.textContent = mensagem;
-    feedback.className = 'feedback visible';
-    feedbackIcon.textContent = tipo === 'erro' ? '✕' : '✓';
+function formatarPedidoWhatsApp(dadosCliente) {
+  let mensagem = "🛒 *PEDIDO - LOJA DO OPERADOR* 🛒\n\n";
+  
+  // Dados do cliente
+  mensagem += "*DADOS DO CLIENTE:*\n";
+  mensagem += `👤 Nome: ${dadosCliente.nome}\n`;
+  mensagem += `📄 CPF/CNPJ: ${dadosCliente.cpf_cnpj}\n`;
+  mensagem += `📞 Telefone: ${dadosCliente.telefone}\n\n`;
+  
+  // Máquina selecionada
+  mensagem += `🚗 *Máquina Selecionada:* ${maquinaSelecionada}\n\n`;
+  
+  // Itens do pedido
+  mensagem += "*ITENS DO PEDIDO:*\n";
+  let total = 0;
+  
+  carrinho.forEach((kit, index) => {
+    mensagem += `▫️ ${kit.nome}\n`;
+    mensagem += `   📝 ${kit.descricao}\n`;
+    mensagem += `   💰 R$ ${kit.preco.toFixed(2)}\n\n`;
+    total += kit.preco;
+  });
+  
+  // Total
+  mensagem += `💵 *TOTAL: R$ ${total.toFixed(2)}*`;
+  
+  return encodeURIComponent(mensagem);
+}
 
-    if (tipo === 'erro') {
-        feedback.classList.add('erro');
+function enviarParaWhatsApp(dadosCliente) {
+  const mensagem = formatarPedidoWhatsApp(dadosCliente);
+  const telefoneWhatsApp = "5543999999999"; // Substitua pelo número real
+  
+  const urlWhatsApp = `https://wa.me/${telefoneWhatsApp}?text=${mensagem}`;
+  window.open(urlWhatsApp, '_blank');
+}
+
+/* =====================================================
+   INICIALIZAÇÃO
+   ===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  gerarCarrosselKits();
+  configurarSelecaoMaquina();
+
+  // Oculta tudo abaixo do carrossel inicialmente
+  document.getElementById("selecao-container").style.display = "none";
+  document.getElementById("personalizacao-container").style.display = "none";
+  document.querySelector(".carrinho").style.display = "none";
+  document.getElementById("form-cliente-container").style.display = "none";
+
+  // Popup ajuda
+  const btnAjuda = document.getElementById("btn-ajuda");
+  const popup = document.getElementById("popup-ajuda");
+  btnAjuda.addEventListener("click", () => {
+    popup.style.display = popup.style.display === "block" ? "none" : "block";
+  });
+
+  // Menu hamburguer
+  const menuToggle = document.getElementById("menu-toggle");
+  const menuLinks = document.getElementById("menu-links");
+  menuToggle.addEventListener("click", () => {
+    menuLinks.classList.toggle("mostrar");
+  });
+
+  // Validação de formulário
+  document.getElementById("formCliente").addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    const nome = document.getElementById("nome");
+    const cpf = document.getElementById("cpf_cnpj");
+    const tel = document.getElementById("telefone");
+    let valido = true;
+
+    // Validações
+    if (!/^[A-Za-zÀ-ú\s]{2,}$/.test(nome.value.trim())) {
+      document.getElementById("erro-nome").style.display = "block";
+      valido = false;
     } else {
-        feedback.classList.remove('erro');
+      document.getElementById("erro-nome").style.display = "none";
     }
 
-    setTimeout(() => {
-        feedback.classList.remove('visible');
-    }, 3000);
-}
-
-// Função para calcular frete (simulação)
-function calcularFrete() {
-    const cep = cepFreteInput.value.replace(/\D/g, '');
-
-    if (cep.length !== 8) {
-        mostrarFeedback('Digite um CEP válido com 8 dígitos', 'erro');
-        return;
+    if (!/^[0-9]{11,14}$/.test(cpf.value.replace(/\D/g, ''))) {
+      document.getElementById("erro-cpf_cnpj").style.display = "block";
+      valido = false;
+    } else {
+      document.getElementById("erro-cpf_cnpj").style.display = "none";
     }
 
-    // Simulação de cálculo de frete
-    const valorFrete = Math.random() * 50 + 20; // Valor entre 20 and 70
-    const prazo = Math.floor(Math.random() * 10) + 5; // Prazo entre 5 e 15 dias
-
-    state.frete = {
-        valor: parseFloat(valorFrete.toFixed(2)),
-        prazo: prazo,
-        transportadora: 'Correios'
-    };
-
-    // Atualizar exibição
-    valorFreteSpan.textContent = `R$ ${state.frete.valor.toFixed(2)}`;
-    prazoFreteSpan.textContent = `${state.frete.prazo} dias úteis`;
-    transportadoraFreteSpan.textContent = state.frete.transportadora;
-
-    resultadoFrete.style.display = 'block';
-    atualizarTotais();
-
-    mostrarFeedback('Frete calculado com sucesso!');
-}
-
-// ✅ CORREÇÃO: Funções de validação de formulário atualizadas
-function validarSomenteNumeros(input, maxLength = null) {
-    let valor = input.value.replace(/\D/g, '');
-    
-    // Aplica limite máximo se especificado
-    if (maxLength && valor.length > maxLength) {
-        valor = valor.substring(0, maxLength);
-    }
-    
-    input.value = valor;
-    return valor !== '';
-}
-
-function validarSomenteLetras(input, maxLength = null) {
-    let valor = input.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
-    valor = valor.toUpperCase();
-    
-    // Aplica limite máximo se especificado
-    if (maxLength && valor.length > maxLength) {
-        valor = valor.substring(0, maxLength);
-    }
-    
-    input.value = valor;
-    return valor !== '';
-}
-
-function validarTextoGeral(input, maxLength = null) {
-    // Permite letras, números, espaços e alguns caracteres especiais comuns em endereços
-    let valor = input.value.replace(/[^a-zA-ZÀ-ÿ0-9\s.,\-]/g, '');
-    valor = valor.toUpperCase();
-    
-    // Aplica limite máximo se especificado
-    if (maxLength && valor.length > maxLength) {
-        valor = valor.substring(0, maxLength);
-    }
-    
-    input.value = valor;
-    return valor !== '';
-}
-
-function validarCampo(input, tipo, maxLength = null) {
-    const mensagemErro = document.getElementById(`erro-${input.id}`);
-    let valido = false;
-
-    if (tipo === 'numero') {
-        valido = validarSomenteNumeros(input, maxLength);
-        if (!valido) {
-            mensagemErro.textContent = 'Por favor, insira apenas números';
-        } else if (maxLength && input.value.length < maxLength) {
-            mensagemErro.textContent = `Digite exatamente ${maxLength} números`;
-            valido = false;
-        }
-    } else if (tipo === 'texto') {
-        valido = validarSomenteLetras(input, maxLength);
-        if (!valido) {
-            mensagemErro.textContent = 'Por favor, insira apenas letras e espaços';
-        }
-    } else if (tipo === 'texto-geral') {
-        valido = validarTextoGeral(input, maxLength);
-        if (!valido) {
-            mensagemErro.textContent = 'Por favor, insira um valor válido';
-        }
+    if (!/^[0-9]{10,11}$/.test(tel.value.replace(/\D/g, ''))) {
+      document.getElementById("erro-telefone").style.display = "block";
+      valido = false;
+    } else {
+      document.getElementById("erro-telefone").style.display = "none";
     }
 
     if (valido) {
-        input.classList.remove('invalido');
-        input.classList.add('valido');
-        mensagemErro.style.display = 'none';
-    } else {
-        input.classList.remove('valido');
-        input.classList.add('invalido');
-        mensagemErro.style.display = 'block';
+      const dadosCliente = {
+        nome: nome.value.trim(),
+        cpf_cnpj: cpf.value,
+        telefone: tel.value
+      };
+      
+      // Envia para WhatsApp
+      enviarParaWhatsApp(dadosCliente);
+      
+      // Limpa formulário e carrinho
+      e.target.reset();
+      carrinho = [];
+      maquinaSelecionada = "";
+      document.getElementById('maquina-selecionada').value = "";
+      document.querySelectorAll('.maquina-item').forEach(item => {
+        item.classList.remove('selecionado');
+      });
+      atualizarCarrinho();
+      
+      alert("Pedido enviado para o WhatsApp! ✅");
     }
-
-    return valido;
-}
-
-function validarFormulario() {
-    // Validar todos os campos com limites apropriados
-    const nomeValido = validarCampo(document.getElementById('nome'), 'texto', 50);
-    const cpfCnpjValido = validarCampo(document.getElementById('cpf_cnpj'), 'numero', 18);
-    const inscricaoEstadualValido = document.getElementById('inscricao_estadual').value === '' || validarCampo(document.getElementById('inscricao_estadual'), 'numero', 15);
-    const telefoneValido = validarCampo(document.getElementById('telefone'), 'numero', 15);
-    const cepValido = validarCampo(document.getElementById('cep'), 'numero', 8);
-    const estadoValido = validarCampo(document.getElementById('estado'), 'texto', 2);
-    const cidadeValido = validarCampo(document.getElementById('cidade'), 'texto', 30);
-    const bairroValido = validarCampo(document.getElementById('bairro'), 'texto', 30);
-    const ruaValido = validarCampo(document.getElementById('rua'), 'texto-geral', 50);
-    const numeroValido = validarCampo(document.getElementById('numero'), 'numero', 6);
-
-    // Verificar se todos os campos obrigatórios estão preenchidos e válidos
-    if (nomeValido && cpfCnpjValido && telefoneValido && cepValido &&
-        estadoValido && cidadeValido && bairroValido && ruaValido && numeroValido) {
-        finalizarPedido();
-    } else {
-        mostrarFeedback('Por favor, preencha todos os campos corretamente', 'erro');
-    }
-}
-
-// Função para finalizar o pedido e abrir o WhatsApp
-function finalizarPedido() {
-    // Validar formulário
-    const nome = document.getElementById('nome').value;
-    const cpf_cnpj = document.getElementById('cpf_cnpj').value;
-    const telefone = document.getElementById('telefone').value;
-    const cep = document.getElementById('cep').value;
-
-    if (!nome || !cpf_cnpj || !telefone || !cep) {
-        mostrarFeedback('Preencha todos os campos obrigatórios', 'erro');
-        return;
-    }
-
-    if (state.carrinho.length === 0) {
-        mostrarFeedback('Carrinho vazio! Adicione itens antes de finalizar', 'erro');
-        return;
-    }
-
-    // Dados da loja
-    const numeroWhatsApp = "554399064226";
-    const numeroPedido = Math.floor(10000 + Math.random() * 90000);
-    const protocolo = generateProtocol();
-    const dataHora = new Date().toLocaleString('pt-BR');
-    const pixInfo = "000.000.000-00 (CNPJ)\nNome: HELTON MACHADO";
-
-    // Obter dados do cliente
-    const cliente = {
-        nome: document.getElementById('nome').value,
-        cpf_cnpj: document.getElementById('cpf_cnpj').value,
-        inscricao_estadual: document.getElementById('inscricao_estadual').value,
-        telefone: document.getElementById('telefone').value,
-        rua: document.getElementById('rua').value,
-        numero: document.getElementById('numero').value,
-        bairro: document.getElementById('bairro').value,
-        cidade: document.getElementById('cidade').value,
-        estado: document.getElementById('estado').value,
-        cep: document.getElementById('cep').value
-    };
-
-    // Montar cabeçalho
-    let mensagem = "👷 LOJA DO OPERADOR 👷‍♂️ \n";
-    mensagem += "*✧ INTERNAS PERSONALIZADAS ✧*\n";
-    mensagem += "*✧ Sua equipe motivada ✧*\n";
-    mensagem += "*✧ Seu patrimônio protegido, Seu negócio mais forte ✧*\n";
-    mensagem += "*✧ Cuidando das Suas Máquinas e de seus Operadores ✧*\n";
-    mensagem += "Ivaipora, PR, 86870000\n";
-    mensagem += "Contato: 43 99064226\n";
-    mensagem += "--------------------------------------------------\n";
-    mensagem += `*Pedido:* ${numeroPedido}\n`;
-    mensagem += `*Protocolo:* ${protocolo}\n`;
-    mensagem += `*Data/Hora:* ${dataHora}\n`;
-    mensagem += "--------------------------------------------------\n";
-
-    // Dados do cliente
-    mensagem += "*DADOS DO CLIENTE*\n";
-    mensagem += `Nome: ${cliente.nome}\n`;
-    mensagem += `CPF/CNPJ: ${cliente.cpf_cnpj}\n`;
-    mensagem += `Inscrição Estadual: ${cliente.inscricao_estadual}\n`;
-    mensagem += `Telefone: ${cliente.telefone}\n`;
-    mensagem += `Endereço: ${cliente.rua}, ${cliente.numero}, ${cliente.bairro}\n`;
-    mensagem += `${cliente.cidade}/${cliente.estado} - CEP: ${cliente.cep}\n`;
-    mensagem += "--------------------------------------------------\n";
-
-    // Itens do pedido
-    mensagem += "*ITENS DO PEDIDO*\n\n";
-    state.carrinho.forEach((item, index) => {
-        mensagem += `${index + 1} ${item.linha || ''} - ${item.tipoMaquina || ''}\n`;
-        mensagem += `   ${item.marca || ''} ${item.modelo || ''} (${item.ano || ''})\n`;
-        mensagem += `   ${item.nome || ''}\n`;
-        mensagem += `   Valor: Total R$ ${item.preco ? item.preco.toFixed(2) : '0.00'}\n`;
-
-        if (item.partes && typeof item.partes === 'object') {
-            for (const [parte, config] of Object.entries(item.partes)) {
-                if (config && config.corNome) {
-                    // MODIFICAÇÃO AQUI: Exibir apenas o nome da cor, não o código
-                    mensagem += `   ${parte.replace(/_/g, ' ')}: ${config.corNome}`;
-                    if (config.detalhe) {
-                        mensagem += ` com detalhe em ${config.detalhe}`;
-                    }
-                    mensagem += '\n';
-                }
-            }
-        }
-
-        // Adicionar informações da cortina se existir
-        if (item.cortina) {
-            // MODIFICAÇÃO AQUI: Exibir apenas o nome da cor, não o código
-            mensagem += `   Cortina: ${item.cortina.corNome}\n`;
-            mensagem += `   Valor da Cortina: R$ ${item.precoCortina.toFixed(2)}\n`;
-        }
-
-        mensagem += '\n';
-    });
-
-    // Rodapé
-    const totalItens = state.carrinho.reduce((sum, item) => sum + (item.preco || 0) + (item.precoCortina || 0), 0);
-    const totalGeral = totalItens + state.frete.valor;
-
-    mensagem += "--------------------------------------------------\n";
-    mensagem += `*Taxa de entrega:* R$ ${state.frete.valor.toFixed(2)}\n`;
-    mensagem += `*Transportadora:* ${state.frete.transportadora}\n`;
-    mensagem += `*Prazo de entrega:* ${state.frete.prazo} dias úteis\n`;
-    mensagem += `*Total dos itens:* R$ ${totalItens.toFixed(2)}\n`;
-    mensagem += `*Total:* R$ ${totalGeral.toFixed(2)}\n\n`;
-    mensagem += "*Forma de Pagamento:* A definir\n";
-    mensagem += `*Chave PIX:* ${pixInfo}\n`;
-    mensagem += "--------------------------------------------------\n";
-    mensagem += "*Observações:* \n";
-    mensagem += "--------------------------------------------------\n";
-    mensagem += "Agradecemos pela preferência! Confirmaremos seu pedido em breve.";
-
-    // Codificar a mensagem para URL
-    const mensagemCodificada = encodeURIComponent(mensagem);
-
-    // Criar o link do WhatsApp
-    const url = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
-
-    // Abrir WhatsApp
-    window.open(url, '_blank');
-
-    // Limpar carrinho após envio
-    state.carrinho = [];
-    salvarCarrinho();
-    atualizarCarrinho();
-
-    mostrarFeedback('Pedido enviado com sucesso! Em breve entraremos em contato.');
-}
-
-// Inicialização
-document.addEventListener('DOMContentLoaded', () => {
-    atualizarCarrinho();
-
-    // ✅ CORREÇÃO: Inicializar cortina
-    inicializarCortina();
-
-    // Adiciona eventos aos botões de linha principal
-    botoesLinha.forEach(botao => {
-        botao.addEventListener('click', function () {
-            selecionarLinha(this);
-        });
-    });
-
-    // Adiciona eventos aos botões de máquina
-    botoesMaquina.forEach(botao => {
-        botao.addEventListener('click', function () {
-            selecionarMaquina(this);
-        });
-    });
-
-    // Fechar modal
-    fecharModal.addEventListener('click', fecharModalCores);
-    modalCores.addEventListener('click', function (e) {
-        if (e.target === modalCores) {
-            fecharModalCores();
-        }
-    });
-
-    // Confirmar seleção de cor
-    confirmarCorBtn.addEventListener('click', confirmarCorSelecionada);
-
-    // Fechar modal com ESC
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modalCores.style.display === 'flex') {
-            fecharModalCores();
-        }
-    });
-
-    // Evento para marca
-    marcaSelect.addEventListener('change', function () {
-        modeloSelect.innerHTML = '<option value="">Selecione...</option>';
-        anoSelect.innerHTML = '<option value="">Selecione um modelo primeiro</option>';
-
-        if (!this.value) return;
-
-        // Obter todos os modelos da marca selecionada
-        const modelos = Object.keys(dados[state.linha][this.value]);
-
-        modelos.forEach(modelo => {
-            const option = document.createElement('option');
-            option.value = modelo;
-            option.textContent = modelo;
-            modeloSelect.appendChild(option);
-        });
-    });
-
-    // Evento para modelo
-    modeloSelect.addEventListener('change', function () {
-        anoSelect.innerHTML = '<option value="">Selecione...</option>';
-
-        if (!this.value || !marcaSelect.value) return;
-
-        // Obter todos os anos para o modelo selecionado
-        const anos = dados[state.linha][marcaSelect.value][this.value].anos;
-
-        anos.forEach(ano => {
-            const option = document.createElement('option');
-            option.value = ano;
-            option.textContent = ano;
-            anoSelect.appendChild(option);
-        });
-    });
-
-    // ✅ REMOVIDO: Evento duplicado para checkbox da cortina
-    // (já está sendo tratado na função inicializarCortina)
-
-    // ✅ REMOVIDO: Evento duplicado para seleção de cor da cortina
-    // (já está sendo tratado na função inicializarCortina)
-
-    // Adicionar eventos de validação aos campos do formulário
-    document.getElementById('nome').addEventListener('input', function () {
-        validarCampo(this, 'texto', 50);
-    });
-
-    document.getElementById('cpf_cnpj').addEventListener('input', function () {
-        validarCampo(this, 'numero', 18);
-    });
-
-    document.getElementById('inscricao_estadual').addEventListener('input', function () {
-        if (this.value) {
-            validarCampo(this, 'numero', 15);
-        }
-    });
-
-    document.getElementById('telefone').addEventListener('input', function () {
-        validarCampo(this, 'numero', 15);
-    });
-
-    document.getElementById('cep').addEventListener('input', function () {
-        validarCampo(this, 'numero', 8);
-    });
-
-    document.getElementById('estado').addEventListener('input', function () {
-        validarCampo(this, 'texto', 2);
-    });
-
-    document.getElementById('cidade').addEventListener('input', function () {
-        validarCampo(this, 'texto', 30);
-    });
-
-    document.getElementById('bairro').addEventListener('input', function () {
-        validarCampo(this, 'texto', 30);
-    });
-
-    document.getElementById('rua').addEventListener('input', function () {
-        validarCampo(this, 'texto-geral', 50);
-    });
-
-    document.getElementById('numero').addEventListener('input', function () {
-        validarCampo(this, 'numero', 6);
-    });
+  });
 });
