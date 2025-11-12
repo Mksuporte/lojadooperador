@@ -197,6 +197,110 @@ function mostrarFormularioCliente() {
   document.getElementById("form-cliente-container").scrollIntoView({ behavior: "smooth" });
 }
 
+function validarFormulario() {
+  const nome = document.getElementById("nome");
+  const cpf = document.getElementById("cpf_cnpj");
+  const inscricao = document.getElementById("inscricao_estadual");
+  const tel = document.getElementById("telefone");
+  const cep = document.getElementById("cep");
+  const estado = document.getElementById("estado");
+  const cidade = document.getElementById("cidade");
+  const bairro = document.getElementById("bairro");
+  const rua = document.getElementById("rua");
+  const numero = document.getElementById("numero");
+  
+  let valido = true;
+
+  // Validações
+  if (!/^[A-Za-zÀ-ú\s]{2,}$/.test(nome.value.trim())) {
+    document.getElementById("erro-nome").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-nome").style.display = "none";
+  }
+
+  if (!/^[0-9]{11,14}$/.test(cpf.value.replace(/\D/g, ''))) {
+    document.getElementById("erro-cpf_cnpj").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-cpf_cnpj").style.display = "none";
+  }
+
+  if (inscricao.value && !/^[0-9]+$/.test(inscricao.value.replace(/\D/g, ''))) {
+    document.getElementById("erro-inscricao_estadual").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-inscricao_estadual").style.display = "none";
+  }
+
+  if (!/^[0-9]{10,11}$/.test(tel.value.replace(/\D/g, ''))) {
+    document.getElementById("erro-telefone").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-telefone").style.display = "none";
+  }
+
+  if (!/^[0-9]{8}$/.test(cep.value.replace(/\D/g, ''))) {
+    document.getElementById("erro-cep").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-cep").style.display = "none";
+  }
+
+  if (!/^[A-Za-zÀ-ú]{2}$/.test(estado.value.trim())) {
+    document.getElementById("erro-estado").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-estado").style.display = "none";
+  }
+
+  if (!/^[A-Za-zÀ-ú\s]{2,}$/.test(cidade.value.trim())) {
+    document.getElementById("erro-cidade").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-cidade").style.display = "none";
+  }
+
+  if (!/^[A-Za-zÀ-ú\s]{2,}$/.test(bairro.value.trim())) {
+    document.getElementById("erro-bairro").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-bairro").style.display = "none";
+  }
+
+  if (!/^[A-Za-zÀ-ú0-9\s]{2,}$/.test(rua.value.trim())) {
+    document.getElementById("erro-rua").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-rua").style.display = "none";
+  }
+
+  if (!/^[0-9]+$/.test(numero.value.replace(/\D/g, ''))) {
+    document.getElementById("erro-numero").style.display = "block";
+    valido = false;
+  } else {
+    document.getElementById("erro-numero").style.display = "none";
+  }
+
+  if (valido) {
+    const dadosCliente = {
+      nome: nome.value.trim(),
+      cpf_cnpj: cpf.value,
+      inscricao_estadual: inscricao.value,
+      telefone: tel.value,
+      cep: cep.value,
+      estado: estado.value,
+      cidade: cidade.value,
+      bairro: bairro.value,
+      rua: rua.value,
+      numero: numero.value
+    };
+    
+    // Envia para WhatsApp
+    enviarParaWhatsApp(dadosCliente);
+  }
+}
+
 function formatarPedidoWhatsApp(dadosCliente) {
   let mensagem = "🛒 *PEDIDO - LOJA DO OPERADOR* 🛒\n\n";
   
@@ -204,7 +308,11 @@ function formatarPedidoWhatsApp(dadosCliente) {
   mensagem += "*DADOS DO CLIENTE:*\n";
   mensagem += `👤 Nome: ${dadosCliente.nome}\n`;
   mensagem += `📄 CPF/CNPJ: ${dadosCliente.cpf_cnpj}\n`;
-  mensagem += `📞 Telefone: ${dadosCliente.telefone}\n\n`;
+  if (dadosCliente.inscricao_estadual) {
+    mensagem += `📋 Inscrição Estadual: ${dadosCliente.inscricao_estadual}\n`;
+  }
+  mensagem += `📞 Telefone: ${dadosCliente.telefone}\n`;
+  mensagem += `📍 Endereço: ${dadosCliente.rua}, ${dadosCliente.numero}, ${dadosCliente.bairro}, ${dadosCliente.cidade}-${dadosCliente.estado}, CEP: ${dadosCliente.cep}\n\n`;
   
   // Máquina selecionada
   mensagem += `🚗 *Máquina Selecionada:* ${maquinaSelecionada}\n\n`;
@@ -232,6 +340,17 @@ function enviarParaWhatsApp(dadosCliente) {
   
   const urlWhatsApp = `https://wa.me/${telefoneWhatsApp}?text=${mensagem}`;
   window.open(urlWhatsApp, '_blank');
+  
+  // Limpa formulário e carrinho
+  document.getElementById("formCliente").reset();
+  carrinho = [];
+  maquinaSelecionada = "";
+  document.querySelectorAll('.maquina-item').forEach(item => {
+    item.classList.remove('selecionado');
+  });
+  atualizarCarrinho();
+  
+  alert("Pedido enviado para o WhatsApp! ✅");
 }
 
 /* =====================================================
@@ -259,60 +378,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuLinks = document.getElementById("menu-links");
   menuToggle.addEventListener("click", () => {
     menuLinks.classList.toggle("mostrar");
-  });
-
-  // Validação de formulário
-  document.getElementById("formCliente").addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-    const nome = document.getElementById("nome");
-    const cpf = document.getElementById("cpf_cnpj");
-    const tel = document.getElementById("telefone");
-    let valido = true;
-
-    // Validações
-    if (!/^[A-Za-zÀ-ú\s]{2,}$/.test(nome.value.trim())) {
-      document.getElementById("erro-nome").style.display = "block";
-      valido = false;
-    } else {
-      document.getElementById("erro-nome").style.display = "none";
-    }
-
-    if (!/^[0-9]{11,14}$/.test(cpf.value.replace(/\D/g, ''))) {
-      document.getElementById("erro-cpf_cnpj").style.display = "block";
-      valido = false;
-    } else {
-      document.getElementById("erro-cpf_cnpj").style.display = "none";
-    }
-
-    if (!/^[0-9]{10,11}$/.test(tel.value.replace(/\D/g, ''))) {
-      document.getElementById("erro-telefone").style.display = "block";
-      valido = false;
-    } else {
-      document.getElementById("erro-telefone").style.display = "none";
-    }
-
-    if (valido) {
-      const dadosCliente = {
-        nome: nome.value.trim(),
-        cpf_cnpj: cpf.value,
-        telefone: tel.value
-      };
-      
-      // Envia para WhatsApp
-      enviarParaWhatsApp(dadosCliente);
-      
-      // Limpa formulário e carrinho
-      e.target.reset();
-      carrinho = [];
-      maquinaSelecionada = "";
-      document.getElementById('maquina-selecionada').value = "";
-      document.querySelectorAll('.maquina-item').forEach(item => {
-        item.classList.remove('selecionado');
-      });
-      atualizarCarrinho();
-      
-      alert("Pedido enviado para o WhatsApp! ✅");
-    }
   });
 });

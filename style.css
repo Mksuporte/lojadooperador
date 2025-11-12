@@ -153,39 +153,108 @@ body { font-family: "Segoe UI", sans-serif; background: #0f0f0f; color: var(--te
 }
 .btn-selecionar-kit:hover { transform: scale(1.05); }
 
-/* ====== MÁQUINAS (ROLAGEM HORIZONTAL) ====== */
-.maquinas-container { text-align: center; margin: 30px auto; }
+/* ====== MÁQUINAS (ROLAGEM HORIZONTAL AJUSTADA) ====== */
+.maquinas-container {
+  text-align: center;
+  margin: 40px auto;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+.maquinas-container h2 {
+  color: var(--cor-secundaria);
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+/* Contêiner com rolagem horizontal */
 .maquinas-scroll {
-  display: flex; gap: 15px;
+  display: flex;
+  justify-content: center; /* Centraliza os ícones */
+  align-items: center;
+  gap: 18px;
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 10px;
+  margin: 0 auto;
+  scroll-snap-type: x mandatory; /* faz o snap no centro */
 }
+
+/* Remove barra de rolagem */
+.maquinas-scroll::-webkit-scrollbar {
+  display: none;
+}
+.maquinas-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Cada item */
 .maquina-item {
   flex: 0 0 auto;
+  scroll-snap-align: center;
   background: var(--card-bg);
   cursor: pointer;
-  transition: var(--transition);
   border: 2px solid transparent;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 10px;
-  width: 120px;
+  width: 110px;
   text-align: center;
   transition: var(--transition);
 }
+
 .maquina-item img {
   width: 100%;
   height: auto;
-  max-height: 100px;
+  max-height: 90px;
   object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
-.maquina-item:hover { transform: scale(1.05); }
+
+.maquina-item p {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--texto-cinza);
+}
+
+/* Efeito ao passar o mouse */
+.maquina-item:hover {
+  transform: scale(1.05);
+}
 
 .maquina-item.selecionado {
   border-color: var(--cor-secundaria);
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(249, 160, 27, 0.3);
 }
+
+/* ====== RESPONSIVO ====== */
+@media (max-width: 768px) {
+  .maquinas-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .maquinas-scroll {
+    gap: 12px;
+    padding: 10px 5px;
+  }
+
+  .maquina-item {
+    width: 90px;
+    padding: 8px;
+  }
+
+  .maquina-item img {
+    max-height: 70px;
+  }
+
+  .maquina-item p {
+    font-size: 0.8rem;
+  }
+}
+
 /* ====== CARRINHO, FORMULÁRIO ====== */
 .carrinho, .form-cliente-container, #personalizacao-container {
   background: var(--card-bg);
@@ -349,4 +418,183 @@ button[type="submit"]:hover, .btn-finalizar:hover { transform: scale(1.05); }
   .btn-remover {
     align-self: flex-end;
   }
+}
+/* =====================================================
+   ADIÇÕES ESPECÍFICAS PARA AS MELHORIAS SOLICITADAS
+   ===================================================== */
+
+/* 🔴 CARROSSEL - BULLETS DOURADOS CENTRALIZADOS */
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 20px;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--cor-secundaria) !important;
+  transform: scale(1.2);
+}
+
+/* 🔴 ESCONDER BARRA DE ROLAGEM DAS MÁQUINAS */
+.maquinas-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.maquinas-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 🆕 DETALHES DA MÁQUINA */
+.maquina-detalhes {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.maquina-detalhes.mostrar {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .maquina-detalhes.mostrar {
+    max-height: 300px;
+  }
+}
+
+/* 🆕 SELEÇÃO DE MÁQUINA */
+.maquina-item.selecionado {
+  border-color: var(--cor-secundaria);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(249, 160, 27, 0.3);
+}
+
+/* 🆕 ESTILOS PARA O FORMULÁRIO ATUALIZADO */
+.form-cliente-container h4 {
+  color: var(--cor-secundaria);
+  margin: 20px 0 10px 0;
+  font-size: 1.1rem;
+}
+
+input[readonly] {
+  background: #2a2a2a;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+/* ====== SETAS DE ROLAGEM ====== */
+.seta-scroll {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(249, 160, 27, 0.9);
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 5;
+  transition: var(--transition);
+}
+
+.seta-scroll:hover {
+  background: #fff;
+  color: #000;
+}
+
+.seta-esquerda { left: 5px; }
+.seta-direita { right: 5px; }
+
+.maquinas-container {
+  position: relative;
+}
+
+/* ====== MODAL DE CORES ====== */
+.modal-cores {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-conteudo {
+  background: #1c1c1c;
+  border-radius: 12px;
+  padding: 25px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(249, 160, 27, 0.3);
+}
+
+.fechar-modal {
+  float: right;
+  font-size: 1.8rem;
+  color: var(--cor-secundaria);
+  cursor: pointer;
+}
+
+#opcoes-materiais {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.material-card {
+  background: #2a2a2a;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 10px;
+}
+
+.material-card:hover {
+  transform: scale(1.05);
+  border: 2px solid var(--cor-secundaria);
+}
+
+.material-card img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.material-card span {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: var(--texto-claro);
 }
