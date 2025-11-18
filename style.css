@@ -253,3 +253,4 @@ input:focus { border: 1px solid var(--cor-secundaria); }
 .popup-ajuda {
   display: none;
   position: fixed
+}
