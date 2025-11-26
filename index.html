@@ -775,7 +775,11 @@
   <nav class="menu-topo">
     <div class="menu-logo">
       <!-- Logo placeholder - substitua pela sua logo -->
-      <div class="logo-menu" style="width: 40px; height: 40px; background-color: #f9a01b; border-radius: 5px;"></div>
+      <div>
+        <img src="imagens/logo.png" class="logo-menu" alt="Logo"
+          onerror="this.src='https://via.placeholder.com/40x40/ffb347/000?text=Logo'">
+
+      </div>
       <span class="nome-site">Loja do Operador</span>
     </div>
 
@@ -833,7 +837,7 @@
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Moto-Niveladora">
             <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
-                    <img src="imagens/icones/moto-niveladora.png" alt="Moto-Niveladora">
+              <img src="imagens/icones/moto-niveladora.png" alt="Moto-Niveladora">
             </div>
             <p>Moto-Niveladora</p>
           </div>
@@ -851,8 +855,8 @@
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Trator">
             <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
-                   <img src="imagens/icones/trator.png" alt="Trator">
-               </div>
+              <img src="imagens/icones/trator.png" alt="Trator">
+            </div>
             <p>Trator</p>
           </div>
         </div>
@@ -860,8 +864,8 @@
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Pulverizador">
             <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
-                    <img src="imagens/icones/pulverizador.png" alt="Pulverizador">
-</div>
+              <img src="imagens/icones/pulverizador.png" alt="Pulverizador">
+            </div>
             <p>Pulverizador</p>
           </div>
         </div>
@@ -869,8 +873,8 @@
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Colheitadeira">
             <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
-                    <img src="imagens/icones/colheitadeira.png" alt="Colheitadeira">
-</div>
+              <img src="imagens/icones/colheitadeira.png" alt="Colheitadeira">
+            </div>
             <p>Colheitadeira</p>
           </div>
         </div>
@@ -878,8 +882,8 @@
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Mini-Escavadeira">
             <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
-                   <img src="imagens/icones/mini-escavadeira.png" alt="Mini-Escavadeira">
- </div>
+              <img src="imagens/icones/mini-escavadeira.png" alt="Mini-Escavadeira">
+            </div>
             <p>Mini-Escavadeira</p>
           </div>
         </div>
@@ -887,14 +891,28 @@
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Mini-Carregadeira">
             <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
-                    <img src="imagens/icones/mini-carregadeira.png" alt="Mini-Carregadeira">
-</div>
+              <img src="imagens/icones/mini-carregadeira.png" alt="Mini-Carregadeira">
+            </div>
             <p>Mini-Carregadeira</p>
           </div>
         </div>
 
       </div>
+ <!-- 🆕 CAMPOS DE INFORMAÇÕES DA MÁQUINA -->
+    <div id="maquina-detalhes" class="maquina-detalhes">
+      <h3>Informações da Máquina</h3>
+      <div class="form-grid">
+        <input type="text" id="maquina-marca" placeholder="Marca (ex: Caterpillar)" required>
+        <div class="mensagem-erro" id="erro-maquina-marca">Por favor, insira a marca da máquina</div>
 
+        <input type="text" id="maquina-modelo" placeholder="Modelo (ex: 320D)" required>
+        <div class="mensagem-erro" id="erro-maquina-modelo">Por favor, insira o modelo da máquina</div>
+
+        <input type="text" id="maquina-ano" placeholder="Ano (ex: 2020)" required inputmode="numeric" pattern="[0-9]*">
+        <div class="mensagem-erro" id="erro-maquina-ano">Por favor, insira um ano válido (4 dígitos)</div>
+      </div>
+    </div>
+  </section>
       <!-- SETAS DO CARROSSEL DAS MÁQUINAS -->
       <div class="swiper-button-prev maquinas-prev"></div>
       <div class="swiper-button-next maquinas-next"></div>
@@ -1005,7 +1023,7 @@
   <button id="btn-ajuda">?</button>
   <div id="popup-ajuda" class="popup-ajuda">
     <p>Precisa de ajuda? Fale com a gente:</p>
-    <a href="https://wa.me/5543999999999" class="btn-whatsapp-ajuda" target="_blank">WhatsApp</a>
+    <a href="https://wa.me/5543999064226" class="btn-whatsapp-ajuda" target="_blank">WhatsApp</a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -1066,7 +1084,7 @@
         nome: "Kit todo na Pelúcia (Xinil)",
         descricao: "Todas as partes na pelúcia (Xinil)",
         preco: 850,
-        imagem: "https://via.placeholder.com/600x400/333/fff?text=Kit+Pel%C3%BAcia+Total",
+        imagem: "imagens/kits/kit_pelucia_total.jpg",
         partes: {
           kit: { material: "pelucia", cor: "", corNome: "" }
         }
@@ -1075,41 +1093,38 @@
         nome: "Kit Couro no Chão + Resto na Pelúcia (Xinil)",
         descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia (Xinil)",
         preco: 950,
-        imagem: "https://via.placeholder.com/600x400/444/fff?text=Kit+Couro+Ch%C3%A3o",
-        partes: {
+        imagem: "imagens/kits/kit_couro_chao.jpg" ,    partes: {
           chao: { material: "couro", cor: "", corNome: "" },
-          banco: { material: "pelucia", cor: "", corNome: "" },
-          braco: { material: "pelucia", cor: "", corNome: "" },
-          cabeca: { material: "pelucia", cor: "", corNome: "" },
-          laterais: { material: "pelucia", cor: "", corNome: "" }
-        }
-      },
-      "couro_total": {
-        nome: "Couro sintético Sporte no chão + restante na Pelúcia (Xinil)",
+        banco: { material: "pelucia", cor: "", corNome: "" },
+        braco: { material: "pelucia", cor: "", corNome: "" },
+        cabeca: { material: "pelucia", cor: "", corNome: "" },
+        laterais: { material: "pelucia", cor: "", corNome: "" }
+      }
+    },
+    "couro_total": {
+      nome: "Couro sintético Sporte no chão + restante na Pelúcia (Xinil)",
         descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
-        preco: 1000,
-        imagem: "https://via.placeholder.com/600x400/555/fff?text=Kit+Couro+Total",
-        partes: {
-          chao: { material: "couro", cor: "", corNome: "" },
-          banco: { material: "pelucia", cor: "", corNome: "" },
-          braco: { material: "pelucia", cor: "", corNome: "" },
-          cabeca: { material: "pelucia", cor: "", corNome: "" },
-          laterais: { material: "pelucia", cor: "", corNome: "" }
-        },
-        opcaoChao: true
+          preco: 1000,
+            imagem: "imagens/kits/kit_couro_total.jpg",     partes: {
+      chao: { material: "couro", cor: "", corNome: "" },
+      banco: { material: "pelucia", cor: "", corNome: "" },
+      braco: { material: "pelucia", cor: "", corNome: "" },
+      cabeca: { material: "pelucia", cor: "", corNome: "" },
+      laterais: { material: "pelucia", cor: "", corNome: "" }
+    },
+    opcaoChao: true
       },
-      "couro_sport": {
-        nome: "Kit Couro com detalhes esportivos",
+    "couro_sport": {
+      nome: "Kit Couro com detalhes esportivos",
         descricao: "Couro sintetico no chão + banco, apoio de braço e apoio de cabeça no Sued, Restante na Pelucia (Xinil)",
-        preco: 1150,
-        imagem: "https://via.placeholder.com/600x400/666/fff?text=Kit+Couro+Sport",
-        partes: {
-          chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-          banco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-          braco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-          cabeca: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-          laterais: { material: "couro_sport", cor: "", corNome: "", detalhe: "" }
-        }
+          preco: 1150,
+            imagem: "imagens/kits/kit_couro_sport.jpg",    partes: {
+      chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+      banco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+      braco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+      cabeca: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+      laterais: { material: "couro_sport", cor: "", corNome: "", detalhe: "" }
+    }
       }
     };
 
