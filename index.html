@@ -1195,29 +1195,36 @@
       });
 
 
-      const swiper = new Swiper(".main-swiper", {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        centeredSlides: true,
-        pagination: { el: ".swiper-pagination", clickable: true },
-        // 🔽 acao dos botao <> para passar paginas
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        breakpoints: {
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-        },
-      });
+    const swiper = new Swiper(".main-swiper", {
+    loop: true,
+    loopAdditionalSlides: 10, // ← indispensável
+    slidesPerView: 1,
+    spaceBetween: 20,
+    centeredSlides: false, // ← não usar com 4 slides
+
+    pagination: { el: ".swiper-pagination", clickable: true },
+
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false
+    },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 2
+      },
+      1024: {
+        slidesPerView: 3 // ← FUNCIONA com 4 kits
+      }
+    }
+});
+
+
 
       const maquinasSwiper = new Swiper(".maquinas-swiper", {
         loop: true,
@@ -1235,6 +1242,7 @@
           1024: { slidesPerView: 6, spaceBetween: 30 }
         }
       });
+
 
 
       // Clique no botão ou slide
