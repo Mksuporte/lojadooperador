@@ -22,7 +22,7 @@
     * {
       margin: 0;
       padding: 0;
-       box-sizing: border-box;
+      box-sizing: border-box;
     }
 
     body {
@@ -728,14 +728,18 @@
     .swiper-button-next {
       color: var(--cor-secundaria);
       font-weight: bold;
-      transition: 0.3s;
+     
+      opacity: 0.4;
+      transition: opacity 0.2s ease;
     }
 
     .swiper-button-prev:hover,
     .swiper-button-next:hover {
-      color: #fff;
+      color: var(--cor-secundaria);
       transform: scale(1.2);
+      opacity: 1;
     }
+    
 
     /* Ajustar tamanho */
     .swiper-button-prev,
@@ -755,19 +759,22 @@
       justify-content: center;
     }
 
-    /* Setas personalizadas */
+    /* Setas Maquinas icones */
     .maquinas-prev,
     .maquinas-next {
       color: var(--cor-secundaria);
       width: auto;
       height: auto;
-      transition: 0.3s;
+
+      opacity: 0.4;
+      transition: opacity 0.2s ease;
     }
 
     .maquinas-prev:hover,
     .maquinas-next:hover {
-      color: #fff;
+      color: var(--cor-secundaria);
       transform: scale(1.15);
+      opacity: 1;
     }
   </style>
 </head>
@@ -797,7 +804,7 @@
 
   <!-- 🏠 CABEÇALHO -->
   <header id="home" class="header-reduzido">
-    <h1 class="titulo-principal">INTERNAS PERSONALIZADA  ENVIO PARA TODO BRASIL</h1>
+    <h1 class="titulo-principal">INTERNAS PERSONALIZADA ENVIO PARA TODO BRASIL</h1>
     <p class="subtitulo-min">Escolha o kit ideal para sua máquina. Integração com WhatsApp para finalizar pedidos.</p>
   </header>
 
@@ -812,7 +819,7 @@
         <!-- Cada máquina virou um slide -->
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Escavadeira">
-            <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/escavadeiraa.png" alt="Escavadeira">
             </div>
             <p>Escavadeira</p>
@@ -821,7 +828,7 @@
 
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Retro-Escavadeira">
-            <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/retro-escavadeira.png" alt="Retro-Escavadeira">
             </div>
             <p>Retro-Escavadeira</p>
@@ -830,7 +837,7 @@
 
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Pa-Carregadeira">
-            <div style="width: 60px; height: 60px; ; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/pa-carregadeira.png" alt="Pa-Carregadeira">
             </div>
             <p>Pa-Carregadeira</p>
@@ -839,7 +846,7 @@
 
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Moto-Niveladora">
-            <div style="width: 150px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/moto-niveladora.png" alt="Moto-Niveladora">
             </div>
             <p>Moto-Niveladora</p>
@@ -848,7 +855,7 @@
 
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Trator-Esteira">
-            <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/trator-esteira.png" alt="Trator-Esteira">
             </div>
             <p>Trator-Esteira</p>
@@ -857,7 +864,7 @@
 
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Trator">
-            <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/trator.png" alt="Trator">
             </div>
             <p>Trator</p>
@@ -866,7 +873,7 @@
 
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Pulverizador">
-            <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/pulverizador.png" alt="Pulverizador">
             </div>
             <p>Pulverizador</p>
@@ -875,7 +882,7 @@
 
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Colheitadeira">
-            <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/colheitadeira.png" alt="Colheitadeira">
             </div>
             <p>Colheitadeira</p>
@@ -884,7 +891,7 @@
 
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Mini-Escavadeira">
-            <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/mini-escavadeira.png" alt="Mini-Escavadeira">
             </div>
             <p>Mini-Escavadeira</p>
@@ -893,7 +900,7 @@
 
         <div class="swiper-slide">
           <div class="maquina-item" data-maquina="Mini-Carregadeira">
-            <div style="width: 60px; height: 60px; background-color: #444; border-radius: 8px; margin: 0 auto 0.5rem;">
+            <div>
               <img src="imagens/icones/mini-carregadeira.png" alt="Mini-Carregadeira">
             </div>
             <p>Mini-Carregadeira</p>
@@ -907,7 +914,7 @@
       <div class="swiper-button-next maquinas-next"></div>
 
     </div>
-<!-- 🆕 CAMPOS DE INFORMAÇÕES DA MÁQUINA -->
+    <!-- 🆕 CAMPOS DE INFORMAÇÕES DA MÁQUINA -->
     <div id="maquina-detalhes" class="maquina-detalhes">
       <h3>Informações da Máquina</h3>
       <div class="form-grid">
@@ -937,7 +944,7 @@
 
 
 
-    
+
   </section>
 
   <!-- 🎨 PERSONALIZAÇÃO -->
@@ -1082,38 +1089,38 @@
         nome: "Kit Couro no Chão + Resto na Pelúcia (Xinil)",
         descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia (Xinil)",
         preco: 950,
-        imagem: "imagens/kits/kit_couro_chao.jpg" ,    partes: {
+        imagem: "imagens/kits/kit_couro_chao.jpg", partes: {
           chao: { material: "couro", cor: "", corNome: "" },
-        banco: { material: "pelucia", cor: "", corNome: "" },
-        braco: { material: "pelucia", cor: "", corNome: "" },
-        cabeca: { material: "pelucia", cor: "", corNome: "" },
-        laterais: { material: "pelucia", cor: "", corNome: "" }
-      }
-    },
-    "couro_total": {
-      nome: "Couro sintético Sporte no chão + restante na Pelúcia (Xinil)",
-        descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
-          preco: 1000,
-            imagem: "imagens/kits/kit_couro_total.jpg",     partes: {
-      chao: { material: "couro", cor: "", corNome: "" },
-      banco: { material: "pelucia", cor: "", corNome: "" },
-      braco: { material: "pelucia", cor: "", corNome: "" },
-      cabeca: { material: "pelucia", cor: "", corNome: "" },
-      laterais: { material: "pelucia", cor: "", corNome: "" }
-    },
-    opcaoChao: true
+          banco: { material: "pelucia", cor: "", corNome: "" },
+          braco: { material: "pelucia", cor: "", corNome: "" },
+          cabeca: { material: "pelucia", cor: "", corNome: "" },
+          laterais: { material: "pelucia", cor: "", corNome: "" }
+        }
       },
-    "couro_sport": {
-      nome: "Kit Couro com detalhes esportivos",
+      "couro_total": {
+        nome: "Couro sintético Sporte no chão + restante na Pelúcia (Xinil)",
+        descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
+        preco: 1000,
+        imagem: "imagens/kits/kit_couro_total.jpg", partes: {
+          chao: { material: "couro", cor: "", corNome: "" },
+          banco: { material: "pelucia", cor: "", corNome: "" },
+          braco: { material: "pelucia", cor: "", corNome: "" },
+          cabeca: { material: "pelucia", cor: "", corNome: "" },
+          laterais: { material: "pelucia", cor: "", corNome: "" }
+        },
+        opcaoChao: true
+      },
+      "couro_sport": {
+        nome: "Kit Couro com detalhes esportivos",
         descricao: "Couro sintetico no chão + banco, apoio de braço e apoio de cabeça no Sued, Restante na Pelucia (Xinil)",
-          preco: 1150,
-            imagem: "imagens/kits/kit_couro_sport.jpg",    partes: {
-      chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-      banco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-      braco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-      cabeca: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
-      laterais: { material: "couro_sport", cor: "", corNome: "", detalhe: "" }
-    }
+        preco: 1150,
+        imagem: "imagens/kits/kit_couro_sport.jpg", partes: {
+          chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+          banco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+          braco: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+          cabeca: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
+          laterais: { material: "couro_sport", cor: "", corNome: "", detalhe: "" }
+        }
       }
     };
 
@@ -1197,34 +1204,34 @@
       });
 
 
-    const swiper = new Swiper(".main-swiper", {
-    loop: true,
-   
-    slidesPerView:1,
-    spaceBetween: 20,
-    centeredSlides: false, // ← não usar com 4 slides
+      const swiper = new Swiper(".main-swiper", {
+        loop: true,
 
-    pagination: { el: ".swiper-pagination", clickable: true },
+        slidesPerView: 1,
+        spaceBetween: 20,
+        centeredSlides: false, // ← não usar com 4 slides
 
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
+        pagination: { el: ".swiper-pagination", clickable: true },
 
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false
-    },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
 
-    breakpoints: {
-      768: {
-        slidesPerView: 2
-      },
-      1024: {
-        slidesPerView: 3 // ← FUNCIONA com 4 kits
-      }
-    }
-});
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false
+        },
+
+        breakpoints: {
+          768: {
+            slidesPerView: 2
+          },
+          1024: {
+            slidesPerView: 3 // ← FUNCIONA com 4 kits
+          }
+        }
+      });
 
 
 
