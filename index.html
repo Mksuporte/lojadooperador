@@ -22,7 +22,7 @@
     * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      /* box-sizing: border-box;*/
     }
 
     body {
@@ -263,6 +263,7 @@
     .maquina-detalhes {
       margin-top: 2rem;
       padding: 2rem;
+      margin-bottom: 2rem;
       background: var(--cor-primaria);
       border-radius: 10px;
       display: none;
@@ -898,7 +899,13 @@
         </div>
 
       </div>
- <!-- 🆕 CAMPOS DE INFORMAÇÕES DA MÁQUINA -->
+
+      <!-- SETAS DO CARROSSEL DAS MÁQUINAS -->
+      <div class="swiper-button-prev maquinas-prev"></div>
+      <div class="swiper-button-next maquinas-next"></div>
+
+    </div>
+<!-- 🆕 CAMPOS DE INFORMAÇÕES DA MÁQUINA -->
     <div id="maquina-detalhes" class="maquina-detalhes">
       <h3>Informações da Máquina</h3>
       <div class="form-grid">
@@ -912,13 +919,6 @@
         <div class="mensagem-erro" id="erro-maquina-ano">Por favor, insira um ano válido (4 dígitos)</div>
       </div>
     </div>
-  </section>
-      <!-- SETAS DO CARROSSEL DAS MÁQUINAS -->
-      <div class="swiper-button-prev maquinas-prev"></div>
-      <div class="swiper-button-next maquinas-next"></div>
-
-    </div>
-
     <!-- 🔁 CARROSSEL DE KITS -->
     <section class="carousel-section" id="kits">
       <div class="swiper main-swiper">
@@ -935,20 +935,7 @@
 
 
 
-    <!-- 🆕 CAMPOS DE INFORMAÇÕES DA MÁQUINA -->
-    <div id="maquina-detalhes" class="maquina-detalhes">
-      <h3>Informações da Máquina</h3>
-      <div class="form-grid">
-        <input type="text" id="maquina-marca" placeholder="Marca (ex: Caterpillar)" required>
-        <div class="mensagem-erro" id="erro-maquina-marca">Por favor, insira a marca da máquina</div>
-
-        <input type="text" id="maquina-modelo" placeholder="Modelo (ex: 320D)" required>
-        <div class="mensagem-erro" id="erro-maquina-modelo">Por favor, insira o modelo da máquina</div>
-
-        <input type="text" id="maquina-ano" placeholder="Ano (ex: 2020)" required inputmode="numeric" pattern="[0-9]*">
-        <div class="mensagem-erro" id="erro-maquina-ano">Por favor, insira um ano válido (4 dígitos)</div>
-      </div>
-    </div>
+    
   </section>
 
   <!-- 🎨 PERSONALIZAÇÃO -->
