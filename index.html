@@ -60,6 +60,8 @@
     }
 
     .nome-site {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
       font-size: 1.5rem;
       font-weight: bold;
       color: var(--cor-secundaria);
@@ -1074,7 +1076,7 @@
         ]
       },
       pelucia: {
-        nome: "Pelúcia (Xinil)",
+        nome: "Pelúcia ",
         cores: [
           { nome: "Grafite Mais Pelinhos", imagem: "imagens/cores/grafite2.jpg" },
           { nome: "Grafite", imagem: "imagens/cores/grafite.jpg" },
@@ -1250,7 +1252,7 @@
 
       const maquinasSwiper = new Swiper(".maquinas-swiper", {
         loop: true,
-        slidesPerView: 3,
+        slidesPerView: 1,
         spaceBetween: 20,
         centeredSlides: true,
 
@@ -1402,12 +1404,9 @@
 
     function obterNomeParte(parte) {
       const nomes = {
-        kit: "Kit Completo",
-        chao: "Chão",
-        banco: "Banco",
-        braco: "Apoio de Braço",
-        cabeca: "Apoio de Cabeça",
-        laterais: "Laterais"
+        kit: "Xinil",
+        chao: "Chao Pedais Sapateira",
+
       };
       return nomes[parte] || parte;
     }
