@@ -207,7 +207,6 @@
       background: var(--cor-terciaria);
       text-align: center;
       justify-content: center;
-
     }
 
     .maquinas-container h2 {
@@ -298,7 +297,7 @@
       gap: 1rem;
     }
 
-    .form-grid input {
+    .form-grid select {
       padding: 12px;
       border: 2px solid var(--borda);
       border-radius: 8px;
@@ -308,7 +307,7 @@
       transition: var(--transition);
     }
 
-    .form-grid input:focus {
+    .form-grid select:focus {
       outline: none;
       border-color: var(--cor-secundaria);
     }
@@ -729,7 +728,6 @@
       }
 
       .carousel-section,
-
       #personalizacao-container,
       .carrinho,
       .form-cliente-container {
@@ -750,7 +748,6 @@
     .swiper-button-next {
       color: var(--cor-secundaria);
       font-weight: bold;
-
       opacity: 0.4;
       transition: opacity 0.2s ease;
     }
@@ -761,7 +758,6 @@
       transform: scale(1.2);
       opacity: 1;
     }
-
 
     /* Ajustar tamanho */
     .swiper-button-prev,
@@ -787,7 +783,6 @@
       color: var(--cor-secundaria);
       width: auto;
       height: auto;
-
       opacity: 0.4;
       transition: opacity 0.2s ease;
     }
@@ -797,6 +792,35 @@
       color: var(--cor-secundaria);
       transform: scale(1.15);
       opacity: 1;
+    }
+
+    /* ====== BOTÃO CORTINA ====== */
+    .btn-cortina {
+      background: #444;
+      color: var(--texto-claro);
+      border: 2px dashed #666;
+      padding: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .btn-cortina:hover {
+      background: #555;
+      border-color: var(--cor-secundaria);
+    }
+
+    .cortina-selecionada {
+      background: #333;
+      border: 2px solid var(--cor-secundaria);
+    }
+
+    .preco-cortina {
+      color: var(--cor-secundaria);
+      font-size: 0.9rem;
+      margin-top: 5px;
     }
   </style>
 </head>
@@ -810,7 +834,6 @@
       <div>
         <img src="imagens/logo.png" class="logo-menu" alt="Logo"
           onerror="this.src='https://via.placeholder.com/40x40/ffb347/000?text=Logo'">
-
       </div>
       <span class="nome-site">Loja do Operador</span>
     </div>
@@ -829,7 +852,6 @@
     <h1 class="titulo-principal">INTERNAS PERSONALIZADA ENVIO PARA TODO BRASIL</h1>
     <p class="subtitulo-min">Escolha o kit ideal para sua máquina. Integração com WhatsApp para finalizar pedidos.</p>
   </header>
-
 
   <!-- ⚙️ MÁQUINAS (AGORA É CARROSSEL SWIPER) -->
   <section id="selecao-container" class="maquinas-container">
@@ -936,37 +958,40 @@
       <div class="swiper-button-next maquinas-next"></div>
 
     </div>
-    <!-- 🆕 CAMPOS DE INFORMAÇÕES DA MÁQUINA -->
+
+    <!-- 🆕 CAMPOS DE INFORMAÇÕES DA MÁQUINA COM DROPDOWNS -->
     <div id="maquina-detalhes" class="maquina-detalhes">
       <h3>Informações da Máquina</h3>
       <div class="form-grid">
-        <input type="text" id="maquina-marca" placeholder="Marca (ex: Caterpillar)" required>
-        <div class="mensagem-erro" id="erro-maquina-marca">Por favor, insira a marca da máquina</div>
+        <select id="maquina-marca" required>
+          <option value="">Selecione a Marca</option>
+        </select>
+        <div class="mensagem-erro" id="erro-maquina-marca">Por favor, selecione a marca</div>
 
-        <input type="text" id="maquina-modelo" placeholder="Modelo (ex: 320D)" required>
-        <div class="mensagem-erro" id="erro-maquina-modelo">Por favor, insira o modelo da máquina</div>
+        <select id="maquina-modelo" required>
+          <option value="">Selecione o Modelo</option>
+        </select>
+        <div class="mensagem-erro" id="erro-maquina-modelo">Por favor, selecione o modelo</div>
 
-        <input type="text" id="maquina-ano" placeholder="Ano (ex: 2020)" required inputmode="numeric" pattern="[0-9]*">
-        <div class="mensagem-erro" id="erro-maquina-ano">Por favor, insira um ano válido (4 dígitos)</div>
+        <select id="maquina-ano" required>
+          <option value="">Selecione o Ano</option>
+        </select>
+        <div class="mensagem-erro" id="erro-maquina-ano">Por favor, selecione o ano</div>
       </div>
     </div>
-    <!-- 🔁 CARROSSEL DE KITS -->
-    <section class="carousel-section" id="kits">
-      <div class="swiper main-swiper">
-        <div class="swiper-wrapper" id="slides-kits">
-          <!-- Os slides serão gerados dinamicamente pelo JavaScript -->
-        </div>
-        <div class="swiper-pagination"></div>
-        <!-- 🔽 SETAS DE NAVEGAÇÃO -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+  </section>
 
+  <!-- 🔁 CARROSSEL DE KITS -->
+  <section class="carousel-section" id="kits">
+    <div class="swiper main-swiper">
+      <div class="swiper-wrapper" id="slides-kits">
+        <!-- Os slides serão gerados dinamicamente pelo JavaScript -->
       </div>
-    </section>
-
-
-
-
+      <div class="swiper-pagination"></div>
+      <!-- 🔽 SETAS DE NAVEGAÇÃO -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
   </section>
 
   <!-- 🎨 PERSONALIZAÇÃO -->
@@ -1078,7 +1103,7 @@
         ]
       },
       pelucia: {
-        nome: "Pelúcia ",
+        nome: "Pelúcia (Xinil)",
         cores: [
           { nome: "Grafite Mais Pelinhos", imagem: "imagens/cores/grafite2.jpg" },
           { nome: "Grafite", imagem: "imagens/cores/grafite.jpg" },
@@ -1111,22 +1136,31 @@
         nome: "Kit Couro no Chão + Resto na Pelúcia (Xinil)",
         descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia (Xinil)",
         preco: 950,
-        imagem: "imagens/kits/kit_couro_chao.jpg", partes: {
+        imagem: "imagens/kits/kit_couro_chao.jpg", 
+        partes: {
           chao: { material: "couro", cor: "", corNome: "" },
           kit: { material: "pelucia", cor: "", corNome: "" },
-
-
-
         }
       },
       "couro_total": {
         nome: "Couro sintético Sport no chão + restante na Pelúcia (Xinil)",
         descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
         preco: 1200,
-        imagem: "imagens/kits/kit_couro_total.jpg", partes: {
+        imagem: "imagens/kits/kit_couro_total.jpg", 
+        partes: {
           chao: { material: "couro_sport", cor: "", corNome: "" },
           kit: { material: "pelucia", cor: "", corNome: "" },
-
+        },
+        opcaoChao: true
+      },
+      "couro_Suede": {
+        nome: "Couro sintético Sport no chão + restante na Pelúcia (Xinil)",
+        descricao: "Chão + pedais em couro Sintetico Sport, banco + apoio dos braços + apoio de cabeça no Sued, restante do kit na pelucia (Xinil)",
+        preco: 1200,
+        imagem: "imagens/kits/kit_Couro_suede.jpg", 
+        partes: {
+          chao: { material: "couro_sport", cor: "", corNome: "" },
+          kit: { material: "pelucia", cor: "", corNome: "" },
         },
         opcaoChao: true
       },
@@ -1134,17 +1168,66 @@
         nome: "Kit Couro com detalhes esportivos",
         descricao: "Couro sintetico no chão + banco, apoio de braço e apoio de cabeça no Sued, Restante na Pelucia (Xinil)",
         preco: 1150,
-        imagem: "imagens/kits/kit_couro_sport.jpg", partes: {
+        imagem: "imagens/kits/kit_couro_sport.jpg", 
+        partes: {
           chao: { material: "couro_sport", cor: "", corNome: "", detalhe: "" },
           kit: { material: "pelucia", cor: "", corNome: "" },
         }
       }
     };
 
+    /* =====================================================
+       DADOS DAS MÁQUINAS (SIMPLIFICADO SEM LINHA)
+       ===================================================== */
+    const dadosMaquinas = {
+      "Escavadeira": {
+        "CAT": {
+          "312D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "313D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "315D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "318D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "320D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "323D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "336D2L": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
+        },
+        "Hyundai": {
+          "140LC7": { anos: ["2008", "2009", "2010", "2011"] },
+          "160LC7": { anos: ["2008", "2009", "2010", "2011"] },
+          "140LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "150LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "160LC9": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
+        },
+        "Volvo": {
+          "140": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "200": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "210": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
+        }
+      },
+      "Retro-Escavadeira": {
+        "CAT": {
+          "416D": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "420D": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
+        },
+        "JCB": {
+          "3CX": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
+        }
+      },
+      "Pa-Carregadeira": {
+        "CAT": {
+          "916M": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] },
+          "926M": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] }
+        }
+      }
+    };
+
+    // VALOR DA CORTINA
+    const PRECO_CORTINA = 300;
+
     let carrinho = [];
     let maquinaSelecionada = "";
     let kitAtual = null;
     let personalizacaoAtual = {};
+    let cortinaSelecionada = null;
 
     /* =====================================================
        INICIALIZAÇÃO
@@ -1193,6 +1276,74 @@
 
       // Botão enviar WhatsApp
       document.getElementById("btn-enviar-whatsapp").addEventListener("click", validarFormulario);
+
+      // Event listeners para os dropdowns
+      document.getElementById('maquina-marca').addEventListener('change', atualizarModelos);
+      document.getElementById('maquina-modelo').addEventListener('change', atualizarAnos);
+    }
+
+    /* =====================================================
+       SISTEMA DE DROPDOWNS PARA MÁQUINAS (SEM LINHA)
+       ===================================================== */
+    function atualizarDropdowns() {
+      const marcaSelect = document.getElementById('maquina-marca');
+      const modeloSelect = document.getElementById('maquina-modelo');
+      const anoSelect = document.getElementById('maquina-ano');
+
+      // Limpar dropdowns
+      marcaSelect.innerHTML = '<option value="">Selecione a Marca</option>';
+      modeloSelect.innerHTML = '<option value="">Selecione o Modelo</option>';
+      anoSelect.innerHTML = '<option value="">Selecione o Ano</option>';
+
+      if (!maquinaSelecionada || !dadosMaquinas[maquinaSelecionada]) {
+        return;
+      }
+
+      // Preencher marcas
+      const marcas = Object.keys(dadosMaquinas[maquinaSelecionada]);
+      marcas.forEach(marca => {
+        marcaSelect.innerHTML += `<option value="${marca}">${marca}</option>`;
+      });
+    }
+
+    function atualizarModelos() {
+      const marca = document.getElementById('maquina-marca').value;
+      const modeloSelect = document.getElementById('maquina-modelo');
+      const anoSelect = document.getElementById('maquina-ano');
+
+      // Limpar dropdown dependente
+      anoSelect.innerHTML = '<option value="">Selecione o Ano</option>';
+
+      if (!marca || !dadosMaquinas[maquinaSelecionada] || !dadosMaquinas[maquinaSelecionada][marca]) {
+        modeloSelect.innerHTML = '<option value="">Selecione o Modelo</option>';
+        return;
+      }
+
+      // Preencher modelos
+      const modelos = Object.keys(dadosMaquinas[maquinaSelecionada][marca]);
+      modeloSelect.innerHTML = '<option value="">Selecione o Modelo</option>';
+      modelos.forEach(modelo => {
+        modeloSelect.innerHTML += `<option value="${modelo}">${modelo}</option>`;
+      });
+    }
+
+    function atualizarAnos() {
+      const marca = document.getElementById('maquina-marca').value;
+      const modelo = document.getElementById('maquina-modelo').value;
+      const anoSelect = document.getElementById('maquina-ano');
+
+      if (!marca || !modelo || !dadosMaquinas[maquinaSelecionada] || 
+          !dadosMaquinas[maquinaSelecionada][marca] || !dadosMaquinas[maquinaSelecionada][marca][modelo]) {
+        anoSelect.innerHTML = '<option value="">Selecione o Ano</option>';
+        return;
+      }
+
+      // Preencher anos
+      const anos = dadosMaquinas[maquinaSelecionada][marca][modelo].anos;
+      anoSelect.innerHTML = '<option value="">Selecione o Ano</option>';
+      anos.forEach(ano => {
+        anoSelect.innerHTML += `<option value="${ano}">${ano}</option>`;
+      });
     }
 
     /* =====================================================
@@ -1220,56 +1371,44 @@
         `;
       });
 
-
       const swiper = new Swiper(".main-swiper", {
         loop: true,
-
         slidesPerView: 1,
         spaceBetween: 20,
-        centeredSlides: false, // ← não usar com 4 slides
-
+        centeredSlides: false,
         pagination: { el: ".swiper-pagination", clickable: true },
-
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
-
         autoplay: {
           delay: 4000,
           disableOnInteraction: false
         },
-
         breakpoints: {
           768: {
             slidesPerView: 2
           },
           1024: {
-            slidesPerView: 3 // ← FUNCIONA com 4 kits
+            slidesPerView: 3
           }
         }
       });
-
-
 
       const maquinasSwiper = new Swiper(".maquinas-swiper", {
         loop: true,
         slidesPerView: 1,
         spaceBetween: 20,
         centeredSlides: true,
-
         navigation: {
           nextEl: ".maquinas-next",
           prevEl: ".maquinas-prev",
         },
-
         breakpoints: {
           768: { slidesPerView: 4, spaceBetween: 20 },
           1024: { slidesPerView: 5, spaceBetween: 30 }
         }
       });
-
-
 
       // Clique no botão ou slide
       document.querySelectorAll(".btn-selecionar-kit").forEach((btn) => {
@@ -1306,6 +1445,9 @@
 
           // Mostra seção de detalhes da máquina
           document.getElementById("maquina-detalhes").style.display = "block";
+
+          // Atualiza dropdowns
+          atualizarDropdowns();
         });
       });
     }
@@ -1336,13 +1478,14 @@
 
       kitAtual = { ...kit, chave: chave };
       personalizacaoAtual = JSON.parse(JSON.stringify(kit.partes));
+      cortinaSelecionada = null; // Resetar cortina
 
-      // MOSTRAR MODAL DE PERSONALIZAÇÃO (Passo 4 do fluxo)
+      // MOSTRAR MODAL DE PERSONALIZAÇÃO
       mostrarModalPersonalizacao();
     }
 
     /* =====================================================
-       PERSONALIZAÇÃO (MODAL)
+       PERSONALIZAÇÃO (MODAL) - CORRIGIDO
        ===================================================== */
     function mostrarModalPersonalizacao() {
       const modal = document.getElementById("modal-cores");
@@ -1353,7 +1496,7 @@
       document.getElementById("titulo-modal").textContent = `Personalize: ${kitAtual.nome}`;
 
       // Gerar seções para cada parte do kit
-      Object.entries(kitAtual.partes).forEach(([parte, config]) => {
+      Object.entries(personalizacaoAtual).forEach(([parte, config]) => {
         const material = materiais[config.material];
         if (!material) return;
 
@@ -1381,7 +1524,16 @@
             <span>${cor.nome}</span>
           `;
 
-          corCard.addEventListener("click", () => selecionarCor(parte, cor.nome, cor.imagem));
+          // CORREÇÃO: Usar função anônima para capturar cor corretamente
+          corCard.addEventListener("click", function() {
+            selecionarCor(parte, this.dataset.cor, this.dataset.imagem);
+          });
+          
+          // Marcar como selecionado se já tiver cor selecionada
+          if (config.corNome === cor.nome) {
+            corCard.classList.add("selecionado");
+          }
+          
           opcoesDiv.appendChild(corCard);
         });
       });
@@ -1395,24 +1547,98 @@
           <select id="tipo-chao" onchange="atualizarTipoChao(this.value)">
             <option value="couro_sport">Couro Sport</option>
             <option value="couro">Couro Sintético</option>
-                      </select>
+          </select>
         `;
         conteudoModal.appendChild(seletorChao);
       }
+
+      // BOTÃO PARA CORTINA (OPCIONAL) COM PREÇO
+      const cortinaDiv = document.createElement("div");
+      cortinaDiv.className = "parte-personalizacao";
+      cortinaDiv.innerHTML = `
+        <div class="parte-titulo">Cortina (Opcional) <span class="preco-cortina">+ R$ ${PRECO_CORTINA},00</span></div>
+        <div class="btn-cortina ${cortinaSelecionada ? 'cortina-selecionada' : ''}" id="btn-cortina">
+          ${cortinaSelecionada ? `Cortina Selecionada: ${cortinaSelecionada}` : 'Clique para escolher a cortina (Xinil)'}
+        </div>
+      `;
+      conteudoModal.appendChild(cortinaDiv);
+
+      // Event listener para o botão da cortina
+      document.getElementById('btn-cortina').addEventListener('click', abrirModalCortina);
 
       modal.style.display = "flex";
       atualizarResumoPersonalizacao();
     }
 
+    function abrirModalCortina() {
+      const modal = document.getElementById("modal-cores");
+      const conteudoModal = document.getElementById("conteudo-modal");
+
+      conteudoModal.innerHTML = "";
+
+      document.getElementById("titulo-modal").textContent = `Selecione a Cortina (Xinil) - + R$ ${PRECO_CORTINA},00`;
+
+      const material = materiais["pelucia"];
+      if (!material) return;
+
+      const parteDiv = document.createElement("div");
+      parteDiv.className = "parte-personalizacao";
+
+      parteDiv.innerHTML = `
+        <div class="parte-titulo">Cortina - ${material.nome} <span class="preco-cortina">+ R$ ${PRECO_CORTINA},00</span></div>
+        <div class="opcoes-materiais" id="opcoes-cortina"></div>
+      `;
+
+      conteudoModal.appendChild(parteDiv);
+
+      // Gerar opções de cores da cortina (usando as cores do Xinil)
+      const opcoesDiv = document.getElementById(`opcoes-cortina`);
+      material.cores.forEach(cor => {
+        const corCard = document.createElement("div");
+        corCard.className = "material-card";
+        corCard.dataset.cor = cor.nome;
+        corCard.dataset.imagem = cor.imagem;
+
+        corCard.innerHTML = `
+          <img src="${cor.imagem}" alt="${cor.nome}" onerror="this.src='https://via.placeholder.com/120x80/333/fff?text=Imagem+Não+Encontrada'">
+          <span>${cor.nome}</span>
+        `;
+
+        // CORREÇÃO: Usar função anônima para capturar cor corretamente
+        corCard.addEventListener("click", function() {
+          selecionarCortina(this.dataset.cor, this.dataset.imagem);
+        });
+        
+        // Marcar como selecionado se já tiver cortina selecionada
+        if (cortinaSelecionada === cor.nome) {
+          corCard.classList.add("selecionado");
+        }
+        
+        opcoesDiv.appendChild(corCard);
+      });
+
+      // Botão para voltar
+      const btnVoltar = document.createElement("button");
+      btnVoltar.className = "btn-confirmar-cores";
+      btnVoltar.textContent = "Voltar para Personalização";
+      btnVoltar.onclick = mostrarModalPersonalizacao;
+      conteudoModal.appendChild(btnVoltar);
+    }
+
+    function selecionarCortina(corNome, corImagem) {
+      cortinaSelecionada = corNome;
+      mostrarModalPersonalizacao(); // Volta para o modal principal
+    }
+
     function obterNomeParte(parte) {
       const nomes = {
         kit: "Xinil",
-        chao: "Chao Pedais Sapateira",
-
+        chao: "Chão Pedais Sapateira"
       };
       return nomes[parte] || parte;
     }
 
+    // CORREÇÃO: Função selecionarCor corrigida
     function selecionarCor(parte, corNome, corImagem) {
       personalizacaoAtual[parte].cor = corImagem;
       personalizacaoAtual[parte].corNome = corNome;
@@ -1420,6 +1646,7 @@
       const cards = document.querySelectorAll(`[data-parte="${parte}"]`);
       cards.forEach(card => {
         card.classList.remove("selecionado");
+        // CORREÇÃO: Usar corNome em vez de cor.nome (que não existe)
         if (card.dataset.cor === corNome) {
           card.classList.add("selecionado");
         }
@@ -1448,7 +1675,9 @@
             <span>${cor.nome}</span>
           `;
 
-          corCard.addEventListener("click", () => selecionarCor("chao", cor.nome, cor.imagem));
+          corCard.addEventListener("click", function() {
+            selecionarCor("chao", this.dataset.cor, this.dataset.imagem);
+          });
           opcoesChao.appendChild(corCard);
         });
 
@@ -1472,16 +1701,27 @@
           resumo.appendChild(item);
         }
       });
+
+      // Adicionar cortina ao resumo se selecionada
+      if (cortinaSelecionada) {
+        const item = document.createElement("div");
+        item.className = "resumo-item";
+        item.innerHTML = `
+          <span>Cortina:</span>
+          <span>${cortinaSelecionada} (+ R$ ${PRECO_CORTINA},00)</span>
+        `;
+        resumo.appendChild(item);
+      }
     }
 
     function confirmarCores() {
-      // Verificar se todas as partes foram personalizadas
-      const partesNaoSelecionadas = Object.entries(personalizacaoAtual)
+      // Verificar se todas as partes obrigatórias foram personalizadas
+      const partesObrigatorias = Object.entries(personalizacaoAtual)
         .filter(([parte, config]) => !config.corNome)
         .map(([parte, config]) => obterNomeParte(parte));
 
-      if (partesNaoSelecionadas.length > 0) {
-        alert(`Por favor, selecione cores para: ${partesNaoSelecionadas.join(", ")}`);
+      if (partesObrigatorias.length > 0) {
+        alert(`Por favor, selecione cores para: ${partesObrigatorias.join(", ")}`);
         return;
       }
 
@@ -1498,8 +1738,25 @@
       document.getElementById("personalizacao-container").style.display = "block";
       document.querySelector(".carrinho").style.display = "block";
 
+      // Calcular preço total (kit + cortina se selecionada)
+      let precoTotal = kitAtual.preco;
+      if (cortinaSelecionada) {
+        precoTotal += PRECO_CORTINA;
+      }
+
       // Atualizar resumo na seção de personalização
       const partesDiv = document.getElementById("partes-personalizacao");
+      let cortinaHTML = '';
+      
+      if (cortinaSelecionada) {
+        cortinaHTML = `
+          <div class="resumo-item">
+            <span>Cortina:</span>
+            <span>${cortinaSelecionada} (+ R$ ${PRECO_CORTINA},00)</span>
+          </div>
+        `;
+      }
+
       partesDiv.innerHTML = `
         <p><strong>${kitAtual.nome}</strong></p>
         <p style="color:#ccc">${kitAtual.descricao}</p>
@@ -1511,8 +1768,9 @@
               <span>${config.corNome}</span>
             </div>`
       ).join('')}
+          ${cortinaHTML}
         </div>
-        <p><strong>Preço: R$ ${kitAtual.preco.toFixed(2)}</strong></p>
+        <p><strong>Preço: R$ ${precoTotal.toFixed(2)}</strong></p>
         <input type="hidden" id="kit-selecionado-chave" value="${kitAtual.chave}">
         <button class="btn-adicionar-carrinho" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
       `;
@@ -1529,12 +1787,21 @@
 
       const existeNoCarrinho = carrinho.some(item => item.chave === kitAtual.chave);
       if (!existeNoCarrinho) {
+        // Calcular preço total (kit + cortina se selecionada)
+        let precoTotal = kitAtual.preco;
+        if (cortinaSelecionada) {
+          precoTotal += PRECO_CORTINA;
+        }
+
         carrinho.push({
           chave: kitAtual.chave,
           nome: kitAtual.nome,
-          preco: kitAtual.preco,
+          preco: precoTotal, // Preço já inclui a cortina se selecionada
+          precoBase: kitAtual.preco,
           descricao: kitAtual.descricao,
-          personalizacao: { ...personalizacaoAtual }
+          personalizacao: { ...personalizacaoAtual },
+          cortina: cortinaSelecionada,
+          precoCortina: cortinaSelecionada ? PRECO_CORTINA : 0
         });
         atualizarCarrinho();
         alert("Kit personalizado adicionado ao carrinho!");
@@ -1549,9 +1816,16 @@
       let total = 0;
 
       carrinho.forEach((kit, index) => {
+        let itemTexto = `${kit.nome} - R$ ${kit.preco.toFixed(2)}`;
+        
+        // Adicionar informação da cortina se houver
+        if (kit.cortina) {
+          itemTexto += ` (inclui cortina: +R$ ${PRECO_CORTINA},00)`;
+        }
+        
         lista.innerHTML += `
           <li>
-            ${kit.nome} - R$ ${kit.preco.toFixed(2)}
+            ${itemTexto}
             <button class="btn-remover" onclick="removerDoCarrinho(${index})">×</button>
           </li>
         `;
@@ -1687,6 +1961,12 @@
             mensagem += `   ${obterNomeParte(parte)}: ${config.corNome}%0A`;
           }
         });
+
+        // Cortina se selecionada
+        if (kit.cortina) {
+          mensagem += `   Cortina: ${kit.cortina} (+ R$ ${PRECO_CORTINA},00)%0A`;
+        }
+        
         mensagem += `%0A`;
       });
 
@@ -1713,7 +1993,7 @@
       mensagem += `Número: ${document.getElementById('numero').value}%0A`;
 
       // Número do WhatsApp (substitua pelo seu número)
-      const telefoneWhatsApp = "5543999064226"; // Exemplo: 43 99999-9999
+      const telefoneWhatsApp = "5543999064226";
 
       // Abrir WhatsApp
       const url = `https://wa.me/${telefoneWhatsApp}?text=${mensagem}`;
