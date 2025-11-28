@@ -1120,11 +1120,11 @@
         }
       },
       "couro_total": {
-        nome: "Couro sintético Sporte no chão + restante na Pelúcia (Xinil)",
+        nome: "Couro sintético Sport no chão + restante na Pelúcia (Xinil)",
         descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
-        preco: 1000,
+        preco: 1200,
         imagem: "imagens/kits/kit_couro_total.jpg", partes: {
-          chao: { material: "couro", cor: "", corNome: "" },
+          chao: { material: "couro_sport", cor: "", corNome: "" },
           kit: { material: "pelucia", cor: "", corNome: "" },
 
         },
@@ -1393,9 +1393,9 @@
         seletorChao.innerHTML = `
           <label for="tipo-chao">Tipo do Chão:</label>
           <select id="tipo-chao" onchange="atualizarTipoChao(this.value)">
-            <option value="couro">Couro Sintético</option>
             <option value="couro_sport">Couro Sport</option>
-          </select>
+            <option value="couro">Couro Sintético</option>
+                      </select>
         `;
         conteudoModal.appendChild(seletorChao);
       }
