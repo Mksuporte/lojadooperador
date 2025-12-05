@@ -1047,7 +1047,7 @@
 
   <!-- 🛒 CARRINHO -->
   <section class="carrinho">
-    <h3>Seu Carrinho</h3>
+    <h3>Seu Carrinho 🛒 </h3>
     <ul id="listaCarrinho"></ul>
     <p><strong>Total:</strong> <span id="total-geral">R$ 0,00</span></p>
     <button class="btn-finalizar" id="btn-finalizar-pedido">Finalizar Pedido</button>
@@ -1122,7 +1122,7 @@
     /* =====================================================
            MENSSAGEN DE FEED BACK
            ===================================================== */
-    function mostrarMensagem(texto, tempo = 4000) {
+    function mostrarMensagem(texto, tempo = 3000) {
       const toast = document.getElementById("toast");
       toast.innerText = texto;
       toast.classList.add("mostrar");
@@ -1693,26 +1693,26 @@
       });
     }
     const selectAno = document.getElementById("maquina-ano");
-    const btnContinuar = document.getElementById("btn-continuar");
+const btnContinuar = document.getElementById("btn-continuar");
 
-    // Quando selecionar o ANO, mostra o botão
-    selectAno.addEventListener("change", function () {
-      if (this.value !== "") {
-        btnContinuar.style.display = "block";
-        mostrarMensagem("Ano selecionado! Clique em continuar.");
-      } else {
-        btnContinuar.style.display = "none";
-      }
-    });
+// Quando selecionar o ANO, mostra o botão
+selectAno.addEventListener("change", function () {
+  if (this.value !== "") {
+    btnContinuar.style.display = "block";
+    mostrarMensagem("Ano selecionado! Clique em continuar.");
+  } else {
+    btnContinuar.style.display = "none";
+  }
+});
 
-    // Quando clicar no botão, vai para os KITS
-    btnContinuar.addEventListener("click", function () {
-      document.getElementById("kits").scrollIntoView({
-        behavior: "smooth"
-      });
+// Quando clicar no botão, vai para os KITS
+btnContinuar.addEventListener("click", function () {
+  document.getElementById("kits").scrollIntoView({
+    behavior: "smooth"
+  });
 
-      mostrarMensagem("Agora escolha o seu kit ✅");
-    });
+  mostrarMensagem("Agora escolha o seu kit ✅");
+});
 
 
     /* =====================================================
