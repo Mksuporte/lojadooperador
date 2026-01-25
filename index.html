@@ -1129,6 +1129,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+
+
+
         /* =====================================================
                MENSAGEM DE FEEDBACK
                ===================================================== */
@@ -1189,6 +1192,15 @@
                     { nome: "Rosa", imagem: "imagens/cores/rosa.jpg" },
                     { nome: "Laranja", imagem: "imagens/cores/laranja.jpg" }
                 ]
+            },
+            suede: {
+                nome: "Suede",
+                cores: [
+                    { nome: "Bege com marrom", imagem: "imagens/cores/suedebegemarrom.jpg" },
+                    { nome: "Preto com preto", imagem: "imagens/cores/suedepreto.jpg" },
+                    { nome: "Grafite com grafite", imagem: "imagens/cores/suedegrafite.jpg" },
+                    { nome: "Marrom com marron café", imagem: "imagens/cores/suedemarromcafe.jpg" }
+                ]
             }
         };
 
@@ -1233,11 +1245,12 @@
                 {
                     id: "Kit_4_escavadeira",
                     nome: "Kit 4",
-                    descricao: "Couro sintético no chão nos pedais e na sapateira , Sued no banco apoio de braços e apoio da cabeça , restante na pelúcia (Xinil)",
+                    descricao: "Couro sintético no chão nos pedais e na sapateira , Suede no banco apoio de braços e apoio da cabeça , restante na pelúcia (Xinil)",
                     preco: 1150,
                     imagem: "imagens/kits/escavadeira/kit_couro_sport.jpg",
                     partes: {
                         chao: { material: "couro", cor: "", corNome: "", detalhe: "" },
+                        suede_partes: { material: "suede", cor: "", corNome: "", nomeExibicao: "Banco, apoio de braços e apoio da cabeça" },
                         kit: { material: "pelucia", cor: "", corNome: "" },
                     }
                 },
@@ -1291,16 +1304,16 @@
                     descricao: "Couro sintetico no chão nos pedais no painel e na apateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Sued restante do kit na pelucia ",
                     preco: 1300,
                     imagem: "imagens/kits/retroescavadeira/kit4.jpeg", partes: {
-                        chao: { material: "couro_sport", cor: "", corNome: "" },
+                        chao: { material: "couro", cor: "", corNome: "" },
                         kit: { material: "pelucia", cor: "", corNome: "" }
                     }
                 },
                 {
                     id: "Kit_5_retro",
                     nome: "Kit 5",
-                    descricao: "Couro sintetico Sporte chão nos pedais no painel e na apateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Sued restante do kit na pelucia",
+                    descricao: "Couro sintetico Sporte chão nos pedais no painel e na sapateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Sued restante do kit na pelucia",
                     preco: 1350,
-                    imagem: "imagens/kits/retro/kit_premium.jpg",
+                    imagem: "imagens/kits/retroescavadeira/kit5.jpeg",
                     partes: {
                         chao: { material: "couro_sport", cor: "", corNome: "" },
                         kit: { material: "pelucia", cor: "", corNome: "" }
@@ -1913,41 +1926,41 @@
                 });
             }
 
-             if (window.swiperKits) {
-        swiperKits.destroy(true, true); // Destruir completamente
-    }
-    
-    // Recriar o Swiper
-    setTimeout(() => {
-        swiperKits = new Swiper(".main-swiper", {
-            loop: false,
-            slidesPerView: 1,
-            spaceBetween: 20,
-            centeredSlides: false,
-            pagination: { el: ".swiper-pagination", clickable: true },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            autoplay: {
-                delay: 40000,
-                disableOnInteraction: false
-            },
-            breakpoints: {
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
+            if (window.swiperKits) {
+                swiperKits.destroy(true, true); // Destruir completamente
             }
-        });
-        
-        // Remover o feedback visual
-        container.classList.remove("atualizando");
-    }, 10); // Pequeno delay para garantir que o DOM foi atualizado
 
-    if (maquina !== ultimaMaquina) {
-        mostrarMensagem(`Kits para ${maquina} carregados!`);
-        ultimaMaquina = maquina;
-    }
-}
+            // Recriar o Swiper
+            setTimeout(() => {
+                swiperKits = new Swiper(".main-swiper", {
+                    loop: false,
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    centeredSlides: false,
+                    pagination: { el: ".swiper-pagination", clickable: true },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    autoplay: {
+                        delay: 40000,
+                        disableOnInteraction: false
+                    },
+                    breakpoints: {
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 }
+                    }
+                });
+
+                // Remover o feedback visual
+                container.classList.remove("atualizando");
+            }, 10); // Pequeno delay para garantir que o DOM foi atualizado
+
+            if (maquina !== ultimaMaquina) {
+                mostrarMensagem(`Kits para ${maquina} carregados!`);
+                ultimaMaquina = maquina;
+            }
+        }
 
 
         /* =====================================================
@@ -1983,6 +1996,9 @@
 
                     // Atualiza máquina selecionada
                     maquinaSelecionada = this.dataset.maquina;
+
+                    //  Resetar cortina ao mudar de máquina
+                    cortinaSelecionada = null;
 
                     // Mostra seção de detalhes da máquina
                     document.getElementById("maquina-detalhes").style.display = "block";
@@ -2065,6 +2081,10 @@
            ===================================================== */
         function selecionarKit(kitId, maquina = null) {
             const maquinaParaKit = maquina || maquinaSelecionada;
+
+             // 👉 SEMPRE rola para a área da máquina ao clicar no kit
+    document.getElementById("selecao-container")
+        .scrollIntoView({ behavior: "smooth", block: "start" });
 
             // Verificar se máquina foi selecionada
             if (!maquinaParaKit) {
@@ -2168,19 +2188,19 @@
 
             // BOTÃO PARA CORTINA (OPCIONAL) COM PREÇO
             if (maquinaSelecionada === "Escavadeira") {
-            const cortinaDiv = document.createElement("div");
-            cortinaDiv.className = "parte-personalizacao";
-            cortinaDiv.innerHTML = `
+                const cortinaDiv = document.createElement("div");
+                cortinaDiv.className = "parte-personalizacao";
+                cortinaDiv.innerHTML = `
         <div class="parte-titulo">Cortina (Opcional) <span class="preco-cortina">+ R$ ${PRECO_CORTINA},00</span></div>
         <div class="btn-cortina ${cortinaSelecionada ? 'cortina-selecionada' : ''}" id="btn-cortina">
           ${cortinaSelecionada ? `Cortina Selecionada: ${cortinaSelecionada}` : 'Clique para escolher a cortina (Xinil)'}
         </div>
       `;
-            conteudoModal.appendChild(cortinaDiv);
+                conteudoModal.appendChild(cortinaDiv);
 
-            // Event listener para o botão da cortina
-            document.getElementById('btn-cortina').addEventListener('click', abrirModalCortina);
-    }
+                // Event listener para o botão da cortina
+                document.getElementById('btn-cortina').addEventListener('click', abrirModalCortina);
+            }
             modal.style.display = "flex";
             atualizarResumoPersonalizacao();
         }
@@ -2248,7 +2268,8 @@
         function obterNomeParte(parte) {
             const nomes = {
                 kit: "Xinil",
-                chao: "Chão Pedais Sapateira"
+                chao: "Chão Pedais Sapateira",
+                suede_partes: "Banco, apoio de braços e apoio da cabeça (Suede)"
             };
             return nomes[parte] || parte;
         }
@@ -2318,7 +2339,7 @@
             });
 
             // Adicionar cortina ao resumo se selecionada
-              if (maquinaSelecionada === "Escavadeira" && cortinaSelecionada) {
+            if (maquinaSelecionada === "Escavadeira" && cortinaSelecionada) {
                 const item = document.createElement("div");
                 item.className = "resumo-item";
                 item.innerHTML = `
@@ -2355,7 +2376,7 @@
 
             // Calcular preço total (kit + cortina se selecionada)
             let precoTotal = kitAtual.preco;
-            if (cortinaSelecionada) {
+            if (maquinaSelecionada === "Escavadeira" && cortinaSelecionada) {
                 precoTotal += PRECO_CORTINA;
             }
 
@@ -2363,12 +2384,13 @@
             const partesDiv = document.getElementById("partes-personalizacao");
             let cortinaHTML = '';
 
-            if (cortinaSelecionada) {
+            //  Mostrar cortina apenas se for escavadeira
+            if (maquinaSelecionada === "Escavadeira" && cortinaSelecionada) {
                 cortinaHTML = `
-          <div class="resumo-item">
-            <span>Cortina:</span>
-            <span>${cortinaSelecionada} (+ R$ ${PRECO_CORTINA},00)</span>
-          </div>
+            <div class="resumo-item">
+                <span>Cortina:</span>
+                <span>${cortinaSelecionada} (+ R$ ${PRECO_CORTINA},00)</span>
+            </div>
         `;
             }
 
@@ -2402,21 +2424,26 @@
 
             const existeNoCarrinho = carrinho.some(item => item.id === kitAtual.id);
             if (!existeNoCarrinho) {
-                // Calcular preço total (kit + cortina se selecionada)
+                // Calcular preço total (kit + cortina se selecionada e for escavadeira)
                 let precoTotal = kitAtual.preco;
-                if (cortinaSelecionada) {
+                let cortinaIncluida = false;
+
+                // 🔥 ALTERAÇÃO AQUI: Adicionar cortina apenas se for escavadeira
+                if (maquinaSelecionada === "Escavadeira" && cortinaSelecionada) {
                     precoTotal += PRECO_CORTINA;
+                    cortinaIncluida = true;
                 }
 
                 carrinho.push({
                     id: kitAtual.id,
                     nome: kitAtual.nome,
-                    preco: precoTotal, // Preço já inclui a cortina se selecionada
+                    preco: precoTotal,
                     precoBase: kitAtual.preco,
                     descricao: kitAtual.descricao,
                     personalizacao: { ...personalizacaoAtual },
-                    cortina: cortinaSelecionada,
-                    precoCortina: cortinaSelecionada ? PRECO_CORTINA : 0
+                    // 🔥 ALTERAÇÃO AQUI: Incluir cortina apenas se for escavadeira
+                    cortina: cortinaIncluida ? cortinaSelecionada : null,
+                    precoCortina: cortinaIncluida ? PRECO_CORTINA : 0
                 });
                 atualizarCarrinho();
                 mostrarMensagem("Kit personalizado adicionado ao carrinho!");
