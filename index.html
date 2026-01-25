@@ -1271,7 +1271,7 @@
                     preco: 1100,
                     imagem: "imagens/kits/retroescavadeira/kit2.jpeg",
                     partes: {
-                        chao: { material: "couro_sport", cor: "", corNome: "" },
+                        chao: { material: "couro", cor: "", corNome: "" },
                         kit: { material: "pelucia", cor: "", corNome: "" }
                     }
                 },
@@ -2167,6 +2167,7 @@
             }
 
             // BOTÃO PARA CORTINA (OPCIONAL) COM PREÇO
+            if (maquinaSelecionada === "Escavadeira") {
             const cortinaDiv = document.createElement("div");
             cortinaDiv.className = "parte-personalizacao";
             cortinaDiv.innerHTML = `
@@ -2179,7 +2180,7 @@
 
             // Event listener para o botão da cortina
             document.getElementById('btn-cortina').addEventListener('click', abrirModalCortina);
-
+    }
             modal.style.display = "flex";
             atualizarResumoPersonalizacao();
         }
@@ -2317,7 +2318,7 @@
             });
 
             // Adicionar cortina ao resumo se selecionada
-            if (cortinaSelecionada) {
+              if (maquinaSelecionada === "Escavadeira" && cortinaSelecionada) {
                 const item = document.createElement("div");
                 item.className = "resumo-item";
                 item.innerHTML = `
