@@ -1177,7 +1177,7 @@
                 ]
             },
             pelucia: {
-                nome: "Pelúcia (Xinil)",
+                nome: "Pelúcia ",
                 cores: [
                     { nome: "Grafite Mais Pelinhos", imagem: "imagens/cores/grafite2.jpg" },
                     { nome: "Grafite", imagem: "imagens/cores/grafite.jpg" },
@@ -1196,10 +1196,10 @@
             suede: {
                 nome: "Suede",
                 cores: [
-                    { nome: "Bege com marrom", imagem: "imagens/cores/suedebegemarrom.jpg" },
-                    { nome: "Preto com preto", imagem: "imagens/cores/suedepreto.jpg" },
-                    { nome: "Grafite com grafite", imagem: "imagens/cores/suedegrafite.jpg" },
-                    { nome: "Marrom com marron café", imagem: "imagens/cores/suedemarromcafe.jpg" }
+                    { nome: "Bege com marrom", imagem: "imagens/cores/suedebegemarrom.jpeg" },
+                    { nome: "Preto com preto", imagem: "imagens/cores/suedepreto.jpeg" },
+                    { nome: "Grafite com grafite", imagem: "imagens/cores/suedegrafite.jpeg" },
+                    { nome: "Marrom com marron café", imagem: "imagens/cores/suedemarromcafe.jpeg" }
                 ]
             }
         };
@@ -1227,7 +1227,7 @@
                     imagem: "imagens/kits/escavadeira/kit_couro_chao.jpg",
                     partes: {
                         chao: { material: "couro", cor: "", corNome: "" },
-                        kit: { material: "pelucia", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
                     }
                 },
                 {
@@ -1238,7 +1238,7 @@
                     imagem: "imagens/kits/escavadeira/kit_couro_total.jpg",
                     partes: {
                         chao: { material: "couro_sport", cor: "", corNome: "" },
-                        kit: { material: "pelucia", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
                     },
                     opcaoChao: true
                 },
@@ -1251,20 +1251,21 @@
                     partes: {
                         chao: { material: "couro", cor: "", corNome: "", detalhe: "" },
                         suede_partes: { material: "suede", cor: "", corNome: "", nomeExibicao: "Banco, apoio de braços e apoio da cabeça" },
-                        kit: { material: "pelucia", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
                     }
                 },
                 {
                     id: "Kit_5_escavadeira",
                     nome: "Kit 5",
-                    descricao: "Chão pedais em couro Sport, + banco apoio dos braços apoio de cabeça no Sued, restante na pelucia (Xinil)",
+                    descricao: "Chão pedais em couro Sport, + banco apoio dos braços apoio de cabeça no Suede, restante na pelucia (Xinil)",
                     preco: 1200,
                     imagem: "imagens/kits/escavadeira/kit_Couro_suede.jpg",
                     partes: {
                         chao: { material: "couro_sport", cor: "", corNome: "" },
-                        kit: { material: "pelucia", cor: "", corNome: "" },
+                        suede_partes: { material: "suede", cor: "", corNome: "", nomeExibicao: "Banco, apoio de braços e apoio da cabeça" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
                     },
-                    opcaoChao: true
+                    
                 }
             ],
 
@@ -1301,21 +1302,23 @@
                 {
                     id: "Kit_4_retro",
                     nome: "Kit 4",
-                    descricao: "Couro sintetico no chão nos pedais no painel e na apateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Sued restante do kit na pelucia ",
+                    descricao: "Couro sintetico no chão nos pedais no painel e na apateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Suede restante do kit na pelucia ",
                     preco: 1300,
                     imagem: "imagens/kits/retroescavadeira/kit4.jpeg", partes: {
                         chao: { material: "couro", cor: "", corNome: "" },
+                        suede_partes: { material: "suede", cor: "", corNome: "", nomeExibicao: "Banco, apoio de braços e apoio da cabeça" },
                         kit: { material: "pelucia", cor: "", corNome: "" }
                     }
                 },
                 {
                     id: "Kit_5_retro",
                     nome: "Kit 5",
-                    descricao: "Couro sintetico Sporte chão nos pedais no painel e na sapateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Sued restante do kit na pelucia",
+                    descricao: "Couro sintetico Sporte chão nos pedais no painel e na sapateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Suede restante do kit na pelucia",
                     preco: 1350,
                     imagem: "imagens/kits/retroescavadeira/kit5.jpeg",
                     partes: {
                         chao: { material: "couro_sport", cor: "", corNome: "" },
+                        suede_partes: { material: "suede", cor: "", corNome: "", nomeExibicao: "Banco, apoio de braços e apoio da cabeça" },
                         kit: { material: "pelucia", cor: "", corNome: "" }
                     }
                 }
@@ -2269,7 +2272,7 @@
             const nomes = {
                 kit: "Xinil",
                 chao: "Chão Pedais Sapateira",
-                suede_partes: "Banco, apoio de braços e apoio da cabeça (Suede)"
+                suede_partes: "Banco, apoio de braços e apoio da cabeça"
             };
             return nomes[parte] || parte;
         }
