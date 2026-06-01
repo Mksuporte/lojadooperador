@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,21 +46,21 @@
         </ul>
     </nav>
 
-    <!-- 🏠 CABEÇALHO -->
+    <!--  CABEÇALHO -->
     <header id="home" class="header-reduzido">
         <h1 class="titulo-principal">INTERNAS PERSONALIZADA ENVIO PARA TODO BRASIL</h1>
         <p class="subtitulo-min">Escolha o kit ideal para sua máquina. Integração com WhatsApp para finalizar pedidos.
         </p>
     </header>
 
-    <!-- ⚙️ MÁQUINAS (AGORA É CARROSSEL SWIPER) -->
+    <!-- ⚙️ MÁQUINAS (CARROSSEL SWIPER) -->
     <section id="selecao-container" class="maquinas-container">
         <h2>Selecione sua máquina</h2>
 
         <div class="swiper maquinas-swiper">
             <div class="swiper-wrapper">
 
-                <!-- Cada máquina virou um slide -->
+                <!-- Cada máquina e um slide -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Escavadeira">
                         <div>
@@ -70,7 +69,7 @@
                         <p>Escavadeira</p>
                     </div>
                 </div>
-
+                <!-- Retro-Escavadeira -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Retro-Escavadeira">
                         <div>
@@ -79,7 +78,7 @@
                         <p>Retro-Escavadeira</p>
                     </div>
                 </div>
-
+                                <!-- Pa-Carregadeira -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Pa-Carregadeira">
                         <div>
@@ -88,7 +87,7 @@
                         <p>Pa-Carregadeira</p>
                     </div>
                 </div>
-
+                                <!-- Moto-Niveladora -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Moto-Niveladora">
                         <div>
@@ -97,7 +96,7 @@
                         <p>Moto-Niveladora</p>
                     </div>
                 </div>
-
+                                <!-- Trator-Esteira -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Trator-Esteira">
                         <div>
@@ -106,7 +105,7 @@
                         <p>Trator-Esteira</p>
                     </div>
                 </div>
-
+                                <!-- Trator -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Trator">
                         <div>
@@ -115,7 +114,7 @@
                         <p>Trator</p>
                     </div>
                 </div>
-
+                                <!-- Pulverizador -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Pulverizador">
                         <div>
@@ -124,7 +123,7 @@
                         <p>Pulverizador</p>
                     </div>
                 </div>
-
+                                <!-- Colheitadeira -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Colheitadeira">
                         <div>
@@ -133,7 +132,7 @@
                         <p>Colheitadeira</p>
                     </div>
                 </div>
-
+                                <!-- Mini-Escavadeira -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Mini-Escavadeira">
                         <div>
@@ -142,7 +141,7 @@
                         <p>Mini-Escavadeira</p>
                     </div>
                 </div>
-
+                                <!-- Mini-Carregadeira -->
                 <div class="swiper-slide">
                     <div class="maquina-item" data-maquina="Mini-Carregadeira">
                         <div>
@@ -160,30 +159,7 @@
 
         </div>
 
-        <!-- 🆕 CAMPOS DE INFORMAÇÕES DA MÁQUINA COM DROPDOWNS -->
-        <div id="maquina-detalhes" class="maquina-detalhes">
-            <h3>Informações da Máquina</h3>
-            <div class="form-grid">
-                <select id="maquina-marca" required>
-                    <option value="">Selecione a Marca</option>
-                </select>
-                <div class="mensagem-erro" id="erro-maquina-marca">Por favor, selecione a marca</div>
-
-                <select id="maquina-modelo" required>
-                    <option value="">Selecione o Modelo</option>
-                </select>
-                <div class="mensagem-erro" id="erro-maquina-modelo">Por favor, selecione o modelo</div>
-
-                <select id="maquina-ano" required>
-                    <option value="">Selecione o Ano</option>
-
-                </select>
-                <button id="btn-continuar" class="btn-finalizar" style="display:none; margin-top:20px;">
-                    Continuar
-                </button>
-
-                <div class="mensagem-erro" id="erro-maquina-ano">Por favor, selecione o ano</div>
-            </div>
+        
         </div>
     </section>
 
