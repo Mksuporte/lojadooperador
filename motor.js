@@ -894,7 +894,7 @@
             const anoSelect = document.getElementById('maquina-ano');
 
             // Limpar dropdowns
-            marcaSelect.innerHTML = '<option value="">Selecione  Marca</option>';
+            marcaSelect.innerHTML = '<option value="">Selecione a Marca</option>';
             modeloSelect.innerHTML = '<option value="">Selecione o Modelo</option>';
             anoSelect.innerHTML = '<option value="">Selecione o Ano</option>';
 
