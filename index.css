@@ -360,15 +360,90 @@
             margin-bottom: 1.5rem;
         }
 
-        #listaCarrinho li {
-            background: var(--cor-primaria);
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* ===========================
+   NOVO LAYOUT DO CARRINHO
+=========================== */
+
+#listaCarrinho li {
+    background: var(--cor-primaria);
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border-left: 4px solid var(--cor-secundaria);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-carrinho-info {
+    flex: 1;
+    line-height: 1.5;
+}
+
+.acoes-carrinho {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Botão + e - */
+
+.btn-qtd {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 8px;
+
+    background: var(--cor-secundaria);
+    color: #000;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-qtd:hover {
+    transform: scale(1.08);
+    background: #ffb347;
+}
+
+/* Quantidade */
+
+.qtd-kit {
+    min-width: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--cor-secundaria);
+}
+
+/* Remover */
+
+.btn-remover {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #d32f2f;
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.btn-remover:hover {
+    background: #f44336;
+    transform: scale(1.08);
+}
 
         .btn-remover {
             background: #ff4444;

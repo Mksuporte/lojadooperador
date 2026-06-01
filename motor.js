@@ -1377,30 +1377,40 @@ function atualizarCarrinho() {
         }
 
         lista.innerHTML += `
-            <li>
-                ${itemTexto}
+<li>
 
-                <div class="acoes-carrinho">
+    <div class="item-carrinho-info">
+        ${itemTexto}
+    </div>
 
-                    <button
-                        onclick="diminuirQuantidade(${index})">
-                        -
-                    </button>
+    <div class="acoes-carrinho">
 
-                    <button
-                        onclick="aumentarQuantidade(${index})">
-                        +
-                    </button>
+        <button
+            class="btn-qtd"
+            onclick="diminuirQuantidade(${index})">
+            -
+        </button>
 
-                    <button
-                        class="btn-remover"
-                        onclick="removerDoCarrinho(${index})">
-                        ×
-                    </button>
+        <span class="qtd-kit">
+            ${kit.quantidade}
+        </span>
 
-                </div>
-            </li>
-        `;
+        <button
+            class="btn-qtd"
+            onclick="aumentarQuantidade(${index})">
+            +
+        </button>
+
+        <button
+            class="btn-remover"
+            onclick="removerDoCarrinho(${index})">
+            ×
+        </button>
+
+    </div>
+
+</li>
+`;
 
         total += subtotal;
     });
