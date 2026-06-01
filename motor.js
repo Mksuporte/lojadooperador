@@ -1293,67 +1293,155 @@
            CARRINHO
            ===================================================== */
         function adicionarAoCarrinho() {
-            if (!kitAtual) return mostrarMensagem("Selecione um kit primeiro!");
+    if (!kitAtual) {
+        return mostrarMensagem("Selecione um kit primeiro!");
+    }
 
-            const existeNoCarrinho = carrinho.some(item => item.id === kitAtual.id);
-            if (!existeNoCarrinho) {
-                // Calcular preço total (kit + cortina se selecionada e for escavadeira)
-                let precoTotal = kitAtual.preco;
-                let cortinaIncluida = false;
+    let precoTotal = kitAtual.preco;
+    let cortinaIncluida = false;
 
-                // 🔥 ALTERAÇÃO AQUI: Adicionar cortina apenas se for escavadeira
-                if (maquinaSelecionada === "Escavadeira" && cortinaSelecionada) {
-                    precoTotal += PRECO_CORTINA;
-                    cortinaIncluida = true;
-                }
+    if (
+        maquinaSelecionada === "Escavadeira" &&
+        cortinaSelecionada
+    ) {
+        precoTotal += PRECO_CORTINA;
+        cortinaIncluida = true;
+    }
 
-                carrinho.push({
-                    id: kitAtual.id,
-                    nome: kitAtual.nome,
-                    preco: precoTotal,
-                    precoBase: kitAtual.preco,
-                    descricao: kitAtual.descricao,
-                    personalizacao: { ...personalizacaoAtual },
-                    // 🔥 ALTERAÇÃO AQUI: Incluir cortina apenas se for escavadeira
-                    cortina: cortinaIncluida ? cortinaSelecionada : null,
-                    precoCortina: cortinaIncluida ? PRECO_CORTINA : 0
-                });
-                atualizarCarrinho();
-                mostrarMensagem("Kit personalizado adicionado ao carrinho!");
-            } else {
-                mostrarMensagem("Este kit já está no carrinho!");
-            }
-        }
+    // Procura o kit no carrinho
+    const itemExistente = carrinho.find(
+        item =>
+            item.kitId === kitAtual.id &&
+            JSON.stringify(item.personalizacao) === JSON.stringify(personalizacaoAtual)
+    );
 
-        function atualizarCarrinho() {
-            const lista = document.getElementById("listaCarrinho");
-            lista.innerHTML = "";
-            let total = 0;
+    if (itemExistente) {
 
-            carrinho.forEach((kit, index) => {
-                let itemTexto = `${kit.nome} - R$ ${kit.preco.toFixed(2)}`;
+        itemExistente.quantidade++;
 
-                // Adicionar informação da cortina se houver
-                if (kit.cortina) {
-                    itemTexto += ` (inclui cortina: +R$ ${PRECO_CORTINA},00)`;
-                }
+    } else {
 
-                lista.innerHTML += `
-          <li>
-            ${itemTexto}
-            <button class="btn-remover" onclick="removerDoCarrinho(${index})">×</button>
-          </li>
+        carrinho.push({
+            kitId: kitAtual.id,
+            nome: kitAtual.nome,
+            quantidade: 1,
+
+            precoUnitario: precoTotal,
+
+            precoBase: kitAtual.preco,
+
+            descricao: kitAtual.descricao,
+
+            personalizacao: { ...personalizacaoAtual },
+
+            cortina: cortinaIncluida ? cortinaSelecionada : null,
+
+            precoCortina: cortinaIncluida
+                ? PRECO_CORTINA
+                : 0
+        });
+
+    }
+
+    atualizarCarrinho();
+
+    mostrarMensagem("Kit adicionado ao carrinho!");
+}
+
+       
+
+function atualizarCarrinho() {
+
+    const lista = document.getElementById("listaCarrinho");
+
+    lista.innerHTML = "";
+
+    let total = 0;
+
+    carrinho.forEach((kit, index) => {
+
+        const subtotal =
+            kit.precoUnitario * kit.quantidade;
+
+        let itemTexto = `
+            ${kit.nome}
+            (${kit.quantidade}x)
+            - R$ ${subtotal.toFixed(2)}
         `;
-                total += kit.preco;
-            });
 
-            document.getElementById("total-geral").textContent = `R$ ${total.toFixed(2)}`;
+        if (kit.cortina) {
+            itemTexto += `
+                <br>
+                Cortina: +R$ ${PRECO_CORTINA.toFixed(2)}
+            `;
         }
+
+        lista.innerHTML += `
+            <li>
+                ${itemTexto}
+
+                <div class="acoes-carrinho">
+
+                    <button
+                        onclick="diminuirQuantidade(${index})">
+                        -
+                    </button>
+
+                    <button
+                        onclick="aumentarQuantidade(${index})">
+                        +
+                    </button>
+
+                    <button
+                        class="btn-remover"
+                        onclick="removerDoCarrinho(${index})">
+                        ×
+                    </button>
+
+                </div>
+            </li>
+        `;
+
+        total += subtotal;
+    });
+
+    document.getElementById("total-geral")
+        .textContent =
+        total.toLocaleString(
+            "pt-BR",
+            {
+                style: "currency",
+                currency: "BRL"
+            }
+        );
+}
 
         function removerDoCarrinho(index) {
             carrinho.splice(index, 1);
             atualizarCarrinho();
         }
+
+        function aumentarQuantidade(index) {
+
+    carrinho[index].quantidade++;
+
+    atualizarCarrinho();
+}
+
+function diminuirQuantidade(index) {
+
+    if (carrinho[index].quantidade > 1) {
+
+        carrinho[index].quantidade--;
+
+    } else {
+
+        carrinho.splice(index, 1);
+
+    }
+
+    atualizarCarrinho();
+}
 
         /* =====================================================
            FORMULÁRIO E WHATSAPP
