@@ -159,7 +159,30 @@
 
         </div>
 
-        
+        <!--  CAMPOS DE INFORMAÇÕES DA MÁQUINA COM DROPDOWNS -->
+        <div id="maquina-detalhes" class="maquina-detalhes">
+            <h3>Informações da Máquina</h3>
+            <div class="form-grid">
+                <select id="maquina-marca" required>
+                    <option value="">Selecione a Marca</option>
+                </select>
+                <div class="mensagem-erro" id="erro-maquina-marca">Por favor, selecione a marca</div>
+
+                <select id="maquina-modelo" required>
+                    <option value="">Selecione o Modelo</option>
+                </select>
+                <div class="mensagem-erro" id="erro-maquina-modelo">Por favor, selecione o modelo</div>
+
+                <select id="maquina-ano" required>
+                    <option value="">Selecione o Ano</option>
+
+                </select>
+                <button id="btn-continuar" class="btn-finalizar" style="display:none; margin-top:20px;">
+                    Continuar
+                </button>
+
+                <div class="mensagem-erro" id="erro-maquina-ano">Por favor, selecione o ano</div>
+            </div>
         </div>
     </section>
 
