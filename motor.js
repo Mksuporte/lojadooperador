@@ -1748,7 +1748,7 @@ function enviarParaWhatsApp() {
         const subtotal = quantidade * precoUnitario;
 
        
-        mensagem += `📦 *ITEM ${index + 1}*\n`;
+        mensagem += ` *ITEM ${index + 1}*\n`;
        
 
         mensagem += ` *Kit:* ${kit.nome}\n\n`;
@@ -1804,7 +1804,6 @@ function enviarParaWhatsApp() {
     if (observacoes) {
 
         mensagem += ` *OBSERVAÇÕES*\n`;
-        mensagem += `━━━━━━━━━━━━━━━━━━━━\n\n`;
         mensagem += `${observacoes}\n\n`;
 
     }
