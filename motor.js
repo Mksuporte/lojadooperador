@@ -219,7 +219,7 @@
                     id: "Kit_3_pa_carregadeira",
                     nome: "Kit 3",
                     descricao: "Couro Sport no chão e nos pedais restante todo na pelúcia",
-                    preco: 0,
+                    preco: 1300,
                     imagem: "imagens/kits/pacarregadeira/kit3.jpeg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
@@ -230,7 +230,7 @@
                     id: "Kit_1_moto_niveladora",
                     nome: "Kit 1",
                     descricao: "Pelúcia padrão para moto-niveladora",
-                    preco: 1,
+                    preco: 1300,
                     imagem: "imagens/kits/niveladora/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
@@ -241,7 +241,7 @@
                     id: "Kit_1_trator_esteira",
                     nome: "Kit 1",
                     descricao: "Kit 1",
-                    preco: 1,
+                    preco: 1300,
                     imagem: "imagens/kits/tratoresteira/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
