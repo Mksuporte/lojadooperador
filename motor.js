@@ -225,6 +225,28 @@
                 }
             ],
 
+            "Moto-Niveladora": [
+                {
+                    id: "Kit_1_moto_niveladora",
+                    nome: "Kit 1",
+                    descricao: "Todas as partes na pelúcia (Xinil)",
+                    preco: 1300,
+                    imagem: "imagens/kits/niveladora/kit_1_pelucia.jpg",
+                    partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
+                }
+            ],
+
+            "Trator-Esteira": [
+                {
+                    id: "Kit_1_trator_esteira",
+                    nome: "Kit 1",
+                    descricao: "Todas as partes na pelúcia (Xinil)",
+                    preco: 1300,
+                    imagem: "imagens/kits/tratoresteira/kit_1_pelucia.jpg",
+                    partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
+                }
+            ],
+
             "Trator": [/*
                 {
                     id: "economico_trator",
@@ -278,28 +300,7 @@
                     imagem: "imagens/kits/minicarregadeira/kit_basico.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
-           */ ],
-           "Moto-Niveladora": [
-                {
-                    id: "Kit_1_moto_niveladora",
-                    nome: "Kit 1",
-                    descricao: "Todas as partes na pelúcia (Xinil)",
-                    preco: 1300,
-                    imagem: "imagens/kits/niveladora/kit_1_pelucia.jpg",
-                    partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
-                }
-            ],
-
-            "Trator-Esteira": [
-                {
-                    id: "Kit_1_trator_esteira",
-                    nome: "Kit 1",
-                    descricao: "Todas as partes na pelúcia (Xinil)",
-                    preco: 1300,
-                    imagem: "imagens/kits/tratoresteira/kit_1_pelucia.jpg",
-                    partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
-                }
-            ]
+           */ ]
         };
         /* =====================================================
            DADOS DAS MÁQUINAS (SIMPLIFICADO SEM LINHA)
