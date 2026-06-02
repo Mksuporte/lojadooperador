@@ -759,7 +759,7 @@
       <div class="swiper-slide">
         <div class="slide-content">
           <img src="imagens/sem-imagem.png">
-               alt="Em breve" class="slide-img">
+              
           <div class="slide-caption">
             <h3>Kits em Desenvolvimento</h3>
             <p>Em breve teremos kits específicos para ${maquina}</p>
