@@ -1586,7 +1586,7 @@ function diminuirQuantidade(index) {
             numero: numero
         };
         
-        enviarParaWhatsApp(dadosParaEnvio);
+        enviarParaWhatsApp();
     }
 }
 
@@ -1728,34 +1728,9 @@ function converterParaMaiusculo(event) {
 // <input type="text" id="bairro" oninput="converterParaMaiusculo(event)">
 // <input type="text" id="rua" oninput="converterParaMaiusculo(event)">
 
-// 6. Sua função enviarParaWhatsApp atualizada para receber os dados formatados
-function enviarParaWhatsApp(dados) {
-    // Montar mensagem com dados formatados
-    const mensagem = `*NOVO CADASTRO*
-    
-*Nome:* ${dados.nome}
-*CPF/CNPJ:* ${dados.cpf_cnpj}
-*Telefone:* ${dados.telefone}
-*CEP:* ${dados.cep}
-*Estado:* ${dados.estado}
-*Cidade:* ${dados.cidade}
-*Bairro:* ${dados.bairro}
-*Rua:* ${dados.rua}
-*Número:* ${dados.numero}`;
 
-    // Codificar a mensagem para URL
-    const mensagemCodificada = encodeURIComponent(mensagem);
-    
-    // Substitua pelo seu número de WhatsApp (com código do país)
-    const numeroWhatsApp = "5511999999999";
-    
-    // Criar link do WhatsApp
-    const url = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
-    
-    // Abrir WhatsApp
-    window.open(url, '_blank');
-}
 function enviarParaWhatsApp() {
+     console.log("FUNÇÃO CHAMADA");
 
     let mensagem = `🚜 *NOVO PEDIDO - LOJA DO OPERADOR*%0A%0A`;
 
@@ -1872,6 +1847,7 @@ function enviarParaWhatsApp() {
     const url =
         `https://wa.me/${telefoneWhatsApp}?text=${mensagem}`;
 
+        console.log(url);
     window.open(url, "_blank");
 
     carrinho = [];
