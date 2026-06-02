@@ -279,7 +279,7 @@
                 }
             ],
 
-            "Trator": [
+            "Trator": [/*
                 {
                     id: "economico_trator",
                     nome: "Kit Econômico",
@@ -288,9 +288,9 @@
                     imagem: "imagens/kits/trator/kit_economico.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
-            ],
+            */],
 
-            "Pulverizador": [
+            "Pulverizador": [/*
                 {
                     id: "basico_pulverizador",
                     nome: "Kit Pulverizador",
@@ -299,9 +299,9 @@
                     imagem: "imagens/kits/pulverizador/kit_basico.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
-            ],
+           */ ],
 
-            "Colheitadeira": [
+            "Colheitadeira": [/*
                 {
                     id: "premium_colheitadeira",
                     nome: "Kit Premium Colheitadeira",
@@ -310,9 +310,9 @@
                     imagem: "imagens/kits/colheitadeira/kit_premium.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
-            ],
+            */],
 
-            "Mini-Escavadeira": [
+            "Mini-Escavadeira": [/*
                 {
                     id: "economico_mini",
                     nome: "Kit Econômico Mini",
@@ -321,9 +321,9 @@
                     imagem: "imagens/kits/mini/kit_economico.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
-            ],
+           */ ],
 
-            "Mini-Carregadeira": [
+            "Mini-Carregadeira": [/*
                 {
                     id: "basico_minicarregadeira",
                     nome: "Kit Básico",
@@ -332,7 +332,7 @@
                     imagem: "imagens/kits/minicarregadeira/kit_basico.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
-            ]
+           */ ]
         };
         /* =====================================================
            DADOS DAS MÁQUINAS (SIMPLIFICADO SEM LINHA)
