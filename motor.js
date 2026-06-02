@@ -231,7 +231,7 @@
                     nome: "Kit 1",
                     descricao: "Pelúcia padrão para moto-niveladora",
                     preco: 1,
-                    imagem: "imagens/kits/niveladora/kit_basico.jpg",
+                    imagem: "imagens/kits/niveladora/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 },
                 {
