@@ -701,7 +701,7 @@
             // Inicializar Swiper das máquinas
             new Swiper(".maquinas-swiper", {
                 loop: true,
-                slidesPerView: 1,
+                slidesPerView: 2,
                 spaceBetween: 20,
                 centeredSlides: true,
                 navigation: {
@@ -710,9 +710,9 @@
                 },
                 breakpoints: {
                      /* quantidade de icones das maquinas 4 */
-                    768: { slidesPerView: 3, spaceBetween: 50 },
+                    768: { slidesPerView: 2, spaceBetween: 50 },
                     /* quantidade de icones das maquinas 5 */
-                    1024: { slidesPerView: 3, spaceBetween: 100 }
+                    1024: { slidesPerView: 2, spaceBetween: 100 }
                 }
             });
         }
