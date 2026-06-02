@@ -1733,11 +1733,11 @@ function enviarParaWhatsApp() {
 
     console.log("FUNÇÃO CHAMADA");
 
-    let mensagem = `🚜 *NOVO PEDIDO - LOJA DO OPERADOR*\n\n`;
+    let mensagem = `*[NOVO PEDIDO - LOJA DO OPERADOR]*\n\n`;
 
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-    mensagem += `📦 *ITENS DO PEDIDO*\n`;
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+    mensagem += `━━━━━━━━━━━━━━━━━\n`;
+    mensagem += ` *[ITENS DO PEDIDO]*\n`;
+    mensagem += `━━━━━━━━━━━━━━━━\n\n`;
 
     carrinho.forEach((kit, index) => {
 
@@ -1793,7 +1793,7 @@ function enviarParaWhatsApp() {
 
     mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
     mensagem += `💵 *TOTAL DO PEDIDO*\n`;
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━\n`;
     mensagem += `R$ ${total.toFixed(2)}\n\n`;
 
     const observacoes = document
@@ -1803,16 +1803,16 @@ function enviarParaWhatsApp() {
 
     if (observacoes) {
 
-        mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        mensagem += `━━━━━━━━━━━━━━━━━━━━\n`;
         mensagem += `📝 *OBSERVAÇÕES*\n`;
-        mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+        mensagem += `━━━━━━━━━━━━━━━━━━━━\n\n`;
         mensagem += `${observacoes}\n\n`;
 
     }
 
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━\n`;
     mensagem += `👤 *DADOS DO CLIENTE*\n`;
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━\n\n`;
 
     mensagem += `Nome: ${document.getElementById('nome').value}\n`;
     mensagem += `CPF/CNPJ: ${document.getElementById('cpf_cnpj').value}\n`;
