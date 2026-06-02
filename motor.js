@@ -1293,6 +1293,7 @@
            CARRINHO
            ===================================================== */
         function adicionarAoCarrinho() {
+
     if (!kitAtual) {
         return mostrarMensagem("Selecione um kit primeiro!");
     }
@@ -1308,22 +1309,45 @@
         cortinaIncluida = true;
     }
 
-    // Procura o kit no carrinho
-    const itemExistente = carrinho.find(
-        item =>
-            item.kitId === kitAtual.id &&
-            JSON.stringify(item.personalizacao) === JSON.stringify(personalizacaoAtual)
+    // Gera uma cópia REAL da personalização
+    const personalizacaoCopia = JSON.parse(
+        JSON.stringify(personalizacaoAtual)
     );
+
+    // Procura item IGUAL
+    const itemExistente = carrinho.find(item => {
+
+        return (
+            item.kitId === kitAtual.id &&
+            item.maquina === maquinaSelecionada &&
+            JSON.stringify(item.personalizacao) ===
+            JSON.stringify(personalizacaoCopia)
+        );
+
+    });
 
     if (itemExistente) {
 
+        // Mesmo kit + mesmas cores
         itemExistente.quantidade++;
 
     } else {
 
+        // Kit novo ou cores diferentes
         carrinho.push({
+
             kitId: kitAtual.id,
+
             nome: kitAtual.nome,
+
+            maquina: maquinaSelecionada,
+
+            marca: document.getElementById("maquina-marca").value,
+
+            modelo: document.getElementById("maquina-modelo").value,
+
+            ano: document.getElementById("maquina-ano").value,
+
             quantidade: 1,
 
             precoUnitario: precoTotal,
@@ -1332,9 +1356,11 @@
 
             descricao: kitAtual.descricao,
 
-            personalizacao: { ...personalizacaoAtual },
+            personalizacao: personalizacaoCopia,
 
-            cortina: cortinaIncluida ? cortinaSelecionada : null,
+            cortina: cortinaIncluida
+                ? cortinaSelecionada
+                : null,
 
             precoCortina: cortinaIncluida
                 ? PRECO_CORTINA
@@ -1346,8 +1372,8 @@
     atualizarCarrinho();
 
     mostrarMensagem("Kit adicionado ao carrinho!");
-}
 
+}
        
 
 function atualizarCarrinho() {
