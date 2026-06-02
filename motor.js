@@ -789,7 +789,7 @@
             <button class="btn-selecionar-kit"
                     data-kit="${kit.id}"
                     data-maquina="${maquina}">
-              Selecionar Este Kit
+              Click Aqui Escolher este Kit
             </button>
           </div>
         </div>
