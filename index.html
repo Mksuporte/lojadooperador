@@ -274,25 +274,13 @@
            onkeydown="bloquearLetras(event)">
     <div class="mensagem-erro" id="erro-numero">Por favor, insira apenas números</div>
 
-   <label>Detalhes e Observações do Pedido</label>
+  <label for="observacoes">Observações do Pedido</label>
 
 <textarea
     id="observacoes"
     class="campo-texto"
-    rows="8"
-    placeholder="Exemplo:
-
-Banco grande dela, olhar foto.
-
-Medidas dos apoios de braço:
-Largura: 7 cm
-Comprimento: 36,5 cm
-
-Bordado:
-Logo da empresa no banco e no chão.
-
-Outras observações:
-..."
+    rows="6"
+    placeholder="Ex: Deixe aqui sua duvido ou sugestão, ou maquina, kit, nao encontrado..."
 ></textarea>
 
     <button type="button" onclick="validarFormulario()" id="btn-enviar-whatsapp">📦 Enviar Pedido via WhatsApp</button>

@@ -1730,13 +1730,14 @@ function converterParaMaiusculo(event) {
 
 
 function enviarParaWhatsApp() {
-     console.log("FUNÇÃO CHAMADA");
 
-    let mensagem = `🚜 *NOVO PEDIDO - LOJA DO OPERADOR*%0A%0A`;
+    console.log("FUNÇÃO CHAMADA");
 
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
-    mensagem += `📦 *ITENS DO PEDIDO*%0A`;
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
+    let mensagem = `🚜 *NOVO PEDIDO - LOJA DO OPERADOR*\n\n`;
+
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+    mensagem += `📦 *ITENS DO PEDIDO*\n`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
     carrinho.forEach((kit, index) => {
 
@@ -1744,62 +1745,57 @@ function enviarParaWhatsApp() {
         const precoUnitario = kit.precoUnitario || kit.preco || 0;
         const subtotal = quantidade * precoUnitario;
 
-        mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
-        mensagem += `📦 *ITEM ${index + 1}*%0A`;
-        mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
+        mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        mensagem += `📦 *ITEM ${index + 1}*\n`;
+        mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
-        mensagem += `🎁 *Kit:* ${kit.nome}%0A%0A`;
+        mensagem += `🎁 *Kit:* ${kit.nome}\n\n`;
 
-        mensagem += `🚜 *MÁQUINA*%0A`;
-        mensagem += `Tipo: ${kit.maquina || '-'}%0A`;
-        mensagem += `Marca: ${kit.marca || '-'}%0A`;
-        mensagem += `Modelo: ${kit.modelo || '-'}%0A`;
-        mensagem += `Ano: ${kit.ano || '-'}%0A%0A`;
+        mensagem += `🚜 *MÁQUINA*\n`;
+        mensagem += `Tipo: ${kit.maquina || '-'}\n`;
+        mensagem += `Marca: ${kit.marca || '-'}\n`;
+        mensagem += `Modelo: ${kit.modelo || '-'}\n`;
+        mensagem += `Ano: ${kit.ano || '-'}\n\n`;
 
-        mensagem += `📊 *QUANTIDADE*%0A`;
-        mensagem += `${quantidade}%0A%0A`;
+        mensagem += `📊 *QUANTIDADE*\n`;
+        mensagem += `${quantidade}\n\n`;
 
-        mensagem += `🎨 *PERSONALIZAÇÃO*%0A`;
+        mensagem += `🎨 *PERSONALIZAÇÃO*\n`;
 
         if (kit.personalizacao?.chao?.corNome) {
-            mensagem += `• Couro: ${kit.personalizacao.chao.corNome}%0A`;
+            mensagem += `• Couro: ${kit.personalizacao.chao.corNome}\n`;
         }
 
         if (kit.personalizacao?.suede_partes?.corNome) {
-            mensagem += `• Suede: ${kit.personalizacao.suede_partes.corNome}%0A`;
+            mensagem += `• Pelúcia: ${kit.personalizacao.suede_partes.corNome}\n`;
         }
 
         if (kit.personalizacao?.kit?.corNome) {
-            mensagem += `• Xinil: ${kit.personalizacao.kit.corNome}%0A`;
+            mensagem += `• Xinil: ${kit.personalizacao.kit.corNome}\n`;
         }
 
         if (kit.cortina) {
-            mensagem += `• Cortina: ${kit.cortina}%0A`;
+            mensagem += `• Cortina: ${kit.cortina}\n`;
         }
 
-        mensagem += `%0A`;
+        mensagem += `\n`;
 
-        mensagem += `💰 Valor Unitário: R$ ${precoUnitario.toFixed(2)}%0A`;
-        mensagem += `💰 Subtotal: R$ ${subtotal.toFixed(2)}%0A%0A`;
+        mensagem += `💰 Valor Unitário: R$ ${precoUnitario.toFixed(2)}\n`;
+        mensagem += `💰 Subtotal: R$ ${subtotal.toFixed(2)}\n\n`;
 
     });
 
-    // TOTAL
     const total = carrinho.reduce((sum, kit) => {
-
         const quantidade = kit.quantidade || 1;
         const precoUnitario = kit.precoUnitario || kit.preco || 0;
-
         return sum + (quantidade * precoUnitario);
-
     }, 0);
 
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
-    mensagem += `💵 *TOTAL DO PEDIDO*%0A`;
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
-    mensagem += `R$ ${total.toFixed(2)}%0A%0A`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+    mensagem += `💵 *TOTAL DO PEDIDO*\n`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+    mensagem += `R$ ${total.toFixed(2)}\n\n`;
 
-    // OBSERVAÇÕES
     const observacoes = document
         .getElementById("observacoes")
         .value
@@ -1807,51 +1803,47 @@ function enviarParaWhatsApp() {
 
     if (observacoes) {
 
-        mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
-        mensagem += `📝 *OBSERVAÇÕES*%0A`;
-        mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
-
-        mensagem += `${observacoes}%0A%0A`;
+        mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        mensagem += `📝 *OBSERVAÇÕES*\n`;
+        mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+        mensagem += `${observacoes}\n\n`;
 
     }
 
-    // CLIENTE
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
-    mensagem += `👤 *DADOS DO CLIENTE*%0A`;
-    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+    mensagem += `👤 *DADOS DO CLIENTE*\n`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
-    mensagem += `Nome: ${document.getElementById('nome').value}%0A`;
-    mensagem += `CPF/CNPJ: ${document.getElementById('cpf_cnpj').value}%0A`;
+    mensagem += `Nome: ${document.getElementById('nome').value}\n`;
+    mensagem += `CPF/CNPJ: ${document.getElementById('cpf_cnpj').value}\n`;
 
     const inscricaoEstadual =
         document.getElementById('inscricao_estadual').value;
 
     if (inscricaoEstadual) {
-
-        mensagem += `Inscrição Estadual: ${inscricaoEstadual}%0A`;
-
+        mensagem += `Inscrição Estadual: ${inscricaoEstadual}\n`;
     }
 
-    mensagem += `Telefone: ${document.getElementById('telefone').value}%0A%0A`;
+    mensagem += `Telefone: ${document.getElementById('telefone').value}\n\n`;
 
-    mensagem += `📍 *ENDEREÇO*%0A`;
-    mensagem += `CEP: ${document.getElementById('cep').value}%0A`;
-    mensagem += `Estado: ${document.getElementById('estado').value}%0A`;
-    mensagem += `Cidade: ${document.getElementById('cidade').value}%0A`;
-    mensagem += `Bairro: ${document.getElementById('bairro').value}%0A`;
-    mensagem += `Rua: ${document.getElementById('rua').value}%0A`;
-    mensagem += `Número: ${document.getElementById('numero').value}%0A`;
+    mensagem += `📍 *ENDEREÇO*\n`;
+    mensagem += `CEP: ${document.getElementById('cep').value}\n`;
+    mensagem += `Estado: ${document.getElementById('estado').value}\n`;
+    mensagem += `Cidade: ${document.getElementById('cidade').value}\n`;
+    mensagem += `Bairro: ${document.getElementById('bairro').value}\n`;
+    mensagem += `Rua: ${document.getElementById('rua').value}\n`;
+    mensagem += `Número: ${document.getElementById('numero').value}\n`;
 
     const telefoneWhatsApp = "5543999064226";
 
     const url =
-        `https://wa.me/${telefoneWhatsApp}?text=${mensagem}`;
+        `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
 
-        console.log(url);
+    console.log(url);
+
     window.open(url, "_blank");
 
     carrinho = [];
-
     atualizarCarrinho();
 
     mostrarMensagem(
