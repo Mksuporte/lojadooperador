@@ -702,7 +702,7 @@
             new Swiper(".maquinas-swiper", {
                 loop: true,
                 slidesPerView: 1,
-                spaceBetween: 3,
+                spaceBetween: 20,
                 centeredSlides: true,
                 navigation: {
                     nextEl: ".maquinas-next",
@@ -710,7 +710,8 @@
                 },
                 breakpoints: {
                     768: { slidesPerView: 4, spaceBetween: 20 },
-                    1024: { slidesPerView: 5, spaceBetween: 30 }
+                    /* quantidade de icones das maquinas */
+                    1024: { slidesPerView: 3, spaceBetween: 30 }
                 }
             });
         }
