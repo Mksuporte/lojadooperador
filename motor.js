@@ -808,7 +808,7 @@
                 swiperKits = new Swiper(".main-swiper", {
                     loop: false,
                     slidesPerView: 1,
-                    spaceBetween: 20,
+                    spaceBetween: 10,
                     centeredSlides: false,
                     pagination: { el: ".swiper-pagination", clickable: true },
                     navigation: {
