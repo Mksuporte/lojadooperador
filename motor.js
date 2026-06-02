@@ -710,9 +710,9 @@
                 },
                 breakpoints: {
                      /* quantidade de icones das maquinas 4 */
-                    768: { slidesPerView: 3, spaceBetween: 20 },
+                    768: { slidesPerView: 3, spaceBetween: 50 },
                     /* quantidade de icones das maquinas 5 */
-                    1024: { slidesPerView: 3, spaceBetween: 30 }
+                    1024: { slidesPerView: 3, spaceBetween: 100 }
                 }
             });
         }
