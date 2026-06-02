@@ -1748,31 +1748,43 @@ function enviarParaWhatsApp(dados) {
     mensagem += `*ITENS DO PEDIDO:*%0A`;
     
     carrinho.forEach((kit, index) => {
-        mensagem += `${index + 1}. ${kit.nome} - R$ ${kit.preco.toFixed(2)}%0A`;
-        
-        // Personalização do kit
-        if (kit.personalizacao.chao && kit.personalizacao.chao.corNome) {
-            mensagem += `  Couro: ${obterNomeParte('chao')}: ${kit.personalizacao.chao.corNome}%0A`;
-        }
-        
-        if (kit.personalizacao.suede_partes && kit.personalizacao.suede_partes.corNome) {
-            mensagem += `  Suede: ${kit.personalizacao.suede_partes.nomeExibicao || obterNomeParte('suede_partes')}: ${kit.personalizacao.suede_partes.corNome}%0A`;
-        }
-        
-        if (kit.personalizacao.kit && kit.personalizacao.kit.corNome) {
-            mensagem += `  Xinil: ${kit.personalizacao.kit.corNome}%0A`;
-        }
-        
-        // Cortina
-        if (kit.cortina) {
-            mensagem += `  Cortina: ${kit.cortina} (+ R$ ${PRECO_CORTINA},00)%0A`;
-        }
-        
-        mensagem += `%0A`;
-    });
+
+    const quantidade = kit.quantidade || 1;
+    const precoUnitario = kit.precoUnitario || kit.preco || 0;
+    const subtotal = quantidade * precoUnitario;
+
+    mensagem += `${index + 1}. ${kit.nome}%0A`;
+    mensagem += `  Quantidade: ${quantidade}%0A`;
+    mensagem += `  Valor Unitário: R$ ${precoUnitario.toFixed(2)}%0A`;
+    mensagem += `  Subtotal: R$ ${subtotal.toFixed(2)}%0A`;
+
+    // Personalização
+    if (kit.personalizacao?.chao?.corNome) {
+        mensagem += `  Couro: ${kit.personalizacao.chao.corNome}%0A`;
+    }
+
+    if (kit.personalizacao?.suede_partes?.corNome) {
+        mensagem += `  Suede: ${kit.personalizacao.suede_partes.corNome}%0A`;
+    }
+
+    if (kit.personalizacao?.kit?.corNome) {
+        mensagem += `  Xinil: ${kit.personalizacao.kit.corNome}%0A`;
+    }
+
+    if (kit.cortina) {
+        mensagem += `  Cortina: ${kit.cortina}%0A`;
+    }
+
+    mensagem += `%0A`;
+});
 
     // Total
-    const total = carrinho.reduce((sum, kit) => sum + kit.preco, 0);
+    const total = carrinho.reduce((sum, kit) => {
+    const quantidade = kit.quantidade || 1;
+    const precoUnitario = kit.precoUnitario || kit.preco || 0;
+
+    return sum + (quantidade * precoUnitario);
+}, 0);
     mensagem += `*TOTAL: R$ ${total.toFixed(2)}*%0A%0A`;
 
     // Dados do cliente
