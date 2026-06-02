@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Loja do Operador</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        .pagina-contato {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+
+        .titulo-contato {
+            text-align: center;
+            color: var(--cor-secundaria);
+            margin-bottom: 15px;
+        }
+
+        .subtitulo-contato {
+            text-align: center;
+            color: var(--texto-claro);
+            margin-bottom: 40px;
+        }
+
+        .cards-contato {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card-contato {
+            background: var(--cor-terciaria);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .card-contato:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-contato h3 {
+            color: var(--cor-secundaria);
+            margin-bottom: 15px;
+        }
+
+        .card-contato p {
+            color: var(--texto-claro);
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: var(--cor-secundaria);
+            color: #000;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .sobre-empresa {
+            margin-top: 40px;
+            background: var(--cor-terciaria);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--borda);
+        }
+
+        .sobre-empresa h2 {
+            color: var(--cor-secundaria);
+            margin-bottom: 15px;
+        }
+
+        .sobre-empresa p {
+            color: var(--texto-claro);
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <nav class="menu-topo">
+        <div class="menu-logo">
+            <img src="imagens/logo.png" class="logo-menu" alt="Logo">
+            <span class="nome-site">Loja do Operador</span>
+        </div>
+
+        <ul class="menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#kits">Kits</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <main class="pagina-contato">
+
+        <h1 class="titulo-contato">Entre em Contato</h1>
+
+        <p class="subtitulo-contato">
+            Estamos prontos para ajudar você a escolher o kit ideal para sua máquina.
+        </p>
+
+        <div class="cards-contato">
+
+            <div class="card-contato">
+                <h3>📱 WhatsApp</h3>
+                <p>Atendimento rápido e direto.</p>
+
+                <a href="https://wa.me/5543999064226"
+                   target="_blank"
+                   class="btn-whatsapp">
+                    Falar Agora
+                </a>
+            </div>
+
+            <div class="card-contato">
+                <h3>🚚 Entrega</h3>
+                <p>Enviamos para todo o Brasil com segurança.</p>
+            </div>
+
+            <div class="card-contato">
+                <h3>⚙️ Suporte</h3>
+                <p>Auxiliamos na escolha do kit correto para sua máquina.</p>
+            </div>
+
+        </div>
+
+        <section class="sobre-empresa">
+            <h2>Sobre a Loja do Operador</h2>
+
+            <p>
+                Trabalhamos com internas personalizadas para máquinas agrícolas
+                e de construção. Nosso objetivo é fornecer produtos de qualidade,
+                atendimento especializado e suporte durante todo o processo de compra.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <p>© 2026 Loja do Operador — Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
