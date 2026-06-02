@@ -229,7 +229,7 @@
                 {
                     id: "Kit_1_moto_niveladora",
                     nome: "Kit 1",
-                    descricao: "Pelúcia padrão para moto-niveladora",
+                    descricao: "Todas as partes na pelúcia (Xinil)",
                     preco: 1300,
                     imagem: "imagens/kits/niveladora/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
@@ -240,7 +240,7 @@
                 {
                     id: "Kit_1_trator_esteira",
                     nome: "Kit 1",
-                    descricao: "Kit 1",
+                    descricao: "Todas as partes na pelúcia (Xinil)",
                     preco: 1300,
                     imagem: "imagens/kits/tratoresteira/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
