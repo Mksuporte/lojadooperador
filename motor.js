@@ -1757,9 +1757,11 @@ function enviarParaWhatsApp(dados) {
 }
 function enviarParaWhatsApp() {
 
-    let mensagem = `*NOVO PEDIDO - LOJA DO OPERADOR*%0A%0A`;
+    let mensagem = `🚜 *NOVO PEDIDO - LOJA DO OPERADOR*%0A%0A`;
 
-    mensagem += `*ITENS DO PEDIDO:*%0A%0A`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
+    mensagem += `📦 *ITENS DO PEDIDO*%0A`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
 
     carrinho.forEach((kit, index) => {
 
@@ -1767,36 +1769,44 @@ function enviarParaWhatsApp() {
         const precoUnitario = kit.precoUnitario || kit.preco || 0;
         const subtotal = quantidade * precoUnitario;
 
-        mensagem += `${index + 1}. ${kit.nome}%0A`;
+        mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
+        mensagem += `📦 *ITEM ${index + 1}*%0A`;
+        mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
 
-        // DADOS DA MÁQUINA SALVOS NO MOMENTO DA INCLUSÃO
-        mensagem += `  Máquina: ${kit.maquina || '-'}%0A`;
-        mensagem += `  Marca: ${kit.marca || '-'}%0A`;
-        mensagem += `  Modelo: ${kit.modelo || '-'}%0A`;
-        mensagem += `  Ano: ${kit.ano || '-'}%0A`;
+        mensagem += `🎁 *Kit:* ${kit.nome}%0A%0A`;
 
-        mensagem += `  Quantidade: ${quantidade}%0A`;
-        mensagem += `  Valor Unitário: R$ ${precoUnitario.toFixed(2)}%0A`;
-        mensagem += `  Subtotal: R$ ${subtotal.toFixed(2)}%0A`;
+        mensagem += `🚜 *MÁQUINA*%0A`;
+        mensagem += `Tipo: ${kit.maquina || '-'}%0A`;
+        mensagem += `Marca: ${kit.marca || '-'}%0A`;
+        mensagem += `Modelo: ${kit.modelo || '-'}%0A`;
+        mensagem += `Ano: ${kit.ano || '-'}%0A%0A`;
 
-        // PERSONALIZAÇÕES
+        mensagem += `📊 *QUANTIDADE*%0A`;
+        mensagem += `${quantidade}%0A%0A`;
+
+        mensagem += `🎨 *PERSONALIZAÇÃO*%0A`;
+
         if (kit.personalizacao?.chao?.corNome) {
-            mensagem += `  Couro: ${kit.personalizacao.chao.corNome}%0A`;
+            mensagem += `• Couro: ${kit.personalizacao.chao.corNome}%0A`;
         }
 
         if (kit.personalizacao?.suede_partes?.corNome) {
-            mensagem += `  Suede: ${kit.personalizacao.suede_partes.corNome}%0A`;
+            mensagem += `• Suede: ${kit.personalizacao.suede_partes.corNome}%0A`;
         }
 
         if (kit.personalizacao?.kit?.corNome) {
-            mensagem += `  Xinil: ${kit.personalizacao.kit.corNome}%0A`;
+            mensagem += `• Xinil: ${kit.personalizacao.kit.corNome}%0A`;
         }
 
         if (kit.cortina) {
-            mensagem += `  Cortina: ${kit.cortina}%0A`;
+            mensagem += `• Cortina: ${kit.cortina}%0A`;
         }
 
         mensagem += `%0A`;
+
+        mensagem += `💰 Valor Unitário: R$ ${precoUnitario.toFixed(2)}%0A`;
+        mensagem += `💰 Subtotal: R$ ${subtotal.toFixed(2)}%0A%0A`;
+
     });
 
     // TOTAL
@@ -1809,20 +1819,47 @@ function enviarParaWhatsApp() {
 
     }, 0);
 
-    mensagem += `*TOTAL: R$ ${total.toFixed(2)}*%0A%0A`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
+    mensagem += `💵 *TOTAL DO PEDIDO*%0A`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
+    mensagem += `R$ ${total.toFixed(2)}%0A%0A`;
 
-    // DADOS DO CLIENTE
-    mensagem += `*DADOS DO CLIENTE:*%0A`;
+    // OBSERVAÇÕES
+    const observacoes = document
+        .getElementById("observacoes")
+        .value
+        .trim();
+
+    if (observacoes) {
+
+        mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
+        mensagem += `📝 *OBSERVAÇÕES*%0A`;
+        mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
+
+        mensagem += `${observacoes}%0A%0A`;
+
+    }
+
+    // CLIENTE
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A`;
+    mensagem += `👤 *DADOS DO CLIENTE*%0A`;
+    mensagem += `━━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
+
     mensagem += `Nome: ${document.getElementById('nome').value}%0A`;
     mensagem += `CPF/CNPJ: ${document.getElementById('cpf_cnpj').value}%0A`;
 
-    const inscricaoEstadual = document.getElementById('inscricao_estadual').value;
+    const inscricaoEstadual =
+        document.getElementById('inscricao_estadual').value;
 
     if (inscricaoEstadual) {
+
         mensagem += `Inscrição Estadual: ${inscricaoEstadual}%0A`;
+
     }
 
-    mensagem += `Telefone: ${document.getElementById('telefone').value}%0A`;
+    mensagem += `Telefone: ${document.getElementById('telefone').value}%0A%0A`;
+
+    mensagem += `📍 *ENDEREÇO*%0A`;
     mensagem += `CEP: ${document.getElementById('cep').value}%0A`;
     mensagem += `Estado: ${document.getElementById('estado').value}%0A`;
     mensagem += `Cidade: ${document.getElementById('cidade').value}%0A`;
@@ -1832,9 +1869,10 @@ function enviarParaWhatsApp() {
 
     const telefoneWhatsApp = "5543999064226";
 
-    const url = `https://wa.me/${telefoneWhatsApp}?text=${mensagem}`;
+    const url =
+        `https://wa.me/${telefoneWhatsApp}?text=${mensagem}`;
 
-    window.open(url, '_blank');
+    window.open(url, "_blank");
 
     carrinho = [];
 
