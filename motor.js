@@ -1735,7 +1735,7 @@ function enviarParaWhatsApp() {
 
     console.log("FUNÇÃO CHAMADA");
 
-    let mensagem = `* ✅NOVO PEDIDO - LOJA DO OPERADOR*\n\n`;
+    let mensagem = `* >--> NOVO PEDIDO LOJA DO OPERADOR <--<*\n\n`;
 
    
     mensagem += ` *ITENS DO PEDIDO*\n`;
