@@ -233,22 +233,6 @@
                     preco: 1,
                     imagem: "imagens/kits/niveladora/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
-                },
-                {
-                    id: "Kit_2_moto_niveladora",
-                    nome: "Kit 2",
-                    descricao: "Pelúcia padrão para moto-niveladora",
-                    preco: 1,
-                    imagem: "imagens/kits/niveladora/kit_basico.jpg",
-                    partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
-                },
-                {
-                    id: "Kit_3_moto_niveladora",
-                    nome: "Kit 3",
-                    descricao: "Pelúcia padrão para moto-niveladora",
-                    preco: 1,
-                    imagem: "imagens/kits/niveladora/kit_basico.jpg",
-                    partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
             ],
 
@@ -258,23 +242,7 @@
                     nome: "Kit 1",
                     descricao: "Kit 1",
                     preco: 1,
-                    imagem: "imagens/kits/tratoresteira/kit1.jpg",
-                    partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
-                },
-                {
-                    id: "Kit_2_trator_esteira",
-                    nome: "Kit 2",
-                    descricao: "Pelúcia padrão para moto-niveladora",
-                    preco: 1,
-                    imagem: "imagens/kits/tratoresteira/kit_basico.jpg",
-                    partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
-                },
-                {
-                    id: "Kit_3_trator_esteira",
-                    nome: "Kit 3",
-                    descricao: "Pelúcia padrão para moto-niveladora",
-                    preco: 1,
-                    imagem: "imagens/kits/niveladora/kit_basico.jpg",
+                    imagem: "imagens/kits/tratoresteira/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
             ],
