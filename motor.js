@@ -709,8 +709,9 @@
                     prevEl: ".maquinas-prev",
                 },
                 breakpoints: {
-                    768: { slidesPerView: 4, spaceBetween: 20 },
-                    /* quantidade de icones das maquinas */
+                     /* quantidade de icones das maquinas 4 */
+                    768: { slidesPerView: 3, spaceBetween: 20 },
+                    /* quantidade de icones das maquinas 5 */
                     1024: { slidesPerView: 3, spaceBetween: 30 }
                 }
             });
