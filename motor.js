@@ -702,7 +702,7 @@
             new Swiper(".maquinas-swiper", {
                 loop: true,
                 slidesPerView: 1,
-                spaceBetween: 20,
+                spaceBetween: 3,
                 centeredSlides: true,
                 navigation: {
                     nextEl: ".maquinas-next",
