@@ -359,6 +359,12 @@
             list-style: none;
             margin-bottom: 1.5rem;
         }
+        /* ====== TOTAL DO CARRINHO ====== */
+#total-geral {
+    color: var(--cor-secundaria);
+    font-size: 1.6rem;
+    font-weight: bold;
+}
 
         /* ===========================
    NOVO LAYOUT DO CARRINHO
