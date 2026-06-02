@@ -756,7 +756,7 @@
                 container.innerHTML = `
       <div class="swiper-slide">
         <div class="slide-content">
-          <img src="https://via.placeholder.com/400x300/333/fff?text=Kits+em+breve"
+          <img src="imagens/sem-imagem.png">
                alt="Em breve" class="slide-img">
           <div class="slide-caption">
             <h3>Kits em Desenvolvimento</h3>
