@@ -1755,70 +1755,69 @@ function enviarParaWhatsApp(dados) {
     // Abrir WhatsApp
     window.open(url, '_blank');
 }
-
-        function enviarParaWhatsApp() {
-    const marca = document.getElementById("maquina-marca").value;
-    const modelo = document.getElementById("maquina-modelo").value;
-    const ano = document.getElementById("maquina-ano").value;
+function enviarParaWhatsApp() {
 
     let mensagem = `*NOVO PEDIDO - LOJA DO OPERADOR*%0A%0A`;
 
-    // Dados da máquina
-    mensagem += `*MÁQUINA:*%0A`;
-    mensagem += `Tipo: ${maquinaSelecionada}%0A`;
-    mensagem += `Marca: ${marca}%0A`;
-    mensagem += `Modelo: ${modelo}%0A`;
-    mensagem += `Ano: ${ano}%0A%0A`;
+    mensagem += `*ITENS DO PEDIDO:*%0A%0A`;
 
-    // Itens do pedido
-    mensagem += `*ITENS DO PEDIDO:*%0A`;
-    
     carrinho.forEach((kit, index) => {
 
-    const quantidade = kit.quantidade || 1;
-    const precoUnitario = kit.precoUnitario || kit.preco || 0;
-    const subtotal = quantidade * precoUnitario;
+        const quantidade = kit.quantidade || 1;
+        const precoUnitario = kit.precoUnitario || kit.preco || 0;
+        const subtotal = quantidade * precoUnitario;
 
-    mensagem += `${index + 1}. ${kit.nome}%0A`;
-    mensagem += `  Quantidade: ${quantidade}%0A`;
-    mensagem += `  Valor Unitário: R$ ${precoUnitario.toFixed(2)}%0A`;
-    mensagem += `  Subtotal: R$ ${subtotal.toFixed(2)}%0A`;
+        mensagem += `${index + 1}. ${kit.nome}%0A`;
 
-    // Personalização
-    if (kit.personalizacao?.chao?.corNome) {
-        mensagem += `  Couro: ${kit.personalizacao.chao.corNome}%0A`;
-    }
+        // DADOS DA MÁQUINA SALVOS NO MOMENTO DA INCLUSÃO
+        mensagem += `  Máquina: ${kit.maquina || '-'}%0A`;
+        mensagem += `  Marca: ${kit.marca || '-'}%0A`;
+        mensagem += `  Modelo: ${kit.modelo || '-'}%0A`;
+        mensagem += `  Ano: ${kit.ano || '-'}%0A`;
 
-    if (kit.personalizacao?.suede_partes?.corNome) {
-        mensagem += `  Suede: ${kit.personalizacao.suede_partes.corNome}%0A`;
-    }
+        mensagem += `  Quantidade: ${quantidade}%0A`;
+        mensagem += `  Valor Unitário: R$ ${precoUnitario.toFixed(2)}%0A`;
+        mensagem += `  Subtotal: R$ ${subtotal.toFixed(2)}%0A`;
 
-    if (kit.personalizacao?.kit?.corNome) {
-        mensagem += `  Xinil: ${kit.personalizacao.kit.corNome}%0A`;
-    }
+        // PERSONALIZAÇÕES
+        if (kit.personalizacao?.chao?.corNome) {
+            mensagem += `  Couro: ${kit.personalizacao.chao.corNome}%0A`;
+        }
 
-    if (kit.cortina) {
-        mensagem += `  Cortina: ${kit.cortina}%0A`;
-    }
+        if (kit.personalizacao?.suede_partes?.corNome) {
+            mensagem += `  Suede: ${kit.personalizacao.suede_partes.corNome}%0A`;
+        }
 
-    mensagem += `%0A`;
-});
+        if (kit.personalizacao?.kit?.corNome) {
+            mensagem += `  Xinil: ${kit.personalizacao.kit.corNome}%0A`;
+        }
 
-    // Total
+        if (kit.cortina) {
+            mensagem += `  Cortina: ${kit.cortina}%0A`;
+        }
+
+        mensagem += `%0A`;
+    });
+
+    // TOTAL
     const total = carrinho.reduce((sum, kit) => {
-    const quantidade = kit.quantidade || 1;
-    const precoUnitario = kit.precoUnitario || kit.preco || 0;
 
-    return sum + (quantidade * precoUnitario);
-}, 0);
+        const quantidade = kit.quantidade || 1;
+        const precoUnitario = kit.precoUnitario || kit.preco || 0;
+
+        return sum + (quantidade * precoUnitario);
+
+    }, 0);
+
     mensagem += `*TOTAL: R$ ${total.toFixed(2)}*%0A%0A`;
 
-    // Dados do cliente
+    // DADOS DO CLIENTE
     mensagem += `*DADOS DO CLIENTE:*%0A`;
     mensagem += `Nome: ${document.getElementById('nome').value}%0A`;
     mensagem += `CPF/CNPJ: ${document.getElementById('cpf_cnpj').value}%0A`;
 
     const inscricaoEstadual = document.getElementById('inscricao_estadual').value;
+
     if (inscricaoEstadual) {
         mensagem += `Inscrição Estadual: ${inscricaoEstadual}%0A`;
     }
@@ -1831,17 +1830,19 @@ function enviarParaWhatsApp(dados) {
     mensagem += `Rua: ${document.getElementById('rua').value}%0A`;
     mensagem += `Número: ${document.getElementById('numero').value}%0A`;
 
-    // Número do WhatsApp
     const telefoneWhatsApp = "5543999064226";
 
-    // Abrir WhatsApp
     const url = `https://wa.me/${telefoneWhatsApp}?text=${mensagem}`;
+
     window.open(url, '_blank');
 
-    // Limpar carrinho após envio
     carrinho = [];
+
     atualizarCarrinho();
-    mostrarMensagem("Pedido enviado para o WhatsApp! Em breve entraremos em contato.");
+
+    mostrarMensagem(
+        "Pedido enviado para o WhatsApp! Em breve entraremos em contato."
+    );
 }
 
         function configurarEventListeners() {
