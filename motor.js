@@ -781,7 +781,7 @@
                alt="${kit.nome}"
                class="slide-img"
                loading="lazy"
-               onerror="this.src='https://via.placeholder.com/400x300/333/fff?text=${encodeURIComponent(kit.nome)}'">
+               onerror="this.src='imagens/sem-imagem.png'">
           <div class="slide-caption">
             <h3>${kit.nome}</h3>
             <p>${kit.descricao}</p>
