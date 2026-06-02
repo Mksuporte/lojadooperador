@@ -338,21 +338,14 @@
         }
 
         /* ====== CARRINHO ====== */
-        .carrinho p {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 15px;
-    margin-top: 15px;
-
-    background: var(--cor-primaria);
-
-    border-radius: 10px;
-    border-left: 4px solid var(--cor-secundaria);
-
-    font-size: 1.1rem;
-}
+        .carrinho {
+            padding: 4rem 2rem;
+            background: var(--cor-terciaria);
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
 
         .carrinho h3 {
             font-family: 'Bebas Neue', sans-serif;
