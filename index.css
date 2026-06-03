@@ -931,3 +931,81 @@
         #slides-kits.atualizando {
             opacity: 0.5;
         }
+
+
+        /* pagina contato */
+        .pagina-contato {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+
+        .titulo-contato {
+            text-align: center;
+            color: var(--cor-secundaria);
+            margin-bottom: 15px;
+        }
+
+        .subtitulo-contato {
+            text-align: center;
+            color: var(--texto-claro);
+            margin-bottom: 40px;
+        }
+
+        .cards-contato {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card-contato {
+            background: var(--cor-terciaria);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .card-contato:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-contato h3 {
+            color: var(--cor-secundaria);
+            margin-bottom: 15px;
+        }
+
+        .card-contato p {
+            color: var(--texto-claro);
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: var(--cor-secundaria);
+            color: #000;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .sobre-empresa {
+            margin-top: 40px;
+            background: var(--cor-terciaria);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--borda);
+        }
+
+        .sobre-empresa h2 {
+            color: var(--cor-secundaria);
+            margin-bottom: 15px;
+        }
+
+        .sobre-empresa p {
+            color: var(--texto-claro);
+            line-height: 1.8;
+        }
+    
