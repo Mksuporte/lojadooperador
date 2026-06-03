@@ -200,7 +200,7 @@
                     id: "Kit_1_pa_carregadeira",
                     nome: "Kit 1",
                     descricao: "Toda na Pelucia ou chão em Vinil liso",
-                    preco: 920,
+                    preco: 800,
                     imagem: "imagens/kits/pacarregadeira/kit1.jpeg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 },
@@ -208,7 +208,7 @@
                     id: "Kit_2_pa_carregadeira",
                     nome: "Kit 2",
                     descricao: " couro no chão e nos pedais restante todo na pelúcia",
-                    preco: 1200,
+                    preco: 900,
                     imagem: "imagens/kits/pacarregadeira/kit2.jpeg",
                     partes: {
                         chao: { material: "couro_sport", cor: "", corNome: "" },
@@ -219,7 +219,7 @@
                     id: "Kit_3_pa_carregadeira",
                     nome: "Kit 3",
                     descricao: "Couro Sport no chão e nos pedais restante todo na pelúcia",
-                    preco: 1300,
+                    preco: 950,
                     imagem: "imagens/kits/pacarregadeira/kit3.jpeg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 }
