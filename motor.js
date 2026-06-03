@@ -172,7 +172,7 @@
                 {
                     id: "Kit_4_retro",
                     nome: "Kit 4",
-                    descricao: "Couro sintetico no chão nos pedais no painel e na apateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Suede restante do kit na pelucia ",
+                    descricao: "Couro sintetico no chão nos pedais no painel e na sapateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Suede restante do kit na pelucia ",
                     preco: 1300,
                     imagem: "imagens/kits/retroescavadeira/kit4.jpeg", partes: {
                         chao: { material: "couro", cor: "", corNome: "" },
@@ -396,10 +396,11 @@
                 {
                     id: "Kit_4_Colheitadeira",
                     nome: "Kit 4",
-                    descricao: "Couro sintetico Sporte no chão nos pedais, restante na pelucia (painel pode ser na pelucia ou couro)opcional ",
+                    descricao: "Couro sintetico no chão nos pedais no painel e na sapateira, banco apoio dos braços apoio de cabeça e caixinha dos joystich atras no Suede restante do kit na pelucia ",
                     preco: 1600,
                     imagem: "imagens/kits/colheitadeira/kit4.jpeg", partes: {
-                        chao: { material: "couro_sport", cor: "", corNome: "" },
+                        chao: { material: "couro", cor: "", corNome: "" },
+                        suede_partes: { material: "suede", cor: "", corNome: "", nomeExibicao: "Banco, apoio de braços e apoio da cabeça" },
                         kit: { material: "pelucia", cor: "", corNome: "" }
                     }
                 }
