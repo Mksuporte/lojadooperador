@@ -392,6 +392,16 @@
                         kit: { material: "pelucia", cor: "", corNome: "" }
                     },
                     opcaoChao: true
+                },
+                {
+                    id: "Kit_4_Colheitadeira",
+                    nome: "Kit 3",
+                    descricao: "Couro sintetico Sporte no chão nos pedais, restante na pelucia (painel pode ser na pelucia ou couro)opcional ",
+                    preco: 1150,
+                    imagem: "imagens/kits/retroescavadeira/kit3.jpeg", partes: {
+                        chao: { material: "couro_sport", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
+                    }
                 }
             ],
 
