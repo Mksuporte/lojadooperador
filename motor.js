@@ -731,14 +731,14 @@
             <h3>Kits em Desenvolvimento</h3>
             <p>Em breve teremos kits específicos para ${maquina}</p>
             <strong style="color:#f9a01b">Consulte valores</strong><br>
-            <button
+            
             <a href="https://wa.me/5543999064226"
                    target="_blank"
-                   class="btn-selecionar-kit">        
+                   class="btn-selecionar-kit">
+            
             
               Em breve
               </a>
-            </button>
           </div>
         </div>
       </div>
