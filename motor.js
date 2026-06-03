@@ -241,10 +241,33 @@
                     id: "Kit_1_trator_esteira",
                     nome: "Kit 1",
                     descricao: "Todas as partes na pelúcia (Xinil)",
-                    preco: 1300,
+                    preco: 800,
                     imagem: "imagens/kits/tratoresteira/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
-                }
+                },
+                {
+                    id: "Kit_2_trator_esteira",
+                    nome: "Kit 2",
+                    descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia (Xinil)",
+                    preco: 950,
+                    imagem: "imagens/kits/tratoresteira/kit_couro_chao.jpg",
+                    partes: {
+                        chao: { material: "couro", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
+                    }
+                },
+                {
+                    id: "Kit_3_trator_esteira",
+                    nome: "Kit 3",
+                    descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
+                    preco: 1000,
+                    imagem: "imagens/kits/tratoresteira/kit_couro_total.jpg",
+                    partes: {
+                        chao: { material: "couro_sport", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
+                    },
+                    opcaoChao: true
+                },
             ],
 
             "Trator": [/*
