@@ -333,7 +333,7 @@
                     nome: "Kit 1",
                     descricao: "Todas as partes na pelúcia (Xinil)",
                     preco: 800,
-                    imagem: "imagens/kits/trator/kit_1_pelucia.jpg",
+                    imagem: "imagens/kits/pulverizador/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
                 },
                 {
@@ -341,7 +341,7 @@
                     nome: "Kit 2",
                     descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia (Xinil)",
                     preco: 950,
-                    imagem: "imagens/kits/trator/kit_couro_chao.jpg",
+                    imagem: "imagens/kits/pulverizador/kit_couro_chao.jpg",
                     partes: {
                         chao: { material: "couro", cor: "", corNome: "" },
                         kit: { material: "pelucia", cor: "", corNome: "" }
@@ -352,7 +352,7 @@
                     nome: "Kit 3",
                     descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
                     preco: 1000,
-                    imagem: "imagens/kits/trator/kit_couro_total.jpg",
+                    imagem: "imagens/kits/pulverizador/kit_couro_total.jpg",
                     partes: {
                         chao: { material: "couro_sport", cor: "", corNome: "" },
                         kit: { material: "pelucia", cor: "", corNome: "" }
@@ -752,6 +752,36 @@
                     "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
                 },
                 "MASSEY FERGUSON": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                }
+            },
+
+            "Pulverizador": {
+                "JOHN DEERE": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "NEW HOLLAND": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "CASE": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "VALTRA": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "MASSEY FERGUSON": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "KUHN": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "JACTO": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "STARA": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "UNIPORT": {
                     "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
                 }
             },
