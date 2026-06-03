@@ -734,7 +734,7 @@
             
             <a href="https://wa.me/5543999064226"
                    target="_blank"
-                   class="btn-whatsapp">
+                   class="btn-selecionar-kit">
             
             
               Em breve
