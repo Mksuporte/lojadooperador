@@ -327,27 +327,73 @@
                 }
             ],
 
-            "Pulverizador": [/*
+            "Pulverizador": [
                 {
-                    id: "basico_pulverizador",
-                    nome: "Kit Pulverizador",
-                    descricao: "Kit resistente à umidade para pulverizador",
-                    preco: 700,
-                    imagem: "imagens/kits/pulverizador/kit_basico.jpg",
+                    id: "Kit_1_trator",
+                    nome: "Kit 1",
+                    descricao: "Todas as partes na pelúcia (Xinil)",
+                    preco: 800,
+                    imagem: "imagens/kits/trator/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
+                },
+                {
+                    id: "Kit_2_trator",
+                    nome: "Kit 2",
+                    descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia (Xinil)",
+                    preco: 950,
+                    imagem: "imagens/kits/trator/kit_couro_chao.jpg",
+                    partes: {
+                        chao: { material: "couro", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
+                    }
+                },
+                {
+                    id: "Kit_3_trator",
+                    nome: "Kit 3",
+                    descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
+                    preco: 1000,
+                    imagem: "imagens/kits/trator/kit_couro_total.jpg",
+                    partes: {
+                        chao: { material: "couro_sport", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
+                    },
+                    opcaoChao: true
                 }
-           */ ],
+            ],
 
-            "Colheitadeira": [/*
+            "Colheitadeira": [
                 {
-                    id: "premium_colheitadeira",
-                    nome: "Kit Premium Colheitadeira",
-                    descricao: "Kit premium para colheitadeira",
-                    preco: 1100,
-                    imagem: "imagens/kits/colheitadeira/kit_premium.jpg",
+                    id: "Kit_1_Colheitadeira",
+                    nome: "Kit 1",
+                    descricao: "Todas as partes na pelúcia (Xinil)",
+                    preco: 800,
+                    imagem: "imagens/kits/colheitadeira/kit_1_pelucia.jpg",
                     partes: { kit: { material: "pelucia", cor: "", corNome: "" } }
+                },
+                {
+                    id: "Kit_2_Colheitadeira",
+                    nome: "Kit 2",
+                    descricao: "Chão, Pedais, e Sapateira em couro sintético, demais partes em pelúcia (Xinil)",
+                    preco: 950,
+                    imagem: "imagens/kits/colheitadeira/kit_couro_chao.jpg",
+                    partes: {
+                        chao: { material: "couro", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
+                    }
+                },
+                {
+                    id: "Kit_3_Colheitadeira",
+                    nome: "Kit 3",
+                    descricao: "Chão + pedais + sapateira em couro, restante do kit na pelucia (Xinil)",
+                    preco: 1000,
+                    imagem: "imagens/kits/colheitadeira/kit_couro_total.jpg",
+                    partes: {
+                        chao: { material: "couro_sport", cor: "", corNome: "" },
+                        kit: { material: "pelucia", cor: "", corNome: "" }
+                    },
+                    opcaoChao: true
                 }
-            */],
+            ],
 
             "Mini-Escavadeira": [/*
                 {
@@ -688,6 +734,24 @@
                     "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
                 },
                 "FENDT": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                }
+            },
+
+            "Colheitadeira": {
+                "JOHN DEERE": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "NEW HOLLAND": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "CASE": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "VALTRA": {
+                    "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
+                },
+                "MASSEY FERGUSON": {
                     "MOD1": { anos: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"] }
                 }
             },
