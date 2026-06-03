@@ -1,5 +1,19 @@
 
 
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+        /* ====== VARIÁVEIS CSS ====== */
+        :root {
+            --cor-primaria: #1a1a1a;
+            --cor-secundaria: #f9a01b;
+            --cor-terciaria: #2a2a2a;
+            --texto-claro: #e0e0e0;
+            --texto-escuro: #888;
+            --borda: #444;
+            --transition: all 0.3s ease;
+        }
+
+        
         /* ====== RESET E ESTILOS GERAIS ====== */
         * {
             margin: 0;
