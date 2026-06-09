@@ -1456,7 +1456,7 @@
         </div>
         <p><strong>Preço: R$ ${precoTotal.toFixed(2)}</strong></p>
         <input type="hidden" id="kit-selecionado-chave" value="${kitAtual.id}">
-        <button class="btn-adicionar-carrinho" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+        <button class="btn-adicionar-carrinho" onclick="adicionarAoCarrinho()">Click Aqui para Adicionar ao Carrinho</button>
       `;
 
             // Rolagem suave para a personalização
